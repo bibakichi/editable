@@ -2,22 +2,6 @@
 
 function createModal() {
     const id = uuid();
-    `
-    <input class="modal_trigger" id="id_trigger" type="checkbox">
-    <label class="modal_overlay" for="id_trigger"></label>
-    <div class="modal_outer">
-        <div class="dummy_breadcrumbs"></div>
-        <div class="modal_scroll">
-            <div class="modal_close_button_wrapper">
-                <label for="id_trigger" class="buttonFlat">戻る</label>
-            </div>
-            <main id="id">
-                <br>
-                <br>
-            </main>
-        </div>
-    </div>
-    `
     const bodyLeftElement = document.getElementById("body_left");
     const triggerElement = document.createElement("input");
     triggerElement.classList.add('modal_trigger');
