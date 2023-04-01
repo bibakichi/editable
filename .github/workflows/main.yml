@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@master  # リポジトリをチェックアウト
 
       - name: Join_files  # ファイルを結合
-        run: find ./basic_js/ -type f | xargs cat > ./deploy_files/basic.js
+        run: find ./basic_js/ -type f | sort | xargs cat > ./deploy_files/basic.js
 
       - name: Deploy_others  # S3にデプロイ 
         env:
