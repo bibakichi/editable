@@ -1,42 +1,10 @@
 //#########################################################################################
 
 // 親子ウィンドウの初期設定
-document.addEventListener('DOMContentLoaded', async function () {
+async function initWindows() {
     //
     if (isDebugTree) console.log("============================");
     if (isDebugTree) console.log("親ページへ繋がる戻るボタンやパンくずリストを生成します。");
-    //
-    // 各階層のJavaScriptファイル「setting.js」と「setting_top.js」から設定を読み込む
-    //
-    // フォルダ階層ごとのループ
-    //  例：「」=>「../」=>「../../」=>「../../../」
-    let folderUrl = '';
-    for (let i = 0; i < 30; i++) {
-        if (isDebugTree) console.log('\n');
-        const s1 = await _loadSetting(folderUrl + 'setting.js');
-        if (!s1.isLoadSettingSuccess) {
-            break;
-        }
-        settings.push(s1);
-        //
-        if (i === 0) {
-            fontInit(s1);  // フォントを読み込む
-            initToolList(s1);
-        }
-        //
-        if (isDebugTree) console.log('\n');
-        //
-        const s2 = await _loadSetting(folderUrl + 'setting_top.js');
-        if (s2.isLoadSettingSuccess) {
-            settings.push(s2);
-            // 「window_top.json」を発見した場合（一番上のファイル階層まで到達した場合）は
-            //  for文の実行を終了する。
-            break;
-        }
-        folderUrl += '../';
-    }
-    if (isDebugTree) console.log('\n');
-    if (isDebugTree) console.log(settings);
     //
     // 必要ならば、画面上部の赤いバーを消す
     if (settings.length >= 3) {
@@ -96,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     if (settings.length >= 2) {
         const trigger = document.getElementById('this_page_modal_trigger');
         trigger.addEventListener('change', async () => {
-            if (isEnableLeaveCheck == false) {
+            if (isEditMode == false) {
                 await _sleep(300);
             }
             else {
@@ -152,4 +120,4 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
     if (isDebugTree) console.log("\n============================");
-});
+}

@@ -13,7 +13,7 @@ async function _goChildPage({ url, isFullSize, isTopbar }) {
     else {
         document.getElementById('child_dummy_breadcrumbs').style.display = 'none';
     }
-    if (isEnableLeaveCheck == false) {
+    if (isEditMode == false) {
         document.getElementById('children_page_modal_trigger').checked = true;
         await _sleep(300);
     }
