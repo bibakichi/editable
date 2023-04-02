@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // フォルダ階層ごとのループ
     //  例：「」=>「../」=>「../../」=>「../../../」
     const pathList = window.location.pathname.split("/");
+    let isFirst = true;
     while (pathList.length > 0) {
         pathList.pop();
         console.log(pathList);
@@ -28,9 +29,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
         settings.push(s1);
         //
-        if (i === 0) {
+        if (isFirst) {
             fontInit(s1);  // フォントを読み込む
             initToolList(s1);   // ツールボックスを表示
+            isFirst = false;
         }
         //
         if (isDebugTree) console.log('\n');
