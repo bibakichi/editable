@@ -6,8 +6,17 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
         headers: {},
         body: JSON.stringify({
             storageId: storageId,
+            fileList: [
+                {
+                    path: filePath,
+                    contentType: "text/html",
+                },
+                {
+                    path: filePath.replace("index.html", "setting.js"),
+                    contentType: "text/javascript",
+                }
+            ],
             filePath: filePath,
-            contentType: "text/html",
         }),
     },
     );
@@ -18,7 +27,8 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
         alert(message);
         return;
     }
-    await window.fetch(
+    console.log(data);
+    /*await window.fetch(
         data.postUrl, {
         method: "PUT",
         headers: {
@@ -26,5 +36,5 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
         },
         body: htmlCode,
     },
-    );
+    );*/
 }
