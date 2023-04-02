@@ -28,13 +28,28 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
         return;
     }
     console.log(data);
-    /*await window.fetch(
-        data.postUrl, {
-        method: "PUT",
-        headers: {
-            'Content-Type': "text/html",
-        },
-        body: htmlCode,
-    },
-    );*/
+    for (const fileInfo of data.fileInfos) {
+        if (fileInfo.filePath === "index.html") {
+            await window.fetch(
+                fileInfo.postUrl, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': "text/html",
+                },
+                body: htmlCode,
+            },
+            );
+        }
+        else if (fileInfo.filePath === "setting.js") {
+            await window.fetch(
+                fileInfo.postUrl, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': "text/javascript",
+                },
+                body: "window.fileToFileTransferVariable = " + JSON.stringify(settings[0]) + ";",
+            },
+            );
+        }
+    }
 }
