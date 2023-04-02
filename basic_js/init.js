@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     //
     // フォルダ階層ごとのループ
     //  例：「」=>「../」=>「../../」=>「../../../」
-    let folderUrl = '';
-    for (let i = 0; i < 30; i++) {
+    const pathList = window.location.pathname.split("/");
+    while (pathList.length > 0) {
+        pathList.pop();
+        console.log(pathList);
         if (isDebugTree) console.log('\n');
-        const s1 = await _loadSetting(folderUrl + 'setting.js');
+        const s1 = await _loadSetting(pathList.join("/") + '/setting.js');
         if (!s1.isLoadSettingSuccess) {
             break;
         }
@@ -33,14 +35,13 @@ document.addEventListener('DOMContentLoaded', async function () {
         //
         if (isDebugTree) console.log('\n');
         //
-        const s2 = await _loadSetting(folderUrl + 'setting_top.js');
+        const s2 = await _loadSetting(pathList.join("/") + '/setting_top.js');
         if (s2.isLoadSettingSuccess) {
             settings.push(s2);
             // 「window_top.json」を発見した場合（一番上のファイル階層まで到達した場合）は
             //  for文の実行を終了する。
             break;
         }
-        folderUrl += '../';
     }
     if (isDebugTree) console.log('\n');
     if (isDebugTree) console.log(settings);
