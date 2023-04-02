@@ -1,20 +1,5 @@
 //#########################################################################################
 async function allSave() {
-    /*
-    const uri = new URL(window.location.href);
-    console.log(uri.hostname);
-    let pathName = window.location.pathname;
-    if (!pathName || pathName.endsWith("/")) {
-        pathName += "index.html";
-    }
-    if (uri.hostname === "8mo.nl") {
-        //  以下のURLにアクセスがあった場合
-        //    https://8mo.nl/【ストレージID】/【パス】
-        return pathName;
-    }
-    else if (uri.hostname.endsWith(".8mo.nl")) {
-    }
-    */
     const toolListInner = document.getElementById("toolList");
     const toolBoxJsonDataList = [];
     //
@@ -48,31 +33,34 @@ async function allSave() {
         isFullSize: settings[0]?.isFullSize,
         faviconsFolderPath: 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
     });
-    //
-    if (typeof JSZip === "undefined") {
-        console.log("  JSZipファイルが見つかりません");
+
+    const uri = new URL(window.location.href);
+    console.log(uri.hostname);
+    let pathName = window.location.pathname;
+    if (!pathName || pathName.endsWith("/")) {
+        pathName += "index.html";
     }
-    const zip = new JSZip();
-    //
-    zip.file("index.html", htmlCode);
-    zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(settings[0]) + ";");
-    for (const pluginName in plugins) {
-        const plugin = plugins[pluginName];
-        const str = _convertPluginToString({ pluginName, plugin });
-        zip.file("plugins/" + pluginName + ".js", str);
+    if (uri.hostname === "8mo.nl") {
+        //  以下のURLにアクセスがあった場合
+        //    https://8mo.nl/【ストレージID】/【パス】
+        const pathList = pathName.split("/");
+        const storageId = pathList.shift();
+        await saveCloud({
+            storageId,
+            filePath: pathList.join("/"),
+            htmlCode
+        });
     }
-    //
-    const content = await zip.generateAsync({
-        type: "blob",
-        compression: "DEFLATE",
-        compressionOptions: {
-            /* compression level ranges from 1 (best speed) to 9 (best compression) */
-            level: 9
-        },
-    });
-    await downloadFile({
-        fileName: (_getPath() ?? "web") + ".zip",
-        mimeType: "octet/stream",
-        content: content,
-    });
+    else if (uri.hostname.endsWith(".8mo.nl")) {
+        //  以下のURLにアクセスがあった場合
+        //    https://【パス】.8mo.nl/【ストレージID】/
+        await saveCloud({
+            storageId: uri.hostname.split('.')[0],
+            filePath: pathName,
+            htmlCode
+        });
+    }
+    else {
+        await downloadZip(htmlCode);
+    }
 }

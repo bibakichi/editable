@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     params.delete("Expires");
     params.delete("Signature");
     params.delete("Key-Pair-Id");
-    const nextUri = window.location.pathname.replaceAll("/logged_in", "") +
+    const nextUri = window.location.pathname.replaceAll(".login", "") +
         '?' + params.toString() +
         window.location.hash;
     window.history.replaceState('', '', nextUri);
