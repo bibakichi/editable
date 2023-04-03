@@ -67,6 +67,7 @@ class SortableItem {
     // ドラッグ＆ドロップを有効にするか否か
     set isEnable(flag = true) {
         this._isEnable = flag;
+        this._outerElement.draggable = (this._isEnable && !this._isDropOnly);
     }
     get isEnable() { return this._isEnable; }
     //
@@ -185,7 +186,7 @@ class SortableItem {
         //
         const outerElement = document.createElement('div');
         outerElement.id = uuid();
-        outerElement.draggable = true;
+        outerElement.draggable = (this._isEnable && !this._isDropOnly);
         outerElement.style.position = 'relative';
         outerElement.style.transition = 'opacity 0.1s';
         outerElement.style.cursor = 'grab';
