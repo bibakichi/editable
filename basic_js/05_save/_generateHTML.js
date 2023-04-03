@@ -1,5 +1,5 @@
 //#########################################################################################
-const _generateHTML = ({
+function _generateHTML({
     title = 'たいとる',
     mainContents = '',
     basicCssPath,
@@ -7,7 +7,9 @@ const _generateHTML = ({
     jsZipPath,
     isFullSize = true,
     faviconsFolderPath = 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
-}) => `
+}) {
+    const nowDate = new Date();
+    return `
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -74,7 +76,7 @@ const _generateHTML = ({
         <link rel="icon" type="image/png" sizes="32x32" href="${faviconsFolderPath}icon-32x32.png">
         <!-- -->
         <!-- 共通CSS -->
-        <link rel="stylesheet" href="${basicCssPath}" id="basic_css">
+        <link rel="stylesheet" href="${basicCssPath}?timestamp=${nowDate.getTime()}" id="basic_css">
         <!-- -->
         <!-- 共通JavaScript -->
         <script type="text/javascript">
@@ -92,8 +94,8 @@ const _generateHTML = ({
             //ページを離れた時やリロード時
             window.addEventListener('unload', _initReload);
         </script>
-        <script src="${basicJsPath}" defer id="basic_js"></script>
-        <script src="${jsZipPath}" defer id="jszip"></script>
+        <script src="${basicJsPath}?timestamp=${nowDate.getTime()}" defer id="basic_js"></script>
+        <script src="${jsZipPath}?timestamp=${nowDate.getTime()}" defer id="jszip"></script>
         <!-- -->
     </head>
 
@@ -168,3 +170,4 @@ const _generateHTML = ({
     </body>
 </html>
 `;
+}
