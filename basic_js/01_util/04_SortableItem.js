@@ -61,6 +61,12 @@ class SortableItem {
     set isEnable(flag = true) {
         this._isEnable = flag;
         this._outerElement.draggable = (this._isEnable && !this._isDropOnly);
+        this._outerElement.addEventListener('focusin', async (event) => {
+            this._outerElement.draggable = false;
+        });
+        this._outerElement.addEventListener('focusout', async (event) => {
+            this._outerElement.draggable = (this._isEnable && !this._isDropOnly);
+        });
         this._outerElement.style.cursor = (this._isEnable && !this._isDropOnly) ? 'grab' : 'auto';
     }
     get isEnable() { return this._isEnable; }
@@ -201,6 +207,12 @@ class SortableItem {
         outerElement.classList.add("sortable_item");
         outerElement.id = id;
         outerElement.draggable = (this._isEnable && !this._isDropOnly);
+        outerElement.addEventListener('focusin', async (event) => {
+            outerElement.draggable = false;
+        });
+        outerElement.addEventListener('focusout', async (event) => {
+            outerElement.draggable = (this._isEnable && !this._isDropOnly);
+        });
         outerElement.style.position = 'relative';
         outerElement.style.transition = 'opacity 0.1s';
         outerElement.style.cursor = (this._isEnable && !this._isDropOnly) ? 'grab' : 'auto';
