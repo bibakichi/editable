@@ -6,10 +6,7 @@ function _showLoader() {
     outer = document.createElement('div');
     outer.id = 'loader';
     outer.appendChild(document.createElement('div'));
-    try {
-        document.body.appendChild(divElement);
-    }
-    catch (e) { }
+    document.body.appendChild(outer);
 }
 
 function _deleteLoader() {
