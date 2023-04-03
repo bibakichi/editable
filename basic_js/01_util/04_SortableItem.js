@@ -68,6 +68,7 @@ class SortableItem {
     set isEnable(flag = true) {
         this._isEnable = flag;
         this._outerElement.draggable = (this._isEnable && !this._isDropOnly);
+        this._outerElement.style.cursor = (this._isEnable && !this._isDropOnly) ? 'grab' : 'auto';
     }
     get isEnable() { return this._isEnable; }
     //
@@ -189,7 +190,7 @@ class SortableItem {
         outerElement.draggable = (this._isEnable && !this._isDropOnly);
         outerElement.style.position = 'relative';
         outerElement.style.transition = 'opacity 0.1s';
-        outerElement.style.cursor = 'grab';
+        outerElement.style.cursor = (this._isEnable && !this._isDropOnly) ? 'grab' : 'auto';
         this._outerElement = outerElement;
         //
         const innerElement = document.createElement('div');
