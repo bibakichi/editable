@@ -194,7 +194,7 @@ class SortableItem {
         this._onDrop = async () => { };
         //
         const outerElement = document.createElement('div');
-        outerElement.className.add("sortable_item");
+        outerElement.classList.add("sortable_item");
         outerElement.id = id;
         outerElement.draggable = (this._isEnable && !this._isDropOnly);
         outerElement.style.position = 'relative';
