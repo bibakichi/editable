@@ -319,7 +319,6 @@ class SortableItem {
                 this._removeInsertBarBefore(outerElement); //outerElementの直前の「挿入バー」を削除
             },
             onDropJson: async (ballOuterId, jsonData, enableCopy) => {
-                console.log("ドロップ２：" + enableCopy);
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
@@ -330,7 +329,9 @@ class SortableItem {
                 }
                 else {
                     try {
+                        console.log("ドロップ２：" + enableCopy);
                         await onDropJson(jsonData);
+                        console.log("ドロップ３：" + enableCopy);
                         if (!enableCopy) {
                             ballItem.remove();
                         }
@@ -371,14 +372,15 @@ class SortableItem {
             onDragOver: onDragOver,
             onDrop: onDrop,
             onDropJson: async (ballOuterId, jsonData, enableCopy) => {
-                console.log("ドロップ２：" + enableCopy);
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
                     await onDropJson(jsonData);
                 }
                 try {
+                    console.log("ドロップ２：" + enableCopy);
                     await onDropJson(jsonData);
+                    console.log("ドロップ３：" + enableCopy);
                     if (!enableCopy) {
                         ballItem.remove();
                     }
@@ -425,7 +427,6 @@ class SortableItem {
                 this._removeInsertBarAfter(outerElement);    //outerElementの直後の「挿入バー」を削除
             },
             onDropJson: async (ballOuterId, jsonData, enableCopy) => {
-                console.log("ドロップ２：" + enableCopy);
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
@@ -436,7 +437,9 @@ class SortableItem {
                 }
                 else {
                     try {
+                        console.log("ドロップ２：" + enableCopy);
                         await onDropJson(jsonData);
+                        console.log("ドロップ３：" + enableCopy);
                         if (!enableCopy) {
                             ballItem.remove();
                         }
