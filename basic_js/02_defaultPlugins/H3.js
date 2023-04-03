@@ -9,7 +9,6 @@ plugins["H3"] = {
         },
         "changeEditMode": async function (blockId) {
             const element = document.getElementById(blockId);
-            element.style.width = "max-content";
             element.addEventListener('click', (event) => {
                 element.contentEditable = true;
                 element.focus();
