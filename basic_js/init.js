@@ -1,5 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', async function () {
+    _showLoader();
     // URLからcloudFrontの認証情報を消す
     const params = new URLSearchParams(window.location.search);
     params.delete("Expires");
