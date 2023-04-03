@@ -32,40 +32,6 @@ async function _saveBlock(outerElement) {
     if (!Array.isArray(newSaveData.children)) {
         newSaveData.children = [];
     }
-    //
-    let lightElement;
-    if (typeof plugin?.viewer?.renderLight !== 'function') {
-        console.log(`プラグイン「${newSaveData.blockType}」の関数「viewer.renderLight()」が未定義です。`);
-        lightElement = document.getElementById("block_" + outerElement.id);
-    }
-    else {
-        try {
-            lightElement = await plugin?.viewer?.renderLight("block_" + outerElement.id, newSaveData);
-        }
-        catch (err) {
-            alert(`プラグイン「${newSaveData.blockType}」の関数「viewer.renderLight()」でエラーが発生しました。`);
-            console.error(`プラグイン「${newSaveData.blockType}」の関数「viewer.renderLight()」でエラーが発生しました。`);
-            console.error(err);
-            return {};
-        }
-    }
-    //
-    const preElement = document.createElement('pre');
-    preElement.classList.add("json");
-    preElement.innerText = JSON.stringify(newSaveData);
-    preElement.style.display = "none";
-    //
-    const newOuterElement = document.createElement('div');
-    newOuterElement.appendChild(preElement);
-    try {
-        newOuterElement.appendChild(lightElement);
-    }
-    catch (err) {
-        alert(`プラグイン「${newSaveData.blockType}」の軽量ブロックを描画できません。関数「viewer.renderLight()」を確認してください。`);
-        console.error(`プラグイン「${newSaveData.blockType}」の軽量ブロックを描画できません。関数「viewer.renderLight()」を確認してください。`);
-        console.error(err);
-        return {};
-    }
-    //
-    return { newOuterElement, newSaveData };
+    jsonElement.innerText = JSON.stringify(newSaveData);
+    return newSaveData;
 }
