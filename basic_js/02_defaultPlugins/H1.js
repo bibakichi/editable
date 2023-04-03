@@ -12,8 +12,12 @@ plugins["H1"] = {
             element.addEventListener('click', (event) => {
                 element.contentEditable = true;
                 element.focus();
-                const end = element.innerText.length;// 最終位置を取得
-                element.setSelectionRange(end, end);// 最後の文字の位置を選択状態に変更
+                const range = document.createRange();
+                const sel = window.getSelection();
+                range.setStart(element.childNodes[element.childNodes.length]);
+                range.collapse(true);
+                sel.removeAllRanges();
+                sel.addRange(range);
             });
             element.addEventListener('focusout', (event) => {
                 element.contentEditable = false;
