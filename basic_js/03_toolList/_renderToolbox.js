@@ -27,11 +27,8 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     }
     //
     const card = document.createElement('div');
-    card.style.margin = '10px';
-    card.style.width = '200px';
-    card.style.maxWidth = '100%';
-    card.style.boxSizing = 'border-box';
-    card.style.height = '100px';
+    card.style.width = '100%';
+    card.style.height = '100%';
     card.style.background = '#fff';
     card.style.borderRadius = '10px';
     card.style.padding = '10px';
@@ -59,6 +56,11 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     preElement.innerText = JSON.stringify(saveData);
     preElement.style.display = "none";
     sortableItem.outerElement.appendChild(preElement);
+    sortableItem.outerElement.style.padding = '10px';
+    sortableItem.outerElement.style.width = '200px';
+    sortableItem.outerElement.style.height = '100px';
+    sortableItem.outerElement.style.maxWidth = '100%';
+    sortableItem.outerElement.style.boxSizing = 'border-box';
     //
     return sortableItem.outerElement;
 }
