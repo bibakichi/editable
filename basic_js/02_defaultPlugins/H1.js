@@ -12,7 +12,9 @@ plugins["H1"] = {
             element.addEventListener('click', (event) => {
                 element.contentEditable = true;
                 element.focus();
+                // １文字以上の場合
                 if (element.childNodes.length > 0) {
+                    // カーソル位置を最後にもっていく
                     const range = document.createRange();
                     const sel = window.getSelection();
                     range.setStart(element.childNodes[0], element.innerText.length);
