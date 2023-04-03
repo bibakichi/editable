@@ -12,12 +12,14 @@ plugins["H1"] = {
             element.addEventListener('click', (event) => {
                 element.contentEditable = true;
                 element.focus();
-                const range = document.createRange();
-                const sel = window.getSelection();
-                range.setStart(element, element.innerText.length);
-                range.collapse(true);
-                sel.removeAllRanges();
-                sel.addRange(range);
+                if (element.childNodes.length > 0) {
+                    const range = document.createRange();
+                    const sel = window.getSelection();
+                    range.setStart(element.childNodes[0], element.innerText.length);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
             });
             element.addEventListener('focusout', (event) => {
                 element.contentEditable = false;
