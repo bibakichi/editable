@@ -11,6 +11,7 @@ plugins["H1"] = {
             const element = document.getElementById(blockId);
             element.addEventListener('click', (event) => {
                 element.contentEditable = true;
+                element.focus();
             });
             element.addEventListener('focusout', (event) => {
                 element.contentEditable = false;
