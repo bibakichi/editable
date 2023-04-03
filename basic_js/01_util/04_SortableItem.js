@@ -28,7 +28,7 @@ class SortableItem {
             outerElement.style.opacity = 0;
             const dropAreasList = document.getElementsByClassName('sortable_item_drop_areas');
             for (const dropAreas of dropAreasList) {
-                dropAreas.style.display = 'block';
+                //dropAreas.style.display = 'block';
             }
         };
     }
