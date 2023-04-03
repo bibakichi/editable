@@ -26,9 +26,7 @@ async function _editEnable() {
         if (typeof func !== "function") continue;
         await func("block_" + sortableElement.id);
         const sortableItem = sortableItems[sortableElement.id];
-        console.log(sortableElement.id);
         if (sortableItem) {
-            console.log("enable");
             sortableItem.isEnable = true;
         }
     }
