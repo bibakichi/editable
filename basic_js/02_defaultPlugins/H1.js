@@ -10,6 +10,7 @@ plugins["H1"] = {
         "changeEditMode": async function (blockId) {
             const element = document.getElementById(blockId);
             element.addEventListener('click', (event) => {
+                if (element.contentEditable) return;
                 element.contentEditable = true;
                 element.focus();
                 // １文字以上の場合
