@@ -143,7 +143,8 @@ class SortableItem {
         }
     }
 
-    constructor({ isDragOnly = false, isDropOnly = false }) {
+    constructor({ isDragOnly = false, isDropOnly = false, isEnable = true, }) {
+        this._isEnable = isEnable;
         this._isDragOnly = isDragOnly;
         this._isDropOnly = isDropOnly;
         this._jsonData = {};

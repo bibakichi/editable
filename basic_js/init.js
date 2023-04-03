@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     // フォルダ階層ごとのループ
     //  例：「」=>「../」=>「../../」=>「../../../」
     const pathList = window.location.pathname.split("/").filter(path => (path !== ""));
+    console.log(pathList);
     let isFirst = true;
     while (pathList.length > 0) {
         pathList.pop();
-        console.log(pathList);
         if (isDebugTree) console.log('\n');
         const s1 = await _loadSetting(pathList.join("/") + '/setting.js');
         if (!s1.isLoadSettingSuccess) {
