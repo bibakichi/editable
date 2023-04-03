@@ -9,7 +9,12 @@ plugins["H1"] = {
         },
         "changeEditMode": async function (blockId) {
             const element = document.getElementById(blockId);
-            element.contentEditable = true;
+            element.addEventListener('focusin', (event) => {
+                element.contentEditable = true;
+            });
+            element.addEventListener('focusout', (event) => {
+                element.contentEditable = false;
+            });
         },
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
