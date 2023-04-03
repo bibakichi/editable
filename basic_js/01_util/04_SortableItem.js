@@ -149,18 +149,18 @@ class SortableItem {
     }
 
     _handleDragStart(event, jsonData) {
-        this._outerElement.style.zIndex = 999;
         event.dataTransfer.setData("outerId", this._outerElement.id);  // データ転送用のデータをセット
         event.dataTransfer.setData("jsonData", JSON.stringify(jsonData));      // データ転送用のデータをセット
-        this._outerElement.style.opacity = 0;
-        const dropAreasList = document.getElementsByClassName('sortable_item_drop_areas');
-        for (const dropAreas of dropAreasList) {
-            dropAreas.style.display = 'block';
+        if (!this._isDragOnly) {
+            this._outerElement.style.opacity = 0;
         }
+        this._outerElement.style.zIndex = 999;
         const sortableItemList = document.getElementsByClassName('sortable_item');
         for (const sortableItem of sortableItemList) {
             if (sortableItem.id != this._outerElement.id) {
                 sortableItem.style.zIndex = 1;
+                const dropAreas = sortableItem.querySelector('.sortable_item_drop_areas');
+                dropAreas.style.display = 'block';
             }
         }
     }
