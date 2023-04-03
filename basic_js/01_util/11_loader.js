@@ -1,25 +1,20 @@
 //#########################################################################################
 
 function _showLoader() {
-    let element = document.getElementById("loader");
-    if (element) return;
-    element = document.createElement('div');
-    element.id = 'loader';
-    element.appendChild(document.createElement('div'));
+    let outer = document.getElementById("loader");
+    if (outer) return;
+    outer = document.createElement('div');
+    outer.id = 'loader';
+    outer.appendChild(document.createElement('div'));
     try {
-        const parent = document.querySelector("main");
-        if (!parent) {
-            alert("main が見つかりません");
-            return;
-        }
-        parent.appendChild(element);
+        document.body.appendChild(divElement);
     }
     catch (e) { }
 }
 
 function _deleteLoader() {
-    let element = document.getElementById("loader");
-    if (element) {
-        element.remove();
+    let outer = document.getElementById("loader");
+    if (outer) {
+        outer.remove();
     }
 }

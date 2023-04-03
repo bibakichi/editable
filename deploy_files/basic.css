@@ -300,6 +300,7 @@ footer a {
     right: 0;
     z-index: 999;
     text-align: center;
+    background: rgba(0, 0, 0, .5);
 }
 
 #loader>div,
