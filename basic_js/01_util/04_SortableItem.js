@@ -160,7 +160,9 @@ class SortableItem {
             if (sortableItem.id != this._outerElement.id) {
                 sortableItem.style.zIndex = 1;
                 const dropAreas = sortableItem.querySelector('.sortable_item_drop_areas');
-                dropAreas.style.display = 'block';
+                if (dropAreas) {
+                    dropAreas.style.display = 'block';
+                }
             }
         }
     }
