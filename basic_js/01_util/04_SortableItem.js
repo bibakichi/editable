@@ -149,9 +149,9 @@ class SortableItem {
     }
 
     _handleDragStart(event, jsonData) {
-        event.dataTransfer.setData("outerId", outerElement.id);  // データ転送用のデータをセット
+        event.dataTransfer.setData("outerId", this._outerElement.id);  // データ転送用のデータをセット
         event.dataTransfer.setData("jsonData", JSON.stringify(jsonData));      // データ転送用のデータをセット
-        outerElement.style.opacity = 0;
+        this._outerElement.style.opacity = 0;
         const dropAreasList = document.getElementsByClassName('sortable_item_drop_areas');
         for (const dropAreas of dropAreasList) {
             dropAreas.style.display = 'block';
