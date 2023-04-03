@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     //
     // フォルダ階層ごとのループ
     //  例：「」=>「../」=>「../../」=>「../../../」
-    const pathList = window.location.pathname.split("/").filter(path => (path !== ""));
+    let pathList = window.location.pathname.split("/");
+    pathList.pop();
+    pathList = pathList.filter(path => (path !== ""));
     let isFirst = true;
-    while (pathList.length > 0) {
-        pathList.pop();
+    do {
+        console.log(pathList);
         if (isDebugTree) console.log('\n');
         const s1 = await _loadSetting(pathList.join("/") + '/setting.js');
         if (!s1.isLoadSettingSuccess) {
@@ -43,7 +45,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             //  for文の実行を終了する。
             break;
         }
-    }
+        pathList.pop();
+    } while (pathList.length > 0);
     if (isDebugTree) console.log('\n');
     if (isDebugTree) console.log(settings);
     initWindows();  //「戻る」ボタンや子ページに繋がるボタン、パンくずリストなどを生成
