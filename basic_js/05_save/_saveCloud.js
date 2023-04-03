@@ -52,4 +52,5 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
             );
         }
     }
+    window.location.reload();
 }

@@ -25,6 +25,10 @@ async function _editEnable() {
         const func = plugin?.viewer?.changeEditMode;
         if (typeof func !== "function") continue;
         await func("block_" + sortableItem.id);
+        const sortableItem = sortableItems[sortableItem.id];
+        if (sortableItem) {
+            sortableItem.isEnable = true;
+        }
     }
     // アイテムがなくなったとき用のドロップ専用エリア
     const sortableItem = new SortableItem({ isDropOnly: true });
