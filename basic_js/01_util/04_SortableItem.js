@@ -155,7 +155,10 @@ class SortableItem {
         const dropAreasList = document.getElementsByClassName('sortable_item_drop_areas');
         for (const dropAreas of dropAreasList) {
             dropAreas.style.display = 'block';
-            dropAreas.style.zIndex = 1;
+        }
+        const sortableItemList = document.getElementsByClassName('sortable_item');
+        for (const sortableItem of sortableItemList) {
+            sortableItem.style.zIndex = 1;
         }
         this._outerElement.style.zIndex = 999;
     }
