@@ -11,6 +11,24 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     }
     const plugin = await _loadPlugin(saveData.blockType);
     //
+    const cardOuterElement = document.createElement('div');
+    cardOuterElement.style.padding = '10px';
+    cardOuterElement.style.width = '200px';
+    cardOuterElement.style.height = '100px';
+    cardOuterElement.style.maxWidth = '100%';
+    cardOuterElement.style.boxSizing = 'border-box';
+    //
+    const card = document.createElement('div');
+    card.style.width = '100%';
+    card.style.height = '100%';
+    card.style.background = '#fff';
+    card.style.borderRadius = '10px';
+    card.style.boxShadow = '2px 4px 12px rgb(0 0 0 / 8%)';
+    card.style.boxSizing = 'border-box';
+    card.style.textAlign = 'center';
+    card.style.overflow = 'hidden';
+    cardOuterElement.appendChild(card);
+    //
     if (typeof plugin?.toolbox?.render !== 'function') {
         alert(`プラグイン「${saveData.blockType}」の関数「toolbox.render()」が未定義です。`);
         console.error(`プラグイン「${saveData.blockType}」の関数「toolbox.render()」が未定義です。`);
@@ -25,25 +43,6 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
         console.error(err);
         return;
     }
-    const cardOuterElement = document.createElement('div');
-    cardOuterElement.style.padding = '10px';
-    cardOuterElement.style.width = '200px';
-    cardOuterElement.style.height = '100px';
-    cardOuterElement.style.maxWidth = '100%';
-    cardOuterElement.style.boxSizing = 'border-box';
-    //
-    const card = document.createElement('div');
-    card.style.width = '100%';
-    card.style.height = '100%';
-    card.style.background = '#fff';
-    card.style.borderRadius = '10px';
-    card.style.padding = '10px';
-    card.style.boxShadow = '2px 4px 12px rgb(0 0 0 / 8%)';
-    card.style.boxSizing = 'border-box';
-    card.style.textAlign = 'center';
-    card.style.overflow = 'hidden';
-    cardOuterElement.appendChild(card);
-    //
     try {
         card.appendChild(toolListInner);
     }
