@@ -14,7 +14,7 @@ plugins["H1"] = {
                 element.focus();
                 const range = document.createRange();
                 const sel = window.getSelection();
-                range.setStart(element.childNodes[element.childNodes.length - 1], 0);
+                range.setStart(element, element.innerText.length);
                 range.collapse(true);
                 sel.removeAllRanges();
                 sel.addRange(range);
