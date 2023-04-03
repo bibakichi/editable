@@ -2,9 +2,9 @@
 plugins["H5"] = {
     "viewer": {
         "renderLight": async function (blockId, saveData) {
-            const element = document.createElement('h4');
+            const element = document.createElement('h5');
             element.id = blockId;
-            element.innerText = saveData.text ?? "見出し４";
+            element.innerText = saveData.text ?? "見出し５";
             return element;
         },
         "changeEditMode": async function (blockId) {
@@ -36,8 +36,8 @@ plugins["H5"] = {
     },
     "toolbox": {
         "render": async function (saveData) {
-            const toolboxElement = document.createElement('h4');
-            toolboxElement.innerText = saveData.text ?? '見出し４';
+            const toolboxElement = document.createElement('h5');
+            toolboxElement.innerText = saveData.text ?? '見出し５';
             return toolboxElement;
         },
     },
