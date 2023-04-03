@@ -66,7 +66,6 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     preElement.innerText = JSON.stringify(saveData);
     preElement.style.display = "none";
     sortableItem.outerElement.appendChild(preElement);
-    sortableItem.outerElement.style.height = "max-content";
     //
     return sortableItem.outerElement;
 }

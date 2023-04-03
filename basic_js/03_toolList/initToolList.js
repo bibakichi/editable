@@ -66,8 +66,9 @@ async function initToolList(thisPageSetting) {
     toolShopElement.style.overflowX = "hidden";
     toolShopElement.style.overflowY = "auto";
     toolShopElement.style.display = "flex";
-    toolShopElement.style.justifyContent = "space-around";
+    toolShopElement.style.justifyContent = "space-evenly";
     toolShopElement.style.flexWrap = "wrap";
+    toolShopElement.style.alignItems = "center";
     for (const pluginName in plugins) {
         toolShopElement.appendChild(await _renderToolbox({
             saveData: {
