@@ -40,6 +40,7 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     card.style.padding = '10px';
     card.style.boxShadow = '2px 4px 12px rgb(0 0 0 / 8%)';
     card.style.boxSizing = 'border-box';
+    card.style.textAlign = 'center';
     cardOuterElement.appendChild(card);
     //
     try {
