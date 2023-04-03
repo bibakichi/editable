@@ -25,6 +25,12 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
         console.error(err);
         return;
     }
+    const cardOuterElement = document.createElement('div');
+    cardOuterElement.style.padding = '10px';
+    cardOuterElement.style.width = '200px';
+    cardOuterElement.style.height = '100px';
+    cardOuterElement.style.maxWidth = '100%';
+    cardOuterElement.style.boxSizing = 'border-box';
     //
     const card = document.createElement('div');
     card.style.width = '100%';
@@ -33,6 +39,8 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     card.style.borderRadius = '10px';
     card.style.padding = '10px';
     card.style.boxShadow = '2px 4px 12px rgb(0 0 0 / 8%)';
+    card.style.boxSizing = 'border-box';
+    cardOuterElement.appendChild(card);
     //
     try {
         card.appendChild(toolListInner);
@@ -48,7 +56,7 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
         enableCopy: true,
     });
     sortableItem.jsonData = saveData;
-    sortableItem.innerElement = card;
+    sortableItem.innerElement = cardOuterElement;
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => _onDropToolList({ jsonData, isBefore, sortableItem });
     //
     const preElement = document.createElement('pre');
@@ -56,11 +64,6 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     preElement.innerText = JSON.stringify(saveData);
     preElement.style.display = "none";
     sortableItem.outerElement.appendChild(preElement);
-    sortableItem.outerElement.style.padding = '10px';
-    sortableItem.outerElement.style.width = '200px';
-    sortableItem.outerElement.style.height = '100px';
-    sortableItem.outerElement.style.maxWidth = '100%';
-    sortableItem.outerElement.style.boxSizing = 'border-box';
     //
     return sortableItem.outerElement;
 }
