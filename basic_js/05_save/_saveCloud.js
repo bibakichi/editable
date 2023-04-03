@@ -52,5 +52,11 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
             );
         }
     }
+    //
+    // 「このサイトを離れますか？」を無効にする
+    window.onbeforeunload = null;
+    isEnableLeaveCheck = false;
+    //
+    // ページを再読み込み
     window.location.reload();
 }

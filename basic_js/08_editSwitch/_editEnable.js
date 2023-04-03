@@ -12,8 +12,8 @@ async function _editEnable() {
     document.getElementById('edit-switch').checked = true;
     //
     const mainContents = document.getElementById('main_contents');
-    for (const sortableItem of mainContents.children) {
-        const jsonElement = sortableItem.querySelector('.json');
+    for (const sortableElement of mainContents.children) {
+        const jsonElement = sortableElement.querySelector('.json');
         if (!jsonElement) {
             alert("ツールボックスのHTMLに.blockTypeが設定されていません");
             continue;
@@ -24,8 +24,8 @@ async function _editEnable() {
         if (!plugin) continue;
         const func = plugin?.viewer?.changeEditMode;
         if (typeof func !== "function") continue;
-        await func("block_" + sortableItem.id);
-        const sortableItem = sortableItems[sortableItem.id];
+        await func("block_" + sortableElement.id);
+        const sortableItem = sortableItems[sortableElement.id];
         if (sortableItem) {
             sortableItem.isEnable = true;
         }
