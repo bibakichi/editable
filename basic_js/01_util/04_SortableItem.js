@@ -22,7 +22,7 @@ class SortableItem {
         //
         // outerElementの移動（ドラッグ）が始まった時のイベント
         const outerElement = this._outerElement;
-        outerElement.ondragstart = (event) => _handleDragStart(event, jsonData);
+        outerElement.ondragstart = (event) => this._handleDragStart(event, jsonData);
         outerElement.ondragend = (event) => {
             outerElement.style.zIndex = 999;
         };
@@ -256,7 +256,7 @@ class SortableItem {
         }
         if (!isDropOnly) {
             // outerElementの移動（ドラッグ）が始まった時のイベント
-            outerElement.ondragstart = (event) => _handleDragStart(event, {});
+            outerElement.ondragstart = (event) => this._handleDragStart(event, {});
             //
             // outerElementを移動（ドラッグ）している最中に連続してイベント発生
             outerElement.addEventListener("drag", function (event) {
