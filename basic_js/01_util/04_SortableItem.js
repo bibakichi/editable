@@ -149,7 +149,6 @@ class SortableItem {
     }
 
     _handleDragStart(event, jsonData) {
-        console.log("ドラッグ開始：" + this._enableCopy);
         event.dataTransfer.setData("enableCopy", this._enableCopy);  // データ転送用のデータをセット
         event.dataTransfer.setData("outerId", this._outerElement.id);  // データ転送用のデータをセット
         event.dataTransfer.setData("jsonData", JSON.stringify(jsonData));      // データ転送用のデータをセット
@@ -329,9 +328,7 @@ class SortableItem {
                 }
                 else {
                     try {
-                        console.log("ドロップ２：" + enableCopy);
                         await onDropJson(jsonData);
-                        console.log("ドロップ３：" + typeof (enableCopy));
                         if (!enableCopy) {
                             ballItem.remove();
                         }
@@ -378,9 +375,7 @@ class SortableItem {
                     await onDropJson(jsonData);
                 }
                 try {
-                    console.log("ドロップ２：" + enableCopy);
                     await onDropJson(jsonData);
-                    console.log("ドロップ３：" + enableCopy);
                     if (!enableCopy) {
                         ballItem.remove();
                     }
@@ -437,9 +432,7 @@ class SortableItem {
                 }
                 else {
                     try {
-                        console.log("ドロップ２：" + enableCopy);
                         await onDropJson(jsonData);
-                        console.log("ドロップ３：" + enableCopy);
                         if (!enableCopy) {
                             ballItem.remove();
                         }
@@ -545,12 +538,11 @@ class SortableItem {
             event.stopPropagation();
             event.preventDefault();
             await onDrop();
-            const enableCopy = event.dataTransfer.getData("enableCopy");   // データ転送により送られてきたデータ
+            const enableCopy = event.dataTransfer.getData("enableCopy") === "true";   // データ転送により送られてきたデータ
             const ballOuterId = event.dataTransfer.getData("outerId");   // データ転送により送られてきたデータ
             const jsonText = event.dataTransfer.getData("jsonData"); // データ転送により送られてきたデータ
             if (ballOuterId == outerId) return;   // アイテムを元の場所にドロップしただけの場合、何もしない
             if (ballOuterId && jsonText) {
-                console.log("ドロップ：" + enableCopy);
                 await onDropJson(ballOuterId, JSON.parse(jsonText), enableCopy);
             }
         });
