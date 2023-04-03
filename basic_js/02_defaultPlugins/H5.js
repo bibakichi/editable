@@ -1,5 +1,5 @@
 //#########################################################################################
-plugins["H4"] = {
+plugins["H5"] = {
     "viewer": {
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement('h4');
