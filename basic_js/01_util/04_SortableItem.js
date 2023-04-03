@@ -319,6 +319,7 @@ class SortableItem {
                 this._removeInsertBarBefore(outerElement); //outerElementの直前の「挿入バー」を削除
             },
             onDropJson: async (ballOuterId, jsonData, enableCopy) => {
+                console.log("ドロップ２：" + enableCopy);
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
@@ -370,6 +371,7 @@ class SortableItem {
             onDragOver: onDragOver,
             onDrop: onDrop,
             onDropJson: async (ballOuterId, jsonData, enableCopy) => {
+                console.log("ドロップ２：" + enableCopy);
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
@@ -423,6 +425,7 @@ class SortableItem {
                 this._removeInsertBarAfter(outerElement);    //outerElementの直後の「挿入バー」を削除
             },
             onDropJson: async (ballOuterId, jsonData, enableCopy) => {
+                console.log("ドロップ２：" + enableCopy);
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
