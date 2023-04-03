@@ -28,6 +28,9 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     //
     const card = document.createElement('div');
     card.style.margin = '10px';
+    card.style.width = '200px';
+    card.style.maxWidth = '100%';
+    card.style.height = '100px';
     card.style.background = '#fff';
     card.style.borderRadius = '10px';
     card.style.padding = '10px';

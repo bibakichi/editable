@@ -10,6 +10,11 @@ plugins["H6"] = {
         "changeEditMode": async function (blockId) {
             const element = document.getElementById(blockId);
             element.addEventListener('click', (event) => {
+                //
+                // この１文がなかったら、
+                // 編集中のテキストの先頭をクリックすると、カーソルが自動的に最後まで移動してしまう
+                if (element.isContentEditable) return;
+                //
                 element.contentEditable = true;
                 element.focus();
                 // １文字以上の場合
