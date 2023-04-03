@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     //
     // フォルダ階層ごとのループ
     //  例：「」=>「../」=>「../../」=>「../../../」
-    const pathList = window.location.pathname.split("/");
+    const pathList = window.location.pathname.split("/").filter(path => (path !== ""));
     let isFirst = true;
     while (pathList.length > 0) {
         pathList.pop();
