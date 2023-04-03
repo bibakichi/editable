@@ -9,7 +9,7 @@ plugins["H1"] = {
         },
         "changeEditMode": async function (blockId) {
             const element = document.getElementById(blockId);
-            element.addEventListener('focusin', (event) => {
+            element.addEventListener('click', (event) => {
                 element.contentEditable = true;
             });
             element.addEventListener('focusout', (event) => {
