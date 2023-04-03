@@ -149,6 +149,7 @@ class SortableItem {
     }
 
     _handleDragStart(event, jsonData) {
+        event.dataTransfer.setData("enableCopy", this._enableCopy);  // データ転送用のデータをセット
         event.dataTransfer.setData("outerId", this._outerElement.id);  // データ転送用のデータをセット
         event.dataTransfer.setData("jsonData", JSON.stringify(jsonData));      // データ転送用のデータをセット
         if (!this._isDragOnly) {
@@ -167,7 +168,7 @@ class SortableItem {
         }
     }
 
-    constructor({ isDragOnly = false, isDropOnly = false, isEnable = true, }) {
+    constructor({ isDragOnly = false, isDropOnly = false, isEnable = true, enableCopy = true }) {
         const id = uuid();
         sortableItems[id] = this;
         this._isEnable = isEnable;
@@ -175,6 +176,7 @@ class SortableItem {
         this._isDropOnly = isDropOnly;
         this._jsonData = {};
         this._isVertical = true;
+        this._enableCopy = enableCopy;
         //
         // このアイテムの前後に、他のアイテムが追加（または移動）されたときの関数
         this._onDropBrotherJson = async ({ jsonData, isBefore = true }) => { };
@@ -315,7 +317,7 @@ class SortableItem {
             onDrop: async () => {
                 this._removeInsertBarBefore(outerElement); //outerElementの直前の「挿入バー」を削除
             },
-            onDropJson: async (ballOuterId, jsonData) => {
+            onDropJson: async (ballOuterId, jsonData, enableCopy) => {
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
@@ -327,7 +329,7 @@ class SortableItem {
                 else {
                     try {
                         await onDropJson(jsonData);
-                        if (ballItem.parentElement.id !== "toolList" && ballItem.parentElement.id !== "toolShop") {
+                        if (!enableCopy) {
                             ballItem.remove();
                         }
                     }
@@ -366,7 +368,7 @@ class SortableItem {
             onDragLeave: onDragLeave,
             onDragOver: onDragOver,
             onDrop: onDrop,
-            onDropJson: async (ballListId, ballOuterId, jsonData) => {
+            onDropJson: async (ballOuterId, jsonData, enableCopy) => {
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
@@ -374,7 +376,7 @@ class SortableItem {
                 }
                 try {
                     await onDropJson(jsonData);
-                    if (ballItem.parentElement.id !== "toolList" && ballItem.parentElement.id !== "toolShop") {
+                    if (!enableCopy) {
                         ballItem.remove();
                     }
                 }
@@ -419,7 +421,7 @@ class SortableItem {
             onDrop: async () => {
                 this._removeInsertBarAfter(outerElement);    //outerElementの直後の「挿入バー」を削除
             },
-            onDropJson: async (ballOuterId, jsonData) => {
+            onDropJson: async (ballOuterId, jsonData, enableCopy) => {
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
@@ -431,7 +433,7 @@ class SortableItem {
                 else {
                     try {
                         await onDropJson(jsonData);
-                        if (ballItem.parentElement.id !== "toolList" && ballItem.parentElement.id !== "toolShop") {
+                        if (!enableCopy) {
                             ballItem.remove();
                         }
                     }
@@ -508,7 +510,7 @@ class SortableItem {
         onDragLeave = async () => { },
         onDragOver = async () => { },
         onDrop = async () => { },
-        onDropJson = async (ballOuterId, jsonData) => { },
+        onDropJson = async (ballOuterId, jsonData, enableCopy) => { },
         onDropText = async (text) => { },
         onDropImage = async (img) => { },
         onDropFile = async (file) => { },
@@ -536,11 +538,12 @@ class SortableItem {
             event.stopPropagation();
             event.preventDefault();
             await onDrop();
+            const enableCopy = event.dataTransfer.getData("enableCopy");   // データ転送により送られてきたデータ
             const ballOuterId = event.dataTransfer.getData("outerId");   // データ転送により送られてきたデータ
             const jsonText = event.dataTransfer.getData("jsonData"); // データ転送により送られてきたデータ
             if (ballOuterId == outerId) return;   // アイテムを元の場所にドロップしただけの場合、何もしない
             if (ballOuterId && jsonText) {
-                await onDropJson(ballOuterId, JSON.parse(jsonText));
+                await onDropJson(ballOuterId, JSON.parse(jsonText), enableCopy);
             }
         });
         //

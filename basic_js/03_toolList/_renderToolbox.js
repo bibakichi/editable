@@ -42,7 +42,10 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
         console.error(err);
         return;
     }
-    const sortableItem = new SortableItem({ isDragOnly });
+    const sortableItem = new SortableItem({
+        isDragOnly,
+        enableCopy: true,
+    });
     sortableItem.jsonData = saveData;
     sortableItem.innerElement = card;
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => _onDropToolList({ jsonData, isBefore, sortableItem });

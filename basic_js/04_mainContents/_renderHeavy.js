@@ -12,6 +12,7 @@ async function _renderHeavy(saveData, isEditable = false) {
     //
     const sortableItem = new SortableItem({
         isEnable: isEditable,
+        enableCopy: false,
     });
     let viewerElement;
     if (typeof plugin?.viewer?.renderHeavy === 'function') {
