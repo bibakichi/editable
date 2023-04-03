@@ -331,7 +331,7 @@ class SortableItem {
                     try {
                         console.log("ドロップ２：" + enableCopy);
                         await onDropJson(jsonData);
-                        console.log("ドロップ３：" + enableCopy);
+                        console.log("ドロップ３：" + typeof (enableCopy));
                         if (!enableCopy) {
                             ballItem.remove();
                         }
