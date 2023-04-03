@@ -1,10 +1,11 @@
 //#########################################################################################
+// メインコンテンツが追加されたときの関数
 async function onDropMainBlock({ jsonData, isBefore = true, sortableItem }) {
-    const brotherItem = await _renderHeavy(jsonData, true);
+    const newItem = await _renderHeavy(jsonData, true);
     if (isBefore) {
-        sortableItem.outerElement.before(brotherItem);
+        sortableItem.outerElement.before(newItem);
     }
     else {
-        sortableItem.outerElement.after(brotherItem);
+        sortableItem.outerElement.after(newItem);
     }
 }

@@ -1,12 +1,12 @@
 //#########################################################################################
 
 async function _onDropToolList({ jsonData, isBefore = true, sortableItem }) {
-    const brotherItem = await _renderToolbox({ saveData: jsonData });
+    const newItem = await _renderToolbox({ saveData: jsonData });
     if (isBefore) {
-        sortableItem.outerElement.before(brotherItem);
+        sortableItem.outerElement.before(newItem);
     }
     else {
-        sortableItem.outerElement.after(brotherItem);
+        sortableItem.outerElement.after(newItem);
     }
 };
 
