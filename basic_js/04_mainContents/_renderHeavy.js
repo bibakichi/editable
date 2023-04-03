@@ -57,6 +57,10 @@ async function _renderHeavy(saveData, isEditable = false) {
     preElement.innerText = JSON.stringify(saveData);
     preElement.style.display = "none";
     sortableItem.outerElement.appendChild(preElement);
+    sortableItem.outerElement.addEventListener('focusout', async (event) => {
+        const outerElement = document.getElementById(sortableItem.outerElement.id);
+        sortableItem.jsonData = await _saveBlock(outerElement);
+    });
     //
     if (isEditable) {
         setTimeout(async () => {

@@ -18,7 +18,8 @@ async function allSave() {
     const newMainContents = document.createElement('main');
     for (const sortableItem of pastMainContents.children) {
         if (sortableItem.classList.contains("dropOnly")) continue;
-        const { newOuterElement, newSaveData } = await _saveBlock(sortableItem);
+        const newSaveData = await _saveBlock(sortableItem);
+        const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
         if (!newOuterElement || !newSaveData) continue;
         newMainContents.appendChild(newOuterElement);
         console.log(newSaveData);

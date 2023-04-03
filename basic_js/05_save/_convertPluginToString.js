@@ -149,8 +149,7 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         //     //
         //     // 子ブロックを保存する
         //     for (const childrenElement of element.children) {
-        //         const { newOuterElement, newSaveData } = await _saveBlock(childrenElement);
-        //         childrenElement.replaceWith(newOuterElement);
+        //         const newSaveData = await _saveBlock(childrenElement);
         //         saveData.children.push(newSaveData);
         //     }
         //     return saveData;
