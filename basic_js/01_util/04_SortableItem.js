@@ -149,10 +149,11 @@ class SortableItem {
     }
 
     _handleDragStart(event, jsonData) {
+        console.log("ドラッグ開始：" + this._enableCopy);
         event.dataTransfer.setData("enableCopy", this._enableCopy);  // データ転送用のデータをセット
         event.dataTransfer.setData("outerId", this._outerElement.id);  // データ転送用のデータをセット
         event.dataTransfer.setData("jsonData", JSON.stringify(jsonData));      // データ転送用のデータをセット
-        if (!this._isDragOnly) {
+        if (!this._enableCopy) {
             this._outerElement.style.opacity = 0;
         }
         this._outerElement.style.zIndex = 999;
@@ -543,6 +544,7 @@ class SortableItem {
             const jsonText = event.dataTransfer.getData("jsonData"); // データ転送により送られてきたデータ
             if (ballOuterId == outerId) return;   // アイテムを元の場所にドロップしただけの場合、何もしない
             if (ballOuterId && jsonText) {
+                console.log("ドロップ：" + enableCopy);
                 await onDropJson(ballOuterId, JSON.parse(jsonText), enableCopy);
             }
         });
