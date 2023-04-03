@@ -34,6 +34,7 @@ class SortableItem {
     //
     // このアイテムの前後に、他のリストに所属しているアイテムが追加されたとき、何をすればいいか（関数）
     set onDropBrotherJson(func) {
+        if (!this._isEnable) return;
         this._onDropBrotherJson = func;
         this._regenerateDropAreas();
     }
@@ -41,6 +42,7 @@ class SortableItem {
     //
     // このアイテムの前後にテキストが追加されたとき、何をすればいいか（関数）
     set onDropBrotherText(func) {
+        if (!this._isEnable) return;
         this._onDropBrotherText = func;
         this._regenerateDropAreas();
     }
@@ -48,6 +50,7 @@ class SortableItem {
     //
     // このアイテムの前後に画像が追加されたとき、何をすればいいか（関数）
     set onDropBrotherImage(func) {
+        if (!this._isEnable) return;
         this._onDropBrotherImage = func;
         this._regenerateDropAreas();
     }
@@ -55,10 +58,17 @@ class SortableItem {
     //
     // このアイテムの前後にファイルが追加されたとき、何をすればいいか（関数）
     set onDropBrotherFile(func) {
+        if (!this._isEnable) return;
         this._onDropBrotherFile = func;
         this._regenerateDropAreas();
     }
     get onDropBrotherFile() { return this._onDropBrotherFile; }
+    //
+    // ドラッグ＆ドロップを有効にするか否か
+    set isEnable(flag = true) {
+        this._isEnable = flag;
+    }
+    get isEnable() { return this._isEnable; }
     //
     // このアイテムの上に、他のアイテムをドロップできるか否か
     set isDroppable(flag = false) {
@@ -68,6 +78,7 @@ class SortableItem {
     //
     // このアイテムの上に、他のリストに所属しているアイテムがドロップされたとき、何をすればいいか（関数）
     set onDropChildJson(func) {
+        if (!this._isEnable) return;
         this._onDropChildJson = func;
         this._regenerateDropAreas();
     }
@@ -75,6 +86,7 @@ class SortableItem {
     //
     // このアイテムの上にテキストがドロップされたとき、何をすればいいか（関数）
     set onDropChildText(func) {
+        if (!this._isEnable) return;
         this._onDropChildText = func;
         this._regenerateDropAreas();
     }
@@ -82,6 +94,7 @@ class SortableItem {
     //
     // このアイテムの上に画像がドロップされたとき、何をすればいいか（関数）
     set onDropChildImage(func) {
+        if (!this._isEnable) return;
         this._onDropChildImage = func;
         this._regenerateDropAreas();
     }
@@ -89,6 +102,7 @@ class SortableItem {
     //
     // このアイテムの上にファイルがドロップされたとき、何をすればいいか（関数）
     set onDropChildFile(func) {
+        if (!this._isEnable) return;
         this._onDropChildFile = func;
         this._regenerateDropAreas();
     }

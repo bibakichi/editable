@@ -10,7 +10,9 @@ async function _renderHeavy(saveData, isEditable = false) {
         saveData.children = [];
     }
     //
-    const sortableItem = new SortableItem({});
+    const sortableItem = new SortableItem({
+        isEnable: false,
+    });
     let viewerElement;
     if (typeof plugin?.viewer?.renderHeavy === 'function') {
         try {
