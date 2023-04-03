@@ -1,5 +1,7 @@
 //#########################################################################################
 
+const sortableItems = {};
+
 // 並び替え可能なリストのアイテム
 class SortableItem {
     //
@@ -160,6 +162,8 @@ class SortableItem {
     }
 
     constructor({ isDragOnly = false, isDropOnly = false, isEnable = true, }) {
+        const id = uuid();
+        sortableItems[id] = this;
         this._isEnable = isEnable;
         this._isDragOnly = isDragOnly;
         this._isDropOnly = isDropOnly;
@@ -186,7 +190,7 @@ class SortableItem {
         this._onDrop = async () => { };
         //
         const outerElement = document.createElement('div');
-        outerElement.id = uuid();
+        outerElement.id = id;
         outerElement.draggable = (this._isEnable && !this._isDropOnly);
         outerElement.style.position = 'relative';
         outerElement.style.transition = 'opacity 0.1s';
