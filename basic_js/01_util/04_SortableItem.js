@@ -149,6 +149,7 @@ class SortableItem {
     }
 
     _handleDragStart(event, jsonData) {
+        this._outerElement.style.zIndex = 999;
         event.dataTransfer.setData("outerId", this._outerElement.id);  // データ転送用のデータをセット
         event.dataTransfer.setData("jsonData", JSON.stringify(jsonData));      // データ転送用のデータをセット
         this._outerElement.style.opacity = 0;
@@ -158,9 +159,10 @@ class SortableItem {
         }
         const sortableItemList = document.getElementsByClassName('sortable_item');
         for (const sortableItem of sortableItemList) {
-            sortableItem.style.zIndex = 1;
+            if (sortableItem.id != this._outerElement.id) {
+                sortableItem.style.zIndex = 1;
+            }
         }
-        this._outerElement.style.zIndex = 999;
     }
 
     constructor({ isDragOnly = false, isDropOnly = false, isEnable = true, }) {
