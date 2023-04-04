@@ -107,6 +107,20 @@ class SortableItem {
 
 
     _regenerateDropAreas() {
+        if (!this._isDragOnly) {
+            // ドロップエリアを作成（このアイテムの直前に、他のアイテムを追加するためのもの）
+            const dropAreaTop = this._createDropAreaTop({
+                isVertical: this._isVertical,
+                outerElement: this._outerElement,
+                isDroppable: this._isDroppable,
+                onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: true }),
+                onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: true }),
+                onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: true }),
+                onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: true }),
+            });
+            this._dropAreaTop.replaceWith(dropAreaTop);
+            this._dropAreaTop = dropAreaTop;
+        }
         //
         // ドロップエリアを作成（このアイテムの中にドロップするためのもの）
         const dropAreaMiddle = this._createDropAreaMiddle({
@@ -125,34 +139,21 @@ class SortableItem {
         this._dropAreaMiddle.replaceWith(dropAreaMiddle);
         this._dropAreaMiddle = dropAreaMiddle;
         //
-        if (this._isDragOnly) return;
-        //
-        // ドロップエリアを作成（このアイテムの直前に、他のアイテムを追加するためのもの）
-        const dropAreaTop = this._createDropAreaTop({
-            isVertical: this._isVertical,
-            outerElement: this._outerElement,
-            isDroppable: this._isDroppable,
-            onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: true }),
-            onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: true }),
-            onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: true }),
-            onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: true }),
-        });
-        this._dropAreaTop.replaceWith(dropAreaTop);
-        this._dropAreaTop = dropAreaTop;
-        //
-        if (!this._isDropOnly) {
-            // ドロップエリアを作成（このアイテムの直後に、他のアイテムを追加するためのもの）
-            const dropAreaBottom = this._createDropAreaBottom({
-                isVertical: this._isVertical,
-                outerElement: this._outerElement,
-                isDroppable: this._isDroppable,
-                onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: false }),
-                onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: false }),
-                onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: false }),
-                onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: false }),
-            });
-            this._dropAreaBottom.replaceWith(dropAreaBottom);
-            this._dropAreaBottom = dropAreaBottom;
+        if (!this._isDragOnly) {
+            if (!this._isDropOnly) {
+                // ドロップエリアを作成（このアイテムの直後に、他のアイテムを追加するためのもの）
+                const dropAreaBottom = this._createDropAreaBottom({
+                    isVertical: this._isVertical,
+                    outerElement: this._outerElement,
+                    isDroppable: this._isDroppable,
+                    onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: false }),
+                    onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: false }),
+                    onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: false }),
+                    onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: false }),
+                });
+                this._dropAreaBottom.replaceWith(dropAreaBottom);
+                this._dropAreaBottom = dropAreaBottom;
+            }
         }
     }
 
@@ -214,7 +215,6 @@ class SortableItem {
         const outerElement = document.createElement('div');
         outerElement.classList.add("sortable_item");
         outerElement.id = id;
-        console.log(this._isEnable && !this._isDropOnly);
         outerElement.draggable = (this._isEnable && !this._isDropOnly);
         outerElement.addEventListener('focusin', async (event) => {
             outerElement.draggable = false;
@@ -242,6 +242,20 @@ class SortableItem {
         dropAreas.style.width = '100%';
         dropAreas.style.zIndex = 999;
         outerElement.appendChild(dropAreas);
+        //
+        if (!isDragOnly) {
+            // ドロップエリアを作成（このアイテムの直前に、他のアイテムを追加するためのもの）
+            this._dropAreaTop = this._createDropAreaTop({
+                isVertical: this._isVertical,
+                outerElement: this._outerElement,
+                isDroppable: this._isDroppable,
+                onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: true }),
+                onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: true }),
+                onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: true }),
+                onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: true }),
+            });
+            dropAreas.appendChild(this._dropAreaTop);
+        }
         ///
         // ドロップエリアを作成（このアイテムの中にドロップするためのもの）
         this._dropAreaMiddle = this._createDropAreaMiddle({
@@ -258,19 +272,7 @@ class SortableItem {
             onDropFile: this._onDropChildFile,
         });
         dropAreas.appendChild(this._dropAreaMiddle);
-        //
         if (!isDragOnly) {
-            // ドロップエリアを作成（このアイテムの直前に、他のアイテムを追加するためのもの）
-            this._dropAreaTop = this._createDropAreaTop({
-                isVertical: this._isVertical,
-                outerElement: this._outerElement,
-                isDroppable: this._isDroppable,
-                onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: true }),
-                onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: true }),
-                onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: true }),
-                onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: true }),
-            });
-            dropAreas.appendChild(this._dropAreaTop);
             if (!isDropOnly) {
                 // ドロップエリアを作成（このアイテムの直後に、他のアイテムを追加するためのもの）
                 this._dropAreaBottom = this._createDropAreaBottom({
