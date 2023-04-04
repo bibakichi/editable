@@ -121,24 +121,24 @@ class SortableItem {
         this._dropAreaTop.replaceWith(dropAreaTop);
         this._dropAreaTop = dropAreaTop;
         //
+        // ドロップエリアを作成（このアイテムの中にドロップするためのもの）
+        const dropAreaMiddle = this._createDropAreaMiddle({
+            isVertical: this._isVertical,
+            outerElement: this._outerElement,
+            isDroppable: this._isDroppable,
+            onDragEnter: this._onDragEnter,
+            onDragLeave: this._onDragLeave,
+            onDragOver: this._onDragOver,
+            onDrop: this._onDrop,
+            onDropJson: this._onDropChildJson,
+            onDropText: this._onDropChildText,
+            onDropImage: this._onDropChildImage,
+            onDropFile: this._onDropChildFile,
+        });
+        this._dropAreaMiddle.replaceWith(dropAreaMiddle);
+        this._dropAreaMiddle = dropAreaMiddle;
+        //
         if (!this._isDropOnly) {
-            // ドロップエリアを作成（このアイテムの中にドロップするためのもの）
-            const dropAreaMiddle = this._createDropAreaMiddle({
-                isVertical: this._isVertical,
-                outerElement: this._outerElement,
-                isDroppable: this._isDroppable,
-                onDragEnter: this._onDragEnter,
-                onDragLeave: this._onDragLeave,
-                onDragOver: this._onDragOver,
-                onDrop: this._onDrop,
-                onDropJson: this._onDropChildJson,
-                onDropText: this._onDropChildText,
-                onDropImage: this._onDropChildImage,
-                onDropFile: this._onDropChildFile,
-            });
-            this._dropAreaMiddle.replaceWith(dropAreaMiddle);
-            this._dropAreaMiddle = dropAreaMiddle;
-            //
             // ドロップエリアを作成（このアイテムの直後に、他のアイテムを追加するためのもの）
             const dropAreaBottom = this._createDropAreaBottom({
                 isVertical: this._isVertical,
