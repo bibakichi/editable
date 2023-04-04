@@ -8,6 +8,8 @@ async function initMainContents() {
         if (!jsonElement) continue;
         const saveData = JSON.parse(jsonElement.textContent);
         const outerElement2 = await _renderHeavy(saveData);
-        outerElement.replaceWith(outerElement2);
+        if (outerElement2) {
+            outerElement.replaceWith(outerElement2);
+        }
     }
 }

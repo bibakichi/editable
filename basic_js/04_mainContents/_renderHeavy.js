@@ -3,7 +3,7 @@ async function _renderHeavy(saveData, isEditable = false) {
     if (!saveData) return;
     if (!saveData.blockType) {
         console.error('blockTypeが未定義です。');
-        return;
+        return null;
     }
     const plugin = await _loadPlugin(saveData.blockType);
     if (!Array.isArray(saveData.children)) {
@@ -23,7 +23,7 @@ async function _renderHeavy(saveData, isEditable = false) {
             alert(`プラグイン「${saveData.blockType}」の関数「viewer.renderHeavy()」でエラーが発生しました。`);
             console.error(`プラグイン「${saveData.blockType}」の関数「viewer.renderHeavy()」でエラーが発生しました。`);
             console.error(err);
-            return;
+            return null;
         }
     }
     else if (typeof plugin?.viewer?.renderLight === 'function') {
@@ -34,12 +34,14 @@ async function _renderHeavy(saveData, isEditable = false) {
             alert(`プラグイン「${saveData.blockType}」の関数「viewer.renderLight()」でエラーが発生しました。`);
             console.error(`プラグイン「${saveData.blockType}」の関数「viewer.renderLight()」でエラーが発生しました。`);
             console.error(err);
-            return;
+            return null;
         }
     }
     else {
-        alert(`プラグイン「${saveData.blockType}」の関数「viewer.renderHeavy()」と「viewer.renderLight()」の両方が未定義です。`);
-        console.error(`プラグイン「${saveData.blockType}」の関数「viewer.renderHeavy()」と「viewer.renderLight()」の両方が未定義です。`);
+        alert("このブロックは配置できません");
+        console.log("このブロックは配置できません");
+        console.log(`プラグイン「${saveData.blockType}」の関数「viewer.renderHeavy()」と「viewer.renderLight()」の両方が未定義です。`);
+        return null;
     }
     try {
         sortableItem.innerElement = viewerElement;
@@ -48,7 +50,7 @@ async function _renderHeavy(saveData, isEditable = false) {
         alert(`プラグイン「${saveData.blockType}」のブロックを描画できません。関数「viewer.renderHeavy()」と「viewer.renderLight()」を確認してください。`);
         console.error(`プラグイン「${saveData.blockType}」のブロックを描画できません。関数「viewer.renderHeavy()」と「viewer.renderLight()」を確認してください。`);
         console.error(err);
-        return;
+        return null;
     }
     sortableItem.jsonData = saveData;
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => onDropMainBlock({ jsonData, isBefore, sortableItem });
