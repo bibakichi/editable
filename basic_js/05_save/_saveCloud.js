@@ -1,5 +1,5 @@
 //#########################################################################################
-async function saveCloud({ storageId, filePath, htmlCode }) {
+async function saveCloud({ storageId, filePath, htmlCode, setting }) {
     const response = await window.fetch(
         'https://fci5hwwcqglsj2mhomuxygl3rq0mnzky.lambda-url.ap-northeast-1.on.aws/file', {
         method: "POST",
@@ -48,7 +48,7 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
                 headers: {
                     'Content-Type': "text/javascript",
                 },
-                body: "window.fileToFileTransferVariable = " + JSON.stringify(settings[0]) + ";",
+                body: "window.fileToFileTransferVariable = " + JSON.stringify(setting) + ";",
             },
             );
             console.log(response);

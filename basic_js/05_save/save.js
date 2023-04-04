@@ -50,7 +50,8 @@ async function allSave() {
         await saveCloud({
             storageId,
             filePath: pathList.join("/"),
-            htmlCode
+            htmlCode,
+            setting: settings[0],
         });
         //
         // 「このサイトを離れますか？」を無効にする
@@ -66,7 +67,8 @@ async function allSave() {
         await saveCloud({
             storageId: uri.hostname.split('.')[0],
             filePath: pathName,
-            htmlCode
+            htmlCode,
+            setting: settings[0],
         });
         //
         // 「このサイトを離れますか？」を無効にする

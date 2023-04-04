@@ -38,6 +38,23 @@ plugins["ChildPage"] = {
             pathList.pop();
             pathList.push(blockId);
             pathList.push("index.html");
+            const newSetting = {
+                "isFullSize": false,
+                "isTopbar": true,
+                "fontFamily": settings[0]?.fontFamily ?? {
+                    "Hannari": false,
+                    "Kokoro": false,
+                    "Nico Moji": false,
+                    "Nikukyu": false,
+                    "M PLUS 1p": false,
+                    "M PLUS Rounded 1c": true,
+                    "Sawarabi Mincho": false,
+                    "Sawarabi Gothic": false,
+                    "Noto Sans JP": true
+                },
+                "toolList": [],
+                "plugins": [],
+            };
             if (uri.hostname === "8mo.nl") {
                 //  以下のURLにアクセスがあった場合
                 //    https://8mo.nl/【ストレージID】/【パス】
@@ -45,7 +62,8 @@ plugins["ChildPage"] = {
                 await saveCloud({
                     storageId,
                     filePath: pathList.join("/"),
-                    htmlCode
+                    htmlCode,
+                    setting: newSetting,
                 });
             }
             else if (uri.hostname.endsWith(".8mo.nl")) {
@@ -54,7 +72,8 @@ plugins["ChildPage"] = {
                 await saveCloud({
                     storageId: uri.hostname.split('.')[0],
                     filePath: pathList.join("/"),
-                    htmlCode
+                    htmlCode,
+                    setting: newSetting,
                 });
             }
             else {

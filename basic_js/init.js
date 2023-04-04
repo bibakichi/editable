@@ -18,10 +18,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     // フォルダ階層ごとのループ
     //  例：「」=>「../」=>「../../」=>「../../../」
     let pathList = window.location.pathname.split("/");
-    pathList.pop();
-    pathList = pathList.filter(path => (path !== ""));
     let isFirst = true;
     do {
+        pathList.pop();
+        if (isFirst) {
+            pathList = pathList.filter(path => (path !== ""));
+        }
         console.log(pathList);
         if (isDebugTree) console.log('\n');
         const s1 = await _loadSetting(
@@ -53,7 +55,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             //  for文の実行を終了する。
             break;
         }
-        pathList.pop();
     } while (pathList.length > 0);
     if (isDebugTree) console.log('\n');
     if (isDebugTree) console.log(settings);
