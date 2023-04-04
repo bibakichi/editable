@@ -270,8 +270,8 @@ class SortableItem {
             const dropAreas = document.createElement('div');
             dropAreas.classList.add('sortable_item_drop_areas');
             dropAreas.appendChild(this._dropAreaTop);
+            dropAreas.appendChild(this._dropAreaMiddle);
             if (!isDropOnly) {
-                dropAreas.appendChild(this._dropAreaMiddle);
                 dropAreas.appendChild(this._dropAreaBottom);
             }
             dropAreas.style.display = 'none';
