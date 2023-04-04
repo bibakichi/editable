@@ -30,8 +30,9 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
     console.log(data);
     for (const fileInfo of data.fileInfos) {
         console.log(fileInfo.filePath);
+        console.log(fileInfo.postUrl);
         if (fileInfo.filePath === "index.html") {
-            await window.fetch(
+            const response = await window.fetch(
                 fileInfo.postUrl, {
                 method: "PUT",
                 headers: {
@@ -40,6 +41,7 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
                 body: htmlCode,
             },
             );
+            console.log(response);
         }
         else if (fileInfo.filePath === "setting.js") {
             await window.fetch(
@@ -51,6 +53,7 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
                 body: "window.fileToFileTransferVariable = " + JSON.stringify(settings[0]) + ";",
             },
             );
+            console.log(response);
         }
     }
 }
