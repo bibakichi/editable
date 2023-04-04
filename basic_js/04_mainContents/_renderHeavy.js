@@ -7,7 +7,7 @@ async function _renderHeavy(saveData, isEditable = false) {
     }
     const plugin = await _loadPlugin(saveData?.blockType);
     if (!Array.isArray(saveData?.children)) {
-        saveData?.children = [];
+        saveData.children = [];
     }
     //
     const sortableItem = new SortableItem({
