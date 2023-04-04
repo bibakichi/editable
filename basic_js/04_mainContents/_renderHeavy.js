@@ -54,7 +54,7 @@ async function _renderHeavy(saveData, isEditable = false) {
     }
     sortableItem.jsonData = saveData;
     sortableItem.onDropBrotherJson = async ({ jsonData, isBefore }) => {
-        const newOuterElement = onDropMainBlock({ jsonData, isBefore, sortableItem });
+        const newOuterElement = await onDropMainBlock({ jsonData, isBefore, sortableItem });
         if (!jsonData) return;
         if (!jsonData.blockType) return;
         const plugin = await _loadPlugin(jsonData.blockType);

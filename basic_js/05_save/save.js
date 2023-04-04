@@ -51,6 +51,13 @@ async function allSave() {
             filePath: pathList.join("/"),
             htmlCode
         });
+        //
+        // 「このサイトを離れますか？」を無効にする
+        window.onbeforeunload = null;
+        isEnableLeaveCheck = false;
+        //
+        // ページを再読み込み
+        window.location.reload();
     }
     else if (uri.hostname.endsWith(".8mo.nl")) {
         //  以下のURLにアクセスがあった場合
@@ -60,6 +67,13 @@ async function allSave() {
             filePath: pathName,
             htmlCode
         });
+        //
+        // 「このサイトを離れますか？」を無効にする
+        window.onbeforeunload = null;
+        isEnableLeaveCheck = false;
+        //
+        // ページを再読み込み
+        window.location.reload();
     }
     else {
         await downloadZip(htmlCode);
