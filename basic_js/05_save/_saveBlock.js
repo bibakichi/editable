@@ -14,7 +14,7 @@ async function _saveBlock(outerElement) {
     //
     let newSaveData;
     if (typeof plugin?.viewer?.saveBlock !== 'function') {
-        newSaveData = {};
+        newSaveData = { ...pastSaveData };
         console.error(`プラグイン「${newSaveData.blockType}」の関数「viewer.saveBlock()」が未定義です。`);
     }
     else {
