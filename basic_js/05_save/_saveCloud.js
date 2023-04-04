@@ -3,12 +3,15 @@ async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
     if (folderPath.slice(0, 1) == '/') {
         folderPath = folderPath.slice(1);
     }
+    if (folderPath !== "") {
+        folderPath = folderPath + "/";
+    }
     const fileList = [];
     const fileMap = {};
     for (const pluginName in plugins) {
         const plugin = plugins[pluginName];
         if (plugin.isDefault) continue;
-        const path = folderPath + "/plugins/" + pluginName + ".js";
+        const path = folderPath + "plugins/" + pluginName + ".js";
         fileList.push({
             path: path,
             contentType: "text/javascript",
@@ -19,19 +22,19 @@ async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
         };
     }
     fileList.push({
-        path: folderPath + "/index.html",
+        path: folderPath + "index.html",
         contentType: "text/html",
     });
-    fileMap[folderPath + "/index.html"] = {
+    fileMap[folderPath + "index.html"] = {
         content: htmlCode,
         contentType: "text/html",
     };
     //
     fileList.push({
-        path: folderPath + "/setting.js",
+        path: folderPath + "setting.js",
         contentType: "text/javascript",
     });
-    fileMap[folderPath + "/setting.js"] = {
+    fileMap[folderPath + "setting.js"] = {
         content: "window.fileToFileTransferVariable = " + JSON.stringify(setting) + ";",
         contentType: "text/javascript",
     };
