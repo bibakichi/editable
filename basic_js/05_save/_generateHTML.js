@@ -120,7 +120,7 @@ function _generateHTML({
                 <div id="breadcrumbs"> </div>
                 <div class="modal_scroll">
                     <div class="modal_close_button_wrapper">
-                        <label for="this_page_modal_trigger" class="buttonFlat">戻る</label>
+                        <label for="this_page_modal_trigger" class="buttonFlat closeButtonThisPage">戻る</label>
                     </div>
                     <header>
                         <div class="header_left">

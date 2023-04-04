@@ -72,6 +72,10 @@ async function initWindows() {
             }
             window.location.href = settings[1].url;
         });
+        const buttons = document.getElementsByClassName("closeButtonThisPage");
+        for (const button of buttons) {
+            button.style.display = "block";
+        }
     }
     //
     //
