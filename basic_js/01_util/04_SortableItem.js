@@ -539,6 +539,13 @@ class SortableItem {
         // HTML要素の上に何かが入ってきたとき
         element.addEventListener("dragenter", async function (event) {
             event.preventDefault();
+            const sortableItemList = document.getElementsByClassName('sortable_item');
+            for (const sortableItem of sortableItemList) {
+                const dropAreas = sortableItem.querySelector('.sortable_item_drop_areas');
+                if (dropAreas) {
+                    dropAreas.style.display = 'block';
+                }
+            }
             await onDragEnter();
         });
         //
