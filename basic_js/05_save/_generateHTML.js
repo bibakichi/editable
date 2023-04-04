@@ -76,7 +76,7 @@ function _generateHTML({
         <link rel="icon" type="image/png" sizes="32x32" href="${faviconsFolderPath}icon-32x32.png">
         <!-- -->
         <!-- 共通CSS -->
-        <link rel="stylesheet" href="${basicCssPath}?timestamp=${nowDate.getTime()}" id="basic_css">
+        <link rel="stylesheet" href="${basicCssPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="basic_css">
         <!-- -->
         <!-- 共通JavaScript -->
         <script type="text/javascript">
@@ -94,8 +94,8 @@ function _generateHTML({
             //ページを離れた時やリロード時
             window.addEventListener('unload', _initReload);
         </script>
-        <script src="${basicJsPath}?timestamp=${nowDate.getTime()}" defer id="basic_js"></script>
-        <script src="${jsZipPath}?timestamp=${nowDate.getTime()}" defer id="jszip"></script>
+        <script src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}" defer id="basic_js"></script>
+        <script src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}" defer id="jszip"></script>
         <!-- -->
     </head>
 

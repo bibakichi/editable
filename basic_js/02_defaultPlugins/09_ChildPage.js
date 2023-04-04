@@ -1,5 +1,6 @@
 //#########################################################################################
 plugins["ChildPage"] = {
+    "isDefault": true,
     "toolbox": {
         "render": async function (saveData) {
             const buttonElement = document.createElement('label');
@@ -56,7 +57,7 @@ plugins["ChildPage"] = {
         },
         "onAppend": async function (blockId, jsonData) {
             _showLoader();
-            const folderId = uuid();
+            const folderId = uuid().substring(0, 6);
             console.log("b");
             console.log(folderId);
             const htmlCode = _generateHTML({

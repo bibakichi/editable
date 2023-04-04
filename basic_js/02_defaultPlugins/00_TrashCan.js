@@ -1,5 +1,6 @@
 //#########################################################################################
 plugins["TrashCan"] = {
+    "isDefault": true,
     "toolbox": {
         "render": async function (saveData) {
             const toolboxElement = document.createElement('h3');

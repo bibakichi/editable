@@ -1,10 +1,11 @@
 //#########################################################################################
-plugins["H1"] = {
+plugins["P"] = {
+    "isDefault": true,
     "viewer": {
         "renderLight": async function (blockId, saveData) {
-            const element = document.createElement('h1');
+            const element = document.createElement('p');
             element.id = blockId;
-            element.innerText = saveData?.text ?? "見出し１";
+            element.innerText = saveData?.text ?? "本文";
             return element;
         },
         "changeEditMode": async function (blockId) {
@@ -41,8 +42,8 @@ plugins["H1"] = {
     },
     "toolbox": {
         "render": async function (saveData) {
-            const toolboxElement = document.createElement('h1');
-            toolboxElement.innerText = saveData?.text ?? '見出し１';
+            const toolboxElement = document.createElement('p');
+            toolboxElement.innerText = saveData?.text ?? '本文';
             return toolboxElement;
         },
     },

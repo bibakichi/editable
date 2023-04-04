@@ -1,5 +1,6 @@
 //#########################################################################################
 plugins["PrintButton"] = {
+    "isDefault": true,
     "viewer": {
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement('button');
