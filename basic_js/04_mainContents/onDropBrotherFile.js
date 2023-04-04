@@ -21,11 +21,7 @@ async function onDropBrotherFile({ file, isBefore }) {
             const scriptElement = document.createElement('script');
             scriptElement.innerHTML = text;
             document.body.appendChild(scriptElement);
-            try {
-                // JavaScriptファイルのロードが終わるまで待つ
-                await waitLoad(scriptElement);
-            }
-            catch (err) { }
+            await _sleep(1000);
             const blockType = Object.keys(pluginsBuffer)[0];
             plugins[blockType] = pluginsBuffer[blockType];
             alert(`プラグイン${blockType}を追加しました`);
