@@ -31,7 +31,7 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
     for (const fileInfo of data.fileInfos) {
         console.log(fileInfo.filePath);
         console.log(fileInfo.postUrl);
-        if (fileInfo.filePath === "index.html") {
+        if (fileInfo.filePath.endsWith("index.html")) {
             const response = await window.fetch(
                 fileInfo.postUrl, {
                 method: "PUT",
@@ -43,7 +43,7 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
             );
             console.log(response);
         }
-        else if (fileInfo.filePath === "setting.js") {
+        else if (fileInfo.filePath.endsWith("setting.js")) {
             await window.fetch(
                 fileInfo.postUrl, {
                 method: "PUT",
