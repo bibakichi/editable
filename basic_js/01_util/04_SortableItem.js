@@ -181,6 +181,9 @@ class SortableItem {
         enableCopy = true,
         isDroppable = false
     }) {
+        if (isDroppable) {
+            console.log("isDroppable 1");
+        }
         const id = uuid();
         sortableItems[id] = this;
         this._isEnable = isEnable;
@@ -378,7 +381,9 @@ class SortableItem {
         if (!isDroppable) {
             return document.createElement('div');
         }
+        console.log("isDroppable 2");
         const dropAreaMiddle = document.createElement('div');
+        dropAreaMiddle.style.height = '50%';
         this._setDropEvents({
             outerId: outerElement.id,
             element: dropAreaMiddle,
