@@ -1,6 +1,5 @@
 //#########################################################################################
 async function initToolList(thisPageSetting) {
-    console.log("a");
     for (const pluginName of thisPageSetting.plugins) {
         await _loadPlugin(pluginName);
     }

@@ -52,13 +52,51 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
         console.error(err);
         return;
     }
+    const isDroppable = (plugin?.toolbox?.onDrop)
+        || (plugin?.toolbox?.onDropJson)
+        || (plugin?.toolbox?.onDropText)
+        || (plugin?.toolbox?.onDropImage)
+        || (plugin?.toolbox?.onDropFile)
+        || (saveData.blockType === "TrashCan");
     const sortableItem = new SortableItem({
         isDragOnly,
+        isDroppable: isDroppable,
         enableCopy: true,
     });
     sortableItem.jsonData = saveData;
     sortableItem.innerElement = cardOuterElement;
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => _onDropToolList({ jsonData, isBefore, sortableItem });
+    //
+    if (typeof plugin?.toolbox?.onDragEnter === 'function') {
+        sortableItem.onDragEnter = () => plugin?.toolbox?.onDragEnter(sortableItem.outerElement.id);
+    }
+    if (typeof plugin?.toolbox?.onDragLeave === 'function') {
+        sortableItem.onDragLeave = () => plugin?.toolbox?.onDragLeave(sortableItem.outerElement.id);
+    }
+    if (typeof plugin?.toolbox?.onDragOver === 'function') {
+        sortableItem.onDragOver = () => plugin?.toolbox?.onDragOver(sortableItem.outerElement.id);
+    }
+    if (typeof plugin?.toolbox?.onDrop === 'function') {
+        sortableItem.onDrop = () => plugin?.toolbox?.onDrop(sortableItem.outerElement.id);
+    }
+    sortableItem.onDropChildJson = (jsonData, id) => {
+        if (saveData.blockType === "TrashCan") {
+            const ballItem = document.getElementById(id);
+            ballItem.remove();
+        }
+        else if (typeof plugin?.toolbox?.onDropJson === 'function') {
+            plugin?.toolbox?.onDropJson(sortableItem.outerElement.id, jsonData);
+        }
+    }
+    if (typeof plugin?.toolbox?.onDropText === 'function') {
+        sortableItem.onDropChildText = (text) => plugin?.toolbox?.onDropText(sortableItem.outerElement.id, text);
+    }
+    if (typeof plugin?.toolbox?.onDropImage === 'function') {
+        sortableItem.onDropChildImage = (image) => plugin?.toolbox?.onDropImage(sortableItem.outerElement.id, image);
+    }
+    if (typeof plugin?.toolbox?.onDropFile === 'function') {
+        sortableItem.onDropChildFile = (file) => plugin?.toolbox?.onDropFile(sortableItem.outerElement.id, file);
+    }
     //
     const preElement = document.createElement('pre');
     preElement.classList.add("json");

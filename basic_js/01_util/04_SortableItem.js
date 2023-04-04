@@ -174,7 +174,13 @@ class SortableItem {
         }
     }
 
-    constructor({ isDragOnly = false, isDropOnly = false, isEnable = true, enableCopy = true }) {
+    constructor({
+        isDragOnly = false,
+        isDropOnly = false,
+        isEnable = true,
+        enableCopy = true,
+        isDroppable = false
+    }) {
         const id = uuid();
         sortableItems[id] = this;
         this._isEnable = isEnable;
@@ -184,17 +190,17 @@ class SortableItem {
         this._isVertical = true;
         this._enableCopy = enableCopy;
         //
+        // このアイテムの上に、他のアイテムをドロップできるか否か
+        this._isDroppable = isDroppable;
+        //
         // このアイテムの前後に、他のアイテムが追加（または移動）されたときの関数
-        this._onDropBrotherJson = async ({ jsonData, isBefore = true }) => { };
+        this._onDropBrotherJson = async ({ jsonData, isBefore = true, id }) => { };
         this._onDropBrotherText = async ({ text, isBefore = true }) => { };
         this._onDropBrotherImage = async ({ img, isBefore = true }) => { };
         this._onDropBrotherFile = async ({ file, isBefore = true }) => { };
         //
-        // このアイテムの上に、他のアイテムをドロップできるか否か
-        this._isDroppable = false;
-        //
         // このアイテムの中に、他のアイテムが追加（または移動）されたときの関数
-        this._onDropChildJson = async (jsonData) => { };
+        this._onDropChildJson = async (jsonData, id) => { };
         this._onDropChildText = async (text) => { };
         this._onDropChildImage = async (img) => { };
         this._onDropChildFile = async (file) => { };
@@ -230,7 +236,7 @@ class SortableItem {
                 isVertical: this._isVertical,
                 outerElement: this._outerElement,
                 isDroppable: this._isDroppable,
-                onDropJson: async (jsonData) => await this._onDropBrotherJson({ jsonData, isBefore: true }),
+                onDropJson: async (jsonData, id) => await this._onDropBrotherJson({ jsonData, isBefore: true, id }),
                 onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: true }),
                 onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: true }),
                 onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: true }),
@@ -255,7 +261,7 @@ class SortableItem {
                     isVertical: this._isVertical,
                     outerElement: this._outerElement,
                     isDroppable: this._isDroppable,
-                    onDropJson: async (jsonData) => await this._onDropBrotherJson({ jsonData, isBefore: false }),
+                    onDropJson: async (jsonData, id) => await this._onDropBrotherJson({ jsonData, isBefore: false, id }),
                     onDropText: async (text) => await this._onDropBrotherText({ text, isBinnerElementefore: false }),
                     onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: false }),
                     onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: false }),
@@ -340,7 +346,7 @@ class SortableItem {
                 }
                 else {
                     try {
-                        await onDropJson(jsonData);
+                        await onDropJson(jsonData, ballOuterId);
                         if (!enableCopy) {
                             ballItem.remove();
                         }
@@ -387,7 +393,7 @@ class SortableItem {
                     await onDropJson(jsonData);
                 }
                 try {
-                    await onDropJson(jsonData);
+                    await onDropJson(jsonData, ballOuterId);
                     if (!enableCopy) {
                         ballItem.remove();
                     }
@@ -444,7 +450,7 @@ class SortableItem {
                 }
                 else {
                     try {
-                        await onDropJson(jsonData);
+                        await onDropJson(jsonData, ballOuterId);
                         if (!enableCopy) {
                             ballItem.remove();
                         }

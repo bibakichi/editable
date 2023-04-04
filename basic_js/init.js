@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     pathList = pathList.filter(path => (path !== ""));
     let isFirst = true;
     do {
-        console.log(pathList);
         if (isDebugTree) console.log('\n');
         const s1 = await _loadSetting(pathList.join("/") + '/setting.js');
         if (!s1.isLoadSettingSuccess) {
