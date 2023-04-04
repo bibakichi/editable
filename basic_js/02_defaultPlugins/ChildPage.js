@@ -54,7 +54,7 @@ plugins["ChildPage"] = {
                 folderId: pastSaveData?.folderId,
             };
         },
-        "onAppend": async function (blockId) {
+        "onAppend": async function (blockId, jsonData) {
             _showLoader();
             const folderId = uuid();
             console.log("b");
