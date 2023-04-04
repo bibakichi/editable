@@ -577,28 +577,3 @@ class SortableItem {
         return element;
     }
 }
-
-
-// HTML要素の上に何かが入ってきたとき
-document.body.addEventListener("dragenter", async function (event) {
-    event.preventDefault();
-    const dropAreasList = document.getElementsByClassName('sortable_item_drop_areas');
-    for (const dropAreas of dropAreasList) {
-        dropAreas.style.display = 'block';
-    }
-});
-
-document.body.addEventListener("dragend", async function (event) {
-    const dropAreasList = document.getElementsByClassName('sortable_item_drop_areas');
-    for (const dropAreas of dropAreasList) {
-        dropAreas.style.display = 'none';
-    }
-});
-
-document.body.addEventListener("drop", async function (event) {
-    event.preventDefault();
-    const dropAreasList = document.getElementsByClassName('sortable_item_drop_areas');
-    for (const dropAreas of dropAreasList) {
-        dropAreas.style.display = 'none';
-    }
-});
