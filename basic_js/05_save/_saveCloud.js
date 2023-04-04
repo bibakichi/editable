@@ -29,6 +29,7 @@ async function saveCloud({ storageId, filePath, htmlCode }) {
     }
     console.log(data);
     for (const fileInfo of data.fileInfos) {
+        console.log(fileInfo.filePath);
         if (fileInfo.filePath === "index.html") {
             await window.fetch(
                 fileInfo.postUrl, {
