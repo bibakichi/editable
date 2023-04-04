@@ -47,6 +47,12 @@ plugins["ChildPage"] = {
                 newElement.contentEditable = false;
             });
         },
+        "saveBlock": async function (blockId, pastSaveData) {
+            const element = document.getElementById(blockId);
+            return {
+                text: element.textContent,
+            };
+        },
         "onAppend": async function (blockId, saveData) {
             _showLoader();
             console.log("b");
