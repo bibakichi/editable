@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     do {
         console.log(pathList);
         if (isDebugTree) console.log('\n');
-        const s1 = await _loadSetting(pathList.join("/") + '/setting.js');
+        const s1 = await _loadSetting(
+            window.location.protocol + "//"
+            + window.location.host + "/"
+            + pathList.join("/") + '/setting.js'
+        );
         if (!s1.isLoadSettingSuccess) {
             break;
         }
@@ -38,7 +42,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         //
         if (isDebugTree) console.log('\n');
         //
-        const s2 = await _loadSetting(pathList.join("/") + '/setting_top.js');
+        const s2 = await _loadSetting(
+            window.location.protocol + "//"
+            + window.location.host + "/"
+            + pathList.join("/") + '/setting_top.js'
+        );
         if (s2.isLoadSettingSuccess) {
             settings.push(s2);
             // 「window_top.json」を発見した場合（一番上のファイル階層まで到達した場合）は
