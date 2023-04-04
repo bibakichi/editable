@@ -12,7 +12,7 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         // 例
         // render: async function (saveData) {
         //     const toolListInner = document.createElement('h1');
-        //     toolListInner.innerText = saveData.text ?? '見出し１';
+        //     toolListInner.innerText = saveData?.text ?? '見出し１';
         //     return toolListInner;
         // }`
     },
@@ -96,10 +96,10 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         // renderHeavy: async function (blockId, saveData) {
         //     const element = document.createElement('h1');
         //     element.id = blockId;
-        //     element.innerText = saveData.text;
+        //     element.innerText = saveData?.text;
         //     //
         //     // 子ブロックを生成する
-        //     for (const childSaveData of saveData.children) {
+        //     for (const childSaveData of saveData?.children) {
         //         const c = await _renderHeavy(childSaveData);
         //         element.appendChild(c);
         //     }
@@ -118,7 +118,7 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         // 例
         // renderLight: async function (blockId, saveData) {
         //     const element = document.createElement('h1');
-        //     element.innerText = saveData.text;
+        //     element.innerText = saveData?.text;
         //     return element;
         // }`},
 
@@ -150,7 +150,7 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         //     // 子ブロックを保存する
         //     for (const childrenElement of element.children) {
         //         const newSaveData = await _saveBlock(childrenElement);
-        //         saveData.children.push(newSaveData);
+        //         saveData?.children.push(newSaveData);
         //     }
         //     return saveData;
         // }`},

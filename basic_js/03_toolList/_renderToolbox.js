@@ -2,14 +2,14 @@
 
 async function _renderToolbox({ saveData, isDragOnly = false }) {
     if (!saveData) return;
-    if (!saveData.blockType) {
+    if (!saveData?.blockType) {
         console.error('blockTypeが未定義です。');
         return;
     }
-    if (!Array.isArray(saveData.children)) {
-        saveData.children = [];
+    if (!Array.isArray(saveData?.children)) {
+        saveData?.children = [];
     }
-    const plugin = await _loadPlugin(saveData.blockType);
+    const plugin = await _loadPlugin(saveData?.blockType);
     //
     const cardOuterElement = document.createElement('div');
     cardOuterElement.style.padding = '10px';
@@ -30,16 +30,16 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     cardOuterElement.appendChild(card);
     //
     if (typeof plugin?.toolbox?.render !== 'function') {
-        alert(`プラグイン「${saveData.blockType}」の関数「toolbox.render()」が未定義です。`);
-        console.error(`プラグイン「${saveData.blockType}」の関数「toolbox.render()」が未定義です。`);
+        alert(`プラグイン「${saveData?.blockType}」の関数「toolbox.render()」が未定義です。`);
+        console.error(`プラグイン「${saveData?.blockType}」の関数「toolbox.render()」が未定義です。`);
     }
     let toolListInner;
     try {
         toolListInner = await plugin?.toolbox?.render(saveData);
     }
     catch (err) {
-        alert(`プラグイン「${saveData.blockType}」の関数「toolbox.render()」でエラーが発生しました。`);
-        console.error(`プラグイン「${saveData.blockType}」の関数「toolbox.render()」でエラーが発生しました。`);
+        alert(`プラグイン「${saveData?.blockType}」の関数「toolbox.render()」でエラーが発生しました。`);
+        console.error(`プラグイン「${saveData?.blockType}」の関数「toolbox.render()」でエラーが発生しました。`);
         console.error(err);
         return;
     }
@@ -47,8 +47,8 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
         card.appendChild(toolListInner);
     }
     catch (err) {
-        alert(`プラグイン「${saveData.blockType}」のツールボックスを描画できません。関数「toolbox.render()」を確認してください。`);
-        console.error(`プラグイン「${saveData.blockType}」のツールボックスを描画できません。関数「toolbox.render()」を確認してください。`);
+        alert(`プラグイン「${saveData?.blockType}」のツールボックスを描画できません。関数「toolbox.render()」を確認してください。`);
+        console.error(`プラグイン「${saveData?.blockType}」のツールボックスを描画できません。関数「toolbox.render()」を確認してください。`);
         console.error(err);
         return;
     }
@@ -57,7 +57,7 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
         || (plugin?.toolbox?.onDropText)
         || (plugin?.toolbox?.onDropImage)
         || (plugin?.toolbox?.onDropFile)
-        || (saveData.blockType === "TrashCan");
+        || (saveData?.blockType === "TrashCan");
     const sortableItem = new SortableItem({
         isDragOnly,
         isDroppable: isDroppable,
@@ -80,7 +80,7 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
         sortableItem.onDrop = () => plugin?.toolbox?.onDrop(sortableItem.outerElement.id);
     }
     sortableItem.onDropChildJson = ({ ballOuterId, jsonData, enableCopy }) => {
-        if (saveData.blockType === "TrashCan") {
+        if (saveData?.blockType === "TrashCan") {
             const ballItem = document.getElementById(ballOuterId);
             if (ballItem) {
                 if (ballItem.parentElement.id !== "toolShop") {

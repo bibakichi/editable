@@ -4,7 +4,7 @@ plugins["H2"] = {
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement('h2');
             element.id = blockId;
-            element.innerText = saveData.text ?? "見出し２";
+            element.innerText = saveData?.text ?? "見出し２";
             return element;
         },
         "changeEditMode": async function (blockId) {
@@ -42,7 +42,7 @@ plugins["H2"] = {
     "toolbox": {
         "render": async function (saveData) {
             const toolboxElement = document.createElement('h2');
-            toolboxElement.innerText = saveData.text ?? '見出し２';
+            toolboxElement.innerText = saveData?.text ?? '見出し２';
             return toolboxElement;
         },
     },

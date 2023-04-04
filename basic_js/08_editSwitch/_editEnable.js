@@ -20,14 +20,14 @@ async function _editEnable() {
         }
         const saveData = JSON.parse(jsonElement.textContent);
         if (!saveData) continue;
-        const plugin = plugins[saveData.blockType];
+        const plugin = plugins[saveData?.blockType];
         if (!plugin) continue;
         const func = plugin?.viewer?.changeEditMode;
         if (typeof func === "function") {
             await func("block_" + sortableElement.id, saveData);
         }
         const sortableItem = sortableItems[sortableElement.id];
-        console.log(saveData.blockType);
+        console.log(saveData?.blockType);
         if (sortableItem) {
             console.log("hhh");
             sortableItem.isEnable = true;

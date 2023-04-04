@@ -12,7 +12,7 @@ plugins["Padding"] = {
     "toolbox": {
         "render": async function (saveData) {
             const toolboxElement = document.createElement('h4');
-            toolboxElement.innerText = saveData.text ?? '空白';
+            toolboxElement.innerText = saveData?.text ?? '空白';
             return toolboxElement;
         },
     },

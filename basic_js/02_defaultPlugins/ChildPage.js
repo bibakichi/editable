@@ -4,7 +4,7 @@ plugins["ChildPage"] = {
         "render": async function (saveData) {
             const buttonElement = document.createElement('label');
             buttonElement.classList.add("button3d");
-            buttonElement.innerText = saveData.text ?? "子ページ";
+            buttonElement.innerText = saveData?.text ?? "子ページ";
             return buttonElement;
         },
     },
@@ -14,7 +14,7 @@ plugins["ChildPage"] = {
             buttonElement.id = blockId;
             buttonElement.classList.add("button3d");
             buttonElement.href = "./" + blockId + "/index.html";
-            buttonElement.innerText = saveData.text ?? "子ページ";
+            buttonElement.innerText = saveData?.text ?? "子ページ";
             return buttonElement;
         },
         "changeEditMode": async function (blockId, saveData) {
@@ -23,7 +23,7 @@ plugins["ChildPage"] = {
             pastElement.replaceWith(newElement);
             newElement.classList.add("button3d");
             newElement.id = blockId;
-            newElement.innerText = saveData.text ?? "子ページ";
+            newElement.innerText = saveData?.text ?? "子ページ";
             newElement.addEventListener('click', (event) => {
                 //
                 // この１文がなかったら、

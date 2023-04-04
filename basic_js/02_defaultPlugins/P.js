@@ -4,7 +4,7 @@ plugins["P"] = {
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement('p');
             element.id = blockId;
-            element.innerText = saveData.text ?? "本文";
+            element.innerText = saveData?.text ?? "本文";
             return element;
         },
         "changeEditMode": async function (blockId) {
@@ -42,7 +42,7 @@ plugins["P"] = {
     "toolbox": {
         "render": async function (saveData) {
             const toolboxElement = document.createElement('p');
-            toolboxElement.innerText = saveData.text ?? '本文';
+            toolboxElement.innerText = saveData?.text ?? '本文';
             return toolboxElement;
         },
     },
