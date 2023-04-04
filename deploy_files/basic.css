@@ -359,7 +359,6 @@ label.button3d,
 a.button3d,
 button.button3d {
     color: #6e6e73;
-    display: inline-block;
     height: 50px;
     font-size: 17px;
     width: max-content;
@@ -433,7 +432,6 @@ button.buttonFlat {
     margin: 3px;
     background: #e8e8ed;
     color: #666;
-    display: inline-block;
     width: max-content;
     text-decoration: none;
     font-size: small;
