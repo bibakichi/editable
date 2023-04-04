@@ -10,7 +10,6 @@ async function _renderHeavy(saveData, isEditable = false) {
         saveData.children = [];
     }
     //
-    console.log(saveData.blockType);
     const sortableItem = new SortableItem({
         isEnable: isEditable,
         enableCopy: false,
