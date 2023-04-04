@@ -10,7 +10,7 @@ plugins["ChildPage"] = {
     },
     "viewer": {
         "renderLight": async function (blockId, saveData) {
-            const buttonElement = document.createElement('label');
+            const buttonElement = document.createElement('a');
             buttonElement.classList.add("button3d");
             buttonElement.href = "./" + blockId + "/index.html";
             buttonElement.innerText = "子ページ";
