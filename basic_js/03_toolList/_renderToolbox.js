@@ -84,7 +84,9 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
             const ballItem = document.getElementById(ballOuterId);
             if (ballItem) {
                 if (ballItem.parentElement.id !== "toolShop") {
-                    ballItem.remove();
+                    if (typeof plugin?.onDelete === 'function') {
+                        plugin?.toolbox?.onDrop(sortableItem.outerElement.id);
+                    }
                 }
             }
         }
