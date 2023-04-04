@@ -1,7 +1,7 @@
 
 let pluginsBuffer = {};
 
-async function onDropBrotherFile({ file, isBefore }) {
+async function onDropBrotherFile({ file, isBefore, sortableItem }) {
     const reader = new FileReaderEx();
     console.log(file.type);
     if (file.type.startsWith("image")) {

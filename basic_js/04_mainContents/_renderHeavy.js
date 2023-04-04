@@ -54,7 +54,7 @@ async function _renderHeavy(saveData, isEditable = false) {
     }
     sortableItem.jsonData = saveData;
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => onDropMainBlock({ jsonData, isBefore, sortableItem });
-    sortableItem.onDropBrotherFile = onDropBrotherFile;
+    sortableItem.onDropBrotherFile = ({ file, isBefore }) => onDropBrotherFile({ file, isBefore, sortableItem });
     //
     const preElement = document.createElement('pre');
     preElement.classList.add("json");
