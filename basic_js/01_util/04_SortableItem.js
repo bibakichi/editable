@@ -568,9 +568,7 @@ class SortableItem {
                 await onDropJson({ ballOuterId, jsonData: JSON.parse(jsonText), enableCopy });
             }
             if (files.length > 0) {
-                const reader = new FileReaderEx();
-                const url = await reader.readAsDataURL(files[0]);
-                console.log(url);
+                await onDropImage(files[0]);
             }
         });
         //

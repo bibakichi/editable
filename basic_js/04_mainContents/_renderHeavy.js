@@ -54,6 +54,16 @@ async function _renderHeavy(saveData, isEditable = false) {
     }
     sortableItem.jsonData = saveData;
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => onDropMainBlock({ jsonData, isBefore, sortableItem });
+    sortableItem.onDropBrotherImage = async ({ img, isBefore }) => {
+        const reader = new FileReaderEx();
+        const url = await reader.readAsDataURL(img);
+        console.log(url);
+        const jsonData = {
+            blockType: "Image",
+            src: url,
+        };
+        onDropMainBlock({ jsonData, isBefore, sortableItem });
+    }
     //
     const preElement = document.createElement('pre');
     preElement.classList.add("json");
