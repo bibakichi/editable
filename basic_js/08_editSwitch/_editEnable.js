@@ -35,6 +35,7 @@ async function _editEnable() {
     }
     // アイテムがなくなったとき用のドロップ専用エリア
     const sortableItem = new SortableItem({ isDropOnly: true });
+    sortableItem.onDropBrotherFile = onDropBrotherFile;
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => onDropMainBlock({ jsonData, isBefore, sortableItem });
     sortableItem.outerElement.classList.add("dropOnly");
     mainContents.appendChild(sortableItem.outerElement);
