@@ -70,13 +70,16 @@ async function initToolList(thisPageSetting) {
     toolShopElement.style.flexWrap = "wrap";
     toolShopElement.style.alignItems = "center";
     for (const pluginName in plugins) {
-        toolShopElement.appendChild(await _renderToolbox({
+        const outerElement = await _renderToolbox({
             saveData: {
                 blockType: pluginName,
             },
             isShop: true,
             isDragOnly: true,
-        }));
+        });
+        if (outerElement) {
+            toolShopElement.appendChild(outerElement);
+        }
     }
     //
     const bodyRight = document.getElementById('body_right');
