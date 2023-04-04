@@ -129,12 +129,7 @@ function _generateHTML({
                         </div>
                     </header>
                     <main id="main_contents">${mainContents}</main>
-                    <div id="info-for-print">最終更新日：20xx年x月x日</div>
                     <div class="actions">
-                        <div class="print-button-wrapper">
-                            <button class="buttonFlat" onclick="window.print();">印刷する</button>
-                        </div>
-                        <div id="info-for-device">最終更新：x日前</div>
                         <div id="edit-switch-wrapper">
                             <span class="edit-label">編集する</span>
                             <label class="switch">

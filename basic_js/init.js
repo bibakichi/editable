@@ -60,6 +60,29 @@ document.addEventListener('DOMContentLoaded', async function () {
             break;
         }
     } while (pathList.length > 0);
+    if (settings.length == 0) {
+        const s1 = {
+            "isFullSize": false,
+            "isTopbar": true,
+            "title": "新しいページ",
+            "fontFamily": settings[0]?.fontFamily ?? {
+                "Hannari": false,
+                "Kokoro": false,
+                "Nico Moji": false,
+                "Nikukyu": false,
+                "M PLUS 1p": false,
+                "M PLUS Rounded 1c": true,
+                "Sawarabi Mincho": false,
+                "Sawarabi Gothic": false,
+                "Noto Sans JP": true
+            },
+            "toolList": [],
+            "plugins": [],
+        };
+        settings.push(s1);
+        fontInit(s1);  // フォントを読み込む
+        initToolList(s1);   // ツールボックスを表示
+    }
     if (isDebugTree) console.log('\n');
     if (isDebugTree) console.log(settings);
     initWindows();  //「戻る」ボタンや子ページに繋がるボタン、パンくずリストなどを生成

@@ -41,6 +41,7 @@ plugins["ChildPage"] = {
             const newSetting = {
                 "isFullSize": false,
                 "isTopbar": true,
+                "title": "新しいページ",
                 "fontFamily": settings[0]?.fontFamily ?? {
                     "Hannari": false,
                     "Kokoro": false,

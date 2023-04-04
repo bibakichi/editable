@@ -562,9 +562,15 @@ class SortableItem {
             const enableCopy = event.dataTransfer.getData("enableCopy") === "true";   // データ転送により送られてきたデータ
             const ballOuterId = event.dataTransfer.getData("outerId");   // データ転送により送られてきたデータ
             const jsonText = event.dataTransfer.getData("jsonData"); // データ転送により送られてきたデータ
-            if (ballOuterId == outerId) return;   // アイテムを元の場所にドロップしただけの場合、何もしない
+            if (ballOuterId === outerId) return;   // アイテムを元の場所にドロップしただけの場合、何もしない
+            const files = event.dataTransfer.files;
             if (ballOuterId && jsonText) {
                 await onDropJson({ ballOuterId, jsonData: JSON.parse(jsonText), enableCopy });
+            }
+            if (files.length > 0) {
+                const reader = new FileReader();
+                const url = await reader.readAsDataURL(files[0]);
+                console.log(url);
             }
         });
         //
