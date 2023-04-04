@@ -1,5 +1,8 @@
 //#########################################################################################
 async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
+    if (folderPath.slice(0, 1) == '/') {
+        folderPath = folderPath.slice(1);
+    }
     const fileList = [];
     const fileMap = {};
     for (const pluginName in plugins) {
