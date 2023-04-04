@@ -15,11 +15,11 @@ async function onDropMainBlock({ jsonData, isBefore = true, sortableItem }) {
         const plugin = await _loadPlugin(jsonData.blockType);
         if (typeof plugin?.viewer?.onAppend === 'function') {
             try {
-                await plugin?.viewer?.onAppend("block_" + newItem.id, saveData);
+                await plugin?.viewer?.onAppend("block_" + newItem.id, jsonData);
             }
             catch (err) {
-                alert(`プラグイン「${saveData.blockType}」の関数「viewer.onAppend()」でエラーが発生しました。`);
-                console.error(`プラグイン「${saveData.blockType}」の関数「viewer.onAppend()」でエラーが発生しました。`);
+                alert(`プラグイン「${jsonData.blockType}」の関数「viewer.onAppend()」でエラーが発生しました。`);
+                console.error(`プラグイン「${jsonData.blockType}」の関数「viewer.onAppend()」でエラーが発生しました。`);
                 console.error(err);
             }
         }
