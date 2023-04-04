@@ -57,10 +57,6 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         ("onDropText: " + String(plugin?.viewer?.onDropText)) + ",\n        "
         :
         ""
-    }${(plugin?.viewer?.onDropImage) ?
-        ("onDropImage: " + String(plugin?.viewer?.onDropImage)) + ",\n        "
-        :
-        ""
     }${(plugin?.viewer?.onDropFile) ?
         ("onDropFile: " + String(plugin?.viewer?.onDropFile)) + ",\n        "
         :
@@ -70,7 +66,6 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         // onDrop: async (blockId) => { },
         // onDropJson: async function (blockId, jsonData) { },
         // onDropText: async function (blockId, text) { },
-        // onDropImage: async function (blockId, img) { },
         // onDropFile: async function (blockId, file) { },
 
     },
@@ -197,10 +192,6 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         ("onDropText: " + String(plugin?.viewer?.onDropText)) + ",\n        "
         :
         ""
-    }${(plugin?.viewer?.onDropImage) ?
-        ("onDropImage: " + String(plugin?.viewer?.onDropImage)) + ",\n        "
-        :
-        ""
     }${(plugin?.viewer?.onDropFile) ?
         ("onDropFile: " + String(plugin?.viewer?.onDropFile)) + ",\n        "
         :
@@ -210,7 +201,6 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         // onDrop: async (blockId) => { },
         // onDropJson: async function (blockId, jsonData) { },
         // onDropText: async function (blockId, text) { },
-        // onDropImage: async function (blockId, img) { },
         // onDropFile: async function (blockId, file) { },
 
     },

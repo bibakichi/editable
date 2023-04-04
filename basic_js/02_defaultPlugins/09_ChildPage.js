@@ -79,7 +79,6 @@ plugins["ChildPage"] = {
             const pathList = pathName.split("/");
             pathList.pop();
             pathList.push(folderId);
-            pathList.push("index.html");
             const newSetting = {
                 "isFullSize": false,
                 "isTopbar": true,
@@ -104,7 +103,7 @@ plugins["ChildPage"] = {
                 const storageId = pathList.shift();
                 await saveCloud({
                     storageId,
-                    filePath: pathList.join("/"),
+                    folderPath: pathList.join("/"),
                     htmlCode,
                     setting: newSetting,
                 });
@@ -114,7 +113,7 @@ plugins["ChildPage"] = {
                 //    https://【パス】.8mo.nl/【ストレージID】/
                 await saveCloud({
                     storageId: uri.hostname.split('.')[0],
-                    filePath: pathList.join("/"),
+                    folderPath: pathList.join("/"),
                     htmlCode,
                     setting: newSetting,
                 });

@@ -9,6 +9,7 @@ async function downloadZip(htmlCode) {
     zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(settings[0]) + ";");
     for (const pluginName in plugins) {
         const plugin = plugins[pluginName];
+        if (plugin.isDefault) continue;
         const str = _convertPluginToString({ pluginName, plugin });
         zip.file("plugins/" + pluginName + ".js", str);
     }

@@ -1,22 +1,45 @@
 //#########################################################################################
-async function saveCloud({ storageId, filePath, htmlCode, setting }) {
+async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
+    const fileList = [];
+    const fileMap = {};
+    for (const pluginName in plugins) {
+        const plugin = plugins[pluginName];
+        if (plugin.isDefault) continue;
+        const path = folderPath + "/plugins/" + pluginName + ".js";
+        fileList.push({
+            path: path,
+            contentType: "text/javascript",
+        });
+        fileMap[path] = {
+            content: _convertPluginToString({ pluginName, plugin }),
+            contentType: "text/javascript",
+        };
+    }
+    fileList.push({
+        path: folderPath + "/index.html",
+        contentType: "text/html",
+    });
+    fileMap[folderPath + "/index.html"] = {
+        content: htmlCode,
+        contentType: "text/html",
+    };
+    //
+    fileList.push({
+        path: folderPath + "/setting.js",
+        contentType: "text/javascript",
+    });
+    fileMap[folderPath + "/setting.js"] = {
+        content: "window.fileToFileTransferVariable = " + JSON.stringify(setting) + ";",
+        contentType: "text/javascript",
+    };
+    //
     const response = await window.fetch(
         'https://fci5hwwcqglsj2mhomuxygl3rq0mnzky.lambda-url.ap-northeast-1.on.aws/file', {
         method: "POST",
         headers: {},
         body: JSON.stringify({
             storageId: storageId,
-            fileList: [
-                {
-                    path: filePath,
-                    contentType: "text/html",
-                },
-                {
-                    path: filePath.replace("index.html", "setting.js"),
-                    contentType: "text/javascript",
-                }
-            ],
-            filePath: filePath,
+            fileList: fileList,
         }),
     },
     );
@@ -27,31 +50,18 @@ async function saveCloud({ storageId, filePath, htmlCode, setting }) {
         alert(message);
         return;
     }
-    console.log(data);
     for (const fileInfo of data.fileInfos) {
-        if (fileInfo.filePath.endsWith("index.html")) {
-            const response = await window.fetch(
-                fileInfo.postUrl, {
+        const content = fileMap[fileInfo.filePath].content;
+        const contentType = fileMap[fileInfo.filePath].contentType;
+        await window.fetch(
+            fileInfo.postUrl,
+            {
                 method: "PUT",
                 headers: {
-                    'Content-Type': "text/html",
+                    'Content-Type': contentType,
                 },
-                body: htmlCode,
+                body: content,
             },
-            );
-            console.log(response);
-        }
-        else if (fileInfo.filePath.endsWith("setting.js")) {
-            await window.fetch(
-                fileInfo.postUrl, {
-                method: "PUT",
-                headers: {
-                    'Content-Type': "text/javascript",
-                },
-                body: "window.fileToFileTransferVariable = " + JSON.stringify(setting) + ";",
-            },
-            );
-            console.log(response);
-        }
+        );
     }
 }

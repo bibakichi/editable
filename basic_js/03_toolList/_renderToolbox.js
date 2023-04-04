@@ -55,7 +55,6 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     const isDroppable = (plugin?.toolbox?.onDrop)
         || (plugin?.toolbox?.onDropJson)
         || (plugin?.toolbox?.onDropText)
-        || (plugin?.toolbox?.onDropImage)
         || (plugin?.toolbox?.onDropFile)
         || (saveData?.blockType === "TrashCan");
     const sortableItem = new SortableItem({
@@ -94,9 +93,6 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     }
     if (typeof plugin?.toolbox?.onDropText === 'function') {
         sortableItem.onDropChildText = (text) => plugin?.toolbox?.onDropText(sortableItem.outerElement.id, text);
-    }
-    if (typeof plugin?.toolbox?.onDropImage === 'function') {
-        sortableItem.onDropChildImage = (image) => plugin?.toolbox?.onDropImage(sortableItem.outerElement.id, image);
     }
     if (typeof plugin?.toolbox?.onDropFile === 'function') {
         sortableItem.onDropChildFile = (file) => plugin?.toolbox?.onDropFile(sortableItem.outerElement.id, file);

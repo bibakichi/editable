@@ -54,15 +54,25 @@ async function _renderHeavy(saveData, isEditable = false) {
     }
     sortableItem.jsonData = saveData;
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => onDropMainBlock({ jsonData, isBefore, sortableItem });
-    sortableItem.onDropBrotherImage = async ({ img, isBefore }) => {
+    sortableItem.onDropBrotherFile = async ({ file, isBefore }) => {
         const reader = new FileReaderEx();
-        const url = await reader.readAsDataURL(img);
-        console.log(url);
-        const jsonData = {
-            blockType: "Image",
-            src: url,
-        };
-        onDropMainBlock({ jsonData, isBefore, sortableItem });
+        if (file.type.startsWith("image")) {
+            const url = await reader.readAsDataURL(file);
+            console.log(url);
+            const jsonData = {
+                blockType: "Image",
+                src: url,
+            };
+            onDropMainBlock({ jsonData, isBefore, sortableItem });
+        }
+        if (file.type === "text/javascript") {
+            console.log("jsがドロップされました");
+            const text = await reader.readAsText(file);
+            console.log(text);
+            if (text.trim().startsWith("plugins")) {
+                console.log("プラグインがドロップされました");
+            }
+        }
     }
     //
     const preElement = document.createElement('pre');
