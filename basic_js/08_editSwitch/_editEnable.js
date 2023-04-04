@@ -23,8 +23,9 @@ async function _editEnable() {
         const plugin = plugins[saveData.blockType];
         if (!plugin) continue;
         const func = plugin?.viewer?.changeEditMode;
-        if (typeof func !== "function") continue;
-        await func("block_" + sortableElement.id);
+        if (typeof func === "function") {
+            await func("block_" + sortableElement.id);
+        }
         const sortableItem = sortableItems[sortableElement.id];
         console.log(saveData.blockType);
         if (sortableItem) {
