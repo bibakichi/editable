@@ -1,5 +1,6 @@
 //#########################################################################################
 async function allSave() {
+    _showLoader();
     const toolListInner = document.getElementById("toolList");
     const toolBoxJsonDataList = [];
     //

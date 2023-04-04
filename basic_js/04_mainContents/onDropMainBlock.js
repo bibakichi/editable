@@ -11,5 +11,5 @@ async function onDropMainBlock({ jsonData, isBefore = true, sortableItem }) {
     else {
         sortableItem.outerElement.after(newItem);
     }
-    return newItem.id;
+    return sortableItem.outerElement;
 }

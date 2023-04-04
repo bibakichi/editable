@@ -15,6 +15,7 @@ plugins["ChildPage"] = {
             return element;
         },
         "onAppend": async function (blockId, saveData) {
+            _showLoader();
             console.log("b");
             console.log(blockId);
             const htmlCode = _generateHTML({
@@ -59,6 +60,7 @@ plugins["ChildPage"] = {
             else {
                 await downloadZip(htmlCode);
             }
+            _deleteLoader();
         }
     }
 }
