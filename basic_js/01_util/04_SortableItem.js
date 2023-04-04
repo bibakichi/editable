@@ -214,6 +214,7 @@ class SortableItem {
         const outerElement = document.createElement('div');
         outerElement.classList.add("sortable_item");
         outerElement.id = id;
+        console.log(this._isEnable && !this._isDropOnly);
         outerElement.draggable = (this._isEnable && !this._isDropOnly);
         outerElement.addEventListener('focusin', async (event) => {
             outerElement.draggable = false;
