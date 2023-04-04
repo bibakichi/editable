@@ -11,7 +11,6 @@ plugins["Image"] = {
     "toolbox": {
         "render": async function (saveData) {
             const element = document.createElement('img');
-            element.id = blockId;
             element.src = saveData.src;
             return element;
         },
