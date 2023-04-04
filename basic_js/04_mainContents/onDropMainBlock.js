@@ -15,7 +15,15 @@ async function onDropMainBlock({ jsonData, isBefore = true, sortableItem }) {
         const plugin = await _loadPlugin(jsonData.blockType);
         if (typeof plugin?.viewer?.onAppend === 'function') {
             try {
-                await plugin?.viewer?.onAppend("block_" + newItem.id, jsonData);
+                const newSaveData = await plugin?.viewer?.onAppend("block_" + newItem.id, jsonData);
+                let jsonElement = outerElement.querySelector('.json');
+                if (!jsonElement) {
+                    jsonElement = document.createElement('pre');
+                    jsonElement.classList.add("json");
+                    jsonElement.style.display = "none";
+                    sortableItem.outerElement.appendChild(jsonElement);
+                }
+                jsonElement.innerText = JSON.stringify(newSaveData);
             }
             catch (err) {
                 alert(`プラグイン「${jsonData.blockType}」の関数「viewer.onAppend()」でエラーが発生しました。`);

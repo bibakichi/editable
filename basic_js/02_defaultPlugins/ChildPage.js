@@ -13,7 +13,7 @@ plugins["ChildPage"] = {
             const buttonElement = document.createElement('a');
             buttonElement.id = blockId;
             buttonElement.classList.add("button3d");
-            buttonElement.href = "./" + blockId + "/index.html";
+            buttonElement.href = "./" + saveData?.folderId + "/index.html";
             buttonElement.innerText = saveData?.text ?? "子ページ";
             return buttonElement;
         },
@@ -51,12 +51,14 @@ plugins["ChildPage"] = {
             const element = document.getElementById(blockId);
             return {
                 text: element.textContent,
+                folderId: pastSaveData?.folderId,
             };
         },
-        "onAppend": async function (blockId, saveData) {
+        "onAppend": async function (blockId) {
             _showLoader();
+            const folderId = uuid();
             console.log("b");
-            console.log(blockId);
+            console.log(folderId);
             const htmlCode = _generateHTML({
                 title: "新しいページ",
                 mainContents: "",
@@ -75,7 +77,7 @@ plugins["ChildPage"] = {
             }
             const pathList = pathName.split("/");
             pathList.pop();
-            pathList.push(blockId);
+            pathList.push(folderId);
             pathList.push("index.html");
             const newSetting = {
                 "isFullSize": false,
@@ -120,6 +122,10 @@ plugins["ChildPage"] = {
                 await downloadZip(htmlCode);
             }
             _deleteLoader();
+            return {
+                text: "新しいページ",
+                folderId: folderId,
+            };
         }
     }
 }
