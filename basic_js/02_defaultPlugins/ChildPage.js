@@ -4,7 +4,7 @@ plugins["ChildPage"] = {
         "render": async function (saveData) {
             const buttonElement = document.createElement('label');
             buttonElement.classList.add("button3d");
-            buttonElement.innerText = "子ページ";
+            buttonElement.innerText = saveData.text ?? "子ページ";
             return buttonElement;
         },
     },
@@ -13,8 +13,37 @@ plugins["ChildPage"] = {
             const buttonElement = document.createElement('a');
             buttonElement.classList.add("button3d");
             buttonElement.href = "./" + blockId + "/index.html";
-            buttonElement.innerText = "子ページ";
+            buttonElement.innerText = saveData.text ?? "子ページ";
             return buttonElement;
+        },
+        "changeEditMode": async function (blockId, saveData) {
+            const pastElement = document.getElementById(blockId);
+            const newElement = document.createElement('label');
+            pastElement.replaceWith(newElement);
+            newElement.classList.add("button3d");
+            newElement.innerText = saveData.text ?? "子ページ";
+            newElement.addEventListener('click', (event) => {
+                //
+                // この１文がなかったら、
+                // 編集中のテキストの先頭をクリックすると、カーソルが自動的に最後まで移動してしまう
+                if (newElement.isContentEditable) return;
+                //
+                newElement.contentEditable = true;
+                newElement.focus();
+                // １文字以上の場合
+                if (newElement.childNodes.length > 0) {
+                    // カーソル位置を最後にもっていく
+                    const range = document.createRange();
+                    const sel = window.getSelection();
+                    range.setStart(newElement.childNodes[0], newElement.innerText.length);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+            });
+            newElement.addEventListener('focusout', (event) => {
+                newElement.contentEditable = false;
+            });
         },
         "onAppend": async function (blockId, saveData) {
             _showLoader();

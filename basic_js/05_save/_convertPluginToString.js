@@ -128,7 +128,7 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         ("changeEditMode: " + String(plugin?.viewer?.changeEditMode)) :
         `//
         // 例
-        // changeEditMode: async function (blockId) {
+        // changeEditMode: async function (blockId,saveData) {
         //     const element = document.getElementById(blockId);
         //     element.contentEditable = true;
         // }`},
