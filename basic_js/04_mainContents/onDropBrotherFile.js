@@ -10,11 +10,10 @@ async function onDropBrotherFile({ file, isBefore }) {
         onDropMainBlock({ jsonData, isBefore, sortableItem });
     }
     if (file.type === "text/javascript") {
-        console.log("jsがドロップされました");
         const text = await reader.readAsText(file);
         if (text.trim().startsWith("plugins")) {
             const scriptElement = document.createElement('script');
-            scriptElement.innerText = text;
+            scriptElement.innerHTML = text;
             document.body.appendChild(scriptElement);
             alert("プラグインを追加しました");
         }
