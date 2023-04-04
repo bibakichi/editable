@@ -15,6 +15,7 @@ plugins["ChildPage"] = {
             return element;
         },
         "onAppend": async function (blockId, saveData) {
+            console.log("b");
             const htmlCode = _generateHTML({
                 title: "新しいページ",
                 mainContents: "",
