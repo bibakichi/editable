@@ -16,6 +16,7 @@ async function onDropMainBlock({ jsonData, isBefore = true, sortableItem }) {
         if (typeof plugin?.viewer?.onAppend === 'function') {
             try {
                 const newSaveData = await plugin?.viewer?.onAppend("block_" + newItem.id, jsonData);
+                console.log(newSaveData);
                 let jsonElement = sortableItem.outerElement.querySelector('.json');
                 if (!jsonElement) {
                     jsonElement = document.createElement('pre');
