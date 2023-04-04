@@ -7,7 +7,7 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
         return;
     }
     if (!Array.isArray(saveData?.children)) {
-        saveData?.children = [];
+        saveData.children = [];
     }
     const plugin = await _loadPlugin(saveData?.blockType);
     //
