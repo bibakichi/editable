@@ -113,7 +113,7 @@ class SortableItem {
             isVertical: this._isVertical,
             outerElement: this._outerElement,
             isDroppable: this._isDroppable,
-            onDropJson: async (jsonData) => await this._onDropBrotherJson({ jsonData, isBefore: true }),
+            onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: true }),
             onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: true }),
             onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: true }),
             onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: true }),
@@ -144,7 +144,7 @@ class SortableItem {
                 isVertical: this._isVertical,
                 outerElement: this._outerElement,
                 isDroppable: this._isDroppable,
-                onDropJson: async (jsonData) => await this._onDropBrotherJson({ jsonData, isBefore: false }),
+                onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: false }),
                 onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: false }),
                 onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: false }),
                 onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: false }),
@@ -181,9 +181,6 @@ class SortableItem {
         enableCopy = true,
         isDroppable = false
     }) {
-        if (isDroppable) {
-            console.log("isDroppable 1");
-        }
         const id = uuid();
         sortableItems[id] = this;
         this._isEnable = isEnable;
@@ -203,7 +200,7 @@ class SortableItem {
         this._onDropBrotherFile = async ({ file, isBefore = true }) => { };
         //
         // このアイテムの中に、他のアイテムが追加（または移動）されたときの関数
-        this._onDropChildJson = async (jsonData, id) => { };
+        this._onDropChildJson = async ({ ballOuterId, jsonData, enableCopy }) => { };
         this._onDropChildText = async (text) => { };
         this._onDropChildImage = async (img) => { };
         this._onDropChildFile = async (file) => { };
@@ -239,7 +236,7 @@ class SortableItem {
                 isVertical: this._isVertical,
                 outerElement: this._outerElement,
                 isDroppable: this._isDroppable,
-                onDropJson: async (jsonData, id) => await this._onDropBrotherJson({ jsonData, isBefore: true, id }),
+                onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: true }),
                 onDropText: async (text) => await this._onDropBrotherText({ text, isBefore: true }),
                 onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: true }),
                 onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: true }),
@@ -264,7 +261,7 @@ class SortableItem {
                     isVertical: this._isVertical,
                     outerElement: this._outerElement,
                     isDroppable: this._isDroppable,
-                    onDropJson: async (jsonData, id) => await this._onDropBrotherJson({ jsonData, isBefore: false, id }),
+                    onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => await this._onDropBrotherJson({ jsonData, isBefore: false }),
                     onDropText: async (text) => await this._onDropBrotherText({ text, isBinnerElementefore: false }),
                     onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: false }),
                     onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: false }),
@@ -311,7 +308,7 @@ class SortableItem {
         isVertical = true,
         outerElement,
         isDroppable = false,
-        onDropJson = async (jsonData) => { },
+        onDropJson = async ({ ballOuterId, jsonData, enableCopy }) => { },
         onDropText = async (text) => { },
         onDropImage = async (img) => { },
         onDropFile = async (file) => { },
@@ -338,18 +335,18 @@ class SortableItem {
             onDrop: async () => {
                 this._removeInsertBarBefore(outerElement); //outerElementの直前の「挿入バー」を削除
             },
-            onDropJson: async (ballOuterId, jsonData, enableCopy) => {
+            onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => {
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
-                    await onDropJson(jsonData);
+                    await onDropJson({ ballOuterId, jsonData, enableCopy });
                 }
                 else if (outerElement.parentElement == ballItem.parentElement) {
                     outerElement.before(ballItem);
                 }
                 else {
                     try {
-                        await onDropJson(jsonData, ballOuterId);
+                        await onDropJson({ ballOuterId, jsonData, enableCopy });
                         if (!enableCopy) {
                             ballItem.remove();
                         }
@@ -373,7 +370,7 @@ class SortableItem {
         onDragLeave = async () => { },
         onDragOver = async () => { },
         onDrop = async () => { },
-        onDropJson = async (jsonData) => { },
+        onDropJson = async ({ ballOuterId, jsonData, enableCopy }) => { },
         onDropText = async (text) => { },
         onDropImage = async (img) => { },
         onDropFile = async (file) => { },
@@ -381,7 +378,6 @@ class SortableItem {
         if (!isDroppable) {
             return document.createElement('div');
         }
-        console.log("isDroppable 2");
         const dropAreaMiddle = document.createElement('div');
         dropAreaMiddle.style.height = '50%';
         this._setDropEvents({
@@ -391,14 +387,14 @@ class SortableItem {
             onDragLeave: onDragLeave,
             onDragOver: onDragOver,
             onDrop: onDrop,
-            onDropJson: async (ballOuterId, jsonData, enableCopy) => {
+            onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => {
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
-                    await onDropJson(jsonData);
+                    await onDropJson({ ballOuterId, jsonData, enableCopy });
                 }
                 try {
-                    await onDropJson(jsonData, ballOuterId);
+                    await onDropJson({ ballOuterId, jsonData, enableCopy });
                     if (!enableCopy) {
                         ballItem.remove();
                     }
@@ -417,7 +413,7 @@ class SortableItem {
         isVertical = true,
         outerElement,
         isDroppable = false,
-        onDropJson = async (jsonData) => { },
+        onDropJson = async ({ ballOuterId, jsonData, enableCopy }) => { },
         onDropText = async (text) => { },
         onDropImage = async (img) => { },
         onDropFile = async (file) => { },
@@ -444,18 +440,18 @@ class SortableItem {
             onDrop: async () => {
                 this._removeInsertBarAfter(outerElement);    //outerElementの直後の「挿入バー」を削除
             },
-            onDropJson: async (ballOuterId, jsonData, enableCopy) => {
+            onDropJson: async ({ ballOuterId, jsonData, enableCopy }) => {
                 const ballItem = document.getElementById(ballOuterId);
                 if (!ballItem) {
                     // 外部のブラウザ出身のアイテムがドロップされた場合
-                    await onDropJson(jsonData);
+                    await onDropJson({ ballOuterId, jsonData, enableCopy });
                 }
                 else if (outerElement.parentElement == ballItem.parentElement) {
                     outerElement.after(ballItem);
                 }
                 else {
                     try {
-                        await onDropJson(jsonData, ballOuterId);
+                        await onDropJson({ ballOuterId, jsonData, enableCopy });
                         if (!enableCopy) {
                             ballItem.remove();
                         }
@@ -533,7 +529,7 @@ class SortableItem {
         onDragLeave = async () => { },
         onDragOver = async () => { },
         onDrop = async () => { },
-        onDropJson = async (ballOuterId, jsonData, enableCopy) => { },
+        onDropJson = async ({ ballOuterId, jsonData, enableCopy }) => { },
         onDropText = async (text) => { },
         onDropImage = async (img) => { },
         onDropFile = async (file) => { },
@@ -566,7 +562,7 @@ class SortableItem {
             const jsonText = event.dataTransfer.getData("jsonData"); // データ転送により送られてきたデータ
             if (ballOuterId == outerId) return;   // アイテムを元の場所にドロップしただけの場合、何もしない
             if (ballOuterId && jsonText) {
-                await onDropJson(ballOuterId, JSON.parse(jsonText), enableCopy);
+                await onDropJson({ ballOuterId, jsonData: JSON.parse(jsonText), enableCopy });
             }
         });
         //

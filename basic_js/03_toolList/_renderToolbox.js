@@ -79,10 +79,14 @@ async function _renderToolbox({ saveData, isDragOnly = false }) {
     if (typeof plugin?.toolbox?.onDrop === 'function') {
         sortableItem.onDrop = () => plugin?.toolbox?.onDrop(sortableItem.outerElement.id);
     }
-    sortableItem.onDropChildJson = (jsonData, id) => {
+    sortableItem.onDropChildJson = ({ ballOuterId, jsonData, enableCopy }) => {
         if (saveData.blockType === "TrashCan") {
-            const ballItem = document.getElementById(id);
-            ballItem.remove();
+            const ballItem = document.getElementById(ballOuterId);
+            if (ballItem) {
+                if (ballItem.parentElement.id !== "toolShop") {
+                    ballItem.remove();
+                }
+            }
         }
         else if (typeof plugin?.toolbox?.onDropJson === 'function') {
             plugin?.toolbox?.onDropJson(sortableItem.outerElement.id, jsonData);
