@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         window.location.hash;
     window.history.replaceState('', '', nextUri);
     //
-    initMainContents(); // メインコンテンツを表示
+    await initMainContents(); // メインコンテンツを表示
     initEditSwitch();   // 編集スイッチを初期化
     //
     // 各階層のJavaScriptファイル「setting.js」と「setting_top.js」から設定を読み込む

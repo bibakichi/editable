@@ -2,17 +2,19 @@
 plugins["ChildPage"] = {
     "toolbox": {
         "render": async function (saveData) {
-            const toolboxElement = document.createElement('h3');
-            toolboxElement.innerText = "子ページ";
-            return toolboxElement;
+            const buttonElement = document.createElement('label');
+            buttonElement.classList.add("button3d");
+            buttonElement.innerText = "子ページ";
+            return buttonElement;
         },
     },
     "viewer": {
         "renderLight": async function (blockId, saveData) {
-            const element = document.createElement('h3');
-            element.id = blockId;
-            element.innerText = saveData.text ?? "子ページ";
-            return element;
+            const buttonElement = document.createElement('label');
+            buttonElement.classList.add("button3d");
+            buttonElement.href = "./" + blockId + "/index.html";
+            buttonElement.innerText = "子ページ";
+            return buttonElement;
         },
         "onAppend": async function (blockId, saveData) {
             _showLoader();
