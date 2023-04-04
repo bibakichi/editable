@@ -11,6 +11,7 @@ plugins["ChildPage"] = {
     "viewer": {
         "renderLight": async function (blockId, saveData) {
             const buttonElement = document.createElement('a');
+            buttonElement.id = blockId;
             buttonElement.classList.add("button3d");
             buttonElement.href = "./" + blockId + "/index.html";
             buttonElement.innerText = saveData.text ?? "子ページ";
@@ -21,6 +22,7 @@ plugins["ChildPage"] = {
             const newElement = document.createElement('label');
             pastElement.replaceWith(newElement);
             newElement.classList.add("button3d");
+            newElement.id = blockId;
             newElement.innerText = saveData.text ?? "子ページ";
             newElement.addEventListener('click', (event) => {
                 //
