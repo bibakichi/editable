@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         const s1 = await _loadSetting(
             window.location.protocol + "//"
             + window.location.host + "/"
-            + pathList.join("/") + '/setting.js'
+            + pathList.join("/")
+            + ((pathList.length > 0) ? "/" : "")
+            + 'setting.js'
         );
         if (!s1.isLoadSettingSuccess) {
             break;
@@ -47,7 +49,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         const s2 = await _loadSetting(
             window.location.protocol + "//"
             + window.location.host + "/"
-            + pathList.join("/") + '/setting_top.js'
+            + pathList.join("/")
+            + ((pathList.length > 0) ? "/" : "")
+            + 'setting_top.js'
         );
         if (s2.isLoadSettingSuccess) {
             settings.push(s2);
