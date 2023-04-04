@@ -241,21 +241,21 @@ class SortableItem {
                 onDropImage: async (img) => await this._onDropBrotherImage({ img, isBefore: true }),
                 onDropFile: async (file) => await this._onDropBrotherFile({ file, isBefore: true }),
             });
+            // ドロップエリアを作成（このアイテムの中にドロップするためのもの）
+            this._dropAreaMiddle = this._createDropAreaMiddle({
+                isVertical: this._isVertical,
+                outerElement: this._outerElement,
+                isDroppable: this._isDroppable,
+                onDragEnter: this._onDragEnter,
+                onDragLeave: this._onDragLeave,
+                onDragOver: this._onDragOver,
+                onDrop: this._onDrop,
+                onDropJson: this._onDropChildJson,
+                onDropText: this._onDropChildText,
+                onDropImage: this._onDropChildImage,
+                onDropFile: this._onDropChildFile,
+            });
             if (!isDropOnly) {
-                // ドロップエリアを作成（このアイテムの中にドロップするためのもの）
-                this._dropAreaMiddle = this._createDropAreaMiddle({
-                    isVertical: this._isVertical,
-                    outerElement: this._outerElement,
-                    isDroppable: this._isDroppable,
-                    onDragEnter: this._onDragEnter,
-                    onDragLeave: this._onDragLeave,
-                    onDragOver: this._onDragOver,
-                    onDrop: this._onDrop,
-                    onDropJson: this._onDropChildJson,
-                    onDropText: this._onDropChildText,
-                    onDropImage: this._onDropChildImage,
-                    onDropFile: this._onDropChildFile,
-                });
                 // ドロップエリアを作成（このアイテムの直後に、他のアイテムを追加するためのもの）
                 this._dropAreaBottom = this._createDropAreaBottom({
                     isVertical: this._isVertical,
