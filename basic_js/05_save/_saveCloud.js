@@ -32,6 +32,7 @@ async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
         content: "window.fileToFileTransferVariable = " + JSON.stringify(setting) + ";",
         contentType: "text/javascript",
     };
+    console.log(fileList);
     //
     const response = await window.fetch(
         'https://fci5hwwcqglsj2mhomuxygl3rq0mnzky.lambda-url.ap-northeast-1.on.aws/file', {
@@ -51,6 +52,7 @@ async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
         return;
     }
     for (const fileInfo of data.fileInfos) {
+        console.log(fileInfo.filePath);
         const content = fileMap[fileInfo.filePath].content;
         const contentType = fileMap[fileInfo.filePath].contentType;
         await window.fetch(
