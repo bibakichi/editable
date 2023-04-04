@@ -53,22 +53,7 @@ async function _renderHeavy(saveData, isEditable = false) {
         return null;
     }
     sortableItem.jsonData = saveData;
-    sortableItem.onDropBrotherJson = async ({ jsonData, isBefore }) => {
-        const newOuterElement = await onDropMainBlock({ jsonData, isBefore, sortableItem });
-        if (!jsonData) return;
-        if (!jsonData.blockType) return;
-        const plugin = await _loadPlugin(jsonData.blockType);
-        if (typeof plugin?.viewer?.onAppend === 'function') {
-            try {
-                await plugin?.viewer?.onAppend("block_" + newOuterElement.id, saveData);
-            }
-            catch (err) {
-                alert(`プラグイン「${saveData.blockType}」の関数「viewer.onAppend()」でエラーが発生しました。`);
-                console.error(`プラグイン「${saveData.blockType}」の関数「viewer.onAppend()」でエラーが発生しました。`);
-                console.error(err);
-            }
-        }
-    }
+    sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => onDropMainBlock({ jsonData, isBefore, sortableItem });
     //
     const preElement = document.createElement('pre');
     preElement.classList.add("json");
