@@ -56,6 +56,7 @@ async function _renderHeavy(saveData, isEditable = false) {
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => onDropMainBlock({ jsonData, isBefore, sortableItem });
     sortableItem.onDropBrotherFile = async ({ file, isBefore }) => {
         const reader = new FileReaderEx();
+        console.log(file.type);
         if (file.type.startsWith("image")) {
             const url = await reader.readAsDataURL(file);
             console.log(url);
