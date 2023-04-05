@@ -5,7 +5,7 @@ plugins["P"] = {
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement('p');
             element.id = blockId;
-            element.innerText = saveData?.text ?? "本文";
+            element.innerHTML = saveData?.text ?? "本文";
             return element;
         },
         "changeEditMode": async function (blockId) {
@@ -23,7 +23,7 @@ plugins["P"] = {
                     // カーソル位置を最後にもっていく
                     const range = document.createRange();
                     const sel = window.getSelection();
-                    range.setStart(element.childNodes[0], element.innerText.length);
+                    range.setStart(element.childNodes[0], element.innerHTML.length);
                     range.collapse(true);
                     sel.removeAllRanges();
                     sel.addRange(range);
@@ -36,7 +36,7 @@ plugins["P"] = {
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
             return {
-                text: element.textContent,
+                text: element.innerHTML,
             };
         },
     },
