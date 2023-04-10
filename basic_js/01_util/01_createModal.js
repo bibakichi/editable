@@ -3,11 +3,11 @@
 function createModal() {
     const id = uuid();
     const bodyLeftElement = document.getElementById("body_left");
-    const triggerElement = document.createElement("input");
-    triggerElement.classList.add('modal_trigger');
-    triggerElement.id = id + '_trigger';
-    triggerElement.type = "checkbox";
-    bodyLeftElement.appendChild(triggerElement);
+    const checkboxElement = document.createElement("input");
+    checkboxElement.classList.add('modal_trigger');
+    checkboxElement.id = id + '_trigger';
+    checkboxElement.type = "checkbox";
+    bodyLeftElement.appendChild(checkboxElement);
     //
     const overlayElement = document.createElement("label");
     overlayElement.classList.add('modal_overlay');
@@ -42,5 +42,5 @@ function createModal() {
     const openButtonElement = document.createElement("label");
     openButtonElement.setAttribute('for', id + '_trigger');
     //
-    return { openButtonElement, mainElement };
+    return { openButtonElement, mainElement, checkboxElement };
 }
