@@ -4,10 +4,9 @@ var loadingPlugins = {};
 
 // プラグインファイルを読み込む
 async function _loadPlugin(blockType) {
-    const plugin = plugins[blockType];
-    if (plugin) {
+    if (plugins[blockType]) {
         if (isDebugPlugin) console.log("  既にプラグインは読み込み済みです。");
-        return plugin;
+        return plugins[blockType];
     }
     const url = './plugins/' + blockType + '.js?t=' + String(new Date().getTime());    //キャッシュ対策
     if (loadingPlugins[blockType] === true) {
@@ -37,6 +36,7 @@ async function _loadPlugin(blockType) {
     //
     loadingPlugins[blockType] = false;
     //
+    const plugin = plugins[blockType];
     if (plugin) {
         if (isDebugPlugin) console.log("  プラグイン読み込み成功");
     }
