@@ -88,6 +88,7 @@ async function _loadPlugin(blockType) {
             console.error(err);
             return plugin;
         }
+        console.log(urlList);
         for (const url of urlList) {
             const scriptElement = document.createElement('script');
             scriptElement.src = url;
