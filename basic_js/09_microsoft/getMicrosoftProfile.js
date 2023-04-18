@@ -11,9 +11,10 @@ async function _getMicrosoftProfile() {
         const { openButtonElement, mainElement, checkboxElement } = createModal();
         //
         const iframeElement = document.createElement("iframe");
-        const redirectUri = encodeURIComponent(window.href);
+        const redirectUri = window.encodeURIComponent(window.location.href);
         iframeElement.src = `https://7mo.nl/login?redirect_uri=${redirectUri}`;
-        mainElement.appendChild(iframeElement);
+        iframeElement
+        mainElement.replaceWith(iframeElement);
         //
         checkboxElement.checked = true;
     }
