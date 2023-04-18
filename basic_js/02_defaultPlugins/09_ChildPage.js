@@ -56,6 +56,7 @@ plugins["ChildPage"] = {
             };
         },
         "onAppend": async function (blockId, jsonData) {
+            console.log("onAppend");
             _showLoader();
             const folderId = uuid().substring(0, 6);
             console.log("b");
