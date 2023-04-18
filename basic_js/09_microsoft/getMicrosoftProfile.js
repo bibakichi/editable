@@ -7,6 +7,7 @@ async function _getMicrosoftProfile() {
         return microsoftProfile;
     }
     microsoftProfile = await loadMicrosoftProfile();
+    console.log(microsoftProfile);
     if (!microsoftProfile) {
         const { openButtonElement, mainElement, checkboxElement } = createModal();
         //
