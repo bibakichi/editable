@@ -2,6 +2,11 @@
 document.addEventListener('DOMContentLoaded', async function () {
     // URLからcloudFrontの認証情報を消す
     const params = new URLSearchParams(window.location.search);
+    if (params.get("login_iframe")) {
+        await loadMicrosoftProfile();
+        document.body.innerHTML = "<h2>ログインしました</h2>";
+        return;
+    }
     params.delete("Expires");
     params.delete("Signature");
     params.delete("Key-Pair-Id");

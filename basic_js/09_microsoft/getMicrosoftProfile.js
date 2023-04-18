@@ -11,8 +11,10 @@ async function _getMicrosoftProfile() {
         const { openButtonElement, mainElement, checkboxElement } = createModal();
         //
         const iframeElement = document.createElement("iframe");
-        const redirectUri = window.encodeURIComponent(window.location.href);
-        iframeElement.src = `https://7mo.nl/login?redirect_uri=${redirectUri}`;
+        const redirectUri = new URL(window.location.href);
+        redirectUri.searchParams.set("login_iframe", 1);
+        const redirectUriText = window.encodeURIComponent(redirectUri.toString());
+        iframeElement.src = `https://7mo.nl/login?redirect_uri=${redirectUriText}`;
         iframeElement.style.width = "100%";
         iframeElement.style.height = "100%";
         iframeElement.style.position = "absolute";
