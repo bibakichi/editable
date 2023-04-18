@@ -14,6 +14,10 @@ async function _getMicrosoftProfile() {
         const redirectUri = window.encodeURIComponent(window.location.href);
         iframeElement.src = `https://7mo.nl/login?redirect_uri=${redirectUri}`;
         iframeElement.style.width = "100%";
+        iframeElement.style.height = "100%";
+        iframeElement.style.position = "absolute";
+        iframeElement.style.margin = 0;
+        iframeElement.style.border = "none";
         mainElement.replaceWith(iframeElement);
         //
         checkboxElement.checked = true;
