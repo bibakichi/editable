@@ -25,4 +25,5 @@ async function _getMicrosoftProfile() {
         //
         checkboxElement.checked = true;
     }
+    return microsoftProfile;
 }
