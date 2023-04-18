@@ -1,11 +1,14 @@
 //#########################################################################################
-async function _writeSaveData(blockId, saveData) {
+async function _writeSaveData(blockId, newSaveData) {
     const innerElement = document.getElementById(blockId);
-    console.log(innerElement);
     const jsonElement = innerElement.parentElement.querySelector('.json');
-    console.log(jsonElement);
     if (!jsonElement) {
         return;
     }
-    jsonElement.innerText = JSON.stringify(saveData);
+    const pastSaveData = JSON.parse(jsonElement.textContent);
+    jsonElement.innerText = JSON.stringify({
+        ...pastSaveData,
+        ...newSaveData,
+        blockId: pastSaveData.blockId,
+    });
 }
