@@ -26,7 +26,8 @@ async function _editEnable() {
         if (typeof func === "function") {
             try {
                 saveData = {
-                    ...await func("block_" + sortableElement.id, saveData),
+                    ...saveData,
+                    ...(await func("block_" + sortableElement.id, saveData) ?? {}),
                     blockType: saveData?.blockType,
                 }
             }
