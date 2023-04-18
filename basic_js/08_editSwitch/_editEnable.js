@@ -18,19 +18,22 @@ async function _editEnable() {
             alert("ツールボックスのHTMLに.blockTypeが設定されていません");
             continue;
         }
-        const saveData = JSON.parse(jsonElement.textContent);
+        let saveData = JSON.parse(jsonElement.textContent);
         if (!saveData) continue;
         const plugin = plugins[saveData?.blockType];
         if (!plugin) continue;
         const func = plugin?.viewer?.changeEditMode;
         if (typeof func === "function") {
             try {
-                await func("block_" + sortableElement.id, saveData);
+                saveData = {
+                    ...await func("block_" + sortableElement.id, saveData),
+                    blockType: saveData?.blockType,
+                }
             }
             catch (err) { }
         }
+        jsonElement.innerText = JSON.stringify(saveData);
         const sortableItem = sortableItems[sortableElement.id];
-        console.log(saveData?.blockType);
         if (sortableItem) {
             sortableItem.isEnable = true;
         }
