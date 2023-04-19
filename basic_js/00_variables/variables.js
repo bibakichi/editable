@@ -6,3 +6,5 @@ var isEditMode = false; // この変数がtrueのときは、モーダルのア�
 
 const isDebugTree = false;
 const isDebugPlugin = false;
+
+let microsoftProfile = null;

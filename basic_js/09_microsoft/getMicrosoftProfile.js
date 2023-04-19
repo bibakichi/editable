@@ -1,7 +1,5 @@
 //#########################################################################################
 
-let microsoftProfile = null;
-
 async function _getMicrosoftProfile() {
     if (microsoftProfile) {
         return microsoftProfile;

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     window.history.replaceState('', '', nextUri);
     //
     async function initMains() {
+        microsoftProfile = await loadMicrosoftProfile();
         await initMainContents(); // メインコンテンツを表示
         await initEditSwitch();   // 編集スイッチを初期化
         if (params.get("editmode")) {
