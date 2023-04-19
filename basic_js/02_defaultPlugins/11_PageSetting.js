@@ -27,6 +27,12 @@ plugins["PageSetting"] = {
             const inputElement1 = document.createElement('input');
             inputElement1.value = settings[0]?.title;
             divElement1.appendChild(inputElement1);
+            inputElement1.addEventListener("input", () => {
+                settings[0] = {
+                    ...settings[0],
+                    title: inputElement1.value,
+                };
+            });
             //
             const divElement2 = document.createElement('div');
             mainElement.appendChild(divElement2);
