@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         await initMainContents(); // メインコンテンツを表示
         await initEditSwitch();   // 編集スイッチを初期化
         if (params.get("editmode")) {
+            _updateQueryParam("editmode", null);
             // 編集スイッチをONにする
             await _editEnable();
         }
