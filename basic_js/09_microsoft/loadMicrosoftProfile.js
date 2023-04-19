@@ -102,6 +102,12 @@ async function loadMicrosoftProfile() {
     window.history.replaceState('', '', nextUri);
     //
     //========================================================
+    console.log({
+        userName,
+        mailAddress,
+        queryParameters: Object.fromEntries(params.entries()),
+        graphApi,
+    });
     return {
         userName,
         mailAddress,
