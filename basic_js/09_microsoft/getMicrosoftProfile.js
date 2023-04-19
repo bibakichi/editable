@@ -13,9 +13,14 @@ async function _getMicrosoftProfile() {
         h2Element.innerText = "ログインをする必要があります";
         mainElement.appendChild(h2Element);
         //
+        const divElement = document.createElement("div");
+        divElement.style.textAlign = "center";
+        mainElement.appendChild(divElement);
+        //
         const buttonElement = document.createElement("a");
+        buttonElement.classList.add("button3d");
         buttonElement.innerText = "ログイン";
-        mainElement.appendChild(buttonElement);
+        divElement.appendChild(buttonElement);
         //
         const redirectUri = new URL(window.location.href);
         redirectUri.searchParams.set("editmode", 1);
