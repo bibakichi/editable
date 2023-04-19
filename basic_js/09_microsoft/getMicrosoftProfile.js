@@ -31,5 +31,6 @@ async function _getMicrosoftProfile() {
         //
         checkboxElement.checked = true;
     }
+    console.log(window.microsoftProfile);
     return window.microsoftProfile;
 }
