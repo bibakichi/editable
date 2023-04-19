@@ -1,14 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', async function () {
-    // URLからcloudFrontの認証情報を消す
-    const params = new URLSearchParams(window.location.search);
-    params.delete("Expires");
-    params.delete("Signature");
-    params.delete("Key-Pair-Id");
-    const nextUri = window.location.pathname.replaceAll(".login", "") +
-        '?' + params.toString() +
-        window.location.hash;
-    window.history.replaceState('', '', nextUri);
     //
     async function initMains() {
         microsoftProfile = await loadMicrosoftProfile();
