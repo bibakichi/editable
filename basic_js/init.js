@@ -2,11 +2,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     // URLからcloudFrontの認証情報を消す
     const params = new URLSearchParams(window.location.search);
-    if (params.get("login_iframe")) {
-        await loadMicrosoftProfile();
-        document.body.innerHTML = "<h2>ログインしました</h2>";
-        return;
-    }
     params.delete("Expires");
     params.delete("Signature");
     params.delete("Key-Pair-Id");
@@ -15,8 +10,15 @@ document.addEventListener('DOMContentLoaded', async function () {
         window.location.hash;
     window.history.replaceState('', '', nextUri);
     //
-    initMainContents(); // メインコンテンツを表示
-    initEditSwitch();   // 編集スイッチを初期化
+    async function initMains() {
+        await initMainContents(); // メインコンテンツを表示
+        await initEditSwitch();   // 編集スイッチを初期化
+        if (params.get("editmode")) {
+            // 編集スイッチをONにする
+            await _editEnable();
+        }
+    }
+    initMains();
     //
     // 各階層のJavaScriptファイル「setting.js」と「setting_top.js」から設定を読み込む
     //
