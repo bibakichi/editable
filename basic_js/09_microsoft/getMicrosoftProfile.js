@@ -4,13 +4,13 @@ async function _getMicrosoftProfile() {
     if (window.microsoftProfile) {
         return window.microsoftProfile;
     }
-    window.microsoftProfile = await loadMicrosoftProfile({ isEnableClose: false });
+    window.microsoftProfile = await loadMicrosoftProfile();
     if (window.microsoftProfile) {
         console.log(window.microsoftProfile);
         return window.microsoftProfile;
     }
     window.isLoginRequired = true;
-    const { openButtonElement, mainElement, checkboxElement } = createModal();
+    const { openButtonElement, mainElement, checkboxElement } = createModal({ isEnableClose: false });
     //
     const h2Element = document.createElement("h2");
     h2Element.style.textAlign = "center";
