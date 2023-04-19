@@ -8,6 +8,8 @@ plugins["PageSetting"] = {
     },
     "toolbox": {
         "render": async function (saveData) {
+            const id = uuid();
+            //
             const { openButtonElement, mainElement } = createModal();
             openButtonElement.innerText = "ページ設定";
             //
@@ -22,9 +24,11 @@ plugins["PageSetting"] = {
             //
             const labelElement1 = document.createElement('label');
             labelElement1.innerText = "タイトル";
+            labelElement1.setAttribute("for", "title_" + id);
             divElement1.appendChild(labelElement1);
             //
             const inputElement1 = document.createElement('input');
+            inputElement1.id = "title_" + id;
             inputElement1.value = settings[0]?.title;
             divElement1.appendChild(inputElement1);
             inputElement1.addEventListener("input", () => {
@@ -48,6 +52,7 @@ plugins["PageSetting"] = {
             labelElement2.appendChild(spanElement2);
             //
             const inputElement2 = document.createElement('input');
+            inputElement2.type = "checkbox";
             inputElement2.checked = settings[0]?.isFullSize;
             labelElement2.appendChild(inputElement2);
             inputElement2.addEventListener("change", () => {
@@ -65,6 +70,7 @@ plugins["PageSetting"] = {
             });
             //
             const sliderElement2 = document.createElement('span');
+            sliderElement2.classList.add("slider");
             labelElement2.appendChild(sliderElement2);
             //
             const divElement3 = document.createElement('div');
