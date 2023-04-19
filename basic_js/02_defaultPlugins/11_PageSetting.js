@@ -8,7 +8,6 @@ plugins["PageSetting"] = {
     },
     "toolbox": {
         "render": async function (saveData) {
-            const id = uuid();
             //
             const { openButtonElement, mainElement } = createModal();
             openButtonElement.innerText = "ページ設定";
@@ -24,11 +23,9 @@ plugins["PageSetting"] = {
             //
             const labelElement1 = document.createElement('label');
             labelElement1.innerText = "タイトル";
-            labelElement1.setAttribute("for", "title_" + id);
             divElement1.appendChild(labelElement1);
             //
             const inputElement1 = document.createElement('input');
-            inputElement1.id = "title_" + id;
             inputElement1.value = settings[0]?.title;
             divElement1.appendChild(inputElement1);
             inputElement1.addEventListener("input", () => {
@@ -41,10 +38,12 @@ plugins["PageSetting"] = {
             //
             //
             const divElement2 = document.createElement('div');
+            divElement2.classList.add("edit-switch-wrapper");
             mainElement.appendChild(divElement2);
             //
             const spanElement2 = document.createElement('span');
             spanElement2.innerText = "全画面表示";
+            spanElement2.classList.add("edit-label");
             divElement2.appendChild(spanElement2);
             //
             const labelElement2 = document.createElement('label');
