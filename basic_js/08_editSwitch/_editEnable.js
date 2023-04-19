@@ -1,11 +1,5 @@
 //#########################################################################################
 async function _editEnable() {
-    // 「このサイトを離れますか？」を有効にする
-    isEditMode = true;
-    window.onbeforeunload = function (event) {
-        event.preventDefault();
-        event.returnValue = 'Check';
-    }
     //
     document.getElementById('body_right').style.display = 'flex';
     document.getElementById('edit-switch-wrapper').style.opacity = 1;
@@ -63,4 +57,11 @@ async function _editEnable() {
             dropAreas.style.display = 'none';
         }
     });
+    //
+    // 「このサイトを離れますか？」を有効にする
+    isEditMode = true;
+    window.onbeforeunload = function (event) {
+        event.preventDefault();
+        event.returnValue = 'Check';
+    }
 }
