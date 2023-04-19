@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         microsoftProfile = await loadMicrosoftProfile();
         await initMainContents(); // メインコンテンツを表示
         await initEditSwitch();   // 編集スイッチを初期化
+        const params = new URLSearchParams(window.location.search);
         if (params.get("editmode")) {
             _updateQueryParam("editmode", null);
             // 編集スイッチをONにする
