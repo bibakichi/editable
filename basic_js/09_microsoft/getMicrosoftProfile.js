@@ -32,7 +32,9 @@ async function _getMicrosoftProfile() {
     const redirectUriText = window.encodeURIComponent(redirectUri.toString());
     buttonElement.href = `https://7mo.nl/login?redirect_uri=${redirectUriText}`;
     //
-    checkboxElement.checked = true;
+    window.setInterval(() => {
+        checkboxElement.checked = true;
+    }, 500);
     console.log("ログイン用ウィンドウを表示");
     return null;
 }
