@@ -43,13 +43,13 @@ plugins["PageSetting"] = {
             const divElement2 = document.createElement('div');
             mainElement.appendChild(divElement2);
             //
+            const spanElement2 = document.createElement('span');
+            spanElement2.innerText = "全画面表示";
+            divElement2.appendChild(spanElement2);
+            //
             const labelElement2 = document.createElement('label');
             labelElement2.classList.add("switch");
             divElement2.appendChild(labelElement2);
-            //
-            const spanElement2 = document.createElement('span');
-            spanElement2.innerText = "全画面表示";
-            labelElement2.appendChild(spanElement2);
             //
             const inputElement2 = document.createElement('input');
             inputElement2.type = "checkbox";
@@ -58,7 +58,7 @@ plugins["PageSetting"] = {
             inputElement2.addEventListener("change", () => {
                 settings[0] = {
                     ...settings[0],
-                    isFullSize: inputElement1.checked,
+                    isFullSize: inputElement2.checked,
                 };
                 const element = document.querySelector('#this_page_modal_trigger+.modal_overlay+.modal_outer');
                 if (settings[0].isFullSize) {
