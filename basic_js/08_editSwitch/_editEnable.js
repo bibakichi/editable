@@ -30,7 +30,6 @@ async function _editEnable() {
             catch (err) { }
         }
         const sortableItem = sortableItems[sortableElement.id];
-        console.log(saveData?.blockType);
         if (sortableItem) {
             sortableItem.isEnable = true;
         }

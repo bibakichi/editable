@@ -35,7 +35,6 @@ async function loadMicrosoftProfile() {
     params.delete("Expires");
     params.delete("Signature");
     params.delete("Key-Pair-Id");
-    console.log(graphApi);
     //
     let userName = null;
     let mailAddress = null;
@@ -93,9 +92,6 @@ async function loadMicrosoftProfile() {
         window.localStorage.removeItem("graphApiInfo");
         return null;
     }
-    console.log(userName);
-    console.log(mailAddress);
-    console.log(graphApi);
     window.localStorage.setItem("graphApiInfo", JSON.stringify(graphApi));
     //
     //========================================================
@@ -151,7 +147,6 @@ async function refreshAccessToken({ refreshToken, keyPairId }) {
     catch (e) {
         throw 'JSONに変換できませんでした';
     }
-    console.log(responseData);
     const { isSuccess, message, data } = responseData;
     if (!isSuccess) {
         console.error(message);
@@ -197,7 +192,6 @@ async function getUserInfo({ accessToken }) {
     catch (e) {
         throw 'JSONに変換できませんでした';
     }
-    console.log(responseData);
     const { isSuccess, message, data } = responseData;
     if (!isSuccess) {
         console.error(message);

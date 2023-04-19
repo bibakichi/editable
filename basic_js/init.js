@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (isFirst) {
             pathList = pathList.filter(path => (path !== ""));
         }
-        console.log(pathList);
         if (isDebugTree) console.log('\n');
         const s1 = await _loadSetting(
             window.location.protocol + "//"

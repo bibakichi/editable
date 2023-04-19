@@ -20,7 +20,6 @@ async function onDropMainBlock({ jsonData, isBefore = true, sortableItem }) {
                     ...newSaveData,
                     blockType: jsonData?.blockType,
                 };
-                console.log(newSaveData);
                 let jsonElement = newItem.querySelector('.json');
                 if (!jsonElement) {
                     jsonElement = document.createElement('pre');

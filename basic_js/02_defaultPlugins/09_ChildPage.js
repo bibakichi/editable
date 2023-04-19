@@ -58,8 +58,6 @@ plugins["ChildPage"] = {
         "onAppend": async function (blockId, jsonData) {
             _showLoader();
             const folderId = uuid().substring(0, 6);
-            console.log("b");
-            console.log(folderId);
             const htmlCode = _generateHTML({
                 title: "新しいページ",
                 mainContents: "",
@@ -71,7 +69,6 @@ plugins["ChildPage"] = {
             });
 
             const uri = new URL(window.location.href);
-            console.log(uri.hostname);
             let pathName = window.location.pathname;
             if (!pathName || pathName.endsWith("/")) {
                 pathName += "index.html";

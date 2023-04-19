@@ -24,7 +24,6 @@ async function allSave() {
         const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
         if (!newOuterElement || !newSaveData) continue;
         newMainContents.appendChild(newOuterElement);
-        console.log(newSaveData);
     }
     //
     const htmlCode = _generateHTML({
@@ -38,7 +37,6 @@ async function allSave() {
     });
 
     const uri = new URL(window.location.href);
-    console.log(uri.hostname);
     let pathName = window.location.pathname;
     if (!pathName || pathName.endsWith("/")) {
         pathName += "index.html";
