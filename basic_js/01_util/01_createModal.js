@@ -1,6 +1,7 @@
 //#########################################################################################
 
-function createModal({ isEnableClose = true }) {
+function createModal(props) {
+    const isEnableClose = props?.isEnableClose ?? true;
     const id = uuid();
     const bodyLeftElement = document.getElementById("body_left");
     const checkboxElement = document.createElement("input");
