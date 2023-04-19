@@ -837,7 +837,7 @@ button.closeButtonThisPage {
     text-align: right;
 }
 
-#edit-switch-wrapper>.edit-label {
+.edit-label {
     color: #777;
     font-size: 14px;
     position: relative;

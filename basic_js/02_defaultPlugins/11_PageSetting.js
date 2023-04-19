@@ -21,7 +21,7 @@ plugins["PageSetting"] = {
             const divElement1 = document.createElement('div');
             mainElement.appendChild(divElement1);
             //
-            const labelElement1 = document.createElement('label');
+            const labelElement1 = document.createElement('span');
             labelElement1.innerText = "タイトル";
             divElement1.appendChild(labelElement1);
             //
@@ -38,7 +38,6 @@ plugins["PageSetting"] = {
             //
             //
             const divElement2 = document.createElement('div');
-            divElement2.classList.add("edit-switch-wrapper");
             mainElement.appendChild(divElement2);
             //
             const spanElement2 = document.createElement('span');
