@@ -87,8 +87,8 @@ async function loadMicrosoftProfile() {
         //========================================================
     }
     else {
-        console.error("認証に必要な情報が不足しています");
-        console.error("クエリパラメータにkeyPairIdが存在せず、かつアクセストークンとリフレッシュトークンが端末内に残されていません");
+        // 認証に必要な情報が不足しています
+        // クエリパラメータにkeyPairIdが存在せず、かつアクセストークンとリフレッシュトークンが端末内に残されていません
         window.localStorage.removeItem("graphApiInfo");
         return null;
     }
@@ -102,12 +102,6 @@ async function loadMicrosoftProfile() {
     window.history.replaceState('', '', nextUri);
     //
     //========================================================
-    console.log({
-        userName,
-        mailAddress,
-        queryParameters: Object.fromEntries(params.entries()),
-        graphApi,
-    });
     return {
         userName,
         mailAddress,
