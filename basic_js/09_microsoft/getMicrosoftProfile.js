@@ -1,11 +1,12 @@
 //#########################################################################################
 
 async function _getMicrosoftProfile() {
-    if (microsoftProfile) {
-        return microsoftProfile;
+    if (window.microsoftProfile) {
+        return window.microsoftProfile;
     }
-    microsoftProfile = await loadMicrosoftProfile();
-    if (!microsoftProfile) {
+    window.microsoftProfile = await loadMicrosoftProfile({ isEnableClose: false });
+    if (!window.microsoftProfile) {
+        window.isLoginRequired = true;
         const { openButtonElement, mainElement, checkboxElement } = createModal();
         //
         const h2Element = document.createElement("h2");
@@ -30,5 +31,5 @@ async function _getMicrosoftProfile() {
         //
         checkboxElement.checked = true;
     }
-    return microsoftProfile;
+    return window.microsoftProfile;
 }

@@ -58,10 +58,12 @@ async function _editEnable() {
         }
     });
     //
-    // 「このサイトを離れますか？」を有効にする
-    isEditMode = true;
-    window.onbeforeunload = function (event) {
-        event.preventDefault();
-        event.returnValue = 'Check';
+    if (!window.isLoginRequired) {
+        // 「このサイトを離れますか？」を有効にする
+        isEditMode = true;
+        window.onbeforeunload = function (event) {
+            event.preventDefault();
+            event.returnValue = 'Check';
+        }
     }
 }

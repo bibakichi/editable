@@ -8,3 +8,4 @@ const isDebugTree = false;
 const isDebugPlugin = false;
 
 let microsoftProfile = null;
+let isLoginRequired = false;

@@ -1,6 +1,6 @@
 //#########################################################################################
 
-function createModal() {
+function createModal({ isEnableClose = true }) {
     const id = uuid();
     const bodyLeftElement = document.getElementById("body_left");
     const checkboxElement = document.createElement("input");
@@ -11,7 +11,9 @@ function createModal() {
     //
     const overlayElement = document.createElement("label");
     overlayElement.classList.add('modal_overlay');
-    overlayElement.setAttribute('for', id + '_trigger');
+    if (isEnableClose) {
+        overlayElement.setAttribute('for', id + '_trigger');
+    }
     bodyLeftElement.appendChild(overlayElement);
     //
     const contentOuterElement = document.createElement("div");
@@ -26,15 +28,17 @@ function createModal() {
     modalScrollElement.classList.add('modal_scroll');
     contentOuterElement.appendChild(modalScrollElement);
     //
-    const modalCloseButtonWrapper = document.createElement("div");
-    modalCloseButtonWrapper.classList.add('modal_close_button_wrapper');
-    modalScrollElement.appendChild(modalCloseButtonWrapper);
-    //
-    const closeButtonElement = document.createElement("label");
-    closeButtonElement.classList.add('buttonFlat');
-    closeButtonElement.setAttribute('for', id + '_trigger');
-    closeButtonElement.innerText = "戻る";
-    modalCloseButtonWrapper.appendChild(closeButtonElement);
+    if (isEnableClose) {
+        const modalCloseButtonWrapper = document.createElement("div");
+        modalCloseButtonWrapper.classList.add('modal_close_button_wrapper');
+        modalScrollElement.appendChild(modalCloseButtonWrapper);
+        //
+        const closeButtonElement = document.createElement("label");
+        closeButtonElement.classList.add('buttonFlat');
+        closeButtonElement.setAttribute('for', id + '_trigger');
+        closeButtonElement.innerText = "戻る";
+        modalCloseButtonWrapper.appendChild(closeButtonElement);
+    }
     //
     const mainElement = document.createElement("div");
     modalScrollElement.appendChild(mainElement);
