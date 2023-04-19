@@ -1,18 +1,15 @@
 
 document.addEventListener('DOMContentLoaded', async function () {
     //
-    async function initMains() {
-        microsoftProfile = await loadMicrosoftProfile();
-        await initMainContents(); // メインコンテンツを表示
-        await initEditSwitch();   // 編集スイッチを初期化
-        const params = new URLSearchParams(window.location.search);
-        if (params.get("editmode")) {
-            _updateQueryParam("editmode", null);
-            // 編集スイッチをONにする
-            await _editEnable();
-        }
+    microsoftProfile = await loadMicrosoftProfile();
+    await initMainContents(); // メインコンテンツを表示
+    await initEditSwitch();   // 編集スイッチを初期化
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("editmode")) {
+        _updateQueryParam("editmode", null);
+        // 編集スイッチをONにする
+        await _editEnable();
     }
-    initMains();
     //
     // 各階層のJavaScriptファイル「setting.js」と「setting_top.js」から設定を読み込む
     //
