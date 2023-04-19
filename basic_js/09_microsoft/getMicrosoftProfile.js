@@ -11,6 +11,7 @@ async function _getMicrosoftProfile() {
         const h2Element = document.createElement("h2");
         h2Element.style.textAlign = "center";
         h2Element.innerText = "ログインをする必要があります";
+        h2Element.style.margin = "50px 0";
         mainElement.appendChild(h2Element);
         //
         const divElement = document.createElement("div");
