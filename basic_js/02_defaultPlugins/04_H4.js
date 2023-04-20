@@ -5,7 +5,7 @@ plugins["H4"] = {
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement('h4');
             element.id = blockId;
-            element.innerText = saveData?.text ?? "見出し４";
+            element.innerHTML = saveData?.text ?? "見出し４";
             return element;
         },
         "changeEditMode": async function (blockId) {
@@ -23,7 +23,7 @@ plugins["H4"] = {
                     // カーソル位置を最後にもっていく
                     const range = document.createRange();
                     const sel = window.getSelection();
-                    range.setStart(element.childNodes[0], element.innerText.length);
+                    range.setStart(element.childNodes[0], element.innerHTML.length);
                     range.collapse(true);
                     sel.removeAllRanges();
                     sel.addRange(range);
@@ -43,7 +43,7 @@ plugins["H4"] = {
     "toolbox": {
         "render": async function (saveData) {
             const toolboxElement = document.createElement('h4');
-            toolboxElement.innerText = saveData?.text ?? '見出し４';
+            toolboxElement.innerHTML = saveData?.text ?? '見出し４';
             return toolboxElement;
         },
     },

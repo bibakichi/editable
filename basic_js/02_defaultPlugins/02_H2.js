@@ -5,7 +5,7 @@ plugins["H2"] = {
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement('h2');
             element.id = blockId;
-            element.innerText = saveData?.text ?? "見出し２";
+            element.innerHTML = saveData?.text ?? "見出し２";
             return element;
         },
         "changeEditMode": async function (blockId) {
@@ -23,7 +23,7 @@ plugins["H2"] = {
                     // カーソル位置を最後にもっていく
                     const range = document.createRange();
                     const sel = window.getSelection();
-                    range.setStart(element.childNodes[0], element.innerText.length);
+                    range.setStart(element.childNodes[0], element.innerHTML.length);
                     range.collapse(true);
                     sel.removeAllRanges();
                     sel.addRange(range);
@@ -43,7 +43,7 @@ plugins["H2"] = {
     "toolbox": {
         "render": async function (saveData) {
             const toolboxElement = document.createElement('h2');
-            toolboxElement.innerText = saveData?.text ?? '見出し２';
+            toolboxElement.innerHTML = saveData?.text ?? '見出し２';
             return toolboxElement;
         },
     },
