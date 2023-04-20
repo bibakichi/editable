@@ -80,5 +80,6 @@ async function allSave() {
     }
     else {
         await downloadZip(htmlCode);
+        _deleteLoader();
     }
 }
