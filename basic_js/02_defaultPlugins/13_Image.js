@@ -89,6 +89,7 @@ plugins["Image"] = {
                     newImageElement.style.backgroundSize = "cover";
                     newImageElement.style.backgroundRepeat = "no-repeat";
                     pastImageElement.replaceWith(newImageElement);
+                    console.log(newImageElement.style.height ?? newImageElement.style.paddingTop);
                 }
                 else {
                     const newImageElement = document.createElement('img');
@@ -96,6 +97,7 @@ plugins["Image"] = {
                     newImageElement.style.width = "100%";
                     newImageElement.src = urlElement.innerText;
                     pastImageElement.replaceWith(newImageElement);
+                    console.log(newImageElement.style.height ?? newImageElement.style.paddingTop);
                 }
             });
         },
