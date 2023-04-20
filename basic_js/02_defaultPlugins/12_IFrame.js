@@ -66,13 +66,7 @@ plugins["IFrame"] = {
             inputElement2.value = iframeElement.style.height ?? "1000px";
             divElement2.appendChild(inputElement2);
             inputElement2.addEventListener("input", () => {
-                const num = Number(inputElement1.value);
-                if (num > 0) {
-                    iframeElement.style.height = String(num) + "px";
-                }
-                else {
-                    iframeElement.style.height = "1000px";
-                }
+                iframeElement.style.height = inputElement1.value;
             });
         },
         "saveBlock": async function (blockId, pastSaveData) {
