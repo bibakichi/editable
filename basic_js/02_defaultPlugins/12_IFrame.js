@@ -38,10 +38,10 @@ plugins["IFrame"] = {
             titleElement.innerText = "埋め込まれたwebページ";
             titleElement.style.textAlign = "center";
             titleElement.style.margin = "50px 0";
-            outerElement.appendChild(titleElement);
+            overflowElement.appendChild(titleElement);
             //
             const divElement1 = document.createElement('div');
-            outerElement.appendChild(divElement1);
+            overflowElement.appendChild(divElement1);
             //
             const labelElement1 = document.createElement('span');
             labelElement1.innerText = "URL";
@@ -55,10 +55,10 @@ plugins["IFrame"] = {
             });
         },
         "saveBlock": async function (blockId, pastSaveData) {
-            const outerElement = document.getElementById(blockId);
-            console.log(outerElement.style.height);
+            const iframeElement = document.getElementById("iframe_" + blockId);
+            console.log(iframeElement.style.height);
             return {
-                url: outerElement.src,
+                url: iframeElement.src,
                 height: "1000px",
             };
         },
