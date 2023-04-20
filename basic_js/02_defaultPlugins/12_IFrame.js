@@ -32,7 +32,7 @@ plugins["IFrame"] = {
             overflowElement.style.left = 0;
             overflowElement.style.width = "100%";
             overflowElement.style.height = "100%";
-            overflowElement.style.background = "rgba(255,255,255,0.8)";
+            overflowElement.style.background = "rgba(200,200,200,0.9)";
             outerElement.appendChild(overflowElement);
             //
             const titleElement = document.createElement('h2');
@@ -63,15 +63,15 @@ plugins["IFrame"] = {
             divElement2.appendChild(labelElement2);
             //
             const inputElement2 = document.createElement('input');
-            inputElement2.value = iframeElement.height ?? "1000px";
+            inputElement2.value = iframeElement.style.height ?? "1000px";
             divElement2.appendChild(inputElement2);
             inputElement2.addEventListener("input", () => {
                 const num = Number(inputElement1.value);
                 if (num > 0) {
-                    iframeElement.height = String(num) + "px";
+                    iframeElement.style.height = String(num) + "px";
                 }
                 else {
-                    iframeElement.height = "1000px";
+                    iframeElement.style.height = "1000px";
                 }
             });
         },
