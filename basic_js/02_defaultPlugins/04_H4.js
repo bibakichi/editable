@@ -36,7 +36,7 @@ plugins["H4"] = {
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
             return {
-                text: element.textContent,
+                text: element.innerHTML,
             };
         },
     },

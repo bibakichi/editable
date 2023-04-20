@@ -104,7 +104,7 @@ plugins["Image"] = {
             const urlElement = document.getElementById("url_" + blockId);
             return {
                 src: urlElement.innerText,
-                height: imageElement.style.height,
+                height: imageElement.style.height ?? imageElement.style.paddingTop,
             };
         },
     },
