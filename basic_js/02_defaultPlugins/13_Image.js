@@ -89,7 +89,6 @@ plugins["Image"] = {
                     newImageElement.style.backgroundSize = "cover";
                     newImageElement.style.backgroundRepeat = "no-repeat";
                     pastImageElement.replaceWith(newImageElement);
-                    console.log(newImageElement.style.height ?? newImageElement.style.paddingTop);
                 }
                 else {
                     const newImageElement = document.createElement('img');
@@ -97,7 +96,6 @@ plugins["Image"] = {
                     newImageElement.style.width = "100%";
                     newImageElement.src = urlElement.innerText;
                     pastImageElement.replaceWith(newImageElement);
-                    console.log(newImageElement.style.height ?? newImageElement.style.paddingTop);
                 }
             });
         },
@@ -106,7 +104,7 @@ plugins["Image"] = {
             const urlElement = document.getElementById("url_" + blockId);
             return {
                 src: urlElement.innerText,
-                height: imageElement.style.height ?? imageElement.style.paddingTop,
+                height: imageElement.style.paddingTop,
             };
         },
     },
