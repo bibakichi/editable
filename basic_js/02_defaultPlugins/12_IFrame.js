@@ -16,6 +16,7 @@ plugins["IFrame"] = {
             iframeElement.style.overflowY = "auto";
             iframeElement.style.width = "100%";
             iframeElement.style.height = saveData?.height ?? "1000px";
+            iframeElement.style.minHeight = "200px";
             iframeElement.src = saveData?.url ?? "https://docs.google.com/forms/d/e/1FAIpQLSfbK4debgfo9LMG5HzPY8E0H1RoJX7rFdR2NhtFf3zSmFEZvg/viewform?embedded=true";
             outerElement.appendChild(iframeElement);
             //
@@ -31,7 +32,7 @@ plugins["IFrame"] = {
             overflowElement.style.left = 0;
             overflowElement.style.width = "100%";
             overflowElement.style.height = "100%";
-            overflowElement.style.background = "rbga(255,255,255,0.8)";
+            overflowElement.style.background = "rgba(255,255,255,0.8)";
             outerElement.appendChild(overflowElement);
             //
             const titleElement = document.createElement('h2');
@@ -48,18 +49,37 @@ plugins["IFrame"] = {
             divElement1.appendChild(labelElement1);
             //
             const inputElement1 = document.createElement('input');
-            inputElement1.value = iframeElement.src ?? "";
+            inputElement1.value = iframeElement.src ?? "_";
             divElement1.appendChild(inputElement1);
             inputElement1.addEventListener("focusout", () => {
                 iframeElement.src = inputElement1.value;
             });
+            //
+            const divElement2 = document.createElement('div');
+            overflowElement.appendChild(divElement2);
+            //
+            const labelElement2 = document.createElement('span');
+            labelElement2.innerText = "高さ";
+            divElement2.appendChild(labelElement2);
+            //
+            const inputElement2 = document.createElement('input');
+            inputElement2.value = iframeElement.height ?? "1000px";
+            divElement2.appendChild(inputElement2);
+            inputElement2.addEventListener("input", () => {
+                const num = Number(inputElement1.value);
+                if (num > 0) {
+                    iframeElement.height = String(num) + "px";
+                }
+                else {
+                    iframeElement.height = "1000px";
+                }
+            });
         },
         "saveBlock": async function (blockId, pastSaveData) {
             const iframeElement = document.getElementById("iframe_" + blockId);
-            console.log(iframeElement.style.height);
             return {
                 url: iframeElement.src,
-                height: "1000px",
+                height: iframeElement.style.height ?? "1000px",
             };
         },
     },
