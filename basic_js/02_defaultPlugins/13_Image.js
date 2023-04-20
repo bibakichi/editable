@@ -39,6 +39,7 @@ plugins["Image"] = {
         "changeEditMode": async function (blockId) {
             const outerElement = document.getElementById(blockId);
             const imageElement = document.getElementById("image_" + blockId);
+            const urlElement = document.getElementById("url_" + blockId);
             //
             const overflowElement = document.createElement('div');
             overflowElement.style.position = "absolute";
@@ -57,7 +58,7 @@ plugins["Image"] = {
             divElement1.appendChild(labelElement1);
             //
             const inputElement1 = document.createElement('input');
-            inputElement1.value = imageElement.src ?? "_";
+            inputElement1.value = urlElement.innerText;
             divElement1.appendChild(inputElement1);
             inputElement1.addEventListener("focusout", () => {
                 imageElement.src = inputElement1.value;
@@ -73,7 +74,7 @@ plugins["Image"] = {
             divElement2.appendChild(labelElement2);
             //
             const inputElement2 = document.createElement('input');
-            inputElement2.value = imageElement.style.height ?? "";
+            inputElement2.value = imageElement.style.paddingTop ?? "";
             divElement2.appendChild(inputElement2);
             inputElement2.addEventListener("input", () => {
                 const height = inputElement2.value;
