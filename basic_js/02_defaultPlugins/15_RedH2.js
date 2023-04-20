@@ -1,5 +1,5 @@
 //#########################################################################################
-plugins["H2"] = {
+plugins["RedH2"] = {
     "isDefault": true,
     "viewer": {
         "renderLight": async function (blockId, saveData) {
