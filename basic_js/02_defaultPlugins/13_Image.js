@@ -84,10 +84,10 @@ plugins["Image"] = {
                     newImageElement.id = "image_" + blockId;
                     newImageElement.style.width = "100%";
                     newImageElement.style.paddingTop = height;
-                    imageElement.style.backgroundImage = `url(${urlElement.innerText})`;
-                    imageElement.style.backgroundPosition = "center center";
-                    imageElement.style.backgroundSize = "cover";
-                    imageElement.style.backgroundRepeat = "no-repeat";
+                    newImageElement.style.backgroundImage = `url(${urlElement.innerText})`;
+                    newImageElement.style.backgroundPosition = "center center";
+                    newImageElement.style.backgroundSize = "cover";
+                    newImageElement.style.backgroundRepeat = "no-repeat";
                     pastImageElement.replaceWith(newImageElement);
                 }
                 else {
