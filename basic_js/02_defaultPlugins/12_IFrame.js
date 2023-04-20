@@ -66,7 +66,7 @@ plugins["IFrame"] = {
             inputElement2.value = iframeElement.style.height ?? "1000px";
             divElement2.appendChild(inputElement2);
             inputElement2.addEventListener("input", () => {
-                iframeElement.style.height = inputElement1.value;
+                iframeElement.style.height = inputElement2.value;
             });
         },
         "saveBlock": async function (blockId, pastSaveData) {
