@@ -117,7 +117,7 @@ plugins["Image"] = {
             inputElement3.value = imageElement.style.width ?? "";
             divElement3.appendChild(inputElement3);
             inputElement3.addEventListener("input", () => {
-                imageElement.width = inputElement3.value;
+                imageElement.style.width = inputElement3.value;
             });
         },
         "saveBlock": async function (blockId, pastSaveData) {
@@ -126,6 +126,7 @@ plugins["Image"] = {
             return {
                 src: urlElement.innerText,
                 height: imageElement.style.paddingTop,
+                width: imageElement.style.width,
             };
         },
     },
