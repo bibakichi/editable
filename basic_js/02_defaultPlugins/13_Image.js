@@ -18,7 +18,8 @@ plugins["Image"] = {
             if (saveData?.height) {
                 const imageElement = document.createElement('div');
                 imageElement.id = "image_" + blockId;
-                imageElement.style.width = "100%";
+                imageElement.style.width = saveData?.width ?? "100%";
+                imageElement.style.margin = "0 auto";
                 imageElement.style.paddingTop = saveData?.height;
                 imageElement.style.backgroundImage = `url(${saveData?.src})`;
                 imageElement.style.backgroundPosition = "center center";
@@ -29,7 +30,9 @@ plugins["Image"] = {
             else {
                 const imageElement = document.createElement('img');
                 imageElement.id = "image_" + blockId;
-                imageElement.style.width = "100%";
+                imageElement.style.display = "block";
+                imageElement.style.margin = "0 auto";
+                imageElement.style.width = saveData?.width ?? "100%";
                 imageElement.src = saveData?.src ?? "";
                 outerElement.appendChild(imageElement);
             }
@@ -83,7 +86,8 @@ plugins["Image"] = {
                 if (height) {
                     const newImageElement = document.createElement('div');
                     newImageElement.id = "image_" + blockId;
-                    newImageElement.style.width = "100%";
+                    newImageElement.style.margin = "0 auto";
+                    newImageElement.style.width = saveData?.width ?? "100%";
                     newImageElement.style.paddingTop = height;
                     newImageElement.style.backgroundImage = `url(${urlElement.innerText})`;
                     newImageElement.style.backgroundPosition = "center center";
@@ -94,10 +98,26 @@ plugins["Image"] = {
                 else {
                     const newImageElement = document.createElement('img');
                     newImageElement.id = "image_" + blockId;
-                    newImageElement.style.width = "100%";
+                    newImageElement.style.display = "block";
+                    newImageElement.style.margin = "0 auto";
+                    newImageElement.style.width = saveData?.width ?? "100%";
                     newImageElement.src = urlElement.innerText;
                     pastImageElement.replaceWith(newImageElement);
                 }
+            });
+            //
+            const divElement3 = document.createElement('div');
+            overflowElement.appendChild(divElement3);
+            //
+            const labelElement3 = document.createElement('span');
+            labelElement3.innerText = "幅";
+            divElement3.appendChild(labelElement3);
+            //
+            const inputElement3 = document.createElement('input');
+            inputElement3.value = imageElement.style.width ?? "";
+            divElement3.appendChild(inputElement3);
+            inputElement3.addEventListener("input", () => {
+                imageElement.width = inputElement3.value;
             });
         },
         "saveBlock": async function (blockId, pastSaveData) {
