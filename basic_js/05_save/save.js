@@ -1,6 +1,6 @@
 
 //#########################################################################################
-async function allSave(isDownload = false) {
+async function allSave(isDownload) {
     _showLoader();
     const toolListInner = document.getElementById("toolList");
     const toolBoxJsonDataList = [];
