@@ -87,7 +87,7 @@ plugins["Image"] = {
                     const newImageElement = document.createElement('div');
                     newImageElement.id = "image_" + blockId;
                     newImageElement.style.margin = "0 auto";
-                    newImageElement.style.width = saveData?.width ?? "100%";
+                    newImageElement.style.width = pastImageElement.style.width;
                     newImageElement.style.paddingTop = height;
                     newImageElement.style.backgroundImage = `url(${urlElement.innerText})`;
                     newImageElement.style.backgroundPosition = "center center";
@@ -100,7 +100,7 @@ plugins["Image"] = {
                     newImageElement.id = "image_" + blockId;
                     newImageElement.style.display = "block";
                     newImageElement.style.margin = "0 auto";
-                    newImageElement.style.width = saveData?.width ?? "100%";
+                    newImageElement.style.width = pastImageElement.style.width;
                     newImageElement.src = urlElement.innerText;
                     pastImageElement.replaceWith(newImageElement);
                 }
