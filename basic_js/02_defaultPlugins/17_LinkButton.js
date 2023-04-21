@@ -36,32 +36,11 @@ plugins["LinkButton"] = {
             openButtonElement.id = blockId;
             openButtonElement.setAttribute("for", blockId + '_trigger');
             openButtonElement.innerText = saveData?.text ?? "リンク";
-            openButtonElement.addEventListener('click', (event) => {
-                //
-                // この１文がなかったら、
-                // 編集中のテキストの先頭をクリックすると、カーソルが自動的に最後まで移動してしまう
-                if (openButtonElement.isContentEditable) return;
-                //
-                openButtonElement.contentEditable = true;
-                openButtonElement.focus();
-                // １文字以上の場合
-                if (openButtonElement.childNodes.length > 0) {
-                    // カーソル位置を最後にもっていく
-                    const range = document.createRange();
-                    const sel = window.getSelection();
-                    range.setStart(openButtonElement.childNodes[0], openButtonElement.innerText.length);
-                    range.collapse(true);
-                    sel.removeAllRanges();
-                    sel.addRange(range);
-                }
-            });
-            openButtonElement.addEventListener('focusout', (event) => {
-                openButtonElement.contentEditable = false;
-            });
             //
             const checkboxElement = document.createElement("input");
             checkboxElement.id = blockId + '_trigger';
             checkboxElement.type = "checkbox";
+            checkboxElement.style.display = "none";
             checkboxElement.classList.add("linkbutton_checkbox");
             newElement.appendChild(checkboxElement);
             //
@@ -91,12 +70,27 @@ plugins["LinkButton"] = {
                 const urlElement = document.getElementById("url_" + blockId);
                 urlElement.innerText = inputElement1.value;
             });
+            //
+            const divElement2 = document.createElement('div');
+            overlayElement.appendChild(divElement2);
+            //
+            const labelElement2 = document.createElement('span');
+            labelElement2.innerText = "表示するテキスト";
+            divElement2.appendChild(labelElement2);
+            //
+            const inputElement2 = document.createElement('input');
+            inputElement2.value = saveData?.text ?? "リンク";
+            divElement2.appendChild(inputElement2);
+            inputElement2.addEventListener("input", () => {
+                const openButtonElement = document.getElementById(blockId);
+                openButtonElement.innerText = inputElement2.value;
+            });
         },
         "saveBlock": async function (blockId, pastSaveData) {
-            const element = document.getElementById(blockId);
+            const openButtonElement = document.getElementById(blockId);
             const urlElement = document.getElementById("url_" + blockId);
             return {
-                text: element.textContent,
+                text: openButtonElement.textContent,
                 url: urlElement.innerText,
             };
         }
