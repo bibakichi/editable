@@ -1,0 +1,78 @@
+//#########################################################################################
+plugins["LinkButton"] = {
+    "isDefault": true,
+    "toolbox": {
+        "render": async function (saveData) {
+            const buttonElement = document.createElement('label');
+            buttonElement.classList.add("button3d");
+            buttonElement.innerText = saveData?.text ?? "リンク";
+            return buttonElement;
+        },
+    },
+    "viewer": {
+        "renderLight": async function (blockId, saveData) {
+            const buttonElement = document.createElement('a');
+            buttonElement.id = blockId;
+            buttonElement.classList.add("button3d");
+            buttonElement.href = saveData?.url;
+            buttonElement.innerText = saveData?.text ?? "リンク";
+            return buttonElement;
+        },
+        "changeEditMode": async function (blockId, saveData) {
+            const pastElement = document.getElementById(blockId);
+            const newElement = document.createElement('div');
+            newElement.id = blockId;
+            pastElement.replaceWith(newElement);
+            //
+            const checkboxElement = document.createElement("input");
+            checkboxElement.classList.add('modal_trigger');
+            checkboxElement.id = blockId + '_trigger';
+            checkboxElement.type = "checkbox";
+            newElement.appendChild(checkboxElement);
+            //
+            const openButtonElement = document.createElement('label');
+            newElement.appendChild(openButtonElement);
+            openButtonElement.classList.add("button3d");
+            openButtonElement.id = blockId;
+            openButtonElement.innerText = saveData?.text ?? "リンク";
+            openButtonElement.addEventListener('click', (event) => {
+                //
+                // この１文がなかったら、
+                // 編集中のテキストの先頭をクリックすると、カーソルが自動的に最後まで移動してしまう
+                if (openButtonElement.isContentEditable) return;
+                //
+                openButtonElement.contentEditable = true;
+                openButtonElement.focus();
+                // １文字以上の場合
+                if (openButtonElement.childNodes.length > 0) {
+                    // カーソル位置を最後にもっていく
+                    const range = document.createRange();
+                    const sel = window.getSelection();
+                    range.setStart(openButtonElement.childNodes[0], openButtonElement.innerText.length);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+            });
+            openButtonElement.addEventListener('focusout', (event) => {
+                openButtonElement.contentEditable = false;
+            });
+            //
+            const overlayElement = document.createElement("div");
+            overlayElement.style.position = "absolute";
+            overlayElement.style.top = "-50px";
+            overlayElement.style.height = "50px";
+            overlayElement.style.width = "100%";
+            overlayElement.style.background = "#fff";
+            overlayElement.style.boxShadow = "0 0 8px gray";
+            newElement.appendChild(overlayElement);
+        },
+        "saveBlock": async function (blockId, pastSaveData) {
+            const element = document.getElementById(blockId);
+            return {
+                text: element.textContent,
+                folderId: pastSaveData?.folderId,
+            };
+        }
+    }
+}
