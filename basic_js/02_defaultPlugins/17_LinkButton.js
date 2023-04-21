@@ -14,6 +14,7 @@ plugins["LinkButton"] = {
             const buttonElement = document.createElement('a');
             buttonElement.id = blockId;
             buttonElement.classList.add("button3d");
+            buttonElement.target = "_blank";
             buttonElement.href = saveData?.url;
             buttonElement.innerText = saveData?.text ?? "リンク";
             return buttonElement;
@@ -21,7 +22,6 @@ plugins["LinkButton"] = {
         "changeEditMode": async function (blockId, saveData) {
             const pastElement = document.getElementById(blockId);
             const newElement = document.createElement('div');
-            newElement.id = blockId;
             pastElement.replaceWith(newElement);
             //
             const urlElement = document.createElement('pre');
@@ -40,6 +40,7 @@ plugins["LinkButton"] = {
             newElement.appendChild(openButtonElement);
             openButtonElement.classList.add("button3d");
             openButtonElement.id = blockId;
+            openButtonElement.setAttribute("for", blockId + '_trigger');
             openButtonElement.innerText = saveData?.text ?? "リンク";
             openButtonElement.addEventListener('click', (event) => {
                 //
@@ -71,6 +72,7 @@ plugins["LinkButton"] = {
             overlayElement.style.width = "100%";
             overlayElement.style.background = "#fff";
             overlayElement.style.boxShadow = "0 0 8px gray";
+            overlayElement.style.zIndex = "999";
             newElement.appendChild(overlayElement);
             //
             //
