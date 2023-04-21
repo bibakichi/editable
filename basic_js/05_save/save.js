@@ -43,7 +43,7 @@ async function allSave(isDownload) {
     }
     const pathList = pathName.split("/");
     pathList.pop();
-    if (!isDownload && uri.hostname === "8mo.nl") {
+    if ((isDownload !== true) && (uri.hostname === "8mo.nl")) {
         //  以下のURLにアクセスがあった場合
         //    https://8mo.nl/【ストレージID】/【パス】
         const storageId = pathList.shift();
@@ -61,7 +61,7 @@ async function allSave(isDownload) {
         // ページを再読み込み
         window.location.reload();
     }
-    else if (!isDownload && uri.hostname.endsWith(".8mo.nl")) {
+    else if ((isDownload !== true) && (uri.hostname.endsWith(".8mo.nl"))) {
         //  以下のURLにアクセスがあった場合
         //    https://【パス】.8mo.nl/【ストレージID】/
         await saveCloud({
