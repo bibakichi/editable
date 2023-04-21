@@ -68,7 +68,6 @@ plugins["LinkButton"] = {
             });
             //
             const checkboxElement = document.createElement("input");
-            checkboxElement.classList.add('modal_trigger');
             checkboxElement.id = blockId + '_trigger';
             checkboxElement.type = "checkbox";
             checkboxElement.classList.add("linkbutton_checkbox");
