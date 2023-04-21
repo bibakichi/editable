@@ -1,14 +1,6 @@
 //#########################################################################################
 plugins["LinkButton"] = {
     "isDefault": true,
-    "css": async () => `
-        .linkbutton_overlay {
-            display: none;
-        }
-        .linkbutton_checkbox:checked+.linkbutton_overlay {
-            display: block;
-        }
-    `,
     "toolbox": {
         "render": async function (saveData) {
             const buttonElement = document.createElement('label');

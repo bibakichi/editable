@@ -905,3 +905,12 @@ input:checked+.slider:before {
 .json {
     display: none;
 }
+
+
+.linkbutton_overlay {
+    display: none;
+}
+
+.linkbutton_checkbox:checked+.linkbutton_overlay {
+    display: block;
+}
