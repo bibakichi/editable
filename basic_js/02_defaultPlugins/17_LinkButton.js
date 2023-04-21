@@ -1,6 +1,14 @@
 //#########################################################################################
 plugins["LinkButton"] = {
     "isDefault": true,
+    "css": async () => `
+        .linkbutton_overlay {
+            display: none;
+        }
+        .linkbutton_checkbox:checked+.linkbutton_overlay {
+            display: block;
+        }
+    `,
     "toolbox": {
         "render": async function (saveData) {
             const buttonElement = document.createElement('label');
@@ -29,12 +37,6 @@ plugins["LinkButton"] = {
             urlElement.innerText = saveData?.url ?? "";
             urlElement.style.display = "none";
             newElement.appendChild(urlElement);
-            //
-            const checkboxElement = document.createElement("input");
-            checkboxElement.classList.add('modal_trigger');
-            checkboxElement.id = blockId + '_trigger';
-            checkboxElement.type = "checkbox";
-            newElement.appendChild(checkboxElement);
             //
             const openButtonElement = document.createElement('label');
             newElement.appendChild(openButtonElement);
@@ -65,6 +67,13 @@ plugins["LinkButton"] = {
                 openButtonElement.contentEditable = false;
             });
             //
+            const checkboxElement = document.createElement("input");
+            checkboxElement.classList.add('modal_trigger');
+            checkboxElement.id = blockId + '_trigger';
+            checkboxElement.type = "checkbox";
+            checkboxElement.classList.add("linkbutton_checkbox");
+            newElement.appendChild(checkboxElement);
+            //
             const overlayElement = document.createElement("div");
             overlayElement.style.position = "absolute";
             overlayElement.style.top = "-50px";
@@ -73,6 +82,7 @@ plugins["LinkButton"] = {
             overlayElement.style.background = "#fff";
             overlayElement.style.boxShadow = "0 0 8px gray";
             overlayElement.style.zIndex = "999";
+            overlayElement.classList.add("linkbutton_overlay");
             newElement.appendChild(overlayElement);
             //
             //
