@@ -24,6 +24,12 @@ plugins["LinkButton"] = {
             newElement.id = blockId;
             pastElement.replaceWith(newElement);
             //
+            const urlElement = document.createElement('pre');
+            urlElement.id = "url_" + blockId;
+            urlElement.innerText = saveData?.url ?? "";
+            urlElement.style.display = "none";
+            newElement.appendChild(urlElement);
+            //
             const checkboxElement = document.createElement("input");
             checkboxElement.classList.add('modal_trigger');
             checkboxElement.id = blockId + '_trigger';
@@ -66,12 +72,29 @@ plugins["LinkButton"] = {
             overlayElement.style.background = "#fff";
             overlayElement.style.boxShadow = "0 0 8px gray";
             newElement.appendChild(overlayElement);
+            //
+            //
+            const divElement1 = document.createElement('div');
+            overlayElement.appendChild(divElement1);
+            //
+            const labelElement1 = document.createElement('span');
+            labelElement1.innerText = "URL";
+            divElement1.appendChild(labelElement1);
+            //
+            const inputElement1 = document.createElement('input');
+            inputElement1.value = urlElement.innerText;
+            divElement1.appendChild(inputElement1);
+            inputElement1.addEventListener("focusout", () => {
+                const urlElement = document.getElementById("url_" + blockId);
+                urlElement.innerText = inputElement1.value;
+            });
         },
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
+            const urlElement = document.getElementById("url_" + blockId);
             return {
                 text: element.textContent,
-                folderId: pastSaveData?.folderId,
+                url: urlElement.innerText,
             };
         }
     }
