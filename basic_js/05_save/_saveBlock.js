@@ -15,15 +15,15 @@ async function _saveBlock(outerElement) {
     let newSaveData;
     if (typeof plugin?.viewer?.saveBlock !== 'function') {
         newSaveData = { ...pastSaveData };
-        console.error(`プラグイン「${newSaveData.blockType}」の関数「viewer.saveBlock()」が未定義です。`);
+        console.error(`プラグイン「${pastSaveData.blockType}」の関数「viewer.saveBlock()」が未定義です。`);
     }
     else {
         try {
             newSaveData = await plugin?.viewer?.saveBlock("block_" + outerElement.id, pastSaveData);
         }
         catch (err) {
-            alert(`プラグイン「${newSaveData.blockType}」の関数「viewer.saveBlock()」でエラーが発生しました。`);
-            console.error(`プラグイン「${newSaveData.blockType}」の関数「viewer.saveBlock()」でエラーが発生しました。`);
+            alert(`プラグイン「${pastSaveData.blockType}」の関数「viewer.saveBlock()」でエラーが発生しました。`);
+            console.error(`プラグイン「${pastSaveData.blockType}」の関数「viewer.saveBlock()」でエラーが発生しました。`);
             console.error(err);
             return {};
         }
