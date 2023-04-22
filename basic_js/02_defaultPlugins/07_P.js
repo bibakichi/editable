@@ -28,12 +28,12 @@ plugins["P"] = {
                 modules: {
                     toolbar: [
                         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                        ['blockquote', 'code-block'],
 
                         [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
                         [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-                        [{ 'direction': 'rtl' }],                         // text direction
 
-                        [{ 'size': ['小', '中', '大', '特大'] }],  // custom dropdown
+                        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
 
                         [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
                         [{ 'font': [] }],
