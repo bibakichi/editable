@@ -914,3 +914,7 @@ input:checked+.slider:before {
 .linkbutton_checkbox:checked+.linkbutton_overlay {
     display: block;
 }
+
+.ql-editor {
+    font-size: inherit;
+}

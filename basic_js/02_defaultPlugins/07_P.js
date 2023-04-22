@@ -13,6 +13,7 @@ plugins["P"] = {
             const qlEditor = element.querySelector(".ql-editor");
             const newElement = document.createElement('div');
             newElement.innerHTML = qlEditor.innerHTML;
+            newElement.classList.add("ql-container");
             return newElement;
         },
         "saveBlock": async function (blockId, pastSaveData) {
@@ -46,6 +47,16 @@ plugins["P"] = {
                 },*/
                 theme: 'bubble'
             });
+            setTimeout(() => {
+                const element = document.getElementById(blockId);
+                const qlEditor = element.querySelector(".ql-editor");
+                element.classList.remove("ql-container");
+                qlEditor.classList.remove("ql-editor");
+                element.addEventListener("click", () => {
+                    element.classList.add("ql-container");
+                    qlEditor.classList.add("ql-editor");
+                });
+            }, 500);
         },
     },
     "toolbox": {

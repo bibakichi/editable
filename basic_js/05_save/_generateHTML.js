@@ -75,11 +75,11 @@ function _generateHTML({
         <link rel="icon" type="image/png" sizes="24x24" href="${faviconsFolderPath}icon-24x24.png">
         <link rel="icon" type="image/png" sizes="32x32" href="${faviconsFolderPath}icon-32x32.png">
         <!-- -->
-        <!-- 共通CSS -->
-        <link rel="stylesheet" href="${basicCssPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="basic_css">
-        <!-- -->
         <!-- WYSIWYGエディター「Quill」を読み込み -->
         <link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+        <!-- -->
+        <!-- 共通CSS -->
+        <link rel="stylesheet" href="${basicCssPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="basic_css">
         <!-- -->
         <!-- 共通JavaScript -->
         <script type="text/javascript">
