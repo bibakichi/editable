@@ -3,6 +3,7 @@ plugins["P"] = {
     "isDefault": true,
     "viewer": {
         "renderHeavy": async function (blockId, saveData) {
+            alert("a");
             console.log(saveData?.text);
             const element = document.createElement('div');
             element.id = blockId;
