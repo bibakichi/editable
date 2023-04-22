@@ -13,8 +13,9 @@ plugins["H1"] = {
             element.addEventListener('paste', (e) => {
                 const text = e.clipboardData.getData("text/plain");
                 console.log(text);
-                var sentence = element.innerHTML;
-                var pos = textarea.selectionStart;
+                const sentence = element.innerHTML;
+                const sel = window.getSelection();
+                var pos = sel.baseOffset;
                 var before = sentence.substring(0, pos);
                 var after = sentence.substring(pos, pos + sentence.length);
                 element.innerHTML = before + text + after;
