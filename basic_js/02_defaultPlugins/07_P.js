@@ -10,7 +10,7 @@ plugins["P"] = {
         },
         "renderLight": async function (blockId, saveData) {
             const element = document.getElementById(blockId);
-            const qlEditor = element.querySelector(".ql-editor2");
+            const qlEditor = element.querySelector(".ql-editor");
             const newElement = document.createElement('div');
             newElement.innerHTML = qlEditor.innerHTML;
             newElement.classList.add("ql-container");
@@ -18,7 +18,7 @@ plugins["P"] = {
         },
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
-            const qlEditor = element.querySelector(".ql-editor2");
+            const qlEditor = element.querySelector(".ql-editor");
             return {
                 text: qlEditor.innerHTML,
             };
@@ -49,17 +49,19 @@ plugins["P"] = {
             });
             setTimeout(() => {
                 const element = document.getElementById(blockId);
-                const qlEditor = element.querySelector(".ql-editor");
-                element.classList.remove("ql-container");
-                qlEditor.classList.remove("ql-editor");
-                qlEditor.classList.add("ql-editor2");
-                element.addEventListener("click", () => {
-                    element.classList.add("ql-container");
-                    qlEditor.classList.add("ql-editor");
+                element.style.position = "relative";
+                const overlayElement = document.createElement('div');
+                overlayElement.style.top = 0;
+                overlayElement.style.position = "absolute";
+                overlayElement.style.width = "100%";
+                overlayElement.style.height = "100%";
+                overlayElement.style.zIndex = 999;
+                element.appendChild(overlayElement);
+                overlayElement.addEventListener("click", () => {
+                    overlayElement.style.display = "none";
                 });
                 element.addEventListener("focusout", () => {
-                    element.classList.remove("ql-container");
-                    qlEditor.classList.remove("ql-editor");
+                    overlayElement.style.display = "block";
                 });
             }, 500);
         },
