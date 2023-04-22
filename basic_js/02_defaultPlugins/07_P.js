@@ -58,7 +58,9 @@ plugins["P"] = {
                 overlayElement.style.zIndex = 999;
                 element.appendChild(overlayElement);
                 overlayElement.addEventListener("mousedown", () => {
-                    overlayElement.style.display = "none";
+                    setTimeout(() => {
+                        overlayElement.style.display = "none";
+                    }, 100);
                 });
                 element.addEventListener("focusout", () => {
                     overlayElement.style.display = "block";
