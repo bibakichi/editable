@@ -563,8 +563,6 @@ input.modal_trigger:checked+.modal_overlay {
     position: absolute;
     transform: scale(0);
     transition: 0.3s;
-    overflow-y: auto;
-    overflow-x: visible;
     background: #fff;
 }
 
@@ -916,6 +914,6 @@ input:checked+.slider:before {
     display: block;
 }
 
-.ql-editor {
+.ql-container, .ql-editor {
     font-size: inherit;
 }
