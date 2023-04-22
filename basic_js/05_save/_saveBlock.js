@@ -12,7 +12,6 @@ async function _saveBlock(outerElement) {
     alert(pastSaveData.blockType);
     const plugin = plugins[pastSaveData.blockType];
     if (!plugin) return {};
-    console.log(plugin);
     //
     let newSaveData;
     if (typeof plugin?.viewer?.saveBlock !== 'function') {
@@ -21,7 +20,9 @@ async function _saveBlock(outerElement) {
     }
     else {
         try {
+            console.log(plugin?.viewer?.saveBlock);
             newSaveData = await plugin?.viewer?.saveBlock("block_" + outerElement.id, pastSaveData);
+            console.log(newSaveData);
         }
         catch (err) {
             alert(`プラグイン「${newSaveData.blockType}」の関数「viewer.saveBlock()」でエラーが発生しました。`);
