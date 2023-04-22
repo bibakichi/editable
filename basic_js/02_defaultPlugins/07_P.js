@@ -10,12 +10,14 @@ plugins["P"] = {
         },
         "renderLight": async function (blockId, saveData) {
             const element = document.getElementById(blockId);
-            return element;
+            const qlEditor = element.querySelector(".ql-editor");
+            return qlEditor;
         },
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
+            const qlEditor = element.querySelector(".ql-editor");
             return {
-                innerHTML: element.innerHTML,
+                innerHTML: qlEditor.innerHTML,
             };
         },
         "changeEditMode": async function (blockId) {
