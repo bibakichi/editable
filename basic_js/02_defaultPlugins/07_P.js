@@ -3,13 +3,34 @@ plugins["P"] = {
     "isDefault": true,
     "viewer": {
         "renderLight": async function (blockId, saveData) {
-            const element = document.createElement('p');
+            const element = document.createElement('div');
             element.id = blockId;
             element.innerHTML = saveData?.text ?? "本文";
             return element;
         },
         "changeEditMode": async function (blockId) {
             const quill = new Quill('#' + blockId, {
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                        ['blockquote', 'code-block'],
+
+                        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+                        [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+                        [{ 'direction': 'rtl' }],                         // text direction
+
+                        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                        [{ 'font': [] }],
+                        [{ 'align': [] }],
+
+                        ['clean']                                         // remove formatting button
+                    ]
+                },
                 theme: 'bubble'
             });
         },
