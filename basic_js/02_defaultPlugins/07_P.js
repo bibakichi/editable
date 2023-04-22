@@ -12,7 +12,12 @@ plugins["P"] = {
             const element = document.getElementById(blockId);
             const qlEditor = element.querySelector(".ql-editor");
             const newElement = document.createElement('div');
-            newElement.innerHTML = qlEditor.innerHTML;
+            if (qlEditor) {
+                newElement.innerHTML = qlEditor.innerHTML;
+            }
+            else {
+                newElement.innerHTML = element.innerHTML;
+            }
             newElement.classList.add("ql-container");
             return newElement;
         },
