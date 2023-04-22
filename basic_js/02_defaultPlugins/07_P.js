@@ -19,6 +19,10 @@ plugins["P"] = {
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
             const qlEditor = element.querySelector(".ql-editor");
+            console.log("\n\n\n\n");
+            console.log(qlEditor);
+            console.log("\n\n\n\n");
+            console.log(qlEditor.innerHTML);
             return {
                 text: qlEditor.innerHTML,
             };
