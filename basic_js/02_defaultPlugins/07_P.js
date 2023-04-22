@@ -10,6 +10,10 @@ plugins["P"] = {
         },
         "renderLight": async function (blockId, saveData) {
             const element = document.getElementById(blockId);
+            return element;
+        },
+        "saveBlock": async function (blockId, pastSaveData) {
+            const element = document.getElementById(blockId);
             return {
                 innerHTML: element.innerHTML,
             };
