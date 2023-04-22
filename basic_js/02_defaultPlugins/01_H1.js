@@ -10,6 +10,16 @@ plugins["H1"] = {
         },
         "changeEditMode": async function (blockId) {
             const element = document.getElementById(blockId);
+            element.addEventListener('paste', (e) => {
+                const text = e.clipboardData.getData("text/plain");
+                console.log(text);
+                var sentence = element.innerHTML;
+                var pos = textarea.selectionStart;
+                var before = sentence.substring(0, pos);
+                var after = sentence.substring(pos, pos + sentence.length);
+                element.innerHTML = before + text + after;
+                return false;
+            });
             element.addEventListener('click', (event) => {
                 //
                 // この１文がなかったら、
