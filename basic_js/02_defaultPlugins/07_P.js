@@ -10,7 +10,7 @@ plugins["P"] = {
         },
         "renderLight": async function (blockId, saveData) {
             const element = document.getElementById(blockId);
-            const qlEditor = element.querySelector(".ql-editor");
+            const qlEditor = element.querySelector(".ql-editor2");
             const newElement = document.createElement('div');
             newElement.innerHTML = qlEditor.innerHTML;
             newElement.classList.add("ql-container");
@@ -52,6 +52,7 @@ plugins["P"] = {
                 const qlEditor = element.querySelector(".ql-editor");
                 element.classList.remove("ql-container");
                 qlEditor.classList.remove("ql-editor");
+                qlEditor.classList.add("ql-editor2");
                 element.addEventListener("click", () => {
                     element.classList.add("ql-container");
                     qlEditor.classList.add("ql-editor");
