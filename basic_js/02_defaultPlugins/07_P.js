@@ -75,7 +75,7 @@ plugins["P"] = {
     "toolbox": {
         "render": async function (saveData) {
             const toolboxElement = document.createElement('p');
-            toolboxElement.innerText = saveData?.text ?? '本文';
+            toolboxElement.innerHTML = saveData?.text ?? '本文';
             return toolboxElement;
         },
     },
