@@ -54,12 +54,6 @@ plugins["P"] = {
                 theme: 'bubble'
             });
         },
-        "saveBlock": async function (blockId, pastSaveData) {
-            const element = document.getElementById(blockId);
-            return {
-                text: element.innerHTML,
-            };
-        },
     },
     "toolbox": {
         "render": async function (saveData) {
