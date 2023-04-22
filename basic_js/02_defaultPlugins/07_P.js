@@ -3,9 +3,10 @@ plugins["P"] = {
     "isDefault": true,
     "viewer": {
         "renderHeavy": async function (blockId, saveData) {
+            console.log(saveData?.text);
             const element = document.createElement('div');
             element.id = blockId;
-            element.innerHTML = saveData?.innerHTML ?? "";
+            element.innerHTML = saveData?.text ?? "";
             return element;
         },
         "renderLight": async function (blockId, saveData) {
@@ -17,7 +18,7 @@ plugins["P"] = {
             const element = document.getElementById(blockId);
             const qlEditor = element.querySelector(".ql-editor");
             return {
-                innerHTML: qlEditor.innerHTML,
+                text: qlEditor.innerHTML,
             };
         },
         "changeEditMode": async function (blockId) {
