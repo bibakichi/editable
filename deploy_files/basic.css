@@ -529,6 +529,7 @@ button.buttonFlat:hover {
     padding: 0;
     position: absolute;
     justify-content: center;
+    overflow: hidden;
     top: 0;
     left: 0;
     width: 100%;
@@ -563,6 +564,7 @@ input.modal_trigger:checked+.modal_overlay {
     transform: scale(0);
     transition: 0.3s;
     overflow-y: auto;
+    overflow-x: visible;
     background: #fff;
 }
 
@@ -914,6 +916,6 @@ input:checked+.slider:before {
     display: block;
 }
 
-.ql-container {
+.ql-editor {
     font-size: inherit;
 }
