@@ -9,6 +9,7 @@ async function _saveBlock(outerElement) {
         console.error('blockTypeが未定義です。');
         return {};
     }
+    alert(pastSaveData.blockType);
     const plugin = plugins[pastSaveData.blockType];
     if (!plugin) return {};
     //
