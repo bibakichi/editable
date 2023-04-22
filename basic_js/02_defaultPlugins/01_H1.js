@@ -11,15 +11,15 @@ plugins["H1"] = {
         "changeEditMode": async function (blockId) {
             const element = document.getElementById(blockId);
             element.addEventListener('paste', (e) => {
+                e.preventDefault();
                 const text = e.clipboardData.getData("text/plain");
                 console.log(text);
                 const sentence = element.innerHTML;
                 const sel = window.getSelection();
-                var pos = sel.baseOffset;
+                var pos = sel.anchorOffset;
                 var before = sentence.substring(0, pos);
                 var after = sentence.substring(pos, pos + sentence.length);
                 element.innerHTML = before + text + after;
-                return false;
             });
             element.addEventListener('click', (event) => {
                 //
