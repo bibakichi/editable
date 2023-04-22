@@ -28,7 +28,6 @@ plugins["P"] = {
                 modules: {
                     toolbar: [
                         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-                        ['blockquote', 'code-block'],
 
                         [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
                         [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
@@ -38,8 +37,6 @@ plugins["P"] = {
                         [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
                         [{ 'font': [] }],
                         [{ 'align': [] }],
-
-                        ['clean']                                         // remove formatting button
                     ]
                 },
                 theme: 'bubble'
