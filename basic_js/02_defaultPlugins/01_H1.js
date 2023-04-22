@@ -11,14 +11,14 @@ plugins["H1"] = {
         "changeEditMode": async function (blockId) {
             const element = document.getElementById(blockId);
             element.addEventListener('paste', (e) => {
+                // ペースト時にプレーンテキストのみにする
                 e.preventDefault();
                 const text = e.clipboardData.getData("text/plain");
-                console.log(text);
                 const sentence = element.innerHTML;
                 const sel = window.getSelection();
-                var pos = sel.anchorOffset;
-                var before = sentence.substring(0, pos);
-                var after = sentence.substring(pos, pos + sentence.length);
+                const pos = sel.anchorOffset;
+                const before = sentence.substring(0, pos);
+                const after = sentence.substring(pos, pos + sentence.length);
                 element.innerHTML = before + text + after;
             });
             element.addEventListener('click', (event) => {

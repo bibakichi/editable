@@ -78,6 +78,9 @@ function _generateHTML({
         <!-- 共通CSS -->
         <link rel="stylesheet" href="${basicCssPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="basic_css">
         <!-- -->
+        <!-- WYSIWYGエディター「Quill」を読み込み -->
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <!-- -->
         <!-- 共通JavaScript -->
         <script type="text/javascript">
             function _initReload() {
@@ -97,6 +100,8 @@ function _generateHTML({
         <script src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}" defer id="basic_js"></script>
         <script src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}" defer id="jszip"></script>
         <!-- -->
+        <!-- WYSIWYGエディター「Quill」を読み込み -->
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js" defer></script>
     </head>
 
     <body>

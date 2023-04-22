@@ -25,6 +25,17 @@ plugins["ChildPage"] = {
             newElement.classList.add("button3d");
             newElement.id = blockId;
             newElement.innerText = saveData?.text ?? "子ページ";
+            newElement.addEventListener('paste', (e) => {
+                // ペースト時にプレーンテキストのみにする
+                e.preventDefault();
+                const text = e.clipboardData.getData("text/plain");
+                const sentence = newElement.innerHTML;
+                const sel = window.getSelection();
+                const pos = sel.anchorOffset;
+                const before = sentence.substring(0, pos);
+                const after = sentence.substring(pos, pos + sentence.length);
+                newElement.innerHTML = before + text + after;
+            });
             newElement.addEventListener('click', (event) => {
                 //
                 // この１文がなかったら、
