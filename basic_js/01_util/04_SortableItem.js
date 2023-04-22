@@ -153,7 +153,7 @@ class SortableItem {
         const sortableItemList = document.getElementsByClassName('sortable_item');
         for (const sortableItem of sortableItemList) {
             if (sortableItem.id != this._outerElement.id) {
-                sortableItem.style.zIndex = 1;
+                sortableItem.style.zIndex = "auto";
                 const dropAreas = sortableItem.querySelector('.sortable_item_drop_areas');
                 if (dropAreas) {
                     dropAreas.style.display = 'block';
