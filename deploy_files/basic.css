@@ -564,6 +564,8 @@ input.modal_trigger:checked+.modal_overlay {
     transform: scale(0);
     transition: 0.3s;
     background: #fff;
+    overflow-y: auto;
+    overflow-x: visible;
 }
 
 @media print {
