@@ -25,7 +25,7 @@ plugins["P"] = {
         },
         "changeEditMode": async function (blockId) {
             const quill = new Quill('#' + blockId, {
-                /*modules: {
+                modules: {
                     toolbar: [
                         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
                         ['blockquote', 'code-block'],
@@ -44,7 +44,7 @@ plugins["P"] = {
 
                         ['clean']                                         // remove formatting button
                     ]
-                },*/
+                },
                 theme: 'bubble'
             });
             setTimeout(() => {
@@ -59,6 +59,7 @@ plugins["P"] = {
                 element.appendChild(overlayElement);
                 overlayElement.addEventListener("click", () => {
                     overlayElement.style.display = "none";
+                    quill.focus();
                 });
                 element.addEventListener("focusout", () => {
                     overlayElement.style.display = "block";
