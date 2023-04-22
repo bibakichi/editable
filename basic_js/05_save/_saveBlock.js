@@ -12,6 +12,7 @@ async function _saveBlock(outerElement) {
     alert(pastSaveData.blockType);
     const plugin = plugins[pastSaveData.blockType];
     if (!plugin) return {};
+    console.log(plugin);
     //
     let newSaveData;
     if (typeof plugin?.viewer?.saveBlock !== 'function') {
