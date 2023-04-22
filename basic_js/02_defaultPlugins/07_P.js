@@ -57,7 +57,7 @@ plugins["P"] = {
                 overlayElement.style.height = "100%";
                 overlayElement.style.zIndex = 999;
                 element.appendChild(overlayElement);
-                overlayElement.addEventListener("keypress", () => {
+                overlayElement.addEventListener("mousedown", () => {
                     overlayElement.style.display = "none";
                 });
                 element.addEventListener("focusout", () => {
