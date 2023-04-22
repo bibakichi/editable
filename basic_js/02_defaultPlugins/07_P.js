@@ -3,9 +3,11 @@ plugins["P"] = {
     "isDefault": true,
     "viewer": {
         "renderLight": async function (blockId, saveData) {
-            const element = document.createElement('div');
-            element.id = blockId;
-            element.innerHTML = saveData?.text ?? "本文";
+            let element = document.getElementById(blockId);
+            if (!element) {
+                element = document.createElement('div');
+                element.id = blockId;
+            }
             return element;
         },
         "changeEditMode": async function (blockId) {
@@ -16,7 +18,6 @@ plugins["P"] = {
                         ['blockquote', 'code-block'],
 
                         [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
                         [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
                         [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
                         [{ 'direction': 'rtl' }],                         // text direction
