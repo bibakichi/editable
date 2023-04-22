@@ -35,7 +35,6 @@ plugins["P"] = {
                         [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
 
                         [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-                        [{ 'font': [] }],
                         [{ 'align': [] }],
                     ]
                 },
