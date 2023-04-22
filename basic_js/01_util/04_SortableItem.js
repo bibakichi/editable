@@ -56,11 +56,11 @@ class SortableItem {
         this._outerElement.draggable = (this._isEnable && !this._isDropOnly);
         this._outerElement.addEventListener('focusin', async (event) => {
             this._outerElement.draggable = false;
-            this._outerElement.zIndex = 9;
+            this._outerElement.style.zIndex = 9;
         });
         this._outerElement.addEventListener('focusout', async (event) => {
             this._outerElement.draggable = (this._isEnable && !this._isDropOnly);
-            this._outerElement.zIndex = "auto";
+            this._outerElement.style.zIndex = "auto";
         });
         this._outerElement.style.cursor = (this._isEnable && !this._isDropOnly) ? 'grab' : 'auto';
     }
@@ -201,11 +201,11 @@ class SortableItem {
         outerElement.draggable = (this._isEnable && !this._isDropOnly);
         outerElement.addEventListener('focusin', async (event) => {
             outerElement.draggable = false;
-            outerElement.zIndex = 9;
+            outerElement.style.zIndex = 9;
         });
         outerElement.addEventListener('focusout', async (event) => {
             outerElement.draggable = (this._isEnable && !this._isDropOnly);
-            outerElement.zIndex = "auto";
+            outerElement.style.zIndex = "auto";
         });
         outerElement.style.position = 'relative';
         outerElement.style.transition = 'opacity 0.1s';
