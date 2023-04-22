@@ -12,10 +12,9 @@ plugins["P"] = {
         "renderLight": async function (blockId, saveData) {
             const element = document.getElementById(blockId);
             const qlEditor = element.querySelector(".ql-editor");
-            qlEditor.classList.forEach((className) => {
-                qlEditor.classList.remove(className);
-            });
-            return qlEditor;
+            const newElement = document.createElement('div');
+            newElement.innerHTML = qlEditor.innerHTML;
+            return newElement;
         },
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
