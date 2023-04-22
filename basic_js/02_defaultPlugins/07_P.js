@@ -19,9 +19,16 @@ plugins["P"] = {
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
             const qlEditor = element.querySelector(".ql-editor");
-            return {
-                text: qlEditor.innerHTML,
-            };
+            if (qlEditor) {
+                return {
+                    text: qlEditor.innerHTML,
+                };
+            }
+            else {
+                return {
+                    text: element.innerHTML,
+                };
+            }
         },
         "changeEditMode": async function (blockId) {
             const quill = new Quill('#' + blockId, {
