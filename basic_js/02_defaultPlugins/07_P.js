@@ -57,6 +57,10 @@ plugins["P"] = {
                     element.classList.add("ql-container");
                     qlEditor.classList.add("ql-editor");
                 });
+                element.addEventListener("focusout", () => {
+                    element.classList.remove("ql-container");
+                    qlEditor.classList.remove("ql-editor");
+                });
             }, 500);
         },
     },
