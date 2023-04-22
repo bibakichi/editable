@@ -2,17 +2,21 @@
 plugins["P"] = {
     "isDefault": true,
     "viewer": {
-        "renderLight": async function (blockId, saveData) {
-            let element = document.getElementById(blockId);
-            if (!element) {
-                element = document.createElement('div');
-                element.id = blockId;
-            }
+        "renderHeavy": async function (blockId, saveData) {
+            const element = document.createElement('div');
+            element.id = blockId;
+            element.innerHTML = saveData?.innerHTML ?? "";
             return element;
+        },
+        "renderLight": async function (blockId, saveData) {
+            const element = document.getElementById(blockId);
+            return {
+                innerHTML: element.innerHTML,
+            };
         },
         "changeEditMode": async function (blockId) {
             const quill = new Quill('#' + blockId, {
-                modules: {
+                /*modules: {
                     toolbar: [
                         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
                         ['blockquote', 'code-block'],
@@ -31,7 +35,7 @@ plugins["P"] = {
 
                         ['clean']                                         // remove formatting button
                     ]
-                },
+                },*/
                 theme: 'bubble'
             });
         },
