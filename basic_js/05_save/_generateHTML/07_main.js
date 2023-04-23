@@ -74,15 +74,15 @@ function _generateHTML({
         <link rel="icon" type="image/png" sizes="24x24" href="${faviconsFolderPath}icon-24x24.png">
         <link rel="icon" type="image/png" sizes="32x32" href="${faviconsFolderPath}icon-32x32.png">
         <!-- -->
-        <!-- WYSIWYGエディター「Quill」を読み込み -->
-        <link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
-        <!-- -->
-        <!-- 数式ライブラリ「KaTex」を読み込む -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css" integrity="sha384-mXD7x5S50Ko38scHSnD4egvoExgMPbrseZorkbE49evAfv9nNcbrXJ8LLNsDgh9d" crossorigin="anonymous">
-        <!-- -->
-        <!-- 共通CSS -->
         <style>
-            ${_minifyCSS(bacicCss)}
+            /* WYSIWYGエディター「Quill」 */
+            ${quillCSS}
+            
+            /* 数式ライブラリ「KaTex」 */
+            ${kaTexCSS}
+            
+            /* 自作CSS */
+            ${_minifyCSS(bacicCSS)}
         </style >
         <!-- -->
         <!-- 共通JavaScript -->
