@@ -19,6 +19,14 @@
     text-align: right;
 }
 
+@media screen and (max-width: 600px) {
+
+    /* 画面の幅が600px以下のときに適用されるCSS */
+    #edit-switch-wrapper {
+        display: none;
+    }
+}
+
 .edit-label {
     color: #777;
     font-size: 14px;

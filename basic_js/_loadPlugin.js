@@ -8,7 +8,6 @@ async function _loadPlugin(blockType) {
         if (isDebugPlugin) console.log("  既にプラグインは読み込み済みです。");
         return plugins[blockType];
     }
-    const url = './plugins/' + blockType + '.js?t=' + String(new Date().getTime());    //キャッシュ対策
     if (loadingPlugins[blockType] === true) {
         alert(`【エラー】プラグインファイル「${blockType}」を２つ同時に読み込もうとしています。`);
     }
@@ -17,22 +16,35 @@ async function _loadPlugin(blockType) {
     // JavaScriptファイルを読み込む
     const scriptElement = document.createElement('script');
     try {
+        // まずは相対パスから、プラグインを探す
+        const url = './plugins/' + blockType + '.js?t=' + String(new Date().getTime());    //キャッシュ対策
         if (isDebugPlugin) console.log("  プラグインファイル：" + _getShortUrlToDisplay(url));
         scriptElement.src = url;
         document.body.appendChild(scriptElement);
-    }
-    catch (err) {
-        alert(`プラグインファイル「${blockType}.js」を読み込めません`);
-        console.error("  プラグインファイルを読み込めません");
-        console.error(err);
-        return null;
-    }
-    //
-    try {
+        //
         // JavaScriptファイルのロードが終わるまで待つ
         await waitLoad(scriptElement);
+        //
+        if (!plugins[blockType]) throw 'a';
     }
-    catch (err) { }
+    catch (err) {
+        try {
+            // 相対パスから見つからなかったら、専用サーバーからプラグインを探す
+            const url = 'https://mono-editable.s3.ap-northeast-1.amazonaws.com/cloud_plugins/' + blockType + '.js?t=' + String(new Date().getTime());    //キャッシュ対策
+            if (isDebugPlugin) console.log("  プラグインファイル：" + _getShortUrlToDisplay(url));
+            scriptElement.src = url;
+            document.body.appendChild(scriptElement);
+            //
+            // JavaScriptファイルのロードが終わるまで待つ
+            await waitLoad(scriptElement);
+        }
+        catch (err) {
+            alert(`プラグインファイル「${blockType}.js」を読み込めません`);
+            console.error("  プラグインファイルを読み込めません");
+            console.error(err);
+            return null;
+        }
+    }
     //
     loadingPlugins[blockType] = false;
     //
