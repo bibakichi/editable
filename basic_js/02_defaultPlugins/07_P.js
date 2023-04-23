@@ -51,6 +51,7 @@ plugins["P"] = {
         },
         "changeEditMode": async function (blockId) {
             const quill = new Quill('#' + blockId, {
+                placeholder: '本文（文章を範囲選択すると、リンクの追加や書式設定ができます）',
                 modules: {
                     toolbar: [
                         ['bold', 'italic', 'underline', 'strike', 'link', 'formula'],        // toggled buttons
