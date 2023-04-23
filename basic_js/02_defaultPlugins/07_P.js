@@ -70,7 +70,7 @@ plugins["P"] = {
                 const element = document.getElementById(blockId);
                 element.style.position = "relative";
                 //
-                // ドラッグ用に、掴む部分を残す
+                // ドラッグ用の掴む部分（透明で、ブロックの上に覆いかぶさっている）
                 const overlayElement = document.createElement('div');
                 overlayElement.style.top = 0;
                 overlayElement.style.position = "absolute";
@@ -83,15 +83,16 @@ plugins["P"] = {
                     quill.focus();
                 });
                 element.addEventListener("focusin", () => {
-                    console.log("focusin");
                     window["focus_" + blockId] = true;
                 });
                 element.addEventListener("focusout", () => {
-                    console.log("focusout");
                     window["focus_" + blockId] = false;
+                    //
+                    // フォーカスが外れたら、ドラッグ用の掴む部分を復活させる
+                    // ただし「フォーカスが外れる」といっても、ブロック内でクリックしただけの可能性がある。
+                    // そこで、フォーカスが外れた0.5秒後に、グローバル変数を使って再確認する
                     setTimeout(() => {
                         if (!window["focus_" + blockId]) {
-                            // ドラッグ用の掴む部分を復活させる
                             overlayElement.style.display = "block";
                         }
                     }, 500);
