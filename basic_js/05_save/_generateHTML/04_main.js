@@ -101,8 +101,8 @@ ${bacicCss}
             //ページを離れた時やリロード時
             window.addEventListener('unload', _initReload);
         </script>
-        <script defer src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="basic_js"></script>
-        <script defer src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="jszip"></script>
+        <script defer id="basic_js" src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}"></script>
+        <script defer id="jszip" src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}"></script>
         <!-- -->
         <!-- minifyライブラリ「uglify-js」を読み込み -->
         <script defer src="https://mono-editable.s3.ap-northeast-1.amazonaws.com/uglifyjs.1.2.5.min.js"></script>
