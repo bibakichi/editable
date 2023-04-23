@@ -1,8 +1,9 @@
 //#########################################################################################
 const plugins = {};
 const settings = [];
+const newImages = [];
 
-var isEditMode = false; // この変数がtrueのときは、モーダルのアニメーションを表示しない
+var isEditMode = false; // 編集中か否か。編集中はモーダルのアニメーションを表示しない
 
 const isDebugTree = false;
 const isDebugPlugin = false;
