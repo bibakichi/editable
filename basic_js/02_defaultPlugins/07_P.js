@@ -69,6 +69,8 @@ plugins["P"] = {
             setTimeout(() => {
                 const element = document.getElementById(blockId);
                 element.style.position = "relative";
+                //
+                // ドラッグ用に、掴む部分を残す
                 const overlayElement = document.createElement('div');
                 overlayElement.style.top = 0;
                 overlayElement.style.position = "absolute";
@@ -82,11 +84,16 @@ plugins["P"] = {
                 });
                 element.addEventListener("focusin", () => {
                     console.log("focusin");
+                    window["focus_" + blockId] = true;
                 });
                 element.addEventListener("focusout", () => {
                     console.log("focusout");
+                    window["focus_" + blockId] = false;
                     setTimeout(() => {
-                        overlayElement.style.display = "block";
+                        if (!window["focus_" + blockId]) {
+                            // ドラッグ用の掴む部分を復活させる
+                            overlayElement.style.display = "block";
+                        }
                     }, 500);
                 });
             }, 500);
