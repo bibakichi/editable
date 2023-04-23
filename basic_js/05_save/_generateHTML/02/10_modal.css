@@ -1,0 +1,271 @@
+/*===========================================================================*/
+
+.modal_overlay {
+    border: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    justify-content: center;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0s 0.3s;
+    transform: scale(0);
+}
+
+.modal_overlay:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+@media print {
+    .modal_overlay {
+        display: none;
+    }
+}
+
+input.modal_trigger:checked+.modal_overlay {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s;
+}
+
+
+.modal_outer {
+    top: 0;
+    left: 0;
+    position: absolute;
+    transform: scale(0);
+    transition: 0.3s;
+    background: #fff;
+    overflow-y: auto;
+    overflow-x: visible;
+}
+
+@media print {
+    .modal_outer:not(.modal_main) {
+        display: none;
+    }
+}
+
+input.modal_trigger:checked+.modal_overlay+.modal_outer {
+    transform: scale(1);
+}
+
+.modal_outer:not(.full_size) {
+    margin-top: 5vh;
+    margin-left: 5%;
+    max-width: 90%;
+    width: 90%;
+    min-width: 90%;
+    max-height: 90vh;
+    height: 90vh;
+    min-height: 90vh;
+}
+
+.modal_outer.full_size {
+    margin-top: 0;
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+@media print {
+    .modal_outer:not(.full_size) {
+        margin-top: 0;
+        margin-left: 0;
+        max-width: 100%;
+        width: 100%;
+        min-width: 100%;
+        max-height: none;
+        height: max-content;
+        min-height: 100%;
+        overflow: visible;
+    }
+
+    .modal_outer.full_size {
+        margin-top: 0;
+        margin-left: 0;
+        max-width: 100%;
+        width: 100%;
+        min-width: 100%;
+        max-height: none;
+        height: max-content;
+        min-height: 100%;
+        overflow: visible;
+    }
+}
+
+/*===========================================================================*/
+/* 親ページ遷移アニメーション用のモーダル */
+
+/* 影は常に表示 */
+.modal_overlay.modal_parent {
+    z-index: -2;
+    position: absolute;
+    justify-content: center;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s;
+}
+
+/* 「１階層上に戻る」ボタンを押したとき（親が全画面ではない） */
+.modal_outer.modal_parent:not(.full_size) {
+    z-index: -1;
+    position: absolute;
+    background-color: #fff;
+    transform: scale(1);
+    transition: 0.3s;
+    top: 0;
+    left: 0;
+    margin-top: 2vh;
+    margin-left: 2%;
+    max-width: 96%;
+    width: 96%;
+    min-width: 96%;
+    max-height: 96vh;
+    height: 96vh;
+    min-height: 96vh;
+}
+
+/* 「１階層上に戻る」ボタンを押したとき（親が全画面） */
+.modal_outer.modal_parent.full_size {
+    z-index: -1;
+    position: absolute;
+    background-color: #fff;
+    transform: scale(1);
+    transition: 0.3s;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+/* 通常時 */
+#this_page_modal_trigger:checked~.modal_outer.modal_parent {
+    top: 0;
+    left: 0;
+    margin-top: 0;
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+/*===========================================================================*/
+/* メインモーダル限定 */
+
+.modal_outer.modal_main {
+    position: initial;
+}
+
+.modal_outer.modal_main:not(.full_size) {
+    margin-top: 2vh;
+    margin-left: 2%;
+    max-width: 96%;
+    width: 96%;
+    min-width: 96%;
+    max-height: 96vh;
+    height: 96vh;
+    min-height: 96vh;
+}
+
+/* 子ページに遷移するとき */
+#children_page_modal_trigger:checked~#this_page_modal_trigger+.modal_overlay+.modal_outer {
+    margin-top: 0;
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+@media print {
+    .modal_outer.modal_main.full_size {
+        margin-top: 0;
+        margin-left: 0;
+        max-width: 100%;
+        width: 100%;
+        min-width: 100%;
+        max-height: max-content;
+        height: max-content;
+        min-height: max-content;
+        overflow: visible;
+    }
+
+    .modal_outer.modal_main:not(.full_size) {
+        margin-top: 0;
+        margin-left: 0;
+        max-width: 100%;
+        width: 100%;
+        min-width: 100%;
+        max-height: max-content;
+        height: max-content;
+        min-height: max-content;
+        overflow: visible;
+    }
+}
+
+/*===========================================================================*/
+/* 子ページ遷移アニメーション用のモーダル */
+
+.modal_overlay.modal_child {
+    z-index: 11;
+}
+
+.modal_outer.modal_child {
+    z-index: 12;
+}
+
+.modal_outer.modal_child:not(.full_size) {
+    margin-top: 2vh;
+    margin-left: 2%;
+    max-width: 96%;
+    width: 96%;
+    min-width: 96%;
+    max-height: 96vh;
+    height: 96vh;
+    min-height: 96vh;
+}
+
+/*===========================================================================*/
+
+input.modal_trigger {
+    display: none;
+}
+
+.modal_scroll {
+    background-color: #fff;
+    color: #6e6e73;
+    min-height: calc(100% - 20px);
+}
+
+.modal_outer.modal_main .modal_scroll {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

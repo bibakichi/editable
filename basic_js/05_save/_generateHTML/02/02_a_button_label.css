@@ -1,0 +1,38 @@
+/*===========================================================================*/
+/* aタグとbuttonタグとlabelタグののリセットCSS */
+
+label,
+a,
+button {
+    color: #06c;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    padding: 0 5px;
+}
+
+label:hover,
+a:hover,
+button:hover {
+    cursor: pointer;
+    background: #fff;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+label:active,
+a:active,
+button:active {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+label:disabled,
+a:disabled,
+button:disabled {
+    color: #aaa;
+}

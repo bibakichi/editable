@@ -1,0 +1,25 @@
+/*===========================================================================*/
+
+.modal_close_button_wrapper {
+    position: sticky;
+    z-index: 9;
+    top: 0;
+    overflow: visible;
+    height: 0;
+}
+
+.modal_close_button_wrapper>label {
+    font-size: 16px;
+}
+
+@media print {
+    .modal_close_button_wrapper {
+        display: none;
+    }
+}
+
+label.closeButtonThisPage,
+a.closeButtonThisPage,
+button.closeButtonThisPage {
+    display: none;
+}

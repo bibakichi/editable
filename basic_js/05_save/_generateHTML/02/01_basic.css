@@ -1,0 +1,156 @@
+/*===========================================================================*/
+/* リセットCSS */
+
+* {
+    font-family: "Hannari", "Kokoro", "Nico Moji", "Nikukyu", "M PLUS 1p", "M PLUS Rounded 1c", "Sawarabi Mincho", "Sawarabi Gothic", "Noto Sans JP", "YuGothic", "Yu Gothic";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    break-after: avoid;
+}
+
+@media print {
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+    h5 {
+        font-size: 14px;
+    }
+
+    h6 {
+        font-size: 12px;
+    }
+}
+
+/*===========================================================================*/
+/* 全体 */
+
+html {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+@media print {
+    html {
+        font-size: 10px;
+        background: none;
+    }
+}
+
+body {
+    top: 0;
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+}
+
+#toolbox_more {
+    display: none;
+}
+
+#body_right {
+    transition: 0.3s;
+    width: 200px;
+    display: none;
+    max-height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+#toolbox_more:checked+#body_right {
+    width: 100vw;
+}
+
+@media print {
+    #body_right {
+        width: 0;
+    }
+}
+
+#body_left {
+    transition: 0.3s;
+    max-width: 100%;
+    position: relative;
+    flex: 1;
+}
+
+#toolbox_more:checked+#body_right+#body_left {
+    width: 0;
+}
+
+main {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 5px;
+    position: relative;
+}
+
+@media print {
+    main {
+        max-width: none;
+        margin: 0;
+        padding: 0 10px;
+    }
+}
+
+.toolListOuter {
+    display: flex;
+    width: 200px;
+    max-height: 100vh;
+    flex-direction: column;
+    background: #f5f5f7;
+    position: relative;
+}
+
+.toolListInner {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#toolbox_more:checked+#body_right .save_button {
+    display: none;
+}
+
+#toolbox_more:checked+#body_right .more_button {
+    display: none;
+}
+
+.close_more_button {
+    display: none;
+    font-size: 16px;
+}
+
+#toolbox_more:checked+#body_right .close_more_button {
+    display: block;
+}

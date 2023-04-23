@@ -1,0 +1,54 @@
+/*===========================================================================*/
+
+#breadcrumbs {
+    font-size: 11px;
+    height: 20px;
+    box-sizing: border-box;
+    background: #8d0000;
+    padding: 2px 0 2px 5px;
+    color: #aaa;
+}
+
+@media print {
+    #breadcrumbs {
+        background: none;
+        color: #555;
+    }
+}
+
+#breadcrumbs a,
+#breadcrumbs label {
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    color: #ccc;
+}
+
+@media print {
+
+    #breadcrumbs a,
+    #breadcrumbs label {
+        background: none;
+        color: #555;
+    }
+}
+
+#breadcrumbs a:hover,
+#breadcrumbs label:hover {
+    cursor: pointer;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.dummy_breadcrumbs {
+    background: #8d0000;
+    height: 20px;
+    width: 100%;
+}
+
+#grandfather_dummy_breadcrumbs {
+    position: absolute;
+    top: 0;
+    z-index: -5;
+}

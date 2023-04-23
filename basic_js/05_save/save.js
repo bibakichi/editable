@@ -32,7 +32,6 @@ async function allSave(isDownload) {
     const htmlCode = _generateHTML({
         title: settings[0]?.title ?? "",
         mainContents: newMainContents.innerHTML,
-        basicCssPath: document.getElementById("basic_css").getAttribute('href'),
         basicJsPath: document.getElementById("basic_js").getAttribute('src'),
         jsZipPath: document.getElementById("jszip").getAttribute('src'),
         isFullSize: settings[0]?.isFullSize,

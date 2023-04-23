@@ -1,0 +1,24 @@
+/*===========================================================================*/
+/* buttonFlatクラス   シンプルな角丸ボタンを作れます */
+
+label.buttonFlat,
+a.buttonFlat,
+button.buttonFlat {
+    margin: 3px;
+    background: #e8e8ed;
+    color: #666;
+    display: inline-block;
+    width: max-content;
+    text-decoration: none;
+    font-size: small;
+    padding: 6px 10px 4px 10px;
+    border: none;
+    border-radius: 30px;
+}
+
+label.buttonFlat:hover,
+a.buttonFlat:hover,
+button.buttonFlat:hover {
+    cursor: pointer;
+    background: #f0f0f0;
+}

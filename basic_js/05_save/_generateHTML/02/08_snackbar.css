@@ -1,0 +1,16 @@
+/*===========================================================================*/
+/* スナックバー */
+
+#snackbar {
+    display: none;
+    background: #8d0000;
+    color: #fff;
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    border-radius: 0 5px 5px 0;
+    width: max-content;
+    box-sizing: border-box;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+    padding: 5px;
+}

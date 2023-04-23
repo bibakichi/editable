@@ -72,7 +72,6 @@ plugins["ChildPage"] = {
             const htmlCode = _generateHTML({
                 title: "新しいページ",
                 mainContents: "",
-                basicCssPath: document.getElementById("basic_css").getAttribute('href'),
                 basicJsPath: document.getElementById("basic_js").getAttribute('src'),
                 jsZipPath: document.getElementById("jszip").getAttribute('src'),
                 isFullSize: false,

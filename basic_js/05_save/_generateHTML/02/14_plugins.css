@@ -1,0 +1,27 @@
+/*===========================================================================*/
+
+.json {
+    display: none;
+}
+
+
+.linkbutton_overlay {
+    display: none;
+}
+
+.linkbutton_checkbox:checked+.linkbutton_overlay {
+    display: block;
+}
+
+/*===========================================================================*/
+
+.ql-container {
+    font-size: inherit;
+}
+
+.ql-editor {
+    font-size: inherit;
+    padding: 0;
+}
+
+/*===========================================================================*/

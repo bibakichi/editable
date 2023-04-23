@@ -1,0 +1,44 @@
+/*===========================================================================*/
+/* フッター部分   住所や連絡先 */
+
+footer {
+    text-align: center;
+    break-after: avoid;
+    break-inside: avoid;
+    bottom: 0;
+    width: 100%;
+    font-size: 13px;
+    line-height: 20px;
+    background: #222;
+    color: #777;
+    padding-bottom: 30px;
+}
+
+@media print {
+    footer {
+        position: unset;
+        background: none;
+        height: max-content;
+        padding-bottom: 0;
+    }
+}
+
+footer address {
+    font-style: normal;
+    text-align: left;
+    width: max-content;
+    max-width: 100%;
+    margin: 20px 10px 20px auto;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+@media print {
+    footer address {
+        display: none;
+    }
+}
+
+footer a {
+    color: rgb(126, 133, 179);
+}
