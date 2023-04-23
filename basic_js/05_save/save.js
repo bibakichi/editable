@@ -22,8 +22,11 @@ async function allSave(isDownload) {
         if (sortableItem.classList.contains("dropOnly")) continue;
         const newSaveData = await _saveBlock(sortableItem);
         const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
-        if ((typeof newOuterElement !== "Node") || !newSaveData) continue;
-        newMainContents.appendChild(newOuterElement);
+        if (!newOuterElement || !newSaveData) continue;
+        try {
+            newMainContents.appendChild(newOuterElement);
+        }
+        catch (e) { }
     }
     //
     const htmlCode = _generateHTML({
