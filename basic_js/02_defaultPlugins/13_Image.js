@@ -10,9 +10,13 @@ plugins["Image"] = {
             outerElement.style.minHeight = "100px";
             outerElement.style.width = "100%";
             //
-            const overflowElement = document.createElement('div');
-            overflowElement.classList.add('imageLoading');
-            outerElement.appendChild(overflowElement);
+            const overflowBottom = document.createElement('div');
+            overflowBottom.classList.add('imageLoadingBottom');
+            outerElement.appendChild(overflowBottom);
+            //
+            const overflowTop = document.createElement('div');
+            overflowTop.classList.add('imageLoadingTop');
+            outerElement.appendChild(overflowTop);
             //
             const urlElement = document.createElement('pre');
             urlElement.id = "url_" + blockId;
