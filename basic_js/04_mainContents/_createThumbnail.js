@@ -1,5 +1,5 @@
 
-async function _createThumbnail({ url, width = 20 }) {
+async function _createThumbnail({ url, width = 40 }) {
     //
     // Imageオブジェクトを生成する
     const img = new Image();
@@ -27,11 +27,6 @@ async function _createThumbnail({ url, width = 20 }) {
     //
     // コンテキストにImageオブジェクトの画像を描画する
     context.drawImage(img, 0, 0, width, height);
-    //
-    // ぼんやり白くする
-    context.beginPath();
-    context.fillStyle = 'rgba(255,255,255,0.5)';
-    context.fillRect(0, 0, canvas.width, canvas.height);
     //
     // canvasの描画結果をDataURL形式で取得して返却する
     return canvas.toDataURL('image/jpeg', 0.5);
