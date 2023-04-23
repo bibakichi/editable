@@ -60,7 +60,9 @@ class SortableItem {
         });
         this._outerElement.addEventListener('focusout', async (event) => {
             this._outerElement.draggable = (this._isEnable && !this._isDropOnly);
-            this._outerElement.style.zIndex = "auto";
+            setTimeout(() => {
+                this._outerElement.style.zIndex = "auto";
+            }, 3000);
         });
         this._outerElement.style.cursor = (this._isEnable && !this._isDropOnly) ? 'grab' : 'auto';
     }
@@ -205,7 +207,9 @@ class SortableItem {
         });
         outerElement.addEventListener('focusout', async (event) => {
             outerElement.draggable = (this._isEnable && !this._isDropOnly);
-            outerElement.style.zIndex = "auto";
+            setTimeout(() => {
+                this._outerElement.style.zIndex = "auto";
+            }, 3000);
         });
         outerElement.style.position = 'relative';
         outerElement.style.transition = 'opacity 0.1s';
