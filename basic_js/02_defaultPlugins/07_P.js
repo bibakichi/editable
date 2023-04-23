@@ -3,31 +3,37 @@ plugins["P"] = {
     "isDefault": true,
     "viewer": {
         "renderHeavy": async function (blockId, saveData) {
-            const element = document.createElement('div');
-            element.id = blockId;
-            element.style.padding = "12px 0";
-            element.innerHTML = saveData?.text ?? "";
-            return element;
+            const container = document.createElement('div');
+            container.id = blockId;
+            container.style.padding = "12px 0";
+            container.classList.add("ql-container");
+            //
+            const qlEditor = document.createElement('div');
+            qlEditor.classList.add("ql-editor");
+            qlEditor.innerHTML = saveData?.text ?? "";
+            container.appendChild(qlEditor);
+            //
+            return container;
         },
         "renderLight": async function (blockId, saveData) {
-            const element = document.getElementById(blockId);
-            const qlEditor = element.querySelector(".ql-editor");
+            const container = document.getElementById(blockId);
+            const qlEditor = container.querySelector(".ql-editor");
             //
-            const newElement = document.createElement('div');
-            newElement.style.padding = "12px 0";
-            newElement.classList.add("ql-container");
+            const newContainer = document.createElement('div');
+            newContainer.style.padding = "12px 0";
+            newContainer.classList.add("ql-container");
             //
             const newQlEditor = document.createElement('div');
             newQlEditor.classList.add("ql-editor");
-            newElement.appendChild(newQlEditor);
+            newContainer.appendChild(newQlEditor);
             //
             if (qlEditor) {
                 newQlEditor.innerHTML = qlEditor.innerHTML;
             }
             else {
-                newQlEditor.innerHTML = element.innerHTML;
+                newQlEditor.innerHTML = container.innerHTML;
             }
-            return newElement;
+            return newContainer;
         },
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
