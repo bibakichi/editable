@@ -5,6 +5,7 @@ plugins["P"] = {
         "renderHeavy": async function (blockId, saveData) {
             const element = document.createElement('div');
             element.id = blockId;
+            element.style.padding = "12px 0";
             element.innerHTML = saveData?.text ?? "";
             return element;
         },
@@ -12,6 +13,7 @@ plugins["P"] = {
             const element = document.getElementById(blockId);
             const qlEditor = element.querySelector(".ql-editor");
             const newElement = document.createElement('div');
+            newElement.style.padding = "12px 0";
             if (qlEditor) {
                 newElement.innerHTML = qlEditor.innerHTML;
             }

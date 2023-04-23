@@ -916,6 +916,15 @@ input:checked+.slider:before {
     display: block;
 }
 
-.ql-container, .ql-editor {
+/*===========================================================================*/
+
+.ql-container {
     font-size: inherit;
 }
+
+.ql-editor {
+    font-size: inherit;
+    padding: 0;
+}
+
+/*===========================================================================*/
