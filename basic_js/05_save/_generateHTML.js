@@ -78,6 +78,9 @@ function _generateHTML({
         <!-- WYSIWYGエディター「Quill」を読み込み -->
         <link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
         <!-- -->
+        <!-- 数式ライブラリ「KaTex」を読み込む -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css" integrity="sha384-mXD7x5S50Ko38scHSnD4egvoExgMPbrseZorkbE49evAfv9nNcbrXJ8LLNsDgh9d" crossorigin="anonymous">
+        <!-- -->
         <!-- 共通CSS -->
         <link rel="stylesheet" href="${basicCssPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="basic_css">
         <!-- -->
@@ -102,6 +105,9 @@ function _generateHTML({
         <!-- -->
         <!-- WYSIWYGエディター「Quill」を読み込み -->
         <script src="https://cdn.quilljs.com/1.3.6/quill.js" defer></script>
+        <!-- -->
+        <!-- 数式ライブラリ「KaTex」を読み込む -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.js" integrity="sha384-j/ZricySXBnNMJy9meJCtyXTKMhIJ42heyr7oAdxTDBy/CYA9hzpMo+YTNV5C+1X" crossorigin="anonymous"></script>
     </head>
 
     <body>
