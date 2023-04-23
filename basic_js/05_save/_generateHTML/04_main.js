@@ -101,11 +101,14 @@ ${bacicCss}
             //ページを離れた時やリロード時
             window.addEventListener('unload', _initReload);
         </script>
-        <script src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}" defer id="basic_js"></script>
-        <script src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}" defer id="jszip"></script>
+        <script defer src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="basic_js"></script>
+        <script defer src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="jszip"></script>
+        <!-- -->
+        <!-- minifyライブラリ「uglify-js」を読み込み -->
+        <script defer src="https://mono-editable.s3.ap-northeast-1.amazonaws.com/uglifyjs.1.2.5.min.js"></script>
         <!-- -->
         <!-- WYSIWYGエディター「Quill」を読み込み -->
-        <script src="https://cdn.quilljs.com/1.3.6/quill.js" defer></script>
+        <script defer src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
         <!-- -->
         <!-- 数式ライブラリ「KaTex」を読み込む -->
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.js" integrity="sha384-j/ZricySXBnNMJy9meJCtyXTKMhIJ42heyr7oAdxTDBy/CYA9hzpMo+YTNV5C+1X" crossorigin="anonymous"></script>
