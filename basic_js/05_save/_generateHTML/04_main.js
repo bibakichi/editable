@@ -7,9 +7,6 @@ function _generateHTML({
     isFullSize = true,
     faviconsFolderPath = 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
 }) {
-    const result = UglifyJS.minify(bacicCss);
-    console.error(result.error);
-    console.log(result.code);
     const nowDate = new Date();
     return `
 <!DOCTYPE html>
@@ -85,7 +82,7 @@ function _generateHTML({
         <!-- -->
         <!-- 共通CSS -->
         <style>
-            ${bacicCss}
+            ${_minifyCSS(bacicCss)}
         </style >
         <!-- -->
         <!-- 共通JavaScript -->
@@ -106,9 +103,6 @@ function _generateHTML({
         </script>
         <script defer id="basic_js" src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}"></script>
         <script defer id="jszip" src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}"></script>
-        <!-- -->
-        <!-- minifyライブラリ「uglify-js」を読み込み -->
-        <script defer src="https://mono-editable.s3.ap-northeast-1.amazonaws.com/uglifyjs.js"></script>
         <!-- -->
         <!-- WYSIWYGエディター「Quill」を読み込み -->
         <script defer src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
