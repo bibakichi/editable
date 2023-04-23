@@ -53,6 +53,16 @@ plugins["Image"] = {
             const imageElement = document.getElementById("image_" + blockId);
             const urlElement = document.getElementById("url_" + blockId);
             //
+            const overflowBottom = outerElement.querySelector('.imageLoadingBottom');
+            if (overflowBottom) {
+                overflowBottom.remove();
+            }
+            //
+            const overflowTop = outerElement.querySelector('.imageLoadingTop');
+            if (overflowTop) {
+                overflowTop.remove();
+            }
+            //
             const overflowElement = document.createElement('div');
             overflowElement.style.position = "absolute";
             overflowElement.style.top = 0;
