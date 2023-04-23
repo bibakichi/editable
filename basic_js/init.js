@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         //
         if (isFirst) {
             fontInit(s1);  // フォントを読み込む
+            _loadPluginFromCloud("DownloadButton");
+            _loadPluginFromCloud("Logout");
+            _loadPluginFromCloud("PageSetting");
+            _loadPluginFromCloud("PrintButton");
+            _loadPluginFromCloud("TrashCan");
             initToolList(s1);   // ツールボックスを表示
             isFirst = false;
         }
