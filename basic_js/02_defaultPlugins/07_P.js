@@ -12,15 +12,21 @@ plugins["P"] = {
         "renderLight": async function (blockId, saveData) {
             const element = document.getElementById(blockId);
             const qlEditor = element.querySelector(".ql-editor");
+            //
             const newElement = document.createElement('div');
             newElement.style.padding = "12px 0";
+            newElement.classList.add("ql-container");
+            //
+            const newQlEditor = document.createElement('div');
+            newQlEditor.classList.add("ql-editor");
+            newElement.appendChild(newQlEditor);
+            //
             if (qlEditor) {
-                newElement.innerHTML = qlEditor.innerHTML;
+                newQlEditor.innerHTML = qlEditor.innerHTML;
             }
             else {
-                newElement.innerHTML = element.innerHTML;
+                newQlEditor.innerHTML = element.innerHTML;
             }
-            newElement.classList.add("ql-container");
             return newElement;
         },
         "saveBlock": async function (blockId, pastSaveData) {
