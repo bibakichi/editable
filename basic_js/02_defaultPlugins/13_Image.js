@@ -5,6 +5,7 @@ plugins["Image"] = {
         "renderLight": async function (blockId, saveData) {
             const outerElement = document.createElement('div');
             outerElement.id = blockId;
+            outerElement.style.overflow = "hidden";
             outerElement.style.position = "relative";
             outerElement.style.minHeight = "100px";
             outerElement.style.width = "100%";

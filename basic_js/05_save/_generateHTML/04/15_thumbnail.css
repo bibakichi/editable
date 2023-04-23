@@ -6,7 +6,7 @@
     height: 100%;
     z-index: 9;
     cursor: progress;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgb(255, 255, 255), transparent);
     animation: skeleton-animation 1.2s linear infinite;
 }
 
