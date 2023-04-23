@@ -82,8 +82,7 @@ function _generateHTML({
         <!-- -->
         <!-- 共通CSS -->
         <style>
-            ${UglifyJS.minify(bacicCss)
-        }
+            ${UglifyJS.minify(bacicCss).code}
         </style >
         <!-- -->
         <!-- 共通JavaScript -->
