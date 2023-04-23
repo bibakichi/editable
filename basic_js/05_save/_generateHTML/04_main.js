@@ -8,6 +8,7 @@ function _generateHTML({
     faviconsFolderPath = 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
 }) {
     const result = UglifyJS.minify(bacicCss, { fromString: true });
+    console.error(result.error);
     console.log(result.code);
     const nowDate = new Date();
     return `
