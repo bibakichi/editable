@@ -81,7 +81,13 @@ plugins["P"] = {
                     quill.focus();
                 });
                 element.addEventListener("focusout", () => {
-                    overlayElement.style.display = "block";
+                    console.log("focusin");
+                });
+                element.addEventListener("focusout", () => {
+                    console.log("focusout");
+                    setTimeout(() => {
+                        overlayElement.style.display = "block";
+                    }, 500);
                 });
             }, 500);
         },
