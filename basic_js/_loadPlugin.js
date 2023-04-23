@@ -33,6 +33,7 @@ async function _loadPlugin(blockType) {
             const url = 'https://mono-editable.s3.ap-northeast-1.amazonaws.com/cloud_plugins/' + blockType + '.js?t=' + String(new Date().getTime());    //キャッシュ対策
             if (isDebugPlugin) console.log("  プラグインファイル：" + _getShortUrlToDisplay(url));
             scriptElement.src = url;
+            scriptElement.crossOrigin = "anonymous";
             document.body.appendChild(scriptElement);
             //
             // JavaScriptファイルのロードが終わるまで待つ
