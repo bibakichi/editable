@@ -6,17 +6,17 @@
     height: 100%;
     z-index: 9;
     cursor: progress;
-    background:
-        linear-gradient(0.25turn, transparent, #fff, transparent),
-        rgba(255, 255, 255, 0.3);
-    background-repeat: no-repeat;
-    background-size: 100% 100%, 100% 100%;
-    background-position: -315px 0, 0 0;
-    animation: loading 1.5s infinite;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: skeleton-animation 1.2s linear infinite;
 }
 
-@keyframes imageLoadingAnimation {
-    to {
-        background-position: 315px 0, 0 0;
+/* キラキラエフェクトのアニメーション */
+@keyframes skeleton-animation {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
     }
 }
