@@ -16,15 +16,16 @@ async function _createThumbnail({ url, width = 100 }) {
     const canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
+    //
+    // canvasのコンテキストを取得しておく
+    const context = canvas.getContext('2d');
+    //
     context.beginPath();
     context.fillStyle = 'rgb(255,255,255)';
     context.fillRect(0, 0, canvas.width, canvas.height);
     //
-    // canvasのコンテキストを取得しておく
-    const ctx = canvas.getContext('2d');
-    //
     // コンテキストにImageオブジェクトの画像を描画する
-    ctx.drawImage(img, 0, 0, width, height);
+    context.drawImage(img, 0, 0, width, height);
     //
     // canvasの描画結果をDataURL形式で取得して返却する
     return canvas.toDataURL('image/jpeg', 0.5);
