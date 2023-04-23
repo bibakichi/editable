@@ -1,12 +1,5 @@
 
-async function _createThumbnail({ url, width }) {
-    // 動的にcanvasを生成する
-    const canvas = document.createElement('canvas');
-    canvas.width = 24;
-    canvas.height = 24;
-    //
-    // canvasのコンテキストを取得しておく
-    const ctx = canvas.getContext('2d');
+async function _createThumbnail({ url, width = 100 }) {
     //
     // Imageオブジェクトを生成する
     const img = new Image();
@@ -17,8 +10,18 @@ async function _createThumbnail({ url, width }) {
     // 画像が読み込まれるまで待つ
     await waitLoadImage(img);
     //
+    const height = img.height * width / img.width;
+    //
+    // 動的にcanvasを生成する
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    //
+    // canvasのコンテキストを取得しておく
+    const ctx = canvas.getContext('2d');
+    //
     // コンテキストにImageオブジェクトの画像を描画する
-    ctx.drawImage(img, 0, 0, 24, 24);
+    ctx.drawImage(img, 0, 0, width, height);
     //
     // canvasの描画結果をDataURL形式で取得して返却する
     return canvas.toDataURL('image/jpeg', 0.5);
