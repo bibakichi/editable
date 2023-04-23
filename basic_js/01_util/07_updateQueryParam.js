@@ -8,5 +8,11 @@ function _updateQueryParam(key, value) {
     else {
         params.delete(key);
     }
-    history.replaceState(null, document.title, '?' + params.toString());
+    const text = params.toString();
+    if (text) {
+        history.replaceState(null, document.title, '?' + text);
+    }
+    else {
+        history.replaceState(null, document.title, '');
+    }
 }
