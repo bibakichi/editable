@@ -4,7 +4,7 @@ const settings = [];
 
 var isEditMode = false; // この変数がtrueのときは、モーダルのアニメーションを表示しない
 
-const isDebugTree = false;
+const isDebugTree = true;
 const isDebugPlugin = false;
 
 let microsoftProfile = null;
