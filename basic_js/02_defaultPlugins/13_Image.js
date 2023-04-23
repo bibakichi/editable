@@ -50,7 +50,7 @@ plugins["Image"] = {
             overflowElement.style.left = 0;
             overflowElement.style.width = "100%";
             overflowElement.style.height = "100%";
-            overflowElement.style.background = "rgba(200,200,200,0.9)";
+            overflowElement.style.background = "rgba(200,200,200,0.7)";
             outerElement.appendChild(overflowElement);
             //
             const divElement1 = document.createElement('div');
