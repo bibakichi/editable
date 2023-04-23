@@ -37,12 +37,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         //
         if (isFirst) {
             fontInit(s1);  // フォントを読み込む
-            _loadPluginFromCloud("DownloadButton");
-            _loadPluginFromCloud("Logout");
-            _loadPluginFromCloud("PageSetting");
-            _loadPluginFromCloud("PrintButton");
-            _loadPluginFromCloud("TrashCan");
-            initToolList(s1);   // ツールボックスを表示
+            (async () => {
+                await _loadPluginFromCloud("DownloadButton");
+                await _loadPluginFromCloud("Logout");
+                await _loadPluginFromCloud("PageSetting");
+                await _loadPluginFromCloud("PrintButton");
+                await _loadPluginFromCloud("TrashCan");
+                initToolList(s1);   // ツールボックスを表示
+            })();
             isFirst = false;
         }
         //
