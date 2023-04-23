@@ -23,7 +23,7 @@ async function downloadZip(htmlCode) {
         },
     });
     await downloadFile({
-        fileName: (_getPath() ?? "web") + ".zip",
+        fileName: (settings[0]?.title ?? (_getPath() ?? "web")) + ".zip",
         mimeType: "octet/stream",
         content: content,
     });

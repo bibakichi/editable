@@ -53,12 +53,12 @@ plugins["P"] = {
             const quill = new Quill('#' + blockId, {
                 modules: {
                     toolbar: [
-                        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                        ['bold', 'italic', 'underline', 'strike', 'link', 'formula'],        // toggled buttons
 
                         [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
                         [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
 
-                        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                        [{ 'size': ['small', 'normal', 'large', 'huge'] }],  // custom dropdown
 
                         [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
                         [{ 'align': [] }],
