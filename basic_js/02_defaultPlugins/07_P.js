@@ -80,7 +80,7 @@ plugins["P"] = {
                     overlayElement.style.display = "none";
                     quill.focus();
                 });
-                element.addEventListener("focusout", () => {
+                element.addEventListener("focusin", () => {
                     console.log("focusin");
                 });
                 element.addEventListener("focusout", () => {
