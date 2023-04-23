@@ -82,7 +82,8 @@ function _generateHTML({
         <!-- -->
         <!-- 共通CSS -->
         <style>
-            ${uglify(bacicCss)}
+            ${bacicCss//uglify(bacicCss)
+        }
         </style >
         <!-- -->
         <!-- 共通JavaScript -->
@@ -105,7 +106,7 @@ function _generateHTML({
         <script defer id="jszip" src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}"></script>
         <!-- -->
         <!-- minifyライブラリ「uglify-js」を読み込み -->
-        <script defer src="https://mono-editable.s3.ap-northeast-1.amazonaws.com/uglifyjs.1.2.5.min.js"></script>
+        <script defer src="https://mono-editable.s3.ap-northeast-1.amazonaws.com/uglifyjs.js"></script>
         <!-- -->
         <!-- WYSIWYGエディター「Quill」を読み込み -->
         <script defer src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
