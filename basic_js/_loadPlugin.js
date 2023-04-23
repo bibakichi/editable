@@ -12,12 +12,12 @@ async function _loadPlugin(blockType) {
         alert(`【エラー】プラグインファイル「${blockType}」を２つ同時に読み込もうとしています。`);
     }
     loadingPlugins[blockType] = true;
-    //
-    // JavaScriptファイルを読み込む
-    const scriptElement = document.createElement('script');
     try {
         // まずは相対パスから、プラグインを探す
         const url = './plugins/' + blockType + '.js?t=' + String(new Date().getTime());    //キャッシュ対策
+        //
+        // JavaScriptファイルを読み込む
+        const scriptElement = document.createElement('script');
         if (isDebugPlugin) console.log("  プラグインファイル：" + _getShortUrlToDisplay(url));
         scriptElement.src = url;
         document.body.appendChild(scriptElement);
@@ -31,6 +31,8 @@ async function _loadPlugin(blockType) {
         try {
             // 相対パスから見つからなかったら、専用サーバーからプラグインを探す
             const url = 'https://mono-editable.s3.ap-northeast-1.amazonaws.com/cloud_plugins/' + blockType + '.js?t=' + String(new Date().getTime());    //キャッシュ対策
+            // JavaScriptファイルを読み込む
+            const scriptElement = document.createElement('script');
             if (isDebugPlugin) console.log("  プラグインファイル：" + _getShortUrlToDisplay(url));
             scriptElement.src = url;
             scriptElement.crossOrigin = "anonymous";
