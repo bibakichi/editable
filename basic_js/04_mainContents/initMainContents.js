@@ -11,5 +11,8 @@ async function initMainContents() {
         if (outerElement2) {
             outerElement.replaceWith(outerElement2);
         }
+        else {
+            outerElement.remove();
+        }
     }
 }
