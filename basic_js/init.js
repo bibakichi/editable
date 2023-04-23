@@ -1,5 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', async function () {
+    alert("DOMContentLoaded");
     //
     microsoftProfile = await loadMicrosoftProfile();
     await initMainContents(); // メインコンテンツを表示
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         settings.push(s1);
         //
         if (isFirst) {
+            alert("first");
             fontInit(s1);  // フォントを読み込む
             initToolList(s1);   // ツールボックスを表示
             isFirst = false;
