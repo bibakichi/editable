@@ -16,6 +16,9 @@ async function _createThumbnail({ url, width = 100 }) {
     const canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
+    context.beginPath();
+    context.fillStyle = 'rgb(255,255,255)';
+    context.fillRect(0, 0, canvas.width, canvas.height);
     //
     // canvasのコンテキストを取得しておく
     const ctx = canvas.getContext('2d');
