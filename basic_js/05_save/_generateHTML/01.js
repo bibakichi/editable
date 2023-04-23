@@ -2,7 +2,6 @@
 function _generateHTML({
     title = 'たいとる',
     mainContents = '',
-    basicCssPath,
     basicJsPath,
     jsZipPath,
     isFullSize = true,
@@ -82,98 +81,4 @@ function _generateHTML({
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css" integrity="sha384-mXD7x5S50Ko38scHSnD4egvoExgMPbrseZorkbE49evAfv9nNcbrXJ8LLNsDgh9d" crossorigin="anonymous">
         <!-- -->
         <!-- 共通CSS -->
-        <link rel="stylesheet" href="${basicCssPath.split("?")[0]}?timestamp=${nowDate.getTime()}" id="basic_css">
-        <!-- -->
-        <!-- 共通JavaScript -->
-        <script type="text/javascript">
-            function _initReload() {
-                const elements = document.querySelectorAll('.modal_trigger');
-                for (const element of elements) {
-                    element.checked = false; //サブモーダルを閉じる
-                }
-                document.getElementById('this_page_modal_trigger').checked = true; //メインモーダルを開く
-            }
-
-            // キャッシュされたページが表示されたとき
-            window.addEventListener('pageshow', _initReload);
-
-            //ページを離れた時やリロード時
-            window.addEventListener('unload', _initReload);
-        </script>
-        <script src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}" defer id="basic_js"></script>
-        <script src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}" defer id="jszip"></script>
-        <!-- -->
-        <!-- WYSIWYGエディター「Quill」を読み込み -->
-        <script src="https://cdn.quilljs.com/1.3.6/quill.js" defer></script>
-        <!-- -->
-        <!-- 数式ライブラリ「KaTex」を読み込む -->
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.js" integrity="sha384-j/ZricySXBnNMJy9meJCtyXTKMhIJ42heyr7oAdxTDBy/CYA9hzpMo+YTNV5C+1X" crossorigin="anonymous"></script>
-    </head>
-
-    <body>
-        <input type="checkbox" id="toolbox_more">
-        <div id="body_right">
-        </div>
-        <div id="body_left">
-            <div class="dummy_breadcrumbs" id="grandfather_dummy_breadcrumbs"></div>
-            <!--  -->
-            <!-- 子ページ遷移アニメーション用のモーダル -->
-            <input class="modal_trigger modal_child" id="children_page_modal_trigger" type="checkbox">
-            <label class="modal_overlay modal_child" for="children_page_modal_trigger"></label>
-            <div class="modal_outer modal_child">
-                <div class="dummy_breadcrumbs" id="child_dummy_breadcrumbs"></div>
-            </div>
-            <!--  -->
-            <!-- メインモーダル -->
-            <input class="modal_trigger modal_main" id="this_page_modal_trigger" type="checkbox" checked>
-            <label class="modal_overlay modal_main" for="this_page_modal_trigger"></label>
-            <div class="modal_outer modal_main ${isFullSize ? 'full_size' : ''}">
-                <div id="breadcrumbs"> </div>
-                <div class="modal_scroll">
-                    <div class="modal_close_button_wrapper">
-                        <label for="this_page_modal_trigger" class="buttonFlat closeButtonThisPage">戻る</label>
-                    </div>
-                    <header>
-                        <div class="header_left">
-                        </div>
-                        <div class="header_right">
-                        </div>
-                    </header>
-                    <main id="main_contents">${mainContents}</main>
-                    <div class="actions">
-                        <div id="edit-switch-wrapper">
-                            <span class="edit-label">編集する</span>
-                            <label class="switch">
-                                <input type="checkbox" id="edit-switch">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <footer>
-                        <address>
-                            福岡大学工学部ものづくりセンター
-                            <div style="padding: 3px 0 0 10px;">
-                                <a target="_blank" href="https://goo.gl/maps/qD7ZYrmeWpW7uNgSA">
-                                    〒814-018 福岡市城南区七隈8-19-1 福岡大学 4号館 1F
-                                </a><br>
-                                ホームページ: <a href="http://www.tec.fukuoka-u.ac.jp/mono/">http://www.tec.fukuoka-u.ac.jp/mono/</a><br>
-                                メール: <a target="_blank" href="mailto:mono@adm.fukuoka-u.ac.jp">mono@adm.fukuoka-u.ac.jp</a><br>
-                                電話: <a href="tel:0928716631">092-871-6631</a>（代）<br>
-                                内線: 6935
-                            </div>
-                        </address>
-                        &copy; 2023 福岡大学工学部ものづくりセンター
-                    </footer>
-                </div>
-            </div>
-            <!--  -->
-            <!-- 親ページ遷移アニメーション用のモーダル -->
-            <label class="modal_overlay modal_parent"></label>
-            <div class="modal_outer modal_parent">
-                <div class="dummy_breadcrumbs" id="father_dummy_breadcrumbs"></div>
-            </div>
-        </div>
-    </body>
-</html>
-`;
-}
+        <style>
