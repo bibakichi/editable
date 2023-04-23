@@ -1,16 +1,16 @@
 //#########################################################################################
 async function _saveBlock(outerElement) {
-    if (!outerElement) return {};
+    if (!outerElement) return { blockType: pastSaveData.blockType };
     const jsonElement = outerElement.querySelector('.json');
-    if (!jsonElement) return {};
+    if (!jsonElement) return { blockType: pastSaveData.blockType };
     const pastSaveData = JSON.parse(jsonElement.textContent);
-    if (!pastSaveData) return {};
+    if (!pastSaveData) return { blockType: pastSaveData.blockType };
     if (!pastSaveData.blockType) {
         console.error('blockTypeが未定義です。');
-        return {};
+        return { blockType: pastSaveData.blockType };
     }
     const plugin = plugins[pastSaveData.blockType];
-    if (!plugin) return {};
+    if (!plugin) return { blockType: pastSaveData.blockType };
     //
     let newSaveData;
     if (typeof plugin?.viewer?.saveBlock !== 'function') {
@@ -25,7 +25,7 @@ async function _saveBlock(outerElement) {
             alert(`プラグイン「${pastSaveData.blockType}」の関数「viewer.saveBlock()」でエラーが発生しました。`);
             console.error(`プラグイン「${pastSaveData.blockType}」の関数「viewer.saveBlock()」でエラーが発生しました。`);
             console.error(err);
-            return {};
+            return { blockType: pastSaveData.blockType };
         }
     }
     newSaveData.blockType = pastSaveData.blockType;
