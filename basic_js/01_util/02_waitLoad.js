@@ -4,4 +4,5 @@
 const waitLoad = (element) => new Promise((resolve, reject) => {
     element.addEventListener("error", reject);
     element.addEventListener("load", resolve);
+    setTimeout(reject, 3000);
 });
