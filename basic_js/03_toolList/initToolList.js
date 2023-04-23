@@ -41,7 +41,9 @@ async function initToolList(thisPageSetting) {
     toolListInner.id = "toolList";
     for (const saveData of thisPageSetting.toolList) {
         const outerElement = await _renderToolbox({ saveData, isShop: false });
-        toolListInner.appendChild(outerElement);
+        if (outerElement) {
+            toolListInner.appendChild(outerElement);
+        }
     }
     //
     // アイテムがなくなったとき用のドロップ専用エリア
