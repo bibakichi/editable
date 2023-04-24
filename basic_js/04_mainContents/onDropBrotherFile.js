@@ -4,11 +4,14 @@ let pluginsBuffer = {};
 async function onDropBrotherFile({ file, isBefore, sortableItem }) {
     const reader = new FileReaderEx();
     if (file.type.startsWith("image")) {
-        let url = await reader.readAsDataURL(file);
-        url = await _createThumbnail({ url });
+        const originalData = await reader.readAsDataURL(file);
+        //const middleData = await _createThumbnail({ url: originalData, width: 200 });
+        const smallData = await _createThumbnail({ url: originalData, width: 40 });
         const jsonData = {
             blockType: "Image",
-            src: url,
+            smallData: smallData,
+            originalData: originalData,
+            src: originalData,
         };
         onDropMainBlock({ jsonData, isBefore, sortableItem });
     }

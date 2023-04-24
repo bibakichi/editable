@@ -1,5 +1,5 @@
 
-async function _createThumbnail({ url, width = 40 }) {
+async function _createThumbnail({ url, width }) {
     //
     // Imageオブジェクトを生成する
     const img = new Image();

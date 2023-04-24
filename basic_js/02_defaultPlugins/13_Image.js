@@ -5,18 +5,9 @@ plugins["Image"] = {
         "renderLight": async function (blockId, saveData) {
             const outerElement = document.createElement('div');
             outerElement.id = blockId;
-            outerElement.style.overflow = "hidden";
             outerElement.style.position = "relative";
             outerElement.style.minHeight = "100px";
             outerElement.style.width = "100%";
-            //
-            const overflowBottom = document.createElement('div');
-            overflowBottom.classList.add('imageLoadingBottom');
-            outerElement.appendChild(overflowBottom);
-            //
-            const overflowTop = document.createElement('div');
-            overflowTop.classList.add('imageLoadingTop');
-            outerElement.appendChild(overflowTop);
             //
             const urlElement = document.createElement('pre');
             urlElement.id = "url_" + blockId;
@@ -53,23 +44,13 @@ plugins["Image"] = {
             const imageElement = document.getElementById("image_" + blockId);
             const urlElement = document.getElementById("url_" + blockId);
             //
-            const overflowBottom = outerElement.querySelector('.imageLoadingBottom');
-            if (overflowBottom) {
-                overflowBottom.remove();
-            }
-            //
-            const overflowTop = outerElement.querySelector('.imageLoadingTop');
-            if (overflowTop) {
-                overflowTop.remove();
-            }
-            //
             const overflowElement = document.createElement('div');
             overflowElement.style.position = "absolute";
             overflowElement.style.top = 0;
             overflowElement.style.left = 0;
             overflowElement.style.width = "100%";
             overflowElement.style.height = "100%";
-            overflowElement.style.background = "rgba(200,200,200,0.7)";
+            overflowElement.style.background = "rgba(200,200,200,0.9)";
             outerElement.appendChild(overflowElement);
             //
             const divElement1 = document.createElement('div');
