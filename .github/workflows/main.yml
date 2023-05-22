@@ -13,6 +13,9 @@ jobs:
       - name: Join_files  # ファイルを結合
         run: find ./basic_js/ -type f | sort | xargs cat > ./deploy_files/basic.js
 
+      - name: babel  # コンパイル
+        run: npx babel ./deploy_files/basic.js
+
       - name: Deploy_others  # S3にデプロイ 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
