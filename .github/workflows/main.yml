@@ -13,6 +13,9 @@ jobs:
       - name: Join_files  # ファイルを結合
         run: find ./basic_js/ -type f | sort | xargs cat > ./deploy_files/basic.js
 
+      - name: install_babel  # babelをインストール
+        run: npm install --save-dev @babel/core @babel/cli
+
       - name: babel  # コンパイル
         run: npx babel ./deploy_files/basic.js
 
