@@ -83,9 +83,19 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
                 if (!userInfo) {
                     onClose();
                     setTimeout(() => alert("学籍番号を入力してください"), 500);
+                    //
+                    const targetContent = document.getElementById(blockId);
+                    const rectTop = targetContent.getBoundingClientRect().top;
+                    window.scrollTo({
+                        top: rectTop + window.pageYOffset,
+                        behavior: "smooth",
+                    });
                     return;
                 }
                 await _postReservation({ blockId, eventData, userInfo });
+                //
+                // 予約が完了したら
+                onClose();
             });
             //
             if (eventData.reserveComment) {
