@@ -11,10 +11,10 @@ jobs:
         uses: actions/checkout@master  # リポジトリをチェックアウト
 
       - name: list_files  # ファイル一覧を表示
-        run: find ./basic_js/ -type f ! -name .* | sort 
+        run: find ./basic_js/ -type f -not -name ".*" | sort 
 
       - name: Join_files  # ファイルを結合
-        run: find ./basic_js/ -type f ! -name .* | sort | xargs cat > ./deploy_files/basic.js
+        run: find ./basic_js/ -type f -not -name ".*" | sort | xargs cat > ./deploy_files/basic.js
 
       - name: install_babel  # babelをインストール
         run: npm install --save-dev @babel/core @babel/cli @babel/preset-env
