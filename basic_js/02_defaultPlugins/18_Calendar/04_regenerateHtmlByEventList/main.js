@@ -15,6 +15,7 @@ async function _regenerateHtmlByEventList({ blockId, saveData, year, month }) {
     //
     // AWS S3サーバーから講習会の一覧を取得
     const eventDatas = await _getEventList({
+        blockId,
         eventTypeId: saveData?.eventTypeId,
         year,
         month

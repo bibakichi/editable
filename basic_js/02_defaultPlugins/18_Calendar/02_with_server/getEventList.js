@@ -1,5 +1,5 @@
 
-async function _getEventList({ eventTypeId, year, month }) {
+async function _getEventList({ blockId, eventTypeId, year, month }) {
     if (!eventTypeId) {
         console.error(`引数「${eventTypeId}」が渡されていません`);
     }
