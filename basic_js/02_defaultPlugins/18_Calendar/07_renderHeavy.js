@@ -257,7 +257,10 @@ async function calendarRenderHeavy(blockId, saveData) {
                     saveData,
                     year: thisYear,
                     month: thisMonth,
-                    date: thisDate
+                    date: thisDate,
+                    onClose: ()=>{
+                        checkboxElement.checked= false;
+                    },
                 });
                 mainElement.innerHTML = "";
                 mainElement.appendChild(detail);

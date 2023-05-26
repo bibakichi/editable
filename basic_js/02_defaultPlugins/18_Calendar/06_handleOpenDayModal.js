@@ -1,18 +1,21 @@
 
 // カレンダーの日付をクリックしたときに実行される関数。
 // 戻り値にモーダルウィンドウのHTML要素を返す必要がある。
-async function handleOpenDayModal({blockId, saveData, year, month, date }) {
-    if(!blockId){
+async function handleOpenDayModal({ blockId, saveData, year, month, date, onClose }) {
+    if (!blockId) {
         console.error(`引数「${blockId}」が渡されていません`);
     }
-    if(!year){
+    if (!year) {
         console.error(`引数「${year}」が渡されていません`);
     }
-    if(!month){
+    if (!month) {
         console.error(`引数「${month}」が渡されていません`);
     }
-    if(!date){
+    if (!date) {
         console.error(`引数「${date}」が渡されていません`);
+    }
+    if (!onClose) {
+        console.error(`引数「${onClose}」が渡されていません`);
     }
     const outerElement = document.createElement("div");
     outerElement.classList.add('date-detail');
@@ -76,6 +79,12 @@ async function handleOpenDayModal({blockId, saveData, year, month, date }) {
                 buttonElement.disabled = true;
             }
             buttonElement.addEventListener("click", async () => {
+                const userInfo = window.userInfo;
+                if (!userInfo) {
+                    onClose();
+                    setTimeout(() => alert("学籍番号を入力してください"), 500);
+                    return;
+                }
                 await _postReservation({ blockId, eventData, userInfo });
             });
             //

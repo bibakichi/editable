@@ -1,12 +1,12 @@
 
-async function _getEventList({eventTypeId, year, month}) {
-    if(!eventTypeId){
+async function _getEventList({ eventTypeId, year, month }) {
+    if (!eventTypeId) {
         console.error(`引数「${eventTypeId}」が渡されていません`);
     }
-    if(!year){
+    if (!year) {
         console.error(`引数「${year}」が渡されていません`);
     }
-    if(!month){
+    if (!month) {
         console.error(`引数「${month}」が渡されていません`);
     }
     const url = `https://mono-calendar.s3.ap-northeast-1.amazonaws.com/${eventTypeId}/${year}%E5%B9%B4${month}%E6%9C%88`;
@@ -27,5 +27,20 @@ async function _getEventList({eventTypeId, year, month}) {
         return null;
     }
     console.log(eventDatas);
+    //
+    // グローバル変数にも保存する
+    for (const eventData of eventDatas.events) {
+        if (!window.events) {
+            window.events = {};
+        }
+        if (!window.events[blockId]) {
+            window.events[blockId] = {};
+        }
+        const dateString = `${eventData.startYear}-${eventData.startMonth}-${eventData.startDate}`;
+        if (!window.events[blockId][dateString]) {
+            window.events[blockId][dateString] = [];
+        }
+        window.events[blockId][dateString].push(eventData);
+    }
     return eventDatas;
 }
