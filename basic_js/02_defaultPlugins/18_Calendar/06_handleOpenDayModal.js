@@ -82,16 +82,19 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
                 const userInfo = window.userInfo;
                 if (!userInfo) {
                     onClose();
-                    setTimeout(() => alert("学籍番号を入力してください"), 500);
-                    //
-                    const targetContent = document.getElementById(blockId);
-                    console.log(targetContent);
-                    const rectTop = targetContent.getBoundingClientRect().top;
-                    console.log(rectTop);
-                    window.scrollTo({
-                        top: rectTop + window.pageYOffset,
-                        behavior: "smooth",
-                    });
+                    setTimeout(() => {
+                        alert("学籍番号を入力してください");
+                        //
+                        const targetContent = document.getElementById(blockId);
+                        console.log(targetContent);
+                        const rectTop = targetContent.getBoundingClientRect().top;
+                        console.log(rectTop);
+                        console.log(window.pageYOffset);
+                        window.scrollTo({
+                            top: rectTop + window.pageYOffset,
+                            behavior: "smooth",
+                        });
+                    }, 500);
                     return;
                 }
                 await _postReservation({ blockId, eventData, userInfo });
