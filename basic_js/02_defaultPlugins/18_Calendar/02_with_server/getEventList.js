@@ -32,7 +32,14 @@ async function _getEventList({ blockId, eventTypeId, year, month }) {
     if (!window.events) {
         window.events = {};
     }
-    window.events[blockId] = {};
+    if (!window.events[blockId]) {
+        window.events[blockId] = {};
+    }
+    for (const key in window.events[blockId]) {
+        if(key.startsWith(`${year}-${month}-`)){
+            delete window.events[blockId][key];
+        }
+    }
     for (const eventData of eventDatas.events) {
         const dateString = `${eventData.startYear}-${eventData.startMonth}-${eventData.startDate}`;
         if (!window.events[blockId][dateString]) {
