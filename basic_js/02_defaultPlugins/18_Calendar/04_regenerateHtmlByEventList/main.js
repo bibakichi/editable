@@ -1,6 +1,6 @@
 
-async function _regenerateHtmlByEventList(eventTypeId, saveData, year, month) {
-    const eventDatas = await _getEventList({eventTypeId, year, month});
+async function _regenerateHtmlByEventList({blockId, saveData, year, month}) {
+    const eventDatas = await _getEventList({eventTypeId:saveData?.eventTypeId, year, month});
     if(!eventDatas){
         return false;
     }

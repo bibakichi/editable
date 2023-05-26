@@ -1,5 +1,5 @@
 
-async function _searchUser({ departmentId, studentId, eventTypeId }) {
+async function _searchUser({ blockId, departmentId, studentId, eventTypeId }) {
     studentId = formatID(studentId);
     //
     // 厳しくチェックをする（フォーマット後だから）

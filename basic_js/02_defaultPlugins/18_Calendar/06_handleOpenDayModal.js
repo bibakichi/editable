@@ -1,7 +1,7 @@
 
 // カレンダーの日付をクリックしたときに実行される関数。
 // 戻り値にモーダルウィンドウのHTML要素を返す必要がある。
-async function handleOpenDayModal({ saveData, year, month, date }) {
+async function handleOpenDayModal({blockId, saveData, year, month, date }) {
     const outerElement = document.createElement("div");
     outerElement.classList.add('date-detail');
     //

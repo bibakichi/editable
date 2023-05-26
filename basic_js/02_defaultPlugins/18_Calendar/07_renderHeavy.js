@@ -28,6 +28,7 @@ async function calendarRenderHeavy(blockId, saveData) {
             if (event.key !== 'Enter') return;
             const studentId = studentIdElement.value;
             await _searchUser({
+                blockId,
                 departmentId,
                 studentId,
                 eventTypeId: saveData?.eventTypeId,
@@ -48,6 +49,7 @@ async function calendarRenderHeavy(blockId, saveData) {
             if (!regex.test(studentId)) return;
             //
             await _searchUser({
+                blockId,
                 departmentId,
                 studentId,
                 eventTypeId: saveData?.eventTypeId,
@@ -251,6 +253,7 @@ async function calendarRenderHeavy(blockId, saveData) {
             labelElement.id = `label-${thisYear}-${thisMonth}-${thisDate}`;
             labelElement.addEventListener("click", async (event) => {
                 const detail = await handleOpenDayModal({
+                    blockId,
                     saveData,
                     year: thisYear,
                     month: thisMonth,
@@ -267,7 +270,12 @@ async function calendarRenderHeavy(blockId, saveData) {
     async function _after({ year, month }) {
         //
         // 今月の予定を読み込む
-        const flag = await _regenerateHtmlByEventList(saveData.eventTypeId, saveData, year, month);
+        const flag = await _regenerateHtmlByEventList({
+            blockId,
+            saveData,
+            year,
+            month
+        });
         //
         if (!flag) {
             // データなし（未定）
@@ -280,18 +288,38 @@ async function calendarRenderHeavy(blockId, saveData) {
         //
         // 先月の予定を読み込む
         if (month == 1) {
-            await _regenerateHtmlByEventList(saveData.eventTypeId, saveData, year - 1, 12);
+            await _regenerateHtmlByEventList({
+                blockId,
+                saveData,
+                year: year-1,
+                month: 12
+            });
         }
         else {
-            await _regenerateHtmlByEventList(saveData.eventTypeId, saveData, year, month - 1);
+            await _regenerateHtmlByEventList({
+                blockId,
+                saveData,
+                year: year,
+                month: month-1
+            });
         }
         //
         // 来月の予定を読み込む
         if (month == 12) {
-            await _regenerateHtmlByEventList(saveData.eventTypeId, saveData, year + 1, 1);
+            await _regenerateHtmlByEventList({
+                blockId,
+                saveData,
+                year: year+1,
+                month: 1
+            });
         }
         else {
-            await _regenerateHtmlByEventList(saveData.eventTypeId, saveData, year, month + 1);
+            await _regenerateHtmlByEventList({
+                blockId,
+                saveData,
+                year: year,
+                month: month+1
+            });
         }
         //
         const url = `https://rfs7tgnp2e5bbqvnycc4ohh5sy0oixuw.lambda-url.ap-northeast-1.on.aws/put_s3_monthly_file?eti=${saveData.eventTypeId}&year=${year}&month=${month}`;
