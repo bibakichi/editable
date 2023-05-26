@@ -2,6 +2,18 @@
 // カレンダーの日付をクリックしたときに実行される関数。
 // 戻り値にモーダルウィンドウのHTML要素を返す必要がある。
 async function handleOpenDayModal({blockId, saveData, year, month, date }) {
+    if(!blockId){
+        console.error(`引数「${blockId}」が渡されていません`);
+    }
+    if(!year){
+        console.error(`引数「${year}」が渡されていません`);
+    }
+    if(!month){
+        console.error(`引数「${month}」が渡されていません`);
+    }
+    if(!date){
+        console.error(`引数「${date}」が渡されていません`);
+    }
     const outerElement = document.createElement("div");
     outerElement.classList.add('date-detail');
     //
@@ -64,7 +76,7 @@ async function handleOpenDayModal({blockId, saveData, year, month, date }) {
                 buttonElement.disabled = true;
             }
             buttonElement.addEventListener("click", async () => {
-                await _postReservation({ eventData, userInfo });
+                await _postReservation({ blockId, eventData, userInfo });
             });
             //
             if (eventData.reserveComment) {

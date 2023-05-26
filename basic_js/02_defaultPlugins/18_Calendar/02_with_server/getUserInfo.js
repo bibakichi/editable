@@ -1,5 +1,14 @@
 
 async function _getUserInfo({ departmentId, studentId, eventTypeId }) {
+    if(!departmentId){
+        console.error(`引数「${departmentId}」が渡されていません`);
+    }
+    if(!studentId){
+        console.error(`引数「${studentId}」が渡されていません`);
+    }
+    if(!eventTypeId){
+        console.error(`引数「${eventTypeId}」が渡されていません`);
+    }
     const url = `https://rfs7tgnp2e5bbqvnycc4ohh5sy0oixuw.lambda-url.ap-northeast-1.on.aws/get_user_info`;
     const responseStream = await window.fetch(
         url,

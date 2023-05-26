@@ -1,5 +1,17 @@
 
 async function _searchUser({ blockId, departmentId, studentId, eventTypeId }) {
+    if(!blockId){
+        console.error(`引数「${blockId}」が渡されていません`);
+    }
+    if(!departmentId){
+        console.error(`引数「${departmentId}」が渡されていません`);
+    }
+    if(!studentId){
+        console.error(`引数「${studentId}」が渡されていません`);
+    }
+    if(!eventTypeId){
+        console.error(`引数「${eventTypeId}」が渡されていません`);
+    }
     studentId = formatID(studentId);
     //
     // 厳しくチェックをする（フォーマット後だから）
@@ -10,5 +22,5 @@ async function _searchUser({ blockId, departmentId, studentId, eventTypeId }) {
     studentIdElement.value = studentId;
     //
     const userInfo = await _getUserInfo({ departmentId, studentId, eventTypeId });
-    await _regenerateHtmlByUserInfo({ eventTypeId, userInfo });
+    await _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo });
 }

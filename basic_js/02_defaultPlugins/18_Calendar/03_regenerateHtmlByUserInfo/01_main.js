@@ -1,7 +1,15 @@
 
 // ユーザー情報をもとにHTMLを再生成する関数
-async function _regenerateHtmlByUserInfo({ eventTypeId, userInfo }) {
-    console.log(userInfo);
+async function _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo }) {
+    if(!blockId){
+        console.error(`引数「${blockId}」が渡されていません`);
+    }
+    if(!eventTypeId){
+        console.error(`引数「${eventTypeId}」が渡されていません`);
+    }
+    if(!userInfo){
+        console.error(`引数「${userInfo}」が渡されていません`);
+    }
     //
     const studentIdElement2 = document.getElementById("studentId2_" + blockId);
     studentIdElement2.innerText = "学籍番号：" + userInfo?.studentId;
@@ -78,7 +86,7 @@ async function _regenerateHtmlByUserInfo({ eventTypeId, userInfo }) {
         buttonElement.innerText = "キャンセル";
         eventCard.appendChild(buttonElement);
         buttonElement.addEventListener("click", async () => {
-            await _deleteReservation({ eventData, userInfo });
+            await _deleteReservation({ blockId, eventData, userInfo });
         });
         //
         const commentElement = document.createElement("div");

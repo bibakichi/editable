@@ -1,5 +1,17 @@
 
 async function _regenerateHtmlByEventList({blockId, saveData, year, month}) {
+    if(!blockId){
+        console.error(`引数「${blockId}」が渡されていません`);
+    }
+    if(!saveData){
+        console.error(`引数「${saveData}」が渡されていません`);
+    }
+    if(!year){
+        console.error(`引数「${year}」が渡されていません`);
+    }
+    if(!month){
+        console.error(`引数「${month}」が渡されていません`);
+    }
     const eventDatas = await _getEventList({eventTypeId:saveData?.eventTypeId, year, month});
     if(!eventDatas){
         return false;
