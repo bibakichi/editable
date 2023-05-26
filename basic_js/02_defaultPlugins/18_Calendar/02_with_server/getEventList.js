@@ -29,13 +29,11 @@ async function _getEventList({ blockId, eventTypeId, year, month }) {
     console.log(eventDatas);
     //
     // グローバル変数にも保存する
+    if (!window.events) {
+        window.events = {};
+    }
+    window.events[blockId] = {};
     for (const eventData of eventDatas.events) {
-        if (!window.events) {
-            window.events = {};
-        }
-        if (!window.events[blockId]) {
-            window.events[blockId] = {};
-        }
         const dateString = `${eventData.startYear}-${eventData.startMonth}-${eventData.startDate}`;
         if (!window.events[blockId][dateString]) {
             window.events[blockId][dateString] = [];
