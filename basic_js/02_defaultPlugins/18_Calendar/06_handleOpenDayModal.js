@@ -87,13 +87,12 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
                         //
                         const modalScroll = document.querySelector(".modal_main>.modal_scroll");
                         const targetContent = document.getElementById(blockId);
-                        console.log(modalScroll);
                         console.log(targetContent);
                         const rectTop = targetContent.getBoundingClientRect().top;
                         console.log(rectTop);
-                        console.log(modalScroll.pageYOffset);
+                        console.log(window.pageYOffset);
                         modalScroll.scrollTo({
-                            top: rectTop + modalScroll.pageYOffset,
+                            top: rectTop + window.pageYOffset,
                             behavior: "smooth",
                         });
                     }, 500);
