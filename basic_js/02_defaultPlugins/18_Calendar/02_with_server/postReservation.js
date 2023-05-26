@@ -50,11 +50,4 @@ async function _postReservation({ blockId, eventData, userInfo }) {
     //
     // グローバル変数にも保存
     window.userInfo = userInfo;
-    //
-    // HTMLを再生成
-    _regenerateHtmlByUserInfo({
-        blockId,
-        eventTypeId: eventData.eventTypeId,
-        userInfo: userInfo
-    });
 }
