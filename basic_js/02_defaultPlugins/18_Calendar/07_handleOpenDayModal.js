@@ -70,29 +70,58 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
         }
         //
         if (saveData?.isReservable && !isPast) {
-            // イベントの全体が予約を受け付けているのに、この時間帯だけ予約できない場合
-            const buttonElement = document.createElement("button");
-            buttonElement.classList.add("button3d");
-            buttonElement.innerText = "予約";
-            eventCard.appendChild(buttonElement);
-            if (!eventData.isReservable) {
-                buttonElement.disabled = true;
-            }
-            buttonElement.addEventListener("click", async () => await _handleClickReservation({ blockId, eventData, userInfo, onClose, saveData }));
+            // 予約受付中
             //
-            if (eventData.reserveComment) {
+            let isBooking = false;
+            if (window?.userInfo) {
+                for (const e of window?.userInfo?.reservations ?? []) {
+                    if (e.eventId == eventData.eventId) {
+                        // もし予約中なら
+                        isBooking = true;
+                    }
+                }
+            }
+            if (isBooking) {
+                const buttonElement = document.createElement("button");
+                buttonElement.classList.add("button3d");
+                buttonElement.innerText = "キャンセル";
+                eventCard.appendChild(buttonElement);
+                buttonElement.addEventListener("click", async () => {
+                    await _deleteReservation({ blockId, eventData, userInfo });
+                });
+                //
                 const commentElement = document.createElement("div");
-                commentElement.innerHTML = eventData.reserveComment;
-                if (eventData.isReservable && !isPast) {
-                    commentElement.style.color = "#fff";
-                }
-                else {
-                    commentElement.style.color = "#555";
-                }
-                commentElement.style.fontSize = "small";
+                commentElement.innerHTML = "予約中";
+                commentElement.style.color = "#0f0";
+                commentElement.style.fontWeight = "bold";
                 commentElement.style.textAlign = "left";
                 commentElement.style.whiteSpace = "pre-wrap";
                 eventCard.appendChild(commentElement);
+            }
+            else {
+                const buttonElement = document.createElement("button");
+                buttonElement.classList.add("button3d");
+                buttonElement.innerText = "予約";
+                eventCard.appendChild(buttonElement);
+                if (!eventData.isReservable) {
+                    buttonElement.disabled = true;
+                }
+                buttonElement.addEventListener("click", async () => await _handleClickReservation({ blockId, eventData, userInfo, onClose, saveData }));
+                //
+                if (eventData.reserveComment) {
+                    const commentElement = document.createElement("div");
+                    commentElement.innerHTML = eventData.reserveComment;
+                    if (eventData.isReservable && !isPast) {
+                        commentElement.style.color = "#fff";
+                    }
+                    else {
+                        commentElement.style.color = "#555";
+                    }
+                    commentElement.style.fontSize = "small";
+                    commentElement.style.textAlign = "left";
+                    commentElement.style.whiteSpace = "pre-wrap";
+                    eventCard.appendChild(commentElement);
+                }
             }
         }
         else {
