@@ -10,6 +10,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master  # リポジトリをチェックアウト
 
+      - name: list_files  # ファイル一覧を表示
+        run: find ./basic_js/ -type f | sort 
+
       - name: Join_files  # ファイルを結合
         run: find ./basic_js/ -type f | sort | xargs cat > ./deploy_files/basic.js
 
