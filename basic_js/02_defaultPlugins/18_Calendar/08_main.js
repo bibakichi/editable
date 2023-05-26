@@ -158,7 +158,7 @@ plugins["Calendar"] = {
         //【必須】ツールボックスに表示されるHTML要素を生成する関数
         "render": async function (saveData) {
             const toolboxElement = document.createElement('div');
-            toolboxElement.innerHTML = 'リソース一覧';
+            toolboxElement.innerHTML = 'カレンダー';
             return toolboxElement;
         },
     },
