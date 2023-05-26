@@ -1,5 +1,5 @@
 
-async function _searchUser({ blockId, departmentId, studentId, eventTypeId }) {
+async function _searchUser({ blockId, departmentId, studentId, eventTypeId, saveData }) {
     if(!blockId){
         console.error(`引数「${blockId}」が渡されていません`);
     }
@@ -22,5 +22,5 @@ async function _searchUser({ blockId, departmentId, studentId, eventTypeId }) {
     studentIdElement.value = studentId;
     //
     const userInfo = await _getUserInfo({ departmentId, studentId, eventTypeId });
-    await _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo });
+    await _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo, saveData });
 }

@@ -1,5 +1,5 @@
 
-async function _postReservation({ blockId, eventData, userInfo }) {
+async function _postReservation({ blockId, eventData, userInfo, saveData }) {
     if (!blockId) {
         console.error(`引数「${blockId}」が渡されていません`);
     }
@@ -55,6 +55,7 @@ async function _postReservation({ blockId, eventData, userInfo }) {
     _regenerateHtmlByUserInfo({
         blockId,
         eventTypeId: eventData.eventTypeId,
-        userInfo: userInfo
+        userInfo: userInfo,
+        saveData,
     });
 }

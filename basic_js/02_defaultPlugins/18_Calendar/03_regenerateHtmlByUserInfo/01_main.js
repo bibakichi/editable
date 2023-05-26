@@ -1,6 +1,6 @@
 
 // ユーザー情報をもとにHTMLを再生成する関数
-async function _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo }) {
+async function _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo, saveData }) {
     if(!blockId){
         console.error(`引数「${blockId}」が渡されていません`);
     }

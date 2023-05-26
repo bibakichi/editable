@@ -27,7 +27,7 @@ async function _handleClickReservation({ blockId, eventData, onClose, saveData }
         });
         return;
     }
-    await _postReservation({ blockId, eventData, userInfo });
+    await _postReservation({ blockId, eventData, userInfo, saveData });
     //
     window.setTimeout(() => {
         // サーバーから情報を取得して画面を更新
@@ -42,6 +42,7 @@ async function _handleClickReservation({ blockId, eventData, onClose, saveData }
             departmentId: userInfo.departmentId,
             studentId: userInfo.studentId,
             eventTypeId: saveData?.eventTypeId,
+            saveData,
         });
     }, 1500);
     //

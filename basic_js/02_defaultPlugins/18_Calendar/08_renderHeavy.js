@@ -32,6 +32,7 @@ async function calendarRenderHeavy(blockId, saveData) {
                 departmentId,
                 studentId,
                 eventTypeId: saveData?.eventTypeId,
+                saveData,
             });
         });
         //
@@ -53,6 +54,7 @@ async function calendarRenderHeavy(blockId, saveData) {
                 departmentId,
                 studentId,
                 eventTypeId: saveData?.eventTypeId,
+                saveData,
             });
         });
         //
