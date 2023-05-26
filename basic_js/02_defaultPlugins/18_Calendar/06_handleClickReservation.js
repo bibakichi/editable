@@ -12,7 +12,6 @@ async function _handleClickReservation({ blockId, eventData, userInfo, onClose, 
     if (!onClose) {
         console.error(`引数「${onClose}」が渡されていません`);
     }
-    const userInfo = window.userInfo;
     if (!userInfo) {
         onClose();
         setTimeout(() => alert("学籍番号を入力してください"), 500);
