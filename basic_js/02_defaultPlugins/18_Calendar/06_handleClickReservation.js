@@ -29,19 +29,6 @@ async function _handleClickReservation({ blockId, eventData, onClose, saveData }
     }
     await _postReservation({ blockId, eventData, userInfo });
     //
-    // 変数「userInfo」に、たった今キャンセルしたイベントの予約情報を追加する
-    userInfo.reservations.push(eventData);
-    //
-    // グローバル変数にも保存
-    window.userInfo = userInfo;
-    //
-    // HTMLを再生成（サーバーからの情報をもとにしておらず、とりあえずの画面更新）
-    _regenerateHtmlByUserInfo({
-        blockId,
-        eventTypeId: eventData.eventTypeId,
-        userInfo: userInfo
-    });
-    //
     window.setTimeout(() => {
         // サーバーから情報を取得して画面を更新
         _regenerateHtmlByEventList({
