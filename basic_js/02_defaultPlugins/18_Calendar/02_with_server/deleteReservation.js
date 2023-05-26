@@ -54,6 +54,9 @@ async function _deleteReservation({ blockId, eventData, userInfo }) {
         }
     }
     //
+    // グローバル変数にも保存
+    window.userInfo = newUserInfo;
+    //
     // HTMLを再生成
     _regenerateHtmlByUserInfo({
         blockId,

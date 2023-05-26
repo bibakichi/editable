@@ -45,6 +45,9 @@ async function _postReservation({ blockId, eventData, userInfo }) {
     // 変数「userInfo」に、たった今キャンセルしたイベントの予約情報を追加する
     userInfo.reservations.push(eventData);
     //
+    // グローバル変数にも保存
+    window.userInfo = userInfo;
+    //
     // HTMLを再生成
     _regenerateHtmlByUserInfo({
         blockId,
