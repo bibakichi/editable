@@ -85,7 +85,7 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
                     setTimeout(() => {
                         alert("学籍番号を入力してください");
                         //
-                        const modalScroll = document.querySelector(".modal_main>.modal_scroll");
+                        const modalScroll = document.querySelector(".modal_outer.modal_main");
                         const targetContent = document.getElementById(blockId);
                         console.log(targetContent);
                         const rectTop = targetContent.getBoundingClientRect().top;
