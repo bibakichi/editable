@@ -1,0 +1,199 @@
+async function calendarCSS(saveData) {
+    return `
+        /*===========================================================================*/
+
+        table.calendar {
+            border-spacing: 0;
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        table.calendar>tbody>tr>th {
+            font-weight: normal;
+        }
+
+        table.calendar>tbody>tr>td {
+            border: 1px solid #ddd;
+            vertical-align: top;
+            min-height: max-content;
+            height: 90px;
+            box-sizing: border-box;
+            background: #fafafa;
+        }
+
+        @media print {
+            table.calendar>tbody>tr>td {
+                background: none;
+            }
+        }
+
+        table.calendar>tbody>tr>td>label {
+            display: block;
+            padding: 0;
+            height: 100%;
+        }
+
+        table.calendar>tbody>tr>td>label:hover {
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .not-today {
+            padding-top: 9px;
+        }
+
+        .today {
+            border-top: 5px solid #8d0000;
+            padding-top: 2px;
+            border-bottom: 2px solid #8d0000;
+        }
+
+        @media print {
+            .today {
+                padding-top: 9px;
+                border: none;
+            }
+        }
+
+        table.calendar>tbody>tr>td>label {
+            color: black;
+        }
+
+        table.calendar>tbody>tr>td:first-child>label {
+            color: red;
+        }
+
+        table.calendar>tbody>tr>td:last-child>label {
+            color: royalblue;
+        }
+
+        table.calendar>tbody>tr>td>label.not_this_month {
+            color: #ccc;
+        }
+
+        .event_card_small {
+            background: #8d0000b3;
+            color: #fff;
+            font-size: 12px;
+            margin: 3px;
+            border-radius: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: left;
+            padding-left: 3px;
+        }
+
+        @media print {
+            .event_card_small {
+                background: none;
+                color: #000;
+                font-size: 10px;
+                border: solid 1px #ccc;
+            }
+        }
+
+        .event_card_small.disabled {
+            background: #8d000024;
+        }
+
+        /*===========================================================================*/
+        #monthly-box-outer {
+            width: 100%;
+            position: relative;
+            height: 70px;
+        }
+
+        #monthly-box-outer>div {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: min-content;
+            pointer-events: none;
+        }
+
+        #monthly-box-outer>div>a {
+            pointer-events: all;
+        }
+
+        @media print {
+            #monthly-box-outer>div>a {
+                display: none;
+            }
+        }
+
+        #monthly-box-outer>#monthly-box-left {
+            text-align: left;
+        }
+
+        #monthly-box-outer>#monthly-box-center {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #monthly-box-outer>#monthly-box-right {
+            text-align: right;
+        }
+
+        /*===========================================================================*/
+
+        .date-detail {
+            text-align: center;
+        }
+
+        .date-detail.visible {
+            display: block;
+        }
+
+        .event_card_large {
+            background: #8d0000b3;
+            color: #fff;
+            position: relative;
+            font-size: 16px;
+            margin: 10px auto;
+            border-radius: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: left;
+            padding: 10px;
+            text-align: right;
+            max-width: 300px;
+            min-height: 35px;
+        }
+
+        .event_card_large.disabled {
+            background: #8d000024;
+        }
+
+        @media print {
+            .event_card_large {
+                background: none;
+                color: #000;
+                font-size: 10px;
+                border: solid 1px #ccc;
+            }
+        }
+
+        .event_time {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            text-align: left;
+        }
+
+        .date-detail>.openName{
+            display:none;
+        }
+
+        .date-detail.event_exist>.openName{
+            display:block;
+        }
+
+
+        /*===========================================================================*/
+    `;
+};
