@@ -2,6 +2,9 @@
 document.addEventListener('DOMContentLoaded', async function () {
     //
     microsoftProfile = await loadMicrosoftProfile();
+    for(const pluginName in plugins){
+        _loadDefaultPlugin(pluginName);
+    }
     await initMainContents(); // メインコンテンツを表示
     await initEditSwitch();   // 編集スイッチを初期化
     const params = new URLSearchParams(window.location.search);
