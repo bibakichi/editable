@@ -9,6 +9,9 @@ async function _postReservation({ blockId, eventData, userInfo }) {
     if (!userInfo) {
         console.error(`引数「${userInfo}」が渡されていません`);
     }
+    if (!userInfo) {
+        console.error(`引数「${userInfo}」が渡されていません`);
+    }
     _showLoader();
     try {
         const url = "https://rfs7tgnp2e5bbqvnycc4ohh5sy0oixuw.lambda-url.ap-northeast-1.on.aws/post_reservation";

@@ -78,30 +78,7 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
             if (!eventData.isReservable) {
                 buttonElement.disabled = true;
             }
-            buttonElement.addEventListener("click", async () => {
-                const userInfo = window.userInfo;
-                if (!userInfo) {
-                    onClose();
-                    setTimeout(() => alert("学籍番号を入力してください"), 500);
-                    //
-                    // 学籍番号の入力欄まで自動スクロールする
-                    const modalScroll = document.querySelector(".modal_outer.modal_main");
-                    const targetContent = document.getElementById(blockId);
-                    console.log(targetContent);
-                    const rectTop = targetContent.getBoundingClientRect().top;
-                    console.log(rectTop);
-                    console.log(window.pageYOffset);
-                    modalScroll.scrollTo({
-                        top: rectTop + window.pageYOffset,
-                        behavior: "smooth",
-                    });
-                    return;
-                }
-                await _postReservation({ blockId, eventData, userInfo });
-                //
-                // 予約が完了したら
-                onClose();
-            });
+            buttonElement.addEventListener("click", async () => await _handleClickReservation({ blockId, eventData, userInfo, onClose, saveData }));
             //
             if (eventData.reserveComment) {
                 const commentElement = document.createElement("div");
