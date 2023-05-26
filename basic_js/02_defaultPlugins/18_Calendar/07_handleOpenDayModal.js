@@ -106,7 +106,7 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
                 if (!eventData.isReservable) {
                     buttonElement.disabled = true;
                 }
-                buttonElement.addEventListener("click", async () => await _handleClickReservation({ blockId, eventData, userInfo, onClose, saveData }));
+                buttonElement.addEventListener("click", async () => await _handleClickReservation({ blockId, eventData, onClose, saveData }));
                 //
                 if (eventData.reserveComment) {
                     const commentElement = document.createElement("div");
