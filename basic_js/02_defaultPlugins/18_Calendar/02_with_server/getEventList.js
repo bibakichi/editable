@@ -18,4 +18,5 @@ async function _getEventList({eventTypeId, year, month}) {
         return null;
     }
     console.log(eventDatas);
+    return eventDatas;
 }
