@@ -1,5 +1,5 @@
 
-async function _handleClickReservation({ blockId, eventData, userInfo, onClose,saveData }) {
+async function _handleClickReservation({ blockId, eventData, userInfo, onClose, saveData }) {
     if (!blockId) {
         console.error(`引数「${blockId}」が渡されていません`);
     }
@@ -32,11 +32,17 @@ async function _handleClickReservation({ blockId, eventData, userInfo, onClose,s
     }
     await _postReservation({ blockId, eventData, userInfo });
     //
-    await _regenerateHtmlByEventList({
+    _regenerateHtmlByEventList({
         blockId,
         saveData,
-        year:eventData.startYear,
-        month:eventData.startMonth,
+        year: eventData.startYear,
+        month: eventData.startMonth,
+    });
+    _searchUser({
+        blockId,
+        departmentId: userInfo.departmentId,
+        studentId: userInfo.studentId,
+        eventTypeId: saveData?.eventTypeId,
     });
     //
     // 予約が完了したら
