@@ -10,6 +10,7 @@ async function _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo }) {
     if(!userInfo){
         console.error(`引数「${userInfo}」が渡されていません`);
     }
+    console.log("¥n¥nユーザー情報を再描画します");
     console.log(userInfo);
     //
     const studentIdElement2 = document.getElementById("studentId2_" + blockId);

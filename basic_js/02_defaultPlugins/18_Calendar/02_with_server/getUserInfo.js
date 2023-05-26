@@ -39,7 +39,6 @@ async function _getUserInfo({ departmentId, studentId, eventTypeId }) {
         alert(responseData.message);
         throw responseData.message;
     }
-    console.log(responseData.data);
     //
     // グローバル変数にも保存
     window.userInfo = responseData.data;
