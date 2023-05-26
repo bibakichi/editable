@@ -1,5 +1,5 @@
 
-async function _deleteReservation({ blockId, eventData, userInfo }) {
+async function _deleteReservation({ blockId, eventData, userInfo,saveData }) {
     if (!blockId) {
         console.error(`引数「${blockId}」が渡されていません`);
     }
@@ -63,4 +63,20 @@ async function _deleteReservation({ blockId, eventData, userInfo }) {
         eventTypeId: eventData.eventTypeId,
         userInfo: newUserInfo,
     });
+    //
+    window.setTimeout(() => {
+        // サーバーから情報を取得して画面を更新
+        _regenerateHtmlByEventList({
+            blockId,
+            saveData,
+            year: eventData.startYear,
+            month: eventData.startMonth,
+        });
+        _searchUser({
+            blockId,
+            departmentId: userInfo.departmentId,
+            studentId: userInfo.studentId,
+            eventTypeId: saveData?.eventTypeId,
+        });
+    }, 1500);
 }

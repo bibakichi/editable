@@ -87,7 +87,7 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
                 buttonElement.innerText = "キャンセル";
                 eventCard.appendChild(buttonElement);
                 buttonElement.addEventListener("click", async () => {
-                    await _deleteReservation({ blockId, eventData, userInfo });
+                    await _deleteReservation({ blockId, eventData, userInfo, saveData });
                 });
                 //
                 const commentElement = document.createElement("div");

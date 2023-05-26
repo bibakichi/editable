@@ -88,7 +88,7 @@ async function _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo }) {
         buttonElement.innerText = "キャンセル";
         eventCard.appendChild(buttonElement);
         buttonElement.addEventListener("click", async () => {
-            await _deleteReservation({ blockId, eventData, userInfo });
+            await _deleteReservation({ blockId, eventData, userInfo, saveData });
         });
         //
         const commentElement = document.createElement("div");
