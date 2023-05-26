@@ -32,4 +32,4 @@ function formatID(id) {
     id = zeroPadding(id, 8);
     id = id.toUpperCase();
     return id;
-}ß
+}
