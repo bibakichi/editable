@@ -29,17 +29,22 @@ async function _regenerateHtmlByEventList({ blockId, saveData, year, month }) {
     //
     const nowDate = new Date();
     //
+    const eventsElements = document.getElementsByClassName(`label-${year}-${month}-${blockId}`);
+    for (const eventsElement of eventsElements) {
+        eventsElement.innerHTML="";
+    }
+    //
     for (const eventData of eventDatas.events) {
         if (!eventData.startYear || !eventData.startMonth || !eventData.startDate) continue;
-        const labelElement = document.getElementById(`label-${eventData.startYear}-${eventData.startMonth}-${eventData.startDate}`);
-        if (!labelElement) continue;
+        const eventsElement = document.getElementById(`label-${eventData.startYear}-${eventData.startMonth}-${eventData.startDate}-${blockId}`);
+        if (!eventsElement) continue;
         //
         const targetDate = new Date(eventData.startYear, eventData.startMonth - 1, eventData.startDate, 23, 59, 59);
         const isPast = (targetDate.getTime() < nowDate.getTime());
         //
         const eventCard = document.createElement("div");
         eventCard.classList.add("event_card_small");
-        labelElement.appendChild(eventCard);
+        eventsElement.appendChild(eventCard);
         if (isPast) {
             // すでに終了したイベントの場合
             eventCard.classList.add("disabled");

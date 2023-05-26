@@ -246,11 +246,19 @@ async function calendarRenderHeavy(blockId, saveData) {
                 dayCount++
             }
             const isToday = (thisYear === nowYear) && (thisMonth === nowMonth) && (thisDate === nowDate);
-            labelElement.innerHTML = `
-                        <div class="${isToday ? 'today' : 'not-today'}"></div>
-                        ${thisDate}
-                    `;
-            labelElement.id = `label-${thisYear}-${thisMonth}-${thisDate}`;
+            //
+            const dateElement = document.createElement("div");
+            dateElement.innerHTML = `
+                <div class="${isToday ? 'today' : 'not-today'}"></div>
+                ${thisDate}
+            `;
+            labelElement.appendChild(dateElement);
+            //
+            const eventsElement = document.createElement("div");
+            eventsElement.classList.add(`label-${thisYear}-${thisMonth}-${blockId}`);
+            eventsElement.id = `label-${thisYear}-${thisMonth}-${thisDate}-${blockId}`;
+            labelElement.appendChild(eventsElement);
+            //
             labelElement.addEventListener("click", async (event) => {
                 const detail = await handleOpenDayModal({
                     blockId,
@@ -258,8 +266,8 @@ async function calendarRenderHeavy(blockId, saveData) {
                     year: thisYear,
                     month: thisMonth,
                     date: thisDate,
-                    onClose: ()=>{
-                        checkboxElement.checked= false;
+                    onClose: () => {
+                        checkboxElement.checked = false;
                     },
                 });
                 mainElement.innerHTML = "";
@@ -294,7 +302,7 @@ async function calendarRenderHeavy(blockId, saveData) {
             await _regenerateHtmlByEventList({
                 blockId,
                 saveData,
-                year: year-1,
+                year: year - 1,
                 month: 12
             });
         }
@@ -303,7 +311,7 @@ async function calendarRenderHeavy(blockId, saveData) {
                 blockId,
                 saveData,
                 year: year,
-                month: month-1
+                month: month - 1
             });
         }
         //
@@ -312,7 +320,7 @@ async function calendarRenderHeavy(blockId, saveData) {
             await _regenerateHtmlByEventList({
                 blockId,
                 saveData,
-                year: year+1,
+                year: year + 1,
                 month: 1
             });
         }
@@ -321,7 +329,7 @@ async function calendarRenderHeavy(blockId, saveData) {
                 blockId,
                 saveData,
                 year: year,
-                month: month+1
+                month: month + 1
             });
         }
         //
