@@ -82,20 +82,19 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
                 const userInfo = window.userInfo;
                 if (!userInfo) {
                     onClose();
-                    setTimeout(() => {
-                        alert("学籍番号を入力してください");
-                        //
-                        const modalScroll = document.querySelector(".modal_outer.modal_main");
-                        const targetContent = document.getElementById(blockId);
-                        console.log(targetContent);
-                        const rectTop = targetContent.getBoundingClientRect().top;
-                        console.log(rectTop);
-                        console.log(window.pageYOffset);
-                        modalScroll.scrollTo({
-                            top: rectTop + window.pageYOffset,
-                            behavior: "smooth",
-                        });
-                    }, 500);
+                    setTimeout(() => alert("学籍番号を入力してください"), 500);
+                    //
+                    // 学籍番号の入力欄まで自動スクロールする
+                    const modalScroll = document.querySelector(".modal_outer.modal_main");
+                    const targetContent = document.getElementById(blockId);
+                    console.log(targetContent);
+                    const rectTop = targetContent.getBoundingClientRect().top;
+                    console.log(rectTop);
+                    console.log(window.pageYOffset);
+                    modalScroll.scrollTo({
+                        top: rectTop + window.pageYOffset,
+                        behavior: "smooth",
+                    });
                     return;
                 }
                 await _postReservation({ blockId, eventData, userInfo });
