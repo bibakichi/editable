@@ -16,11 +16,21 @@ async function _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo }) {
     const studentIdElement2 = document.getElementById("studentId2_" + blockId);
     studentIdElement2.innerText = "学籍番号：" + userInfo?.studentId;
     //
+    const notEligible = document.getElementById("notEligible_" + blockId);
     const underReservation = document.getElementById("underReservation_" + blockId);
     const please5 = document.getElementById("please5_" + blockId);
-    const notEligible = document.getElementById("notEligible_" + blockId);
     const calendarElement = document.getElementById("calendarElement_" + blockId);
-    if (userInfo?.reservations.length > 0) {
+    if (!userInfo?.eventSetting?.eligibilityFlag) {
+        // 参加資格がない場合
+        underReservation.style.display = "none";    //非表示
+        notEligible.style.display = "block";    //表示
+        please5.style.display = "none";    //非表示
+        calendarElement.style.display = "none";    //非表示
+        //
+        notEligible.innerHTML = (userInfo?.eventSetting?.notEligibleMessage ?? 'あなたは参加資格がありません。')
+            + "<br>学籍番号：" + userInfo?.studentId;
+    }
+    else if (userInfo?.reservations.length > 0) {
         // 予約中の場合
         underReservation.style.display = "block";    //表示
         notEligible.style.display = "none";    //非表示
@@ -43,16 +53,6 @@ async function _regenerateHtmlByUserInfo({ blockId, eventTypeId, userInfo }) {
             please4.style.display = "block";    //表示
             calendarElement.style.display = "block";    //表示
         }
-    }
-    else if (!userInfo?.eventSetting?.eligibilityFlag) {
-        // 参加資格がない場合
-        underReservation.style.display = "none";    //非表示
-        notEligible.style.display = "block";    //表示
-        please5.style.display = "none";    //非表示
-        calendarElement.style.display = "none";    //非表示
-        //
-        notEligible.innerHTML = (userInfo?.eventSetting?.notEligibleMessage ?? 'あなたは参加資格がありません。')
-            + "<br>学籍番号：" + userInfo?.studentId;
     }
     else {
         // １件も予約していない場合
