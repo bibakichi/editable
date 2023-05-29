@@ -93,14 +93,14 @@ plugins["Calendar"] = {
             scrollElement.appendChild(brElement4);
             //
             const microsoftProfile = await _getMicrosoftProfile();
-            //console.log(microsoftProfile);
+            console.log(microsoftProfile);
             //
             const responseStream = await window.fetch(
                 "https://rfs7tgnp2e5bbqvnycc4ohh5sy0oixuw.lambda-url.ap-northeast-1.on.aws/list_event_type", {
                 method: "POST",
                 headers: {},
                 body: JSON.stringify({
-                    //graphApi: microsoftProfile.graphApi,
+                    graphApi: microsoftProfile.graphApi,
                 }),
             },
             );
