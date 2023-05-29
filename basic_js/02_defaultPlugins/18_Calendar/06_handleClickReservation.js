@@ -17,10 +17,7 @@ async function _handleClickReservation({ blockId, eventData, onClose, saveData }
         // 学籍番号の入力欄まで自動スクロールする
         const modalScroll = document.querySelector(".modal_outer.modal_main");
         const targetContent = document.getElementById(blockId);
-        console.log(targetContent);
         const rectTop = targetContent.getBoundingClientRect().top;
-        console.log(rectTop);
-        console.log(modalScroll.scrollTop);
         modalScroll.scrollTo({
             top: rectTop + modalScroll.scrollTop + (window.innerHeight * 0.3),
             behavior: "smooth",
