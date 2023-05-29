@@ -92,7 +92,7 @@ plugins["Calendar"] = {
             const brElement4 = document.createElement("br");
             scrollElement.appendChild(brElement4);
             //
-            //const microsoftProfile = await _getMicrosoftProfile();
+            const microsoftProfile = await _getMicrosoftProfile();
             //console.log(microsoftProfile);
             //
             const responseStream = await window.fetch(
