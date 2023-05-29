@@ -291,7 +291,8 @@ function calendarRender({ blockId, saveData, isHeavy }) {
     // ボタン「翌月」を生成する
     const bottomBox = document.createElement("div");
     bottomBox.style.textAlign = "center";
-    bottomBox.innerHTML = `<a href="${nextMonthUrl}" class="buttonFlat">翌月</a>`;
+    bottomBox.style.paddingTop = "10px";
+    bottomBox.innerHTML = `<a href="${nextMonthUrl}" class="buttonFlat">翌月を表示</a>`;
     calendarElement.appendChild(bottomBox);
     //
     //
