@@ -20,6 +20,7 @@ function calendarRender({ blockId, saveData, isHeavy }) {
         studentIdElement.id = "studentId_" + blockId;
         studentIdElement.style.width = "200px";
         studentIdElement.style.boxSizing = "border-box";
+        studentIdElement.placeholder = "LC000000";
         studentIdOuterElement.appendChild(studentIdElement);
         //
         if (isHeavy) {
