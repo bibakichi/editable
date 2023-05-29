@@ -20,9 +20,9 @@ async function _handleClickReservation({ blockId, eventData, onClose, saveData }
         console.log(targetContent);
         const rectTop = targetContent.getBoundingClientRect().top;
         console.log(rectTop);
-        console.log(window.scrollY);
+        console.log(window.screenY);
         modalScroll.scrollTo({
-            top: rectTop + window.scrollY,
+            top: rectTop + window.screenY,
             behavior: "smooth",
         });
         return;
