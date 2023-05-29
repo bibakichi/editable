@@ -41,8 +41,14 @@ async function _postReservation({ blockId, eventData, userInfo, saveData }) {
             console.error('JSONに変換できませんでした');
             return null;
         }
-        //if(responseData){
-        alert(responseData.message);
+        if (responseData.isSuccess) {
+            for (const completionMessage of completionMessages) {
+                alert(completionMessage);
+            }
+        }
+        else {
+            alert(responseData.message);
+        }
     }
     catch (err) { }
     _deleteLoader();
