@@ -178,10 +178,10 @@ function calendarRender({ blockId, saveData, isHeavy }) {
     //
     const monthlyBoxCenter = document.createElement("div");
     monthlyBoxCenter.id = "monthly-box-center";
-    if(isHeavy){
-    monthlyBoxCenter.innerHTML = `${year}年 ${month}月`;
+    if (isHeavy) {
+        monthlyBoxCenter.innerHTML = `${year}年 ${month}月`;
     }
-    else{
+    else {
         monthlyBoxCenter.innerText = ` 年  月`;
     }
     monthlyBoxOuter.appendChild(monthlyBoxCenter);
@@ -287,6 +287,13 @@ function calendarRender({ blockId, saveData, isHeavy }) {
     }
     //
     //
+    // ボタン「翌月」を生成する
+    const bottomBox = document.createElement("div");
+    bottomBox.style.textAlign = "center";
+    bottomBox.innerHTML = `<a href="${nextMonthUrl}" class="buttonFlat">翌月</a>`;
+    calendarElement.appendChild(bottomBox);
+    //
+    //
     async function _after({ year, month }) {
         //
         // 今月の予定を読み込む
@@ -345,10 +352,10 @@ function calendarRender({ blockId, saveData, isHeavy }) {
         const url = `https://rfs7tgnp2e5bbqvnycc4ohh5sy0oixuw.lambda-url.ap-northeast-1.on.aws/put_s3_monthly_file?eti=${saveData.eventTypeId}&year=${year}&month=${month}`;
         await window.fetch(url, { cache: "no-store" });
     }
-    if(isHeavy){
-    if (saveData.eventTypeId) {
-        _after({ year, month });
-    }
+    if (isHeavy) {
+        if (saveData.eventTypeId) {
+            _after({ year, month });
+        }
     }
     return outerElement;
 }
