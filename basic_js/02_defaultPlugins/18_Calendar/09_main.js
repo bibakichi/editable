@@ -3,6 +3,8 @@
 plugins["Calendar"] = {
     "isDefault": true,
 
+    "css": calendarCSS,
+
     "viewer": {
 
 
