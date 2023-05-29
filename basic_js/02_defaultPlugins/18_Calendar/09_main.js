@@ -12,11 +12,9 @@ plugins["Calendar"] = {
         //    ※ページを開いた直後に、１度だけ実行されます。
         //    ※サーバーと連携して、表示するたびに内容が変化するような使い方もできます。
         //    ※未定義の場合は、ツールボックスの中だけで動作するプラグインになります。（例：画質変換）
-        "renderHeavy": calendarRenderHeavy,
+        "renderHeavy": async (blockId, saveData)=>calendarRender({ blockId, saveData, isHeavy:true }),
 
-        renderLight: async function (blockId, saveData) {
-            return document.createElement('div');
-        },
+        renderLight: async (blockId, saveData)=>calendarRender({ blockId, saveData, isHeavy:false }),
 
         //【任意】編集モードに切り替わったとき
         changeEditMode: async function (blockId, saveData) {
