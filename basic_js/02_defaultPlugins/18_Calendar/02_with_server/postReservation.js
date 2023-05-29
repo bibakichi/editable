@@ -1,6 +1,5 @@
 
 async function _postReservation({ blockId, eventData, userInfo, saveData }) {
-    console.log(eventData);
     if (!blockId) {
         console.error(`引数「${blockId}」が渡されていません`);
     }
@@ -42,7 +41,7 @@ async function _postReservation({ blockId, eventData, userInfo, saveData }) {
             return null;
         }
         if (responseData.isSuccess) {
-            for (const completionMessage of completionMessages) {
+            for (const completionMessage of eventData.completionMessages) {
                 alert(completionMessage);
             }
         }
