@@ -1,7 +1,6 @@
 
-async function calendarRenderHeavy(blockId, saveData) {
+function calendarRender({ blockId, saveData, isHeavy }) {
     const departmentId = '01GVJNAM1QSFVRSCAKN85BF972';
-    _showLoader();
     //
     const outerElement = document.createElement("div");
     outerElement.style.position = "relative";
@@ -23,40 +22,42 @@ async function calendarRenderHeavy(blockId, saveData) {
         studentIdElement.style.boxSizing = "border-box";
         studentIdOuterElement.appendChild(studentIdElement);
         //
-        // Enterキーが押されたとき
-        studentIdElement.addEventListener('keypress', async (event) => {
-            if (event.key !== 'Enter') return;
-            const studentId = studentIdElement.value;
-            await _searchUser({
-                blockId,
-                departmentId,
-                studentId,
-                eventTypeId: saveData?.eventTypeId,
-                saveData,
+        if (isHeavy) {
+            // Enterキーが押されたとき
+            studentIdElement.addEventListener('keypress', async (event) => {
+                if (event.key !== 'Enter') return;
+                const studentId = studentIdElement.value;
+                await _searchUser({
+                    blockId,
+                    departmentId,
+                    studentId,
+                    eventTypeId: saveData?.eventTypeId,
+                    saveData,
+                });
             });
-        });
-        //
-        // 学籍番号が入力途中のとき
-        studentIdElement.addEventListener('input', async () => {
-            let studentId = studentIdElement.value;
-            try {
-                studentId = toHalfWidth(studentId);
-                studentId = studentId.toUpperCase();
-            }
-            catch (e) { }
             //
-            // ゆるくチェックをする（フォーマット前だから）
-            const regex = /^([1-9][0-9]{4})|([0-9]{8})|(((LC)|(LH)|(LJ)|(LP)|(LE)|(LG)|(LF)|(LA)|(JJ)|(JB)|(EE)|(EI)|(CC)|(CB)|(CF)|(BB)|(SM)|(SP)|(SC)|(SE)|(TM)|(TE)|(TL)|(TK)|(TC)|(TA)|(MM)|(MN)|(PP)|(GS)|(GH)|(LD)|(JD)|(ED)|(CD)|(SD)|(TD)|(MD)|(PD)|(GD)|(AU)|(AG)|(XA)|(ES)|(FS)|(RE)|(DG)|(XR)|(GD)|(XL)|(lc)|(lh)|(lj)|(lp)|(le)|(lg)|(lf)|(la)|(jj)|(jb)|(ee)|(ei)|(cc)|(cb)|(cf)|(bb)|(sm)|(sp)|(sc)|(se)|(tm)|(te)|(tl)|(tk)|(tc)|(ta)|(mm)|(mn)|(pp)|(gs)|(gh)|(ld)|(jd)|(ed)|(cd)|(bd)|(sd)|(td)|(md)|(pd)|(gd))[0-9]{6})$/;
-            if (!regex.test(studentId)) return;
-            //
-            await _searchUser({
-                blockId,
-                departmentId,
-                studentId,
-                eventTypeId: saveData?.eventTypeId,
-                saveData,
+            // 学籍番号が入力途中のとき
+            studentIdElement.addEventListener('input', async () => {
+                let studentId = studentIdElement.value;
+                try {
+                    studentId = toHalfWidth(studentId);
+                    studentId = studentId.toUpperCase();
+                }
+                catch (e) { }
+                //
+                // ゆるくチェックをする（フォーマット前だから）
+                const regex = /^([1-9][0-9]{4})|([0-9]{8})|(((LC)|(LH)|(LJ)|(LP)|(LE)|(LG)|(LF)|(LA)|(JJ)|(JB)|(EE)|(EI)|(CC)|(CB)|(CF)|(BB)|(SM)|(SP)|(SC)|(SE)|(TM)|(TE)|(TL)|(TK)|(TC)|(TA)|(MM)|(MN)|(PP)|(GS)|(GH)|(LD)|(JD)|(ED)|(CD)|(SD)|(TD)|(MD)|(PD)|(GD)|(AU)|(AG)|(XA)|(ES)|(FS)|(RE)|(DG)|(XR)|(GD)|(XL)|(lc)|(lh)|(lj)|(lp)|(le)|(lg)|(lf)|(la)|(jj)|(jb)|(ee)|(ei)|(cc)|(cb)|(cf)|(bb)|(sm)|(sp)|(sc)|(se)|(tm)|(te)|(tl)|(tk)|(tc)|(ta)|(mm)|(mn)|(pp)|(gs)|(gh)|(ld)|(jd)|(ed)|(cd)|(bd)|(sd)|(td)|(md)|(pd)|(gd))[0-9]{6})$/;
+                if (!regex.test(studentId)) return;
+                //
+                await _searchUser({
+                    blockId,
+                    departmentId,
+                    studentId,
+                    eventTypeId: saveData?.eventTypeId,
+                    saveData,
+                });
             });
-        });
+        }
         //
         //-----------------------------------
         // 利用資格が無い場合だけ表示
@@ -227,6 +228,8 @@ async function calendarRenderHeavy(blockId, saveData) {
             trElement.appendChild(tdElement);
             const labelElement = openButtonElement.cloneNode(false);
             tdElement.appendChild(labelElement);
+            if (!isHeavy) continue;
+            //
             let thisYear, thisMonth, thisDate;
             if (w == 0 && d < startDay) {
                 // 1行目で1日の曜日の前
@@ -275,7 +278,6 @@ async function calendarRenderHeavy(blockId, saveData) {
                 mainElement.innerHTML = "";
                 mainElement.appendChild(detail);
             });
-
         }
     }
     //
@@ -338,11 +340,10 @@ async function calendarRenderHeavy(blockId, saveData) {
         const url = `https://rfs7tgnp2e5bbqvnycc4ohh5sy0oixuw.lambda-url.ap-northeast-1.on.aws/put_s3_monthly_file?eti=${saveData.eventTypeId}&year=${year}&month=${month}`;
         await window.fetch(url, { cache: "no-store" });
     }
+    if(isHeavy){
     if (saveData.eventTypeId) {
         _after({ year, month });
     }
-    else {
-        _deleteLoader();
     }
     return outerElement;
 }
