@@ -1,5 +1,6 @@
 
 async function _postReservation({ blockId, eventData, userInfo, saveData }) {
+    console.log(eventData);
     if (!blockId) {
         console.error(`引数「${blockId}」が渡されていません`);
     }
@@ -40,6 +41,7 @@ async function _postReservation({ blockId, eventData, userInfo, saveData }) {
             console.error('JSONに変換できませんでした');
             return null;
         }
+        //if(responseData){
         alert(responseData.message);
     }
     catch (err) { }
