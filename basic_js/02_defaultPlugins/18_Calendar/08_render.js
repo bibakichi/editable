@@ -178,7 +178,12 @@ function calendarRender({ blockId, saveData, isHeavy }) {
     //
     const monthlyBoxCenter = document.createElement("div");
     monthlyBoxCenter.id = "monthly-box-center";
+    if(isHeavy){
     monthlyBoxCenter.innerHTML = `${year}年 ${month}月`;
+    }
+    else{
+        monthlyBoxCenter.innerText = ` 年  月`;
+    }
     monthlyBoxOuter.appendChild(monthlyBoxCenter);
     //
     // ボタン「翌月」を生成する
