@@ -22,7 +22,7 @@ async function _handleClickReservation({ blockId, eventData, onClose, saveData }
         console.log(rectTop);
         console.log(modalScroll.scrollTop);
         modalScroll.scrollTo({
-            top: rectTop + modalScroll.scrollTop,
+            top: rectTop + modalScroll.scrollTop + (window.innerHeight * 0.3),
             behavior: "smooth",
         });
         return;
