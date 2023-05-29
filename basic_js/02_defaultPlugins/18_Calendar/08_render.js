@@ -9,7 +9,7 @@ function calendarRender({ blockId, saveData, isHeavy }) {
     if (saveData?.isReservable) {
         //
         const please1 = document.createElement("h3");
-        please1.innerText = "1. 学籍番号を入力してください";
+        please1.innerHTML = "1. 学籍番号<small>（または職員番号）</small>を入力してください";
         outerElement.appendChild(please1);
         //
         const studentIdOuterElement = document.createElement("div");
