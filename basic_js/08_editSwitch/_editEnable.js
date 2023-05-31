@@ -9,7 +9,6 @@ async function _editEnable() {
     for (const sortableElement of mainContents.children) {
         const jsonElement = sortableElement.querySelector('.json');
         if (!jsonElement) {
-            alert("ツールボックスのHTMLに.blockTypeが設定されていません");
             continue;
         }
         const saveData = JSON.parse(jsonElement.textContent);
