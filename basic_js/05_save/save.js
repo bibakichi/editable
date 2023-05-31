@@ -18,6 +18,7 @@ async function allSave(isDownload) {
     //
     const pastMainContents = document.getElementById('main_contents');
     const newMainContents = document.createElement('main');
+    console.log(pastMainContents);
     for (const sortableItem of pastMainContents.children) {
         console.log(sortableItem);
         if (sortableItem.classList.contains("dropOnly")) continue;
