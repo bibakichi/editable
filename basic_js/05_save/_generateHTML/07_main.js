@@ -10,6 +10,19 @@ function _generateHTML({
 }) {
     const nowDate = new Date();
     return `
+<!--
+
+【 Visual Studio Codeを使って、このコードを編集する人へ 】
+    
+    折り返し表示をOFFにすると見やすくなります。
+
+    WindowsとLinuxでは [Alt] + [Z] キー
+
+    macOSでは [Option] + [Z] キー
+
+        で切り替えることができます。
+
+-->
 <!DOCTYPE html>
 <html lang="ja">
     <head>
