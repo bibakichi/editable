@@ -32,7 +32,7 @@ async function initWindows() {
                     breadcrumbs.innerHTML += `<label for="this_page_modal_trigger">${settings[i].title}</label>`;
                 }
                 else {
-                    breadcrumbs.innerHTML += `<a href="${settings[i].url}">${settings[i].title}</a>`;
+                    breadcrumbs.innerHTML += `<a href="${urls[i]}">${settings[i].title}</a>`;
                 }
                 //
                 if (i > 0) {

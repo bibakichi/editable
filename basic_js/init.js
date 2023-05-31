@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', async function () {
     //
     microsoftProfile = await loadMicrosoftProfile();
-    for(const pluginName in plugins){
+    for (const pluginName in plugins) {
         _loadDefaultPlugin(pluginName);
     }
     await initMainContents(); // メインコンテンツを表示
@@ -26,17 +26,16 @@ document.addEventListener('DOMContentLoaded', async function () {
             pathList = pathList.filter(path => (path !== ""));
         }
         if (isDebugTree) console.log('\n');
-        const s1 = await _loadSetting(
-            window.location.protocol + "//"
+        const url = window.location.protocol + "//"
             + window.location.host + "/"
             + pathList.join("/")
-            + ((pathList.length > 0) ? "/" : "")
-            + 'setting.js'
-        );
+            + ((pathList.length > 0) ? "/" : "");
+        const s1 = await _loadSetting(url + 'setting.js');
         if (!s1.isLoadSettingSuccess) {
             break;
         }
         settings.push(s1);
+        urls.push(url);
         //
         if (isFirst) {
             fontInit(s1);  // フォントを読み込む
@@ -53,15 +52,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         //
         if (isDebugTree) console.log('\n');
         //
-        const s2 = await _loadSetting(
-            window.location.protocol + "//"
-            + window.location.host + "/"
-            + pathList.join("/")
-            + ((pathList.length > 0) ? "/" : "")
-            + 'setting_top.js'
-        );
+        const s2 = await _loadSetting(url + 'setting_top.js');
         if (s2.isLoadSettingSuccess) {
             settings.push(s2);
+            if (s2.url) {
+                urls.push(s2.url);
+            }
             // 「window_top.json」を発見した場合（一番上のファイル階層まで到達した場合）は
             //  for文の実行を終了する。
             break;

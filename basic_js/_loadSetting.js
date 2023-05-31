@@ -43,7 +43,7 @@ async function _loadSetting(url) {
         "title": result?.title ?? "？？",
         "isFullSize": result?.isFullSize ? true : false,
         "isTopbar": result?.isTopbar ? true : false,
-        //"url": result?.url ?? (new URL('index.html', new URL(url, window.location))).toString(),
+        "url": result?.url,
         "fontFamily": result?.fontFamily ?? {
             "Hannari": false,
             "Kokoro": false,
