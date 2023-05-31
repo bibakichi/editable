@@ -40,6 +40,17 @@ async function allSave(isDownload) {
         }
     }
     //
+    const externalFiles = [
+        ...document.querySelectorAll("head>style:not(.Do_not_store_in_HTML)"),
+        ...document.querySelectorAll("head>script:not(.Do_not_store_in_HTML)"),
+    ];
+    console.log(externalFiles);
+    let externalFilesText = '';
+    for (const externalFile of externalFiles) {
+        externalFilesText += "\n        " + externalFile.outerHTML;
+    }
+    console.log(externalFilesText);
+    //
     const htmlCode = _generateHTML({
         title: settings[0]?.title ?? "",
         mainContents: myInnerHTML(newMainContents),
@@ -47,6 +58,7 @@ async function allSave(isDownload) {
         jsZipPath: document.getElementById("jszip").getAttribute('src'),
         isFullSize: settings[0]?.isFullSize,
         faviconsFolderPath: 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
+        externalFiles: externalFilesText,
     });
 
     const uri = new URL(window.location.href);

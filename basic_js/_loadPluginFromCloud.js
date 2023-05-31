@@ -17,6 +17,7 @@ async function _loadPluginFromCloud(blockType) {
         const url = 'https://mono-editable.s3.ap-northeast-1.amazonaws.com/cloud_plugins/' + blockType + '.js?t=' + String(new Date().getTime());    //キャッシュ対策
         // JavaScriptファイルを読み込む
         const scriptElement = document.createElement('script');
+        scriptElement.classList.add("Do_not_store_in_HTML");
         if (isDebugPlugin) console.log("  プラグインファイル：" + _getShortUrlToDisplay(url));
         scriptElement.src = url;
         scriptElement.crossOrigin = "anonymous";
@@ -44,6 +45,7 @@ async function _loadPluginFromCloud(blockType) {
     }
     if (typeof plugin.css === "function") {
         const styleTag = document.createElement('style');
+        styleTag.classList.add("Do_not_store_in_HTML");
         try {
             styleTag.innerHTML = await plugin.css();
         }
@@ -88,6 +90,7 @@ async function _loadPluginFromCloud(blockType) {
         }
         for (const url of urlList) {
             const scriptElement = document.createElement('script');
+            scriptElement.classList.add("Do_not_store_in_HTML");
             scriptElement.src = url;
             document.body.appendChild(scriptElement);
         }

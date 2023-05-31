@@ -9,6 +9,7 @@ async function _loadDefaultPlugin(blockType) {
     //
     if (typeof plugin.css === "function") {
         const styleTag = document.createElement('style');
+        styleTag.classList.add("Do_not_store_in_HTML");
         try {
             styleTag.innerHTML = await plugin.css();
         }
@@ -53,6 +54,7 @@ async function _loadDefaultPlugin(blockType) {
         }
         for (const url of urlList) {
             const scriptElement = document.createElement('script');
+            scriptElement.classList.add("Do_not_store_in_HTML");
             scriptElement.src = url;
             document.body.appendChild(scriptElement);
         }

@@ -13,6 +13,7 @@ async function _loadSetting(url) {
     //
     // JavaScriptファイル「setting.js」を読み込む
     const scriptElement1 = document.createElement('script');
+    scriptElement1.classList.add("Do_not_store_in_HTML");
     try {
         if (isDebugTree) console.log("  設定ファイル：" + _getShortUrlToDisplay(url));
         scriptElement1.src = url;

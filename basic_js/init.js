@@ -53,11 +53,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (isDebugTree) console.log('\n');
         //
         const s2 = await _loadSetting(url + 'setting_top.js');
-        if (s2.isLoadSettingSuccess) {
+        if (s2.isLoadSettingSuccess && s2.url) {
             settings.push(s2);
-            if (s2.url) {
-                urls.push(s2.url);
-            }
+            urls.push(s2.url);
             // 「window_top.json」を発見した場合（一番上のファイル階層まで到達した場合）は
             //  for文の実行を終了する。
             break;

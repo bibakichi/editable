@@ -76,6 +76,7 @@ plugins["ChildPage"] = {
                 jsZipPath: document.getElementById("jszip").getAttribute('src'),
                 isFullSize: false,
                 faviconsFolderPath: 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
+                externalFiles: '',
             });
 
             const uri = new URL(window.location.href);

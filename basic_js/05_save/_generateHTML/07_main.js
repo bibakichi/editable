@@ -6,6 +6,7 @@ function _generateHTML({
     jsZipPath,
     isFullSize = true,
     faviconsFolderPath = 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
+    externalFiles,
 }) {
     const nowDate = new Date();
     return `
@@ -74,7 +75,7 @@ function _generateHTML({
         <link rel="icon" type="image/png" sizes="24x24" href="${faviconsFolderPath}icon-24x24.png">
         <link rel="icon" type="image/png" sizes="32x32" href="${faviconsFolderPath}icon-32x32.png">
         <!-- -->
-        <style>
+        <style class="Do_not_store_in_HTML">
             /* WYSIWYGエディター「Quill」 */
             ${quillCSS}
             
@@ -86,7 +87,7 @@ function _generateHTML({
         </style >
         <!-- -->
         <!-- 共通JavaScript -->
-        <script type="text/javascript">
+        <script type="text/javascript" class="Do_not_store_in_HTML">
             function _initReload() {
                 const elements = document.querySelectorAll('.modal_trigger');
                 for (const element of elements) {
@@ -101,14 +102,16 @@ function _generateHTML({
             //ページを離れた時やリロード時
             window.addEventListener('unload', _initReload);
         </script>
-        <script defer id="basic_js" src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}"></script>
-        <script defer id="jszip" src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}"></script>
+        <script defer class="Do_not_store_in_HTML" id="basic_js" src="${basicJsPath.split("?")[0]}?timestamp=${nowDate.getTime()}"></script>
+        <script defer class="Do_not_store_in_HTML" id="jszip" src="${jsZipPath.split("?")[0]}?timestamp=${nowDate.getTime()}"></script>
         <!-- -->
         <!-- WYSIWYGエディター「Quill」を読み込み -->
-        <script defer src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script defer class="Do_not_store_in_HTML" src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
         <!-- -->
         <!-- 数式ライブラリ「KaTex」を読み込む -->
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.js" integrity="sha384-j/ZricySXBnNMJy9meJCtyXTKMhIJ42heyr7oAdxTDBy/CYA9hzpMo+YTNV5C+1X" crossorigin="anonymous"></script>
+        <script defer class="Do_not_store_in_HTML" src="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.js" integrity="sha384-j/ZricySXBnNMJy9meJCtyXTKMhIJ42heyr7oAdxTDBy/CYA9hzpMo+YTNV5C+1X" crossorigin="anonymous"></script>
+        <!-- -->
+        <!-- -->${externalFiles}
     </head>
 
     <body>
