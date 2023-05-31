@@ -1,9 +1,7 @@
 /*===========================================================================*/
 /* button3dクラス   立体的なボタンを作れます */
 
-label.button3d,
-a.button3d,
-button.button3d {
+.button3d {
     color: #6e6e73;
     display: inline-block;
     height: 50px;
@@ -22,9 +20,7 @@ button.button3d {
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
 }
 
-label.button3d.neumorphism,
-a.button3d.neumorphism,
-button.button3d.neumorphism {
+.button3d.neumorphism {
     background: none;
     border: none;
     margin: 0 0 6px 0;
@@ -32,31 +28,20 @@ button.button3d.neumorphism {
         -5px -5px 20px #ffffff;
 }
 
-label.button3d img,
-label.button3d svg,
-a.button3d img,
-a.button3d svg,
-button.button3d img,
-button.button3d svg {
+.button3d svg {
     width: 50px;
 }
 
-label.button3d:hover,
-a.button3d:hover,
-button.button3d:hover {
+.button3d:hover {
     cursor: pointer;
     background: #fff;
 }
 
-label.button3d.neumorphism:hover,
-a.button3d.neumorphism:hover,
-button.button3d.neumorphism:hover {
+.button3d.neumorphism:hover {
     background: none;
 }
 
-label.button3d:active,
-a.button3d:active,
-button.button3d:active {
+.button3d:active {
     border-bottom: none;
     margin-top: 3px;
     margin-bottom: 3px;
@@ -64,8 +49,6 @@ button.button3d:active {
     box-shadow: none;
 }
 
-label.button3d:disabled,
-a.button3d:disabled,
-button.button3d:disabled {
+.button3d:disabled {
     color: #aaa;
 }

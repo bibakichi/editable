@@ -1,9 +1,7 @@
 /*===========================================================================*/
 /* buttonFlatクラス   シンプルな角丸ボタンを作れます */
 
-label.buttonFlat,
-a.buttonFlat,
-button.buttonFlat {
+.buttonFlat {
     margin: 3px;
     background: #e8e8ed;
     color: #666;
@@ -16,9 +14,7 @@ button.buttonFlat {
     border-radius: 30px;
 }
 
-label.buttonFlat:hover,
-a.buttonFlat:hover,
-button.buttonFlat:hover {
+.buttonFlat:hover {
     cursor: pointer;
     background: #f0f0f0;
 }
