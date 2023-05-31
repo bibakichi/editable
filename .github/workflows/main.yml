@@ -22,7 +22,7 @@ jobs:
       - name: preview  # 表示
         run: more ./deploy_files/basic.js
 
-      - name: babel  # コンパイル 
+      - name: babel  # コンパイル
         run: npx babel ./deploy_files/basic.js
 
       - name: Deploy_others  # S3にデプロイ 

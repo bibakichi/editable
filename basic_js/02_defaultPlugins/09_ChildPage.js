@@ -72,7 +72,7 @@ plugins["ChildPage"] = {
             const htmlCode = _generateHTML({
                 title: "新しいページ",
                 mainContents: "",
-                basicJsPath: document.getElementById("basic_js").getAttribute('src'),
+                basicJsPath: document.getElementById("basic_js").getAttribute('src').replace("basic.js", "basic2.js"),
                 jsZipPath: document.getElementById("jszip").getAttribute('src'),
                 isFullSize: false,
                 faviconsFolderPath: 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
