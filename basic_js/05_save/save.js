@@ -49,10 +49,19 @@ async function allSave(isDownload) {
     }
     console.log(externalFilesText);
     //
+    let basicJsPath = document.getElementById("basic_js").getAttribute('src');
+    if (basicJsPath.indexOf("basic.js") != -1) {
+        externalFilesText = "";
+        if (submit("保存の際、バージョン１から２へアップグレードしますか？")) {
+            basicJsPath = basicJsPath.replaceAll("basic.js", "basic2.js");
+            console.log(basicJsPath);
+        }
+    }
+    //
     const htmlCode = _generateHTML({
         title: settings[0]?.title ?? "",
         mainContents: myInnerHTML(newMainContents),
-        basicJsPath: document.getElementById("basic_js").getAttribute('src'),
+        basicJsPath: basicJsPath,
         jsZipPath: document.getElementById("jszip").getAttribute('src'),
         isFullSize: settings[0]?.isFullSize,
         faviconsFolderPath: 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
