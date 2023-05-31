@@ -1,13 +1,13 @@
 //#########################################################################################
 async function _saveBlock(outerElement) {
-    if (!outerElement) return { blockType: null };
+    if (!outerElement) return null;
     const jsonElement = outerElement.querySelector('.json');
-    if (!jsonElement) return { blockType: null };
+    if (!jsonElement) return null;
     const pastSaveData = JSON.parse(jsonElement.textContent);
-    if (!pastSaveData) return { blockType: null };
-    if (!pastSaveData.blockType) return { blockType: null };
+    if (!pastSaveData) return null;
+    if (!pastSaveData.blockType) return null;
     const plugin = plugins[pastSaveData.blockType];
-    if (!plugin) return { blockType: pastSaveData.blockType };
+    if (!plugin) return null;
     //
     let newSaveData;
     if (typeof plugin?.viewer?.saveBlock !== 'function') {

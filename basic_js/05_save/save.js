@@ -22,6 +22,10 @@ async function allSave(isDownload) {
         console.log(sortableItem);
         if (sortableItem.classList.contains("dropOnly")) continue;
         const newSaveData = await _saveBlock(sortableItem);
+        if (!newSaveData) {
+            newMainContents.appendChild(sortableItem);
+            continue;
+        }
         const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
         if (newOuterElement) {
             try {
@@ -94,7 +98,7 @@ async function allSave(isDownload) {
 function myInnerHTML(mainContents) {
     let innerHTML = "";
     for (const sortableItem of mainContents.children) {
-        innerHTML += "                        " + sortableItem.innerHTML + "\n";
+        innerHTML += "                        " + sortableItem.outerHTML + "\n";
     }
     return innerHTML;
 }
