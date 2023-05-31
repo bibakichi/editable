@@ -23,16 +23,17 @@ async function _renderLight(outerElementId, saveData) {
             return {};
         }
     }
+    if (saveData?.blockType == "StaticHTML") {
+        return lightElement;
+    }
     //
     const newOuterElement = document.createElement('div');
     //
-    if (saveData?.blockType != "StaticHTML") {
-        const preElement = document.createElement('pre');
-        preElement.classList.add("json");
-        preElement.innerText = JSON.stringify(saveData);
-        preElement.style.display = "none";
-        newOuterElement.appendChild(preElement);
-    }
+    const preElement = document.createElement('pre');
+    preElement.classList.add("json");
+    preElement.innerText = JSON.stringify(saveData);
+    preElement.style.display = "none";
+    newOuterElement.appendChild(preElement);
     //
     try {
         newOuterElement.appendChild(lightElement);

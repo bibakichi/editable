@@ -48,10 +48,10 @@ plugins["StaticHTML"] = {
             };
         },
         "renderLight": async function (blockId, saveData) {
-            const element = document.createElement("div");
             if (!saveData?.html) {
-                return element;
+                return document.createElement("p");
             }
+            const element = document.createElement("div");
             element.innerHTML = saveData.html;
             return _getStaticHTML(element);
         },
