@@ -1,33 +1,28 @@
 //#########################################################################################
 
 function rendarStaticHTML({ blockId, saveData }) {
-    const outerElement = document.createElement("div");
+    let outerElement = document.createElement("div");
     outerElement.id = blockId;
     if (!saveData?.html) return outerElement;
     outerElement.innerHTML = saveData.html;
-    const elements = outerElement.querySelectorAll(":scope>*");
-    if (elements.length == 0) return outerElement;
-    if (elements.length >= 2) return outerElement;
-    if (
-        (elements[0].tagName == "DIV") &&
-        (elements[0].classList.keys.length == 0) &&
-        (!elements[0].id) &&
-        (elements[0].style.length == 0)
-    ) {
-        // もし一番外側（elements[0]）が、ただの「div」だったら
-        const innerElements = elements[0].querySelectorAll(":scope>*");
-        if (innerElements.length == 1) {
-            if (!innerElements[0].id) {
-                innerElements[0].id = blockId;
-                return innerElements[0];
-            }
+    while (true) {
+        const elements = outerElement.querySelectorAll(":scope>*");
+        if (elements.length == 0) return outerElement;
+        if (elements.length >= 2) return outerElement;
+        if (
+            (elements[0].tagName == "DIV") &&
+            (elements[0].classList.keys.length == 0) &&
+            (!elements[0].id) &&
+            (elements[0].style.length == 0)
+        ) {
+            // もし一番外側（elements[0]）が、ただの「div」だったら
+            elements[0].id = blockId;
+            outerElement = elements[0];
+        }
+        else {
+            return outerElement;
         }
     }
-    if (!elements[0].id) {
-        elements[0].id = blockId;
-        return elements[0];
-    }
-    return outerElement;
 }
 
 plugins["StaticHTML"] = {
@@ -49,7 +44,7 @@ plugins["StaticHTML"] = {
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
             return {
-                html: element.outerHTML,
+                html: element.innerHTML,
             };
         }
     }
