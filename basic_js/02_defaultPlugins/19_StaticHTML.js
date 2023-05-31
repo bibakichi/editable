@@ -22,6 +22,9 @@ plugins["StaticHTML"] = {
         "render": async function (saveData) {
             const iframeElement = document.createElement('iframe');
             iframeElement.style.pointerEvents = "none";
+            iframeElement.style.border = "none";
+            iframeElement.style.transformOrigin = "0 0";
+            iframeElement.style.transform = "scale(0.5)";
             iframeElement.src = `data:text/html,<!DOCTYPE html>
                 <html lang="ja">
                     <head>
