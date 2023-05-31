@@ -3,7 +3,7 @@
 // メインコンテンツの表示
 async function initMainContents() {
     const mainContents = document.getElementById('main_contents');
-    for (const outerElement of mainContents.children) {
+    for (const outerElement of mainContents.querySelectorAll(":scope>*")) {
         const jsonElement = outerElement.querySelector('.json');
         if (!jsonElement) continue;
         const saveData = JSON.parse(jsonElement.textContent);

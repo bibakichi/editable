@@ -143,7 +143,7 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
         //     };
         //     //
         //     // 子ブロックを保存する
-        //     for (const childrenElement of element.children) {
+        //     for (const childrenElement of element.querySelectorAll(":scope>*")) {
         //         const newSaveData = await _saveBlock(childrenElement);
         //         saveData?.children.push(newSaveData);
         //     }

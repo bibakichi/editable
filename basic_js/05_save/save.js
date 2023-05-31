@@ -6,8 +6,9 @@ async function allSave(isDownload) {
     const toolBoxJsonDataList = [];
     //
     // 一番最後の要素は「もっと見る」なので、最後から１個手前まで繰り返す
-    for (let i = 0; i < toolListInner.children.length - 1; i++) {
-        const jsonElement = toolListInner.children[i].querySelector('.json');
+    const toolListInnerChildren = toolListInner.querySelectorAll(":scope>*");
+    for (let i = 0; i < toolListInnerChildren.length - 1; i++) {
+        const jsonElement = toolListInnerChildren[i].querySelector('.json');
         if (!jsonElement) {
             continue;
         }

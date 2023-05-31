@@ -6,7 +6,7 @@ async function _editEnable() {
     document.getElementById('edit-switch').checked = true;
     //
     const mainContents = document.getElementById('main_contents');
-    for (const sortableElement of mainContents.children) {
+    for (const sortableElement of mainContents.querySelectorAll(":scope>*")) {
         const jsonElement = sortableElement.querySelector('.json');
         if (!jsonElement) {
             continue;
