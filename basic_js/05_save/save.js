@@ -47,12 +47,11 @@ async function allSave(isDownload) {
     for (const externalFile of externalFiles) {
         externalFilesText += "\n        " + externalFile.outerHTML;
     }
-    console.log(externalFilesText);
     //
     let basicJsPath = document.getElementById("basic_js").getAttribute('src');
     if (basicJsPath.indexOf("basic.js") != -1) {
         externalFilesText = "";
-        if (submit("保存の際、バージョン１から２へアップグレードしますか？")) {
+        if (confirm("保存の際、バージョン１から２へアップグレードしますか？")) {
             basicJsPath = basicJsPath.replaceAll("basic.js", "basic2.js");
             console.log(basicJsPath);
         }
