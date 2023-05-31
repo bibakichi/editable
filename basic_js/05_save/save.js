@@ -19,6 +19,7 @@ async function allSave(isDownload) {
     const pastMainContents = document.getElementById('main_contents');
     const newMainContents = document.createElement('main');
     for (const sortableItem of pastMainContents.children) {
+        console.log(sortableItem);
         if (sortableItem.classList.contains("dropOnly")) continue;
         const newSaveData = await _saveBlock(sortableItem);
         const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
