@@ -30,6 +30,7 @@ async function allSave(isDownload) {
         const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
         if (newOuterElement) {
             try {
+                console.log(newOuterElement);
                 newMainContents.appendChild(newOuterElement);
             }
             catch (e) { }
