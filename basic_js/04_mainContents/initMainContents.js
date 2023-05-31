@@ -6,8 +6,10 @@ async function initMainContents() {
     for (const outerElement of mainContents.querySelectorAll(":scope>*")) {
         const jsonElement = outerElement.querySelector('.json');
         if (!jsonElement) {
+            //
+            // HTML素通し機能 ここから
             const sortableItem = new SortableItem({
-                isEnable: isEditable,
+                isEnable: false,
                 enableCopy: false,
             });
             const innerElements = outerElement.querySelectorAll(":scope>*");
@@ -21,6 +23,8 @@ async function initMainContents() {
             }
             outerElement.replaceWith(sortableItem.outerElement);
             continue;
+            // HTML素通し機能 ここまで
+            //
         }
         const saveData = JSON.parse(jsonElement.textContent);
         const outerElement2 = await _renderHeavy(saveData);
