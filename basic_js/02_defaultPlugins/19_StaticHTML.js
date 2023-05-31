@@ -22,7 +22,14 @@ plugins["StaticHTML"] = {
         "render": async function (saveData) {
             const iframeElement = document.createElement('iframe');
             iframeElement.style.pointerEvents = "none";
-            iframeElement.src = "data:text/html," + ((saveData?.html) ?? "");
+            iframeElement.src = `data:text/html,<!DOCTYPE html>
+                <html lang="ja">
+                    <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    </head>
+                    <body>${(saveData?.html) ?? ""}</body>
+                </html>`;
             return iframeElement;
         },
     },
