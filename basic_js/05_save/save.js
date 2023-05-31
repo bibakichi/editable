@@ -100,7 +100,7 @@ async function allSave(isDownload) {
 function myInnerHTML(mainContents) {
     let innerHTML = "";
     for (const sortableItem of mainContents.children) {
-        innerHTML += "                        " + sortableItem.outerHTML + "\n";
+        innerHTML += "\n                        " + sortableItem.outerHTML;
     }
     return innerHTML;
 }
