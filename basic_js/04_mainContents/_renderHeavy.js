@@ -56,6 +56,10 @@ async function _renderHeavy(saveData, isEditable = false) {
     sortableItem.onDropBrotherJson = ({ jsonData, isBefore }) => onDropMainBlock({ jsonData, isBefore, sortableItem });
     sortableItem.onDropBrotherFile = ({ file, isBefore }) => onDropBrotherFile({ file, isBefore, sortableItem });
     //
+    if (sortableItem.innerElement.classList.contain("full_width")) {
+        sortableItem.outerElement.classList.add("full_width");
+    }
+    //
     const preElement = document.createElement('pre');
     preElement.classList.add("json");
     preElement.innerText = JSON.stringify(saveData);
