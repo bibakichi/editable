@@ -111,7 +111,7 @@ main {
     position: relative;
 }
 
-main>div>*:not(.full_width) {
+main>div:not(.full_width) {
     box-sizing: border-box;
     width: 100%;
     max-width: 700px;
@@ -120,7 +120,7 @@ main>div>*:not(.full_width) {
 }
 
 @media print {
-    main>div>*:not(.full_width) {
+    main>div:not(.full_width) {
         max-width: none;
         margin: 0;
         padding: 0 10px;

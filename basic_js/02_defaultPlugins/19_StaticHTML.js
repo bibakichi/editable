@@ -39,13 +39,10 @@ plugins["StaticHTML"] = {
     "viewer": {
         "renderHeavy": async function (blockId, saveData) {
             const element = document.createElement("div");
-            if (!saveData?.html) {
-                element.id = blockId;
-                return element;
-            }
-            element.innerHTML = saveData.html;
+            element.innerHTML = (saveData?.html) ?? "";
             const element2 = _getStaticHTML(element);
             element2.id = blockId;
+            element2.classList.add("full_width");
             return element2;
         },
         "changeEditMode": async function (blockId, saveData) {
@@ -58,12 +55,11 @@ plugins["StaticHTML"] = {
             };
         },
         "renderLight": async function (blockId, saveData) {
-            if (!saveData?.html) {
-                return document.createElement("p");
-            }
             const element = document.createElement("div");
-            element.innerHTML = saveData.html;
-            return _getStaticHTML(element);
+            element.innerHTML = (saveData?.html) ?? "";
+            const element2 = _getStaticHTML(element);
+            element2.classList.add("full_width");
+            return element2;
         },
     }
 }
