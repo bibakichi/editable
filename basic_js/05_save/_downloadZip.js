@@ -6,7 +6,7 @@ async function downloadZip(htmlCode) {
     const zip = new JSZip();
     //
     zip.file("index.html", htmlCode);
-    zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(settings[0]) + ";");
+    zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(settings[0], null, 2) + ";");
     for (const pluginName in plugins) {
         const plugin = plugins[pluginName];
         if (plugin.isDefault) continue;

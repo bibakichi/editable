@@ -35,7 +35,7 @@ async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
         contentType: "text/javascript",
     });
     fileMap[folderPath + "setting.js"] = {
-        content: "window.fileToFileTransferVariable = " + JSON.stringify(setting) + ";",
+        content: "window.fileToFileTransferVariable = " + JSON.stringify(setting, null, 2) + ";",
         contentType: "text/javascript",
     };
     //
