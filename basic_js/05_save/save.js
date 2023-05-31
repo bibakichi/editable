@@ -22,16 +22,20 @@ async function allSave(isDownload) {
         if (sortableItem.classList.contains("dropOnly")) continue;
         const newSaveData = await _saveBlock(sortableItem);
         const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
-        if (!newOuterElement || !newSaveData) continue;
-        try {
-            newMainContents.appendChild(newOuterElement);
+        if (newOuterElement) {
+            try {
+                newMainContents.appendChild(newOuterElement);
+            }
+            catch (e) { }
         }
-        catch (e) { }
+        else {
+            newMainContents.appendChild(sortableItem);
+        }
     }
     //
     const htmlCode = _generateHTML({
         title: settings[0]?.title ?? "",
-        mainContents: newMainContents.innerHTML,
+        mainContents: myInnerHTML(newMainContents),
         basicJsPath: document.getElementById("basic_js").getAttribute('src'),
         jsZipPath: document.getElementById("jszip").getAttribute('src'),
         isFullSize: settings[0]?.isFullSize,
@@ -84,4 +88,12 @@ async function allSave(isDownload) {
         await downloadZip(htmlCode);
         _deleteLoader();
     }
+}
+
+function myInnerHTML(mainContents) {
+    let innerHTML = "";
+    for (const sortableItem of mainContents.children) {
+        innerHTML += "                        " + sortableItem.innerHTML + "\n";
+    }
+    return innerHTML;
 }

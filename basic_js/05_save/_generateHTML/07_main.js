@@ -140,7 +140,9 @@ function _generateHTML({
                         <div class="header_right">
                         </div>
                     </header>
-                    <main id="main_contents">${mainContents}</main>
+                    <main id="main_contents">
+                        ${mainContents}
+                    </main>
                     <div class="actions">
                         <div id="edit-switch-wrapper">
                             <span class="edit-label">編集する</span>
