@@ -21,7 +21,6 @@ async function allSave(isDownload) {
     const newMainContents = document.createElement('main');
     console.log(pastMainContents);
     for (const sortableItem of pastMainContents.querySelectorAll(":scope>*")) {
-        console.log(sortableItem);
         if (sortableItem.classList.contains("dropOnly")) continue;
         const newSaveData = await _saveBlock(sortableItem);
         if (!newSaveData) {

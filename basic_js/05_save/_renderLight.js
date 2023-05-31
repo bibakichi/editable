@@ -24,13 +24,16 @@ async function _renderLight(outerElementId, saveData) {
         }
     }
     //
-    const preElement = document.createElement('pre');
-    preElement.classList.add("json");
-    preElement.innerText = JSON.stringify(saveData);
-    preElement.style.display = "none";
-    //
     const newOuterElement = document.createElement('div');
-    newOuterElement.appendChild(preElement);
+    //
+    if (saveData?.blockType != "StaticHTML") {
+        const preElement = document.createElement('pre');
+        preElement.classList.add("json");
+        preElement.innerText = JSON.stringify(saveData);
+        preElement.style.display = "none";
+        newOuterElement.appendChild(preElement);
+    }
+    //
     try {
         newOuterElement.appendChild(lightElement);
     }
