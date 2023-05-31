@@ -1,14 +1,11 @@
 //#########################################################################################
 async function _saveBlock(outerElement) {
-    if (!outerElement) return { blockType: pastSaveData.blockType };
+    if (!outerElement) return { blockType: null };
     const jsonElement = outerElement.querySelector('.json');
-    if (!jsonElement) return { blockType: pastSaveData.blockType };
+    if (!jsonElement) return { blockType: null };
     const pastSaveData = JSON.parse(jsonElement.textContent);
-    if (!pastSaveData) return { blockType: pastSaveData.blockType };
-    if (!pastSaveData.blockType) {
-        console.error('blockTypeが未定義です。');
-        return { blockType: pastSaveData.blockType };
-    }
+    if (!pastSaveData) return { blockType: null };
+    if (!pastSaveData.blockType) return { blockType: null };
     const plugin = plugins[pastSaveData.blockType];
     if (!plugin) return { blockType: pastSaveData.blockType };
     //

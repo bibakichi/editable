@@ -2,7 +2,7 @@
 async function _renderLight(outerElementId, saveData) {
     if (!saveData?.blockType) {
         console.error('blockTypeが未定義です。');
-        return {};
+        return null;
     }
     const plugin = plugins[saveData?.blockType];
     if (!plugin) return {};
