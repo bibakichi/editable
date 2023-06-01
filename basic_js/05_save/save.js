@@ -4,14 +4,12 @@ async function allSave(isDownload) {
     _showLoader();
     //
     // 子ページへ繋がるリンクを復元
-    console.log(relativeLinks);
-    const buttonElements = document.getElementsByClassName("relative_link");
     console.log(buttonElements);
-    for (const buttonElement of buttonElements) {
-        console.log(buttonElement);
-        if (!buttonElement.id) continue;
-        const linkElement = relativeLinks[buttonElement.id];
+    for (const linkId in relativeLinks) {
+        const linkElement = relativeLinks[linkId];
         if (!linkElement) continue;
+        const buttonElement = document.getElementById(linkId);
+        if (!buttonElement) continue;
         buttonElement.replaceWith(linkElement);
         console.log("置き換え成功");
     }
