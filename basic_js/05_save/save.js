@@ -4,7 +4,6 @@ async function allSave(isDownload) {
     _showLoader();
     //
     // 子ページへ繋がるリンクを復元
-    console.log(buttonElements);
     for (const linkId in relativeLinks) {
         const linkElement = relativeLinks[linkId];
         if (!linkElement) continue;
