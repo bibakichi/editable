@@ -10,7 +10,6 @@ async function allSave(isDownload) {
         const buttonElement = document.getElementById(linkId);
         if (!buttonElement) continue;
         buttonElement.replaceWith(linkElement);
-        console.log("置き換え成功");
     }
     //
     const toolListInner = document.getElementById("toolList");
