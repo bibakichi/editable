@@ -150,12 +150,6 @@ function _generateHTML({
                     <div class="modal_close_button_wrapper">
                         <label for="this_page_modal_trigger" class="buttonFlat closeButtonThisPage">戻る</label>
                     </div>
-                    <header>
-                        <div class="header_left">
-                        </div>
-                        <div class="header_right">
-                        </div>
-                    </header>
                     <main id="main_contents">${mainContents}
                     </main>
                     <div class="actions">
