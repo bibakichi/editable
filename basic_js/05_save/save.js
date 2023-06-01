@@ -6,6 +6,7 @@ async function allSave(isDownload) {
     // 子ページへ繋がるリンクを復元
     console.log(relativeLinks);
     const buttonElements = document.getElementsByClassName("relative_link");
+    console.log(buttonElements);
     for (const buttonElement of buttonElements) {
         console.log(buttonElement);
         if (!buttonElement.id) continue;
