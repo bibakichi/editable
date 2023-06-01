@@ -71,7 +71,7 @@ async function initWindows() {
             else {
                 trigger.checked = true;
             }
-            window.location.href = urls[1].url;
+            window.location.href = urls[1];
         });
         const buttons = document.getElementsByClassName("closeButtonThisPage");
         for (const button of buttons) {

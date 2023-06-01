@@ -38,19 +38,8 @@ async function allSave(isDownload) {
         }
     }
     //
-    const externalFiles = [
-        ...document.querySelectorAll("head>style:not(.Do_not_store_in_HTML)"),
-        ...document.querySelectorAll("head>script:not(.Do_not_store_in_HTML)"),
-    ];
-    console.log(externalFiles);
-    let externalFilesText = '';
-    for (const externalFile of externalFiles) {
-        externalFilesText += "\n        " + externalFile.outerHTML;
-    }
-    //
     let basicJsPath = document.getElementById("basic_js").getAttribute('src');
     if (basicJsPath.indexOf("basic.js") != -1) {
-        externalFilesText = "";
         if (confirm("保存の際、バージョン１から２へアップグレードしますか？")) {
             basicJsPath = basicJsPath.replaceAll("basic.js", "basic2.js");
             console.log(basicJsPath);
@@ -64,7 +53,7 @@ async function allSave(isDownload) {
         jsZipPath: document.getElementById("jszip").getAttribute('src'),
         isFullSize: settings[0]?.isFullSize,
         faviconsFolderPath: 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
-        externalFiles: externalFilesText,
+        externalFiles: "",
     });
 
     const uri = new URL(window.location.href);
