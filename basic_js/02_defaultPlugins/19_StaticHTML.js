@@ -4,7 +4,7 @@ function _getStaticHTML(element) {
     const children = element.querySelectorAll(":scope>*");
     if (children.length == 0) return element;
     if (children.length >= 2) return element;
-    let classList = children[0].classList.toArray();
+    let classList = children[0].classList.values();
     classList = classList.filter(className => (
         (className != "full_width") &&
         (className != "skip_block")
