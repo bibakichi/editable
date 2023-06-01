@@ -4,12 +4,15 @@ async function allSave(isDownload) {
     _showLoader();
     //
     // 子ページへ繋がるリンクを復元
+    console.log(relativeLinks);
     const buttonElements = document.getElementsByClassName("relative_link");
     for (const buttonElement of buttonElements) {
+        console.log(buttonElement);
         if (!buttonElement.id) continue;
         const linkElement = relativeLinks[buttonElement.id];
         if (!linkElement) continue;
         buttonElement.replaceWith(linkElement);
+        console.log("置き換え成功");
     }
     //
     const toolListInner = document.getElementById("toolList");
