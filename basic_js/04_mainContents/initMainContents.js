@@ -4,6 +4,7 @@
 async function initMainContents() {
     const mainContents = document.getElementById('main_contents');
     for (const outerElement of mainContents.querySelectorAll(":scope>*")) {
+        if (outerElement.classList.contains("skip")) continue;
         const jsonElement = outerElement.querySelector('.json');
         let saveData;
         if (jsonElement) {

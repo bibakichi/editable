@@ -30,6 +30,10 @@ async function allSave(isDownload) {
     const pastMainContents = document.getElementById('main_contents');
     const newMainContents = document.createElement('main');
     for (const sortableItem of pastMainContents.querySelectorAll(":scope>*")) {
+        if (sortableItem.classList.contains("skip")) {
+            newMainContents.appendChild(sortableItem);
+            continue;
+        }
         if (sortableItem.classList.contains("dropOnly")) continue;
         const newSaveData = await _saveBlock(sortableItem);
         if (!newSaveData) {

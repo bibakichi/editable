@@ -457,7 +457,7 @@ class SortableItem {
         insertBar.style.width = '96%';
         insertBar.style.background = '#ccc';
         insertBar.style.borderRadius = '5px';
-        insertBar.style.margin = '0 2%';
+        insertBar.style.margin = '0 auto';
         outerElement.before(insertBar);
     }
 
@@ -471,7 +471,7 @@ class SortableItem {
         insertBar.style.width = '96%';
         insertBar.style.background = '#ccc';
         insertBar.style.borderRadius = '5px';
-        insertBar.style.margin = '0 2%';
+        insertBar.style.margin = '0 auto';
         outerElement.after(insertBar);
     }
 

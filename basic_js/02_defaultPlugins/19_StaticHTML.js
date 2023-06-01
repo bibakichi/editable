@@ -4,19 +4,15 @@ function _getStaticHTML(element) {
     const children = element.querySelectorAll(":scope>*");
     if (children.length == 0) return element;
     if (children.length >= 2) return element;
+    let classList = children[0].classList.toArray();
+    classList = classList.filter(className => (
+        (className != "full_width") &&
+        (className != "skip_block")
+    ));
+    console.log(classList);
     if (
         (children[0].tagName == "DIV") &&
-        (children[0].classList.length == 0) &&
-        (!children[0].id) &&
-        (children[0].style.length == 0)
-    ) {
-        // もし一番外側（elements[0]）が、ただの「div」だったら;
-        return _getStaticHTML(children[0]);
-    }
-    if (
-        (children[0].tagName == "DIV") &&
-        (children[0].classList.length == 1) &&
-        (children[0].classList.contains("full_width")) &&
+        (classList.length == 0) &&
         (!children[0].id) &&
         (children[0].style.length == 0)
     ) {
