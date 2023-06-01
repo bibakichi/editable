@@ -2,6 +2,16 @@
 //#########################################################################################
 async function allSave(isDownload) {
     _showLoader();
+    //
+    // 子ページへ繋がるリンクを復元
+    const buttonElements = document.getElementsByClassName("relative_link");
+    for (const buttonElement of buttonElements) {
+        if (!buttonElement.id) continue;
+        const linkElement = relativeLinks[buttonElement.id];
+        if (!linkElement) continue;
+        buttonElement.replaceWith(linkElement);
+    }
+    //
     const toolListInner = document.getElementById("toolList");
     const toolBoxJsonDataList = [];
     //

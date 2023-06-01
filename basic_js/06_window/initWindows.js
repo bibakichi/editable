@@ -105,7 +105,14 @@ async function initWindows() {
             if (isDebugTree) console.log("  そのままにします。");
         }
         else {
+            const linkId = uuid();
+            //
+            // 後から復元するために、グローバル変数に保存しておく
+            relativeLinks[linkId] = linkElement;
+            //
             const buttonElement = document.createElement('button');
+            buttonElement.id = linkId;
+            buttonElement.classList.add("relative_link");
             buttonElement.innerHTML = linkElement.innerHTML;
             const names = linkElement.getAttributeNames();
             for (const name of names) {
