@@ -90,8 +90,8 @@ plugins["LinkButton"] = {
             const openButtonElement = document.getElementById(blockId);
             const urlElement = document.getElementById("url_" + blockId);
             return {
-                text: openButtonElement.textContent,
-                url: urlElement.innerText,
+                text: openButtonElement ? openButtonElement.textContent : (pastSaveData?.text ?? ""),
+                url: urlElement ? urlElement.innerText : (pastSaveData?.url ?? ""),
             };
         }
     }
