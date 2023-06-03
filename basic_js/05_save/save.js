@@ -64,7 +64,6 @@ async function allSave(isDownload) {
     //
     let basicJsPath = document.getElementById("basic_js").getAttribute('src');
     if (basicJsPath.indexOf("basic2.js") != -1) {
-        externalFilesText = "";
         if (confirm("保存の際、バージョン２から３へアップグレードしますか？")) {
             basicJsPath = basicJsPath.replaceAll("basic2.js", "basic3.js");
             console.log(basicJsPath);
