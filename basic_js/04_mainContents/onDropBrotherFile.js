@@ -22,7 +22,7 @@ async function onDropBrotherFile({ file, isBefore, sortableItem }) {
             pluginsBuffer = {};
             text = text.replace("plugins", "pluginsBuffer");
             const scriptElement = document.createElement('script');
-            scriptElement.classList.add("Do_not_store_in_HTML"); s
+            scriptElement.classList.add("Do_not_store_in_HTML");
             scriptElement.innerHTML = text;
             document.body.appendChild(scriptElement);
             await _sleep(1000);
