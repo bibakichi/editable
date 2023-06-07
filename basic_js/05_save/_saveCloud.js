@@ -39,6 +39,22 @@ async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
         contentType: "text/javascript",
     };
     //
+    const manifestData = {
+        "lang": "ja",
+        "name": setting.title,
+        "short_name": setting.title,
+        "display": "standalone",
+        "theme_color": "#8d0000"
+    };
+    fileList.push({
+        path: folderPath + "manifest.json",
+        contentType: "application/json",
+    });
+    fileMap[folderPath + "manifest.json"] = {
+        content: JSON.stringify(manifestData, null, 2),
+        contentType: "application/json",
+    };
+    //
     const response = await window.fetch(
         'https://fci5hwwcqglsj2mhomuxygl3rq0mnzky.lambda-url.ap-northeast-1.on.aws/files', {
         method: "POST",

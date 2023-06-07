@@ -5,8 +5,18 @@ async function downloadZip(htmlCode) {
     }
     const zip = new JSZip();
     //
+    //
+    const setting = settings[0];
+    const manifestData = {
+        "lang": "ja",
+        "name": setting.title,
+        "short_name": setting.title,
+        "display": "standalone",
+        "theme_color": "#8d0000"
+    };
     zip.file("index.html", htmlCode);
-    zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(settings[0], null, 2) + ";");
+    zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(setting, null, 2) + ";");
+    zip.file("manifest.json", JSON.stringify(manifestData, null, 2));
     for (const pluginName in plugins) {
         const plugin = plugins[pluginName];
         if (plugin.isDefault) continue;
