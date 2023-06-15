@@ -6,7 +6,7 @@ var _loadSettingFlag = false;
 async function _loadSetting(url) {
     url += '?t=' + String(new Date().getTime());    //キャッシュ対策
     if (_loadSettingFlag === true) {
-        alert('【エラー】関数「_loadSetting」の処理を２つ同時に実行しようとしています。');
+        console.error('【エラー】関数「_loadSetting」の処理を２つ同時に実行しようとしています。');
     }
     _loadSettingFlag = true;
     window.fileToFileTransferVariable = null;

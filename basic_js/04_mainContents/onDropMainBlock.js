@@ -30,7 +30,6 @@ async function onDropMainBlock({ jsonData, isBefore = true, sortableItem }) {
                 jsonElement.innerText = JSON.stringify(newSaveData);
             }
             catch (err) {
-                alert(`プラグイン「${jsonData.blockType}」の関数「viewer.onAppend()」でエラーが発生しました。`);
                 console.error(`プラグイン「${jsonData.blockType}」の関数「viewer.onAppend()」でエラーが発生しました。`);
                 console.error(err);
             }

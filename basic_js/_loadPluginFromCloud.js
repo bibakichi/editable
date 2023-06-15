@@ -9,7 +9,7 @@ async function _loadPluginFromCloud(blockType) {
         return plugins[blockType];
     }
     if (loadingPlugins[blockType] === true) {
-        alert(`【エラー】プラグインファイル「${blockType}」を２つ同時に読み込もうとしています。`);
+        console.error(`【エラー】プラグインファイル「${blockType}」を２つ同時に読み込もうとしています。`);
     }
     loadingPlugins[blockType] = true;
     try {
@@ -27,8 +27,7 @@ async function _loadPluginFromCloud(blockType) {
         await waitLoad(scriptElement);
     }
     catch (err) {
-        alert(`プラグインファイル「${blockType}.js」を読み込めません`);
-        console.error("  プラグインファイルを読み込めません");
+        console.error(`プラグインファイル「${blockType}.js」を読み込めません`);
         console.error(err);
         return null;
     }
@@ -50,7 +49,6 @@ async function _loadPluginFromCloud(blockType) {
             styleTag.innerHTML = await plugin.css();
         }
         catch (err) {
-            alert(`プラグイン「${blockType}」の関数「css()」でエラーが発生しました。`);
             console.error(`プラグイン「${blockType}」の関数「css()」でエラーが発生しました。`);
             console.error(err);
             return plugin;
@@ -64,7 +62,6 @@ async function _loadPluginFromCloud(blockType) {
             urlList = await plugin.externals.css();
         }
         catch (err) {
-            alert(`プラグイン「${blockType}」の関数「externals.css()」でエラーが発生しました。`);
             console.error(`プラグイン「${blockType}」の関数「externals.css()」でエラーが発生しました。`);
             console.error(err);
             return plugin;
@@ -83,7 +80,6 @@ async function _loadPluginFromCloud(blockType) {
             urlList = await plugin.externals.js();
         }
         catch (err) {
-            alert(`プラグイン「${blockType}」の関数「externals.js()」でエラーが発生しました。`);
             console.error(`プラグイン「${blockType}」の関数「externals.js()」でエラーが発生しました。`);
             console.error(err);
             return plugin;

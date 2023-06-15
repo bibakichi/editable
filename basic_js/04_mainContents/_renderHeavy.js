@@ -20,7 +20,6 @@ async function _renderHeavy(saveData, isEditable = false) {
             viewerElement = await plugin?.viewer?.renderHeavy("block_" + sortableItem.outerElement.id, saveData);
         }
         catch (err) {
-            alert(`プラグイン「${saveData?.blockType}」の関数「viewer.renderHeavy()」でエラーが発生しました。`);
             console.error(`プラグイン「${saveData?.blockType}」の関数「viewer.renderHeavy()」でエラーが発生しました。`);
             console.error(err);
             return null;
@@ -31,7 +30,6 @@ async function _renderHeavy(saveData, isEditable = false) {
             viewerElement = await plugin?.viewer?.renderLight("block_" + sortableItem.outerElement.id, saveData);
         }
         catch (err) {
-            alert(`プラグイン「${saveData?.blockType}」の関数「viewer.renderLight()」でエラーが発生しました。`);
             console.error(`プラグイン「${saveData?.blockType}」の関数「viewer.renderLight()」でエラーが発生しました。`);
             console.error(err);
             return null;
@@ -47,7 +45,6 @@ async function _renderHeavy(saveData, isEditable = false) {
         sortableItem.innerElement = viewerElement;
     }
     catch (err) {
-        alert(`プラグイン「${saveData?.blockType}」のブロックを描画できません。関数「viewer.renderHeavy()」と「viewer.renderLight()」を確認してください。`);
         console.error(`プラグイン「${saveData?.blockType}」のブロックを描画できません。関数「viewer.renderHeavy()」と「viewer.renderLight()」を確認してください。`);
         console.error(err);
         return null;
@@ -80,7 +77,6 @@ async function _renderHeavy(saveData, isEditable = false) {
                     await plugin?.viewer?.changeEditMode("block_" + sortableItem.outerElement.id);
                 }
                 catch (err) {
-                    alert(`プラグイン「${saveData?.blockType}」の関数「viewer.changeEditMode()」でエラーが発生しました。`);
                     console.error(`プラグイン「${saveData?.blockType}」の関数「viewer.changeEditMode()」でエラーが発生しました。`);
                     console.error(err);
                     return;

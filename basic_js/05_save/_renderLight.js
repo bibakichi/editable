@@ -17,7 +17,6 @@ async function _renderLight(outerElementId, saveData) {
             lightElement = await plugin?.viewer?.renderLight("block_" + outerElementId, saveData);
         }
         catch (err) {
-            alert(`プラグイン「${saveData?.blockType}」の関数「viewer.renderLight()」でエラーが発生しました。`);
             console.error(`プラグイン「${saveData?.blockType}」の関数「viewer.renderLight()」でエラーが発生しました。`);
             console.error(err);
             return {};
@@ -39,7 +38,6 @@ async function _renderLight(outerElementId, saveData) {
         newOuterElement.appendChild(lightElement);
     }
     catch (err) {
-        alert(`プラグイン「${saveData?.blockType}」の軽量ブロックを描画できません。関数「viewer.renderLight()」を確認してください。`);
         console.error(`プラグイン「${saveData?.blockType}」の軽量ブロックを描画できません。関数「viewer.renderLight()」を確認してください。`);
         console.error(err);
         return {};

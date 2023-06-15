@@ -14,7 +14,6 @@ async function _loadDefaultPlugin(blockType) {
             styleTag.innerHTML = await plugin.css();
         }
         catch (err) {
-            alert(`プラグイン「${blockType}」の関数「css()」でエラーが発生しました。`);
             console.error(`プラグイン「${blockType}」の関数「css()」でエラーが発生しました。`);
             console.error(err);
             return plugin;
@@ -28,7 +27,6 @@ async function _loadDefaultPlugin(blockType) {
             urlList = await plugin.externals.css();
         }
         catch (err) {
-            alert(`プラグイン「${blockType}」の関数「externals.css()」でエラーが発生しました。`);
             console.error(`プラグイン「${blockType}」の関数「externals.css()」でエラーが発生しました。`);
             console.error(err);
             return plugin;
@@ -47,7 +45,6 @@ async function _loadDefaultPlugin(blockType) {
             urlList = await plugin.externals.js();
         }
         catch (err) {
-            alert(`プラグイン「${blockType}」の関数「externals.js()」でエラーが発生しました。`);
             console.error(`プラグイン「${blockType}」の関数「externals.js()」でエラーが発生しました。`);
             console.error(err);
             return plugin;
