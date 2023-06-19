@@ -93,6 +93,8 @@ plugins["PageSetting"] = {
             titleElement.style.margin = "50px 0";
             mainElement.appendChild(titleElement);
             //
+            //####################################################
+            //
             const divElement1 = document.createElement('div');
             mainElement.appendChild(divElement1);
             //
@@ -111,6 +113,7 @@ plugins["PageSetting"] = {
                 };
             });
             //
+            //####################################################
             //
             const divElement2 = document.createElement('div');
             mainElement.appendChild(divElement2);
@@ -146,8 +149,24 @@ plugins["PageSetting"] = {
             sliderElement2.classList.add("slider");
             labelElement2.appendChild(sliderElement2);
             //
+            //####################################################
+            //
             const divElement3 = document.createElement('div');
             mainElement.appendChild(divElement3);
+            //
+            const labelElement3 = document.createElement('span');
+            labelElement3.innerText = "テーマ色";
+            divElement3.appendChild(labelElement1);
+            //
+            const inputElement3 = document.createElement('input');
+            inputElement3.type = "color";
+            inputElement3.value = settings[0]?.title;
+            divElement3.appendChild(inputElement3);
+            inputElement3.addEventListener("input", () => {
+                console.log(inputElement3.value);
+            });
+            //
+            //####################################################
             //
             const divElement4 = document.createElement('div');
             mainElement.appendChild(divElement4);
