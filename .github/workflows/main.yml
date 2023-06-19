@@ -14,13 +14,13 @@ jobs:
         run: find ./basic_js/ -type f -not -name ".*" | sort 
 
       - name: Join_files  # ファイルを結合
-        run: find ./basic_js/ -type f -not -name ".*" | sort | xargs cat > ./deploy_files/basic3.js
+        run: find ./basic_js/ -type f -not -name ".*" | sort | xargs cat > ./deploy_files/basic4.js
 
       - name: install_babel  # babelをインストール
         run: npm install --save-dev @babel/core @babel/cli @babel/preset-env
 
       - name: babel  # コンパイル
-        run: npx babel ./deploy_files/basic3.js
+        run: npx babel ./deploy_files/basic4.js
 
       - name: Deploy_others  # S3にデプロイ 
         env:
