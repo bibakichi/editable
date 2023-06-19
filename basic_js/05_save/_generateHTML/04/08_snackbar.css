@@ -3,7 +3,7 @@
 
 #snackbar {
     display: none;
-    background: #8d0000;
+    background: var(--base-color);
     color: #fff;
     position: fixed;
     bottom: 10px;

@@ -5,8 +5,8 @@ plugins["RedH2"] = {
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement('h2');
             element.id = blockId;
-            element.style.background = "#8d0000";
-            element.style.color = "#fff";
+            element.style.background = "var(--base-color)";
+            element.style.color = "var(--contrast-color2)";
             element.style.padding = "5px";
             element.innerHTML = saveData?.text ?? "見出し２";
             return element;
@@ -59,7 +59,7 @@ plugins["RedH2"] = {
         "render": async function (saveData) {
             const toolboxElement = document.createElement('h2');
             toolboxElement.innerHTML = saveData?.text ?? '見出し２';
-            toolboxElement.style.background = "#8d0000";
+            toolboxElement.style.background = "var(--base-color)";
             toolboxElement.style.color = "#fff";
             toolboxElement.style.padding = "5px";
             return toolboxElement;

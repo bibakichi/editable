@@ -41,7 +41,7 @@ function _generateHTML({
         <meta http-equiv="Cache-Control" content="no-cache"> <!--キャッシュさせない-->
         <meta name="google" content="notranslate"> <!-- google翻訳されないようにする -->
         <meta name="format-detection" content="telephone=no"> <!-- 電話番号の自動リンク機能を無効化 -->
-        <meta name="theme-color" content="#8d0000"> <!-- テーマ色を設定 -->
+        <meta name="theme-color" content="var(--base-color)"> <!-- テーマ色を設定 -->
         <link rel="manifest" href="manifest.json">
         <!-- -->
         <!-- ビバ吉アイコンの読み込み -->

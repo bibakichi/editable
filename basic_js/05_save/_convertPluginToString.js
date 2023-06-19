@@ -214,7 +214,7 @@ const _convertPluginToString = ({ pluginName, plugin }) => `plugins["${pluginNam
     // 例
     // css: async () => \`
     //     input:checked+.slider {
-    //         background-color: #8d0000;
+    //         background-color: var(--base-color);
     //         border: 1px solid transparent;
     //     }
     //     input:checked+.slider:before {

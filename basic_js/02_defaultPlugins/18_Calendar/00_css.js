@@ -46,9 +46,9 @@ async function calendarCSS(saveData) {
         }
 
         .today {
-            border-top: 5px solid #8d0000;
+            border-top: 5px solid var(--base-color);
             padding-top: 2px;
-            border-bottom: 2px solid #8d0000;
+            border-bottom: 2px solid var(--base-color);
         }
 
         @media print {

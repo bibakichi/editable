@@ -44,7 +44,7 @@ async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
         "name": setting.title,
         "short_name": setting.title,
         "display": "standalone",
-        "theme_color": "#8d0000"
+        "theme_color": "var(--base-color)"
     };
     fileList.push({
         path: folderPath + "manifest.json",

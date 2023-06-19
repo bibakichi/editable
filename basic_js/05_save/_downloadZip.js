@@ -12,7 +12,7 @@ async function downloadZip(htmlCode) {
         "name": setting.title,
         "short_name": setting.title,
         "display": "standalone",
-        "theme_color": "#8d0000"
+        "theme_color": "var(--base-color)"
     };
     zip.file("index.html", htmlCode);
     zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(setting, null, 2) + ";");

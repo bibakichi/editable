@@ -1,7 +1,22 @@
 /*===========================================================================*/
+/* グローバルにCSS変数を宣言する */
+:root {
+    --base-color: var(--base-color);
+    --base-color-dark: #600000;
+    /**/
+    /* 白背景の上で映える文字色 */
+    --contrast-color: #555;
+    /**/
+    /* ベースカラーの上で映える文字色 */
+    --contrast-color2: white;
+}
+
+
+/*===========================================================================*/
 /* リセットCSS */
 
 * {
+    box-sizing: border-box;
     font-family: "Hannari", "Kokoro", "Nico Moji", "Nikukyu", "M PLUS 1p", "M PLUS Rounded 1c", "Sawarabi Mincho", "Sawarabi Gothic", "Noto Sans JP", "YuGothic", "Yu Gothic";
 }
 
