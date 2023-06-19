@@ -63,9 +63,10 @@ async function allSave(isDownload) {
     }
     //
     let basicJsPath = document.getElementById("basic_js").getAttribute('src');
-    if (basicJsPath.indexOf("basic2.js") != -1) {
-        if (confirm("保存の際、バージョン２から３へアップグレードしますか？")) {
-            basicJsPath = basicJsPath.replaceAll("basic2.js", "basic3.js");
+    const latestVersion = 4;
+    if (basicJsPath.indexOf(`basic${latestVersion - 1}.js`) != -1) {
+        if (confirm(`保存の際、バージョン${latestVersion - 1}から${latestVersion}へアップグレードしますか？`)) {
+            basicJsPath = basicJsPath.replaceAll(`basic${latestVersion - 1}.js`, `basic${latestVersion}.js`);
             console.log(basicJsPath);
         }
     }
