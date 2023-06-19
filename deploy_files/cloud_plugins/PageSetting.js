@@ -156,7 +156,7 @@ plugins["PageSetting"] = {
             //
             const labelElement3 = document.createElement('span');
             labelElement3.innerText = "テーマ色";
-            divElement3.appendChild(labelElement1);
+            divElement3.appendChild(labelElement3);
             //
             const inputElement3 = document.createElement('input');
             inputElement3.type = "color";
@@ -164,6 +164,27 @@ plugins["PageSetting"] = {
             divElement3.appendChild(inputElement3);
             inputElement3.addEventListener("input", () => {
                 console.log(inputElement3.value);
+                const colorText = inputElement3.value;
+                try {
+                    const redText = colorText.substring(1, 2);
+                    const greenText = colorText.substring(3, 4);
+                    const blueText = colorText.substring(5, 6);
+                    const red = parseInt(redText, 16);
+                    const green = parseInt(greenText, 16);
+                    const blue = parseInt(blueText, 16);
+                    settings[0] = {
+                        ...settings[0],
+                        baseColor: {
+                            red: red,
+                            green: green,
+                            blue: blue,
+                        },
+                    };
+                    _changeBaseColor({ red, green, blue });
+                }
+                catch (err) {
+                    console.error(err);
+                }
             });
             //
             //####################################################
