@@ -95,19 +95,15 @@ function _generateHTML({
         <!-- -->
         <style class="Do_not_store_in_HTML">
                 /* ベースカラー */
-                --base-color: #8d0000;
                 --base-color: ${baseColor};
                 /**/
                 /* 暗めのベースカラー */
-                --base-color-dark: #600000;
                 --base-color-dark: ${baseColorDark};
                 /**/
                 /* 白背景の上で映える文字色 */
-                --contrast-color: #555;
                 --contrast-color: ${contrastColor};
                 /**/
                 /* ベースカラーの上で映える文字色 */
-                --contrast-color2: white;
                 --contrast-color2: ${contrastColor2};
             }
 
