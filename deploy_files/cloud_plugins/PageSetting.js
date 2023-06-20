@@ -166,9 +166,9 @@ plugins["PageSetting"] = {
                 console.log(inputElement3.value);
                 const colorText = inputElement3.value;
                 try {
-                    const redText = colorText.substring(1, 2);
-                    const greenText = colorText.substring(3, 4);
-                    const blueText = colorText.substring(5, 6);
+                    const redText = colorText.substring(1, 3);
+                    const greenText = colorText.substring(3, 5);
+                    const blueText = colorText.substring(5, 7);
                     console.log(redText, greenText, blueText);
                     const red = parseInt(redText, 16);
                     const green = parseInt(greenText, 16);
