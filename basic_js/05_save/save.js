@@ -71,6 +71,8 @@ async function allSave(isDownload) {
         }
     }
     //
+    const SelectStyle = getComputedStyle(document.querySelector(':root'));
+    //
     const htmlCode = _generateHTML({
         title: settings[0]?.title ?? "",
         mainContents: myInnerHTML(newMainContents),
@@ -79,6 +81,10 @@ async function allSave(isDownload) {
         isFullSize: settings[0]?.isFullSize,
         faviconsFolderPath: 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
         externalFiles: externalFilesText,
+        baseColor: String(SelectStyle.getPropertyValue('--base-color') ?? "#8d0000"),
+        baseColorDark: String(SelectStyle.getPropertyValue('--base-color-dark') ?? "#600000"),
+        contrastColor: String(SelectStyle.getPropertyValue('--contrast-color') ?? "#555"),
+        contrastColor2: String(SelectStyle.getPropertyValue('--contrast-color2') ?? "#fff"),
     });
 
     const uri = new URL(window.location.href);
