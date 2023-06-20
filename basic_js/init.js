@@ -13,15 +13,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         // 編集スイッチをONにする
         await _editEnable();
     }
-    try {
-        const red = Number(params.get("r"));
-        const green = Number(params.get("g"));
-        const blue = Number(params.get("b"));
-        if (!isNaN(red) && !isNaN(green) && !isNaN(blue)) {
-            _changeBaseColor({ red, green, blue });
-        }
-    }
-    catch (e) { }
     //
     // 各階層のJavaScriptファイル「setting.js」と「setting_top.js」から設定を読み込む
     //
