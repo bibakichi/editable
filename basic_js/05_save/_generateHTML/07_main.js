@@ -184,7 +184,7 @@ function _generateHTML({
                     </div>
                     <footer>
                         <address>
-                            福岡大学工学部ものづくりセンター
+                            福岡大学ものづくりセンター
                             <div style="padding: 3px 0 0 10px;">
                                 <a target="_blank" href="https://goo.gl/maps/qD7ZYrmeWpW7uNgSA">
                                     〒814-018 福岡市城南区七隈8-19-1 福岡大学 4号館 1F
