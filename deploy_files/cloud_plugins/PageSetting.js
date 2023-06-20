@@ -169,9 +169,11 @@ plugins["PageSetting"] = {
                     const redText = colorText.substring(1, 2);
                     const greenText = colorText.substring(3, 4);
                     const blueText = colorText.substring(5, 6);
+                    console.log(redText, greenText, blueText);
                     const red = parseInt(redText, 16);
                     const green = parseInt(greenText, 16);
                     const blue = parseInt(blueText, 16);
+                    console.log(red, green, blue);
                     settings[0] = {
                         ...settings[0],
                         baseColor: {
