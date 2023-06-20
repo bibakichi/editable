@@ -94,6 +94,9 @@ function _generateHTML({
         <link rel="icon" type="image/png" sizes="32x32" href="${faviconsFolderPath}icon-32x32.png">
         <!-- -->
         <style class="Do_not_store_in_HTML">
+
+            /* グローバルにCSS変数を宣言する */
+            :root {
                 /* ベースカラー */
                 --base-color: ${baseColor};
                 /**/
