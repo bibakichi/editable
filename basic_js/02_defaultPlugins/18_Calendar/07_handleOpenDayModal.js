@@ -130,6 +130,13 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
             paddingElement.style.height = "30px";
             eventCard.appendChild(paddingElement);
         }
+        eventCard.addEventListener("contextmenu", async () => {
+            e.preventDefault();
+            const microsoftProfile = await _getMicrosoftProfile();
+            console.log(microsoftProfile);
+            if (!confirm("このイベントを削除しますか？")) return;
+            await _deleteEvent({ blockId, eventData, saveData });
+        });
     }
     return outerElement;
 }
