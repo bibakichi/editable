@@ -60,6 +60,8 @@ async function allSave(isDownload) {
     let externalFilesText = '';
     for (const externalFile of externalFiles) {
         const externalFileSrc = externalFile.getAttribute("src");
+        if (typeof externalFileSrc != "string") continue;
+        console.log(externalFileSrc);
         const url = new URL(externalFileSrc);
         console.log(url.hostname);
         if (externalFileSrc.indexOf("katex") != -1) continue;
