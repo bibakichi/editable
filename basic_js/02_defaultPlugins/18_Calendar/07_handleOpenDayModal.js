@@ -134,6 +134,7 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
             e.preventDefault();
             const microsoftProfile = await _getMicrosoftProfile();
             console.log(microsoftProfile);
+            if (!microsoftProfile) return;
             if (confirm("このイベントを削除しますか？")) {
                 _deleteEvent({ blockId, eventData, saveData });
             }
