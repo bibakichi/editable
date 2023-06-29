@@ -130,7 +130,7 @@ async function handleOpenDayModal({ blockId, saveData, year, month, date, onClos
             paddingElement.style.height = "30px";
             eventCard.appendChild(paddingElement);
         }
-        eventCard.addEventListener("contextmenu", async () => {
+        eventCard.addEventListener("contextmenu", async (e) => {
             e.preventDefault();
             const microsoftProfile = await _getMicrosoftProfile();
             console.log(microsoftProfile);
