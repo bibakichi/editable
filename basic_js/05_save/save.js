@@ -67,6 +67,7 @@ async function allSave(isDownload) {
         if (externalFileSrc.indexOf("katex") != -1) continue;
         if (url.hostname == "mono-editable.s3.ap-northeast-1.amazonaws.com") continue;
         if (url.hostname == "cdn.quilljs.com") continue;
+        console.log(externalFile.innerHTML);
         externalFilesText += "\n        " + externalFile.outerHTML;
     }
     //
