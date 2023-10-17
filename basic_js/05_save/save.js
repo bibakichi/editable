@@ -60,13 +60,12 @@ async function allSave(isDownload) {
     let externalFilesText = '';
     for (const externalFile of externalFiles) {
         const externalFileSrc = externalFile.getAttribute("src");
-        if (typeof externalFileSrc != "string") continue;
-        console.log(externalFileSrc);
-        const url = new URL(externalFileSrc);
-        console.log(url.hostname);
-        if (externalFileSrc.indexOf("katex") != -1) continue;
-        if (url.hostname == "mono-editable.s3.ap-northeast-1.amazonaws.com") continue;
-        if (url.hostname == "cdn.quilljs.com") continue;
+        if (externalFileSrc && (typeof externalFileSrc == "string")) {
+            const url = new URL(externalFileSrc);
+            if (externalFileSrc.indexOf("katex") != -1) continue;
+            if (url.hostname == "mono-editable.s3.ap-northeast-1.amazonaws.com") continue;
+            if (url.hostname == "cdn.quilljs.com") continue;
+        }
         console.log(externalFile.innerHTML);
         externalFilesText += "\n        " + externalFile.outerHTML;
     }
