@@ -56,7 +56,6 @@ async function allSave(isDownload) {
         ...document.querySelectorAll("head>style:not(.Do_not_store_in_HTML)"),
         ...document.querySelectorAll("head>script:not(.Do_not_store_in_HTML)"),
     ];
-    console.log(externalFiles);
     let externalFilesText = '';
     for (const externalFile of externalFiles) {
         const externalFileSrc = externalFile.getAttribute("src");
@@ -66,7 +65,6 @@ async function allSave(isDownload) {
             if (url.hostname == "mono-editable.s3.ap-northeast-1.amazonaws.com") continue;
             if (url.hostname == "cdn.quilljs.com") continue;
         }
-        console.log(externalFile.innerHTML);
         externalFilesText += "\n        " + externalFile.outerHTML;
     }
     //

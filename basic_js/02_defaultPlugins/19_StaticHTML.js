@@ -68,7 +68,7 @@ plugins["StaticHTML"] = {
             const element = document.createElement("div");
             element.innerHTML = (saveData?.html) ?? "";
             const element2 = _getStaticHTML(element);
-            element2.classList.add("full_width");
+            //element2.classList.add("full_width");
             return element2;
         },
     }
