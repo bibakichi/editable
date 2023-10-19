@@ -52,7 +52,6 @@ plugins["StaticHTML"] = {
             element.innerHTML = (saveData?.html) ?? "";
             const element2 = _getStaticHTML(element);
             element2.id = blockId;
-            element2.classList.add("full_width");
             return element2;
         },
         "changeEditMode": async function (blockId, saveData) {
@@ -68,7 +67,6 @@ plugins["StaticHTML"] = {
             const element = document.createElement("div");
             element.innerHTML = (saveData?.html) ?? "";
             const element2 = _getStaticHTML(element);
-            //element2.classList.add("full_width");
             return element2;
         },
     }
