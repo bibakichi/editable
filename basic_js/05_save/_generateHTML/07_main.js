@@ -190,7 +190,6 @@ function _generateHTML({
                                     〒814-018 福岡市城南区七隈8-19-1 福岡大学 4号館 1F
                                 </a><br>
                                 ホームページ: <a href="http://www.tec.fukuoka-u.ac.jp/mono/">http://www.tec.fukuoka-u.ac.jp/mono/</a><br>
-                                メール: <a target="_blank" href="mailto:mono@adm.fukuoka-u.ac.jp">mono@adm.fukuoka-u.ac.jp</a><br>
                                 電話: <a href="tel:0928716631">092-871-6631</a>（代）<br>
                                 内線: 6935
                             </div>
