@@ -1,7 +1,17 @@
 
+function _numberToHex(number) {
+    return ('0000' + v.toString(16)).slice(-2);
+}
+
 function _changeBaseColor({ red, green, blue }) {
     const rootElement = document.querySelector(':root');
-    rootElement.style.setProperty('--base-color', `rgb(${red},${green},${blue})`);
+    //
+    // 16進数表記に変換
+    //   deploy_files > cloud_plugins > PageSetting.js
+    //   にて、カラーピッカーを使うので、16進数表記である必要がある
+    const hexText = "#" + _numberToHex(red) + _numberToHex(green) + _numberToHex(blue);
+    //
+    rootElement.style.setProperty('--base-color', hexText);
     rootElement.style.setProperty('--base-color-dark', `rgb(${red * 0.7},${green * 0.7},${blue * 0.7})`);
 
     let flag = false;
