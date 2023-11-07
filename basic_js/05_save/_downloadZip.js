@@ -5,7 +5,6 @@ async function downloadZip(htmlCode) {
     }
     const zip = new JSZip();
     //
-    //
     const setting = settings[0];
     const manifestData = {
         "lang": "ja",
@@ -21,6 +20,16 @@ async function downloadZip(htmlCode) {
         filePath = filePath.replace(/[\\/:*?"<>|\x00-\x1F\x80-\x9F]|\.$|^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9]|(.*[\s.]+$))$/gi, '');
         //
         zip.file(filePath + ".txt", "このファイルは消して構いません。webページの見た目に、一切影響を及ぼしません。");
+    }
+    if (!settings[1]) {
+        const settingTop = {
+            "title": "",   // 画面上部に掲載するタイトル
+            "isFullSize": true,
+            "isTopbar": false,
+            "url": "",
+            "childPages": {},
+        };
+        zip.file("setting_top.js", "window.fileToFileTransferVariable = " + JSON.stringify(settingTop, null, 2) + "; ");
     }
     zip.file("index.html", htmlCode);
     zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(setting, null, 2) + ";");

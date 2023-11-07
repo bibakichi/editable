@@ -55,6 +55,24 @@ async function saveCloud({ storageId, folderPath, htmlCode, setting }) {
         contentType: "application/json",
     };
     //
+    if (!settings[1]) {
+        const settingTop = {
+            "title": "",   // 画面上部に掲載するタイトル
+            "isFullSize": true,
+            "isTopbar": false,
+            "url": "",
+            "childPages": {},
+        };
+        fileList.push({
+            path: folderPath + "setting_top.js",
+            contentType: "text/javascript",
+        });
+        fileMap[folderPath + "setting_top.js"] = {
+            content: "window.fileToFileTransferVariable = " + JSON.stringify(settingTop, null, 2) + ";",
+            contentType: "text/javascript",
+        };
+    }
+    //
     const response = await window.fetch(
         'https://fci5hwwcqglsj2mhomuxygl3rq0mnzky.lambda-url.ap-northeast-1.on.aws/files', {
         method: "POST",

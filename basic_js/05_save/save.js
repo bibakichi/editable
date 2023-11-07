@@ -106,8 +106,17 @@ async function allSave(isDownload) {
         const headline = settings[0]?.headline ?? "";
         //
         // ニュース記事の概要文を生成する
+        //
+        // 要素をディープコピーする
+        const contents = newMainContents.cloneNode(true);
+        // 'json'クラスを持つすべての子要素を取得
+        var jsonElements = contents.querySelectorAll('.json');
+        // 取得した子要素のリストをループで回して、それぞれをDOMから削除
+        jsonElements.forEach(function (element) {
+            element.parentNode.removeChild(element);
+        });
         // `innerText`を使用する場合（CSSスタイリングを考慮した「見える」テキストのみを取得する）
-        let overview = newMainContents.innerText;
+        let overview = contents.innerText;
         if (overview.length > 100) {
             // 最初の100文字だけ切り取る
             overview = overview.substring(0, 100);
