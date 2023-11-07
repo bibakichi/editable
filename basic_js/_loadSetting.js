@@ -45,11 +45,6 @@ async function _loadSetting(url) {
         "isFullSize": result?.isFullSize ? true : false,
         "isTopbar": result?.isTopbar ? true : false,
         "url": result?.url,
-        "baseColor": result?.baseColor ?? {
-            red: 255,
-            blue: 0,
-            green: 0,
-        },
         "fontFamily": result?.fontFamily ?? {
             "Hannari": false,
             "Kokoro": false,

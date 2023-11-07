@@ -172,14 +172,6 @@ plugins["PageSetting"] = {
                     const red = parseInt(redText, 16);
                     const green = parseInt(greenText, 16);
                     const blue = parseInt(blueText, 16);
-                    settings[0] = {
-                        ...settings[0],
-                        baseColor: {
-                            red: red,
-                            green: green,
-                            blue: blue,
-                        },
-                    };
                     _changeBaseColor({ red, green, blue });
                 }
                 catch (err) {
