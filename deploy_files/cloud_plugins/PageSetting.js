@@ -78,7 +78,9 @@ async function _pageSetting(saveData) {
     const inputElement3 = document.createElement('input');
     inputElement3.type = "color";
     const SelectStyle = getComputedStyle(document.querySelector(':root'));
-    inputElement3.value = String(SelectStyle.getPropertyValue('--base-color') ?? "#8d0000");
+    const colorText = String(SelectStyle.getPropertyValue('--base-color') ?? "#8d0000");
+    console.log(colorText);
+    inputElement3.value = colorText;
     divElement3.appendChild(inputElement3);
     inputElement3.addEventListener("input", () => {
         console.log(inputElement3.value);
