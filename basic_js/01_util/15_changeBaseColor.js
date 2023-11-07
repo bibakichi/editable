@@ -4,15 +4,15 @@ function _numberToHex(number) {
 }
 
 function _changeBaseColor({ red, green, blue }) {
-    const rootElement = document.querySelector(':root');
     //
     // 16進数表記に変換
     //   deploy_files > cloud_plugins > PageSetting.js
     //   にて、カラーピッカーを使うので、16進数表記である必要がある
     const hexText = "#" + _numberToHex(red) + _numberToHex(green) + _numberToHex(blue);
+    alert(hexText);
     //
-    rootElement.style.setProperty('--base-color', hexText);
-    rootElement.style.setProperty('--base-color-dark', `rgb(${red * 0.7},${green * 0.7},${blue * 0.7})`);
+    document.documentElement.style.setProperty('--base-color', hexText);
+    document.documentElement.style.setProperty('--base-color-dark', `rgb(${red * 0.7},${green * 0.7},${blue * 0.7})`);
 
     let flag = false;
     if (red > 200 && green > 200) {
@@ -28,16 +28,16 @@ function _changeBaseColor({ red, green, blue }) {
         // ベースカラーが白っぽい場合
         //
         // 白背景の上の文字をベースカラーにせず、黒色にする
-        rootElement.style.setProperty('--contrast-color', "#555");
+        document.documentElement.style.setProperty('--contrast-color', "#555");
         // ベースカラーの上の文字は黒色にする
-        rootElement.style.setProperty('--contrast-color2', "black");
+        document.documentElement.style.setProperty('--contrast-color2', "black");
     }
     else {
         // ベースカラーが濃い色の場合
         //
         // 白背景の上の文字をベースカラーにする
-        rootElement.style.setProperty('--contrast-color', `rgb(${red},${green},${blue})`);
+        document.documentElement.style.setProperty('--contrast-color', `rgb(${red},${green},${blue})`);
         // ベースカラーの上の文字は白色にする
-        rootElement.style.setProperty('--contrast-color2', "white");
+        document.documentElement.style.setProperty('--contrast-color2', "white");
     }
 }
