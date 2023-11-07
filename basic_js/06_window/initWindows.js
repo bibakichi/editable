@@ -28,10 +28,10 @@ async function initWindows() {
             // 画面上部のパンくずリストを書き換える
             for (let i = settings.length - 1; i >= 0; i--) {
                 if (i == 1) {
-                    breadcrumbs.innerHTML += `<label for="this_page_modal_trigger">${settings[i].title}</label>`;
+                    breadcrumbs.innerHTML += `<label for="this_page_modal_trigger">${settings[i].headline}</label>`;
                 }
                 else {
-                    breadcrumbs.innerHTML += `<a href="${urls[i]}">${settings[i].title}</a>`;
+                    breadcrumbs.innerHTML += `<a href="${urls[i]}">${settings[i].headline}</a>`;
                 }
                 //
                 if (i > 0) {

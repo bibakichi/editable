@@ -13,13 +13,24 @@ async function downloadZip(htmlCode) {
         "display": "standalone",
         "theme_color": "var(--base-color)"
     };
-    let filePath = _getPath();
     //
+    let parentPath = _getParentPath();
+    let folderName = "";
+    if (parentPath && settings[1]) {
+        // ファイル名として使える文字列に置き換える
+        parentPath = parentPath.replace(/[\\/:*?"<>|\x00-\x1F\x80-\x9F]|\.$|^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9]|(.*[\s.]+$))$/gi, '');
+        //
+        zip.file(`全て「${parentPath}」の中に入れて、上書きしてください.txt`, "このファイルは消して構いません。webページの見た目に、一切影響を及ぼしません。");
+        folderName = _getFolderName() + "/";
+        zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(settings[1], null, 2) + ";");
+    }
+    //
+    let filePath = _getPath();
     if (filePath) {
         // ファイル名として使える文字列に置き換える
         filePath = filePath.replace(/[\\/:*?"<>|\x00-\x1F\x80-\x9F]|\.$|^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9]|(.*[\s.]+$))$/gi, '');
         //
-        zip.file(filePath + ".txt", "このファイルは消して構いません。webページの見た目に、一切影響を及ぼしません。");
+        zip.file(folderName + `全て「${filePath}」の中に入れて、上書きしてください.txt`, "このファイルは消して構いません。webページの見た目に、一切影響を及ぼしません。");
     }
     if (!settings[1]) {
         const settingTop = {
@@ -31,9 +42,9 @@ async function downloadZip(htmlCode) {
         };
         zip.file("setting_top.js", "window.fileToFileTransferVariable = " + JSON.stringify(settingTop, null, 2) + "; ");
     }
-    zip.file("index.html", htmlCode);
-    zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(setting, null, 2) + ";");
-    zip.file("manifest.json", JSON.stringify(manifestData, null, 2));
+    zip.file(folderName + "index.html", htmlCode);
+    zip.file(folderName + "setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(setting, null, 2) + ";");
+    zip.file(folderName + "manifest.json", JSON.stringify(manifestData, null, 2));
     for (const pluginName in plugins) {
         const plugin = plugins[pluginName];
         if (plugin.isDefault) continue;

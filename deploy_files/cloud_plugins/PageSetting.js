@@ -18,6 +18,7 @@ plugins["PageSetting"] = {
             //
             const { openButtonElement, mainElement } = createModal();
             openButtonElement.innerText = "ページ設定";
+            mainElement.style.padding = "10px";
             //
             // 入力フォームを作る関数
             function _createTextField({ labelText, key, onChange }) {
