@@ -98,7 +98,43 @@ async function allSave(isDownload) {
         mapUrl: settings[0]?.mapUrl ?? 'https://goo.gl/maps/qD7ZYrmeWpW7uNgSA',
         address: settings[0]?.address ?? '〒814-018 福岡市城南区七隈8-19-1 福岡大学 4号館 1F',
     });
-
+    //
+    // もし親ページの「setting.js」が存在したら
+    if (settings[1]) {
+        //
+        // ニュース記事の見出しを生成する
+        const headline = settings[0]?.headline ?? "";
+        //
+        // ニュース記事の概要文を生成する
+        // `innerText`を使用する場合（CSSスタイリングを考慮した「見える」テキストのみを取得する）
+        let overview = newMainContents.innerText;
+        if (overview.length > 100) {
+            // 最初の100文字だけ切り取る
+            overview = overview.substring(0, 100);
+        }
+        if (headline) {
+            overview = overview.replaceAll(headline, "");
+        }
+        overview = overview.replace(/\s+/g, ' ');   // 空白文字を置き換え
+        //
+        // 親ページに、ニュース記事の概要を教える
+        settings[1] = {
+            ...settings[1],
+            "childPages": {
+                ...(settings[1].childPages ?? {}),
+                // "子ページのフォルダ名": {
+                //     "headline": "ニュース記事の見出し",
+                //     "overview": "ニュース記事の概要",
+                // },
+                [thisPageFolderName]: {
+                    "headline": headline,
+                    "overview": overview,
+                },
+            },
+        };
+        console.log(settings[1]);
+    }
+    //
     const uri = new URL(window.location.href);
     let pathName = window.location.pathname;
     if (!pathName || pathName.endsWith("/")) {

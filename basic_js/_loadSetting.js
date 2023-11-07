@@ -72,9 +72,10 @@ async function _loadSetting(url) {
         "mapUrl": result?.mapUrl ?? 'https://goo.gl/maps/qD7ZYrmeWpW7uNgSA',
         "address": result?.address ?? '〒814-018 福岡市城南区七隈8-19-1 福岡大学 4号館 1F',
         "childPages": {
-            "子ページのフォルダ名": {
-                "headline": "ニュース記事の見出し",
-            },
+            // "子ページのフォルダ名": {
+            //     "headline": "ニュース記事の見出し",
+            //     "overview": "ニュース記事の概要",
+            // },
             ...(result?.childPages ?? {}),
         },
     };
