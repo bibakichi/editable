@@ -17,6 +17,11 @@
     box-sizing: border-box;
     padding: 10px 20px;
     text-align: right;
+    opacity: 0.1;
+}
+
+#edit-switch-wrapper:hover {
+    opacity: 1;
 }
 
 @media screen and (max-width: 600px) {

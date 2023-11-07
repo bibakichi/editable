@@ -11,9 +11,15 @@ function _generateHTML({
     baseColorDark,
     contrastColor,
     contrastColor2,
+    officeName = '福岡大学ものづくりセンター',
+    phoneNumber = '092-871-6631',
+    extensionNumber = '6935',
+    website = 'http://www.tec.fukuoka-u.ac.jp/mono/',
+    mapUrl = 'https://goo.gl/maps/qD7ZYrmeWpW7uNgSA',
+    address = '〒814-018 福岡市城南区七隈8-19-1 福岡大学 4号館 1F',
 }) {
     const nowDate = new Date();
-    return `
+    return `<!DOCTYPE html>
 <!--
 
 【 Visual Studio Codeを使って、このコードを編集する人へ 】
@@ -27,13 +33,12 @@ function _generateHTML({
         で切り替えることができます。
 
 -->
-<!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>${title}</title>
-        <meta name="author" content="福岡大学ものづくりセンター">
+        <meta name="author" content="${officeName}">
         <!-- 
             noindex: 検索に引っかからないようにする
             nofollow: クローラー（検索プログラム）を、このページから他のページへ移動しないようにする
@@ -48,7 +53,7 @@ function _generateHTML({
         <meta name="theme-color" content="var(--base-color)"> <!-- テーマ色を設定 -->
         <link rel="manifest" href="manifest.json">
         <!-- -->
-        <!-- ビバ吉アイコンの読み込み -->
+        <!-- アイコンの読み込み -->
         <meta name="msapplication-square70x70logo" content="${faviconsFolderPath}site-tile-70x70.png">
         <meta name="msapplication-square150x150logo" content="${faviconsFolderPath}site-tile-150x150.png">
         <meta name="msapplication-wide310x150logo" content="${faviconsFolderPath}site-tile-310x150.png">
@@ -184,17 +189,18 @@ function _generateHTML({
                     </div>
                     <footer>
                         <address>
-                            福岡大学ものづくりセンター
+                            ${officeName}
                             <div style="padding: 3px 0 0 10px;">
-                                <a target="_blank" href="https://goo.gl/maps/qD7ZYrmeWpW7uNgSA">
-                                    〒814-018 福岡市城南区七隈8-19-1 福岡大学 4号館 1F
-                                </a><br>
-                                ホームページ: <a href="http://www.tec.fukuoka-u.ac.jp/mono/">http://www.tec.fukuoka-u.ac.jp/mono/</a><br>
-                                電話: <a href="tel:0928716631">092-871-6631</a>（代）<br>
-                                内線: 6935
+                                <a target="_blank" href="${mapUrl}">
+                                    ${address}
+                                </a>
+                                <br>
+                                ホームページ: <a href="${website}">${website}</a><br>
+                                電話: <a href="tel:${phoneNumber.replaceAll("-", "")}">${phoneNumber}</a><br>
+                                内線: ${extensionNumber}
                             </div>
                         </address>
-                        &copy; 2023 福岡大学工学部ものづくりセンター
+                        &copy; ${nowDate.getFullYear()} ${officeName}
                     </footer>
                 </div>
             </div>
