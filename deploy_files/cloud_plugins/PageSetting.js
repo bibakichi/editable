@@ -160,7 +160,7 @@ plugins["PageSetting"] = {
             //
             const inputElement3 = document.createElement('input');
             inputElement3.type = "color";
-            inputElement3.value = settings[0]?.title;
+            inputElement3.value = String(SelectStyle.getPropertyValue('--base-color') ?? "#8d0000");
             divElement3.appendChild(inputElement3);
             inputElement3.addEventListener("input", () => {
                 console.log(inputElement3.value);

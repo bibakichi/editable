@@ -7,17 +7,20 @@ plugins["Padding"] = {
             element.id = blockId;
             element.style.width = "100%";
             element.style.height = "40px";
+            return element;
+        },
+        "changeEditMode": async function (blockId) {
+            const element = document.getElementById(blockId);
+            //
             // mouseoverイベントリスナーを追加
             element.addEventListener('mouseover', function () {
                 element.style.background = 'rgba(0,255,0,0.5);'; // 背景色を青にする
             });
-
+            //
             // mouseoutイベントリスナーを追加
             element.addEventListener('mouseout', function () {
                 element.style.background = 'none'; // 背景色を白に戻す
             });
-
-            return element;
         },
     },
     "toolbox": {
