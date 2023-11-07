@@ -82,6 +82,12 @@ plugins["ChildPage"] = {
                 baseColorDark: String(SelectStyle.getPropertyValue('--base-color-dark') ?? "#600000"),
                 contrastColor: String(SelectStyle.getPropertyValue('--contrast-color') ?? "#555"),
                 contrastColor2: String(SelectStyle.getPropertyValue('--contrast-color2') ?? "#fff"),
+                officeName: settings[0]?.officeName ?? '福岡大学ものづくりセンター',
+                phoneNumber: settings[0]?.phoneNumber ?? '092-871-6631',
+                extensionNumber: settings[0]?.extensionNumber ?? '6935',
+                website: settings[0]?.website ?? 'http://www.tec.fukuoka-u.ac.jp/mono/',
+                mapUrl: settings[0]?.mapUrl ?? 'https://goo.gl/maps/qD7ZYrmeWpW7uNgSA',
+                address: settings[0]?.address ?? '〒814-018 福岡市城南区七隈8-19-1 福岡大学 4号館 1F',
             });
 
             const uri = new URL(window.location.href);
@@ -93,22 +99,10 @@ plugins["ChildPage"] = {
             pathList.pop();
             pathList.push(folderId);
             const newSetting = {
+                ...settings[0],
                 "isFullSize": false,
-                "isTopbar": true,
                 "title": "新しいページ",
-                "fontFamily": settings[0]?.fontFamily ?? {
-                    "Hannari": false,
-                    "Kokoro": false,
-                    "Nico Moji": false,
-                    "Nikukyu": false,
-                    "M PLUS 1p": false,
-                    "M PLUS Rounded 1c": true,
-                    "Sawarabi Mincho": false,
-                    "Sawarabi Gothic": false,
-                    "Noto Sans JP": true
-                },
                 "toolList": [],
-                "plugins": [],
             };
             if (uri.hostname === "8mo.nl") {
                 //  以下のURLにアクセスがあった場合

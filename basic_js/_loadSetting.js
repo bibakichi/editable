@@ -63,5 +63,11 @@ async function _loadSetting(url) {
         },
         "toolList": result?.toolList ?? [],
         "plugins": result?.plugins ?? [],
+        "officeName": result?.officeName ?? '福岡大学ものづくりセンター',
+        "phoneNumber": result?.phoneNumber ?? '092-871-6631',
+        "extensionNumber": result?.extensionNumber ?? '6935',
+        "website": result?.website ?? 'http://www.tec.fukuoka-u.ac.jp/mono/',
+        "mapUrl": result?.mapUrl ?? 'https://goo.gl/maps/qD7ZYrmeWpW7uNgSA',
+        "address": result?.address ?? '〒814-018 福岡市城南区七隈8-19-1 福岡大学 4号館 1F',
     };
 }
