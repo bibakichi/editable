@@ -31,7 +31,7 @@ plugins["PageSetting"] = {
             mainElement.appendChild(divElement1);
             //
             const labelElement1 = document.createElement('span');
-            labelElement1.innerText = "タイトル";
+            labelElement1.innerText = "ブラウザの上部に表示するタイトル";
             divElement1.appendChild(labelElement1);
             //
             const inputElement1 = document.createElement('input');
@@ -42,6 +42,26 @@ plugins["PageSetting"] = {
                 settings[0] = {
                     ...settings[0],
                     title: inputElement1.value,
+                };
+            });
+            //
+            //
+            //####################################################
+            //
+            const divElement4 = document.createElement('div');
+            mainElement.appendChild(divElement4);
+            //
+            const labelElement4 = document.createElement('span');
+            labelElement4.innerText = "親ページに表示するタイトル";
+            divElement4.appendChild(labelElement1);
+            //
+            const inputElement4 = document.createElement('input');
+            inputElement4.value = settings[0]?.headline;
+            divElement1.appendChild(inputElement4);
+            inputElement4.addEventListener("input", () => {
+                settings[0] = {
+                    ...settings[0],
+                    headline: inputElement4.value,
                 };
             });
             //
@@ -113,9 +133,6 @@ plugins["PageSetting"] = {
             });
             //
             //####################################################
-            //
-            const divElement4 = document.createElement('div');
-            mainElement.appendChild(divElement4);
             //
             const divElement5 = document.createElement('div');
             mainElement.appendChild(divElement5);

@@ -47,8 +47,17 @@ plugins["H2"] = {
         },
         "saveBlock": async function (blockId, pastSaveData) {
             const element = document.getElementById(blockId);
+            const text = element.innerHTML;
+            //
+            // H1やH2などのHTML要素が編集されたときに、この関数を呼び出す。
+            // ニュースの見出しが連動して変更される
+            changeHeadingsInConjunction({
+                text: text,
+                blockId: blockId,
+            });
+            //
             return {
-                text: element.innerHTML,
+                text: text,
             };
         },
     },
