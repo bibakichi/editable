@@ -196,8 +196,8 @@ function _generateHTML({
                                 </a>
                                 <br>
                                 ホームページ: <a href="${website}">${website}</a><br>
-                                電話: <a href="tel:${phoneNumber.replaceAll("-", "")}">${phoneNumber}</a><br>
-                                内線: ${extensionNumber}
+                                電話: <a href="tel:${phoneNumber.replaceAll("-", "")}">${phoneNumber}</a>
+                                ${extensionNumber ? ("<br>内線:" + extensionNumber) : ""}
                             </div>
                         </address>
                         &copy; ${nowDate.getFullYear()} ${officeName}

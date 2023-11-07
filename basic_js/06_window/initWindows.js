@@ -2,8 +2,6 @@
 
 // 親子ウィンドウの初期設定
 async function initWindows() {
-    console.log(urls);
-    //
     if (isDebugTree) console.log("============================");
     if (isDebugTree) console.log("親ページへ繋がる戻るボタンやパンくずリストを生成します。");
     //

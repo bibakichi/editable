@@ -53,7 +53,7 @@ plugins["PageSetting"] = {
             //####################################################
             //
             _createTextField({
-                labelText: "ブラウザの上部に表示するタイトル",
+                labelText: "ブラウザの上部に表示するタイトル（必須）",
                 key: "title",
                 onChange: (text) => {
                     document.title = text;
@@ -63,7 +63,7 @@ plugins["PageSetting"] = {
             //####################################################
             //
             _createTextField({
-                labelText: "親ページに表示するタイトル",
+                labelText: "親ページに表示するタイトル（必須）",
                 key: "headline",
                 onChange: (text) => { },
             });
@@ -138,7 +138,7 @@ plugins["PageSetting"] = {
             //####################################################
             //
             _createTextField({
-                labelText: "組織名",
+                labelText: "組織名（必須）",
                 key: "officeName",
                 onChange: (text) => { },
             });
@@ -146,7 +146,7 @@ plugins["PageSetting"] = {
             //####################################################
             //
             _createTextField({
-                labelText: "電話番号",
+                labelText: "電話番号（必須）",
                 key: "phoneNumber",
                 onChange: (text) => { },
             });
@@ -162,7 +162,7 @@ plugins["PageSetting"] = {
             //####################################################
             //
             _createTextField({
-                labelText: "ホームページのURL",
+                labelText: "ホームページのURL（必須）",
                 key: "website",
                 onChange: (text) => { },
             });
@@ -170,7 +170,7 @@ plugins["PageSetting"] = {
             //####################################################
             //
             _createTextField({
-                labelText: "googleマップのURL",
+                labelText: "googleマップのURL（必須）",
                 key: "mapUrl",
                 onChange: (text) => { },
             });
@@ -178,7 +178,7 @@ plugins["PageSetting"] = {
             //####################################################
             //
             _createTextField({
-                labelText: "住所",
+                labelText: "住所（必須）",
                 key: "address",
                 onChange: (text) => { },
             });
