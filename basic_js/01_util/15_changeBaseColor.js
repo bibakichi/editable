@@ -1,6 +1,6 @@
 
 function _numberToHex(number) {
-    return ('0000' + v.toString(16)).slice(-2);
+    return ('0000' + number.toString(16)).slice(-2);
 }
 
 function _changeBaseColor({ red, green, blue }) {
@@ -9,7 +9,6 @@ function _changeBaseColor({ red, green, blue }) {
     //   deploy_files > cloud_plugins > PageSetting.js
     //   にて、カラーピッカーを使うので、16進数表記である必要がある
     const hexText = "#" + _numberToHex(red) + _numberToHex(green) + _numberToHex(blue);
-    alert(hexText);
     //
     document.documentElement.style.setProperty('--base-color', hexText);
     document.documentElement.style.setProperty('--base-color-dark', `rgb(${red * 0.7},${green * 0.7},${blue * 0.7})`);

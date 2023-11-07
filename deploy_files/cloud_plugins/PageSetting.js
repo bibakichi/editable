@@ -94,11 +94,9 @@ plugins["PageSetting"] = {
             inputElement3.type = "color";
             const SelectStyle = getComputedStyle(document.querySelector(':root'));
             const colorText = String(SelectStyle.getPropertyValue('--base-color') ?? "#8d0000");
-            console.log(colorText);
             inputElement3.value = colorText;
             divElement3.appendChild(inputElement3);
             inputElement3.addEventListener("input", () => {
-                console.log(inputElement3.value);
                 const colorText = inputElement3.value;
                 try {
                     const redText = colorText.substring(1, 3);
