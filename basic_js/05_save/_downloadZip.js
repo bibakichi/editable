@@ -14,9 +14,12 @@ async function downloadZip(htmlCode) {
         "display": "standalone",
         "theme_color": "var(--base-color)"
     };
-    let fileName = settings[0]?.headline;
-    fileName = fileName.replace(/[\\/:*?"<>|\x00-\x1F\x80-\x9F]|\.$|^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9]|(.*[\s.]+$))$/gi, '');
-    zip.file(fileName + ".txt", "このファイルは消して構いません。webページの見た目に、一切影響を及ぼしません。");
+    let filePath = _getPath();
+    //
+    // ファイル名として使える文字列に置き換える
+    filePath = filePath.replace(/[\\/:*?"<>|\x00-\x1F\x80-\x9F]|\.$|^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9]|(.*[\s.]+$))$/gi, '');
+    //
+    zip.file(filePath + ".txt", "このファイルは消して構いません。webページの見た目に、一切影響を及ぼしません。");
     zip.file("index.html", htmlCode);
     zip.file("setting.js", "window.fileToFileTransferVariable = " + JSON.stringify(setting, null, 2) + ";");
     zip.file("manifest.json", JSON.stringify(manifestData, null, 2));
@@ -36,7 +39,7 @@ async function downloadZip(htmlCode) {
         },
     });
     await downloadFile({
-        fileName: (settings[0]?.title ?? (_getPath() ?? "web")) + ".zip",
+        fileName: (settings[0]?.title + "_" + (filePath ?? "")) + ".zip",
         mimeType: "octet/stream",
         content: content,
     });

@@ -126,7 +126,7 @@ async function allSave(isDownload) {
                 //     "headline": "ニュース記事の見出し",
                 //     "overview": "ニュース記事の概要",
                 // },
-                [thisPageFolderName]: {
+                [_getFolderName()]: {
                     "headline": headline,
                     "overview": overview,
                 },
