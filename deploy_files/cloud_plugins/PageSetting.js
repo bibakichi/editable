@@ -19,6 +19,31 @@ plugins["PageSetting"] = {
             const { openButtonElement, mainElement } = createModal();
             openButtonElement.innerText = "ページ設定";
             //
+            // 入力フォームを作る関数
+            function _createTextField({ labelText, key, onChange }) {
+                const divElement1 = document.createElement('div');
+                mainElement.appendChild(divElement1);
+                //
+                const labelElement1 = document.createElement('span');
+                labelElement1.innerText = labelText;
+                divElement1.appendChild(labelElement1);
+                //
+                const inputElement1 = document.createElement('input');
+                if (settings[0]) {
+                    inputElement1.value = settings[0][key];
+                }
+                divElement1.appendChild(inputElement1);
+                inputElement1.addEventListener("input", () => {
+                    settings[0] = {
+                        ...settings[0],
+                        [key]: inputElement1.value,
+                    };
+                    if (typeof onChange == "function") {
+                        onChange(inputElement1.value);
+                    }
+                });
+            }
+            //
             const titleElement = document.createElement('h2');
             titleElement.innerText = "ページ設定";
             titleElement.style.textAlign = "center";
@@ -27,42 +52,20 @@ plugins["PageSetting"] = {
             //
             //####################################################
             //
-            const divElement1 = document.createElement('div');
-            mainElement.appendChild(divElement1);
-            //
-            const labelElement1 = document.createElement('span');
-            labelElement1.innerText = "ブラウザの上部に表示するタイトル";
-            divElement1.appendChild(labelElement1);
-            //
-            const inputElement1 = document.createElement('input');
-            inputElement1.value = settings[0]?.title;
-            divElement1.appendChild(inputElement1);
-            inputElement1.addEventListener("input", () => {
-                document.title = inputElement1.value;
-                settings[0] = {
-                    ...settings[0],
-                    title: inputElement1.value,
-                };
+            _createTextField({
+                labelText: "ブラウザの上部に表示するタイトル",
+                key: "title",
+                onChange: (text) => {
+                    document.title = text;
+                },
             });
-            //
             //
             //####################################################
             //
-            const divElement4 = document.createElement('div');
-            mainElement.appendChild(divElement4);
-            //
-            const labelElement4 = document.createElement('span');
-            labelElement4.innerText = "親ページに表示するタイトル";
-            divElement4.appendChild(labelElement1);
-            //
-            const inputElement4 = document.createElement('input');
-            inputElement4.value = settings[0]?.headline;
-            divElement1.appendChild(inputElement4);
-            inputElement4.addEventListener("input", () => {
-                settings[0] = {
-                    ...settings[0],
-                    headline: inputElement4.value,
-                };
+            _createTextField({
+                labelText: "親ページに表示するタイトル",
+                key: "headline",
+                onChange: (text) => { },
             });
             //
             //####################################################
@@ -134,11 +137,53 @@ plugins["PageSetting"] = {
             //
             //####################################################
             //
-            const divElement5 = document.createElement('div');
-            mainElement.appendChild(divElement5);
+            _createTextField({
+                labelText: "組織名",
+                key: "officeName",
+                onChange: (text) => { },
+            });
             //
-            const divElement6 = document.createElement('div');
-            mainElement.appendChild(divElement6);
+            //####################################################
+            //
+            _createTextField({
+                labelText: "電話番号",
+                key: "phoneNumber",
+                onChange: (text) => { },
+            });
+            //
+            //####################################################
+            //
+            _createTextField({
+                labelText: "内線番号",
+                key: "extensionNumber",
+                onChange: (text) => { },
+            });
+            //
+            //####################################################
+            //
+            _createTextField({
+                labelText: "ホームページのURL",
+                key: "website",
+                onChange: (text) => { },
+            });
+            //
+            //####################################################
+            //
+            _createTextField({
+                labelText: "googleマップのURL",
+                key: "mapUrl",
+                onChange: (text) => { },
+            });
+            //
+            //####################################################
+            //
+            _createTextField({
+                labelText: "住所",
+                key: "address",
+                onChange: (text) => { },
+            });
+            //
+            //####################################################
             //
             return openButtonElement;
         },
