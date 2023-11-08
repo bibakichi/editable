@@ -47,5 +47,8 @@ plugins["ChildHeadlines"] = {
             element.innerHTML = "読み込み中…";
             return element;
         },
+        "saveBlock": async function (blockId, pastSaveData) {
+            return {};
+        }
     }
 }
