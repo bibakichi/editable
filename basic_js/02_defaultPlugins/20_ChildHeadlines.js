@@ -65,7 +65,6 @@ plugins["ChildHeadlines"] = {
         },
         "changeEditMode": async function (blockId) {
             const listElement = document.getElementById(blockId);
-            listElement.innerHTML = "";
             //
             const newElement = document.createElement("a");
             newElement.innerHTML = "新しい記事を作成";
