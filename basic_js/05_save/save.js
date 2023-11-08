@@ -123,8 +123,8 @@ async function allSave(isDownload) {
         jsonElements.forEach(function (element) {
             element.parentNode.removeChild(element);
         });
-        // 'date_block'クラスを持つすべての子要素を取得
-        var dateElements = contents.querySelectorAll('.date_block');
+        // 'do_not_overview'クラスを持つすべての子要素を取得
+        var dateElements = contents.querySelectorAll('.do_not_overview');
         // 取得した子要素のリストをループで回して、それぞれをDOMから削除
         dateElements.forEach(function (element) {
             element.parentNode.removeChild(element);

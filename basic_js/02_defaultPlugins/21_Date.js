@@ -14,7 +14,9 @@ plugins["Date"] = {
         "renderHeavy": async function (blockId, saveData) {
             const element = document.createElement("p");
             element.id = blockId;
-            element.classList.add("date_block");
+            element.classList.add("do_not_overview");
+            // 概要文に含めない
+            //
             element.innerHTML = saveData.date;
             return element;
         },
@@ -42,7 +44,7 @@ plugins["Date"] = {
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement("p");
             element.id = blockId;
-            element.classList.add("date_block");
+            element.classList.add("do_not_overview");
             element.innerHTML = settings[0]?.date;
             return element;
         },
