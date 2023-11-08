@@ -60,7 +60,14 @@ async function allSave(isDownload) {
     for (const externalFile of externalFiles) {
         const externalFileSrc = externalFile.getAttribute("src");
         if (externalFileSrc && (typeof externalFileSrc == "string")) {
-            const url = new URL(externalFileSrc);
+            let url;
+            try {
+                url = new URL(externalFileSrc);
+            }
+            catch (err) {
+                alert(`無効なURLです。${url}`);
+                return;
+            }
             if (externalFileSrc.indexOf("katex") != -1) continue;
             if (url.hostname == "mono-editable.s3.ap-northeast-1.amazonaws.com") continue;
             if (url.hostname == "cdn.quilljs.com") continue;
