@@ -30,8 +30,9 @@ plugins["Date"] = {
             return {};
         },
         "renderLight": async function (blockId, saveData) {
-            const element = document.createElement("div");
+            const element = document.createElement("p");
             element.id = blockId;
+            element.classList.add("date_block");
             element.innerHTML = settings[0]?.date;
             return element;
         },
