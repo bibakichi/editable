@@ -7,6 +7,9 @@ function _getParentPath() {
         return null;
     }
     paths.pop();
+    if (paths.length < (settings.length - 1)) {
+        return "／";
+    }
     if (paths.length == 0) {
         return "／";
     }

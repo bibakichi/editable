@@ -179,6 +179,8 @@ input.modal_trigger:checked+.modal_overlay+.modal_outer {
 
 .modal_outer.modal_main {
     position: initial;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 .modal_outer.modal_main:not(.full_size) {
@@ -261,7 +263,7 @@ input.modal_trigger {
 .modal_scroll {
     background-color: #fff;
     color: #6e6e73;
-    min-height: calc(100% - 20px);
+    min-height: 100%;
 }
 
 .modal_outer.modal_main .modal_scroll {
