@@ -29,14 +29,21 @@ plugins["ChildHeadlines"] = {
                     const pageData = childPages[folderName];
                     if (!pageData) continue;
                     //
-                    const aElement = document.createElement("a");
-                    listElement.appendChild(aElement);
-                    aElement.href = folderName + "/index.html";
-                    //
                     const blockElement = document.createElement("div");
                     blockElement.classList.add("blog_block");
                     blockElement.classList.add("neumorphism");
-                    aElement.appendChild(blockElement);
+                    listElement.appendChild(blockElement);
+                    //
+                    const url = new URL(folderName + "/index.html", window.location);
+                    const settingUrl = new URL('setting.js', url).toString();
+                    const { isFullSize, isTopbar } = await _loadSetting(settingUrl);
+                    blockElement.addEventListener('click', async () => {
+                        await _goChildPage({
+                            url: url.toString(),
+                            isFullSize: isFullSize,
+                            isTopbar: isTopbar,
+                        });
+                    });
                     //
                     const headlineElement = document.createElement("h3");
                     blockElement.appendChild(headlineElement);

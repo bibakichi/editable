@@ -13,12 +13,16 @@ plugins["Date"] = {
     "viewer": {
         "changeEditMode": async function (blockId) {
             const element = document.getElementById(blockId);
-            const newElement = document.createElement("input");
-            newElement.type = "date";
-            element.replaceWith(newElement);
+            element.innerHTML = "";
+            //
+            const inputElement = document.createElement("input");
+            inputElement.id = blockId + "_input";
+            inputElement.type = "date";
+            element.appendChild(inputElement);
         },
         "saveBlock": async function (blockId, pastSaveData) {
-            const element = document.getElementById(blockId);
+            const element = document.getElementById(blockId + "_input");
+            console.log(element.value);
             settings[0] = {
                 ...settings[0],
                 date: element.value,
