@@ -132,8 +132,8 @@ async function allSave(isDownload) {
         // `innerText`を使用する場合（CSSスタイリングを考慮した「見える」テキストのみを取得する）
         let overview = contents.innerText;
         if (overview.length > 100) {
-            // 最初の100文字だけ切り取る
-            overview = overview.substring(0, 100);
+            // 最初の50文字だけ切り取る
+            overview = overview.substring(0, 50);
         }
         if (headline) {
             overview = overview.replaceAll(headline, "");
