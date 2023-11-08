@@ -12,17 +12,7 @@ plugins["Date"] = {
     },
     "viewer": {
         "renderHeavy": async function (blockId, saveData) {
-            const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
-            const element = document.createElement("p");
-            element.id = blockId;
-            element.classList.add("date_block");
-            async function aaa() {
-                while (!settings[0]) {
-                    await sleep(500);
-                }
-                element.innerHTML = settings[0]?.date;
-            }
-            aaa();
+            const element = document.getElementById(blockId);
             return element;
         },
         "changeEditMode": async function (blockId) {
