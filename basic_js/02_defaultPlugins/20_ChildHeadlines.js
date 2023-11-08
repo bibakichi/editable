@@ -24,12 +24,6 @@ plugins["ChildHeadlines"] = {
                 }
                 listElement.innerHTML = "";
                 //
-                const newElement = document.createElement("a");
-                newElement.innerHTML = "新しい記事を作成";
-                newElement.target = "_blank";
-                newElement.href = "./new/index.html?editmode=1";
-                listElement.appendChild(newElement);
-                //
                 const childPages = {
                     ...(settings[0]?.childPages ?? {}),
                 };
@@ -68,6 +62,16 @@ plugins["ChildHeadlines"] = {
             }
             aaa();
             return listElement;
+        },
+        "changeEditMode": async function (blockId) {
+            const listElement = document.getElementById(blockId);
+            listElement.innerHTML = "";
+            //
+            const newElement = document.createElement("a");
+            newElement.innerHTML = "新しい記事を作成";
+            newElement.target = "_blank";
+            newElement.href = "./new/index.html?editmode=1";
+            listElement.prepend(newElement);
         },
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement("div");
