@@ -17,11 +17,19 @@ plugins["ChildHeadlines"] = {
             listElement.style.minHeight = "200px";
             listElement.innerHTML = "読み込み中…";
             listElement.id = blockId;
+            //
             async function aaa() {
                 while (!settings[0]) {
                     await sleep(500);
                 }
                 listElement.innerHTML = "";
+                //
+                const newElement = document.createElement("a");
+                newElement.innerHTML = "新しい記事を作成";
+                newElement.target = "_blank";
+                newElement.href = "./new/index.html?editmode=1";
+                listElement.appendChild(newElement);
+                //
                 const childPages = {
                     ...(settings[0]?.childPages ?? {}),
                 };
