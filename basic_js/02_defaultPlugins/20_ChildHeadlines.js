@@ -15,6 +15,7 @@ plugins["ChildHeadlines"] = {
             const listElement = document.createElement("div");
             listElement.style.minHeight = "200px";
             listElement.id = blockId;
+            console.log(settings[0]);
             const childPages = {
                 ...(settings[0]?.childPages ?? {}),
             };
