@@ -131,14 +131,14 @@ async function allSave(isDownload) {
         });
         // `innerText`を使用する場合（CSSスタイリングを考慮した「見える」テキストのみを取得する）
         let overview = contents.innerText;
-        if (overview.length > 100) {
-            // 最初の50文字だけ切り取る
-            overview = overview.substring(0, 50);
-        }
+        overview = overview.replace(/\s+/g, ' ');   // 空白文字を置き換え
         if (headline) {
             overview = overview.replaceAll(headline, "");
         }
-        overview = overview.replace(/\s+/g, ' ');   // 空白文字を置き換え
+        if (overview.length > 50) {
+            // 最初の50文字だけ切り取る
+            overview = overview.substring(0, 50);
+        }
         //
         // 親ページに、ニュース記事の概要を教える
         settings[1] = {
