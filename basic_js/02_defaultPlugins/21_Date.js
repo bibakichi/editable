@@ -12,7 +12,10 @@ plugins["Date"] = {
     },
     "viewer": {
         "renderHeavy": async function (blockId, saveData) {
-            const element = document.getElementById(blockId);
+            const element = document.createElement("p");
+            element.id = blockId;
+            element.classList.add("date_block");
+            element.innerHTML = saveData.date;
             return element;
         },
         "changeEditMode": async function (blockId) {
@@ -32,7 +35,9 @@ plugins["Date"] = {
                 ...settings[0],
                 date: element.value,
             };
-            return {};
+            return {
+                date: element.value,
+            };
         },
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement("p");
