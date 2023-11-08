@@ -146,6 +146,7 @@ async function allSave(isDownload) {
                 [_getFolderName()]: {
                     "headline": headline,
                     "overview": overview,
+                    "date": settings[0]?.date,
                 },
             },
         };

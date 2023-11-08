@@ -40,6 +40,7 @@ async function _loadSetting(url) {
         if (isDebugTree) console.log("  設定ファイルが見つかりません");
     }
     return {
+        "date": result?.date ?? "",
         "isLoadSettingSuccess": result ? true : false,
         "title": result?.title ?? "？？",   // 画面上部に掲載するタイトル
         "headline": result?.title ?? (result?.title ?? "？？"),   // 親ページに掲載する見出し
