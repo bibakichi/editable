@@ -57,7 +57,7 @@ plugins["ChildHeadlines"] = {
                     //
                     const pElement = document.createElement("p");
                     blockElement.appendChild(pElement);
-                    pElement.innerText = pageData?.overview;
+                    pElement.innerText = pageData?.overview + "...";
                 }
             }
             aaa();
