@@ -5,7 +5,6 @@ plugins["ChildHeadlines"] = {
     "toolbox": {
         "render": async function (saveData) {
             const element = document.createElement('div');
-            element.id = blockId;
             element.style.padding = "5px";
             element.innerHTML = "子ページの一覧";
             return element;
