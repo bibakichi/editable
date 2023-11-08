@@ -53,6 +53,7 @@ async function allSave(isDownload) {
     }
     //
     const externalFiles = [
+        ...document.querySelectorAll("head>link:not(.Do_not_store_in_HTML)"),
         ...document.querySelectorAll("head>style:not(.Do_not_store_in_HTML)"),
         ...document.querySelectorAll("head>script:not(.Do_not_store_in_HTML)"),
     ];
