@@ -65,7 +65,7 @@ async function allSave(isDownload) {
                 url = new URL(externalFileSrc);
             }
             catch (err) {
-                alert(`無効なURLです。${url}`);
+                alert(`無効なURLです。${externalFileSrc}`);
                 return;
             }
             if (externalFileSrc.indexOf("katex") != -1) continue;
