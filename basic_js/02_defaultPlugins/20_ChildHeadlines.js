@@ -12,10 +12,13 @@ plugins["ChildHeadlines"] = {
     },
     "viewer": {
         "renderHeavy": async function (blockId, saveData) {
+            const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+            while (!settings[0]) {
+                await sleep(500);
+            }
             const listElement = document.createElement("div");
             listElement.style.minHeight = "200px";
             listElement.id = blockId;
-            console.log(settings[0]);
             const childPages = {
                 ...(settings[0]?.childPages ?? {}),
             };
