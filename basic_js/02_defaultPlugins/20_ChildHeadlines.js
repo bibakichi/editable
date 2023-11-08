@@ -45,6 +45,10 @@ plugins["ChildHeadlines"] = {
                         });
                     });
                     //
+                    const dateElement = document.createElement("p");
+                    blockElement.appendChild(dateElement);
+                    dateElement.innerText = pageData?.date;
+                    //
                     const headlineElement = document.createElement("h3");
                     blockElement.appendChild(headlineElement);
                     headlineElement.innerText = pageData?.headline;
