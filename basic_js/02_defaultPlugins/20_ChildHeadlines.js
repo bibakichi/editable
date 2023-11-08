@@ -16,7 +16,7 @@ plugins["ChildHeadlines"] = {
             listElement.style.minHeight = "200px";
             listElement.id = blockId;
             const childPages = {
-                ...(settings?.childPages ?? {}),
+                ...(settings[0]?.childPages ?? {}),
             };
             for (const folderName in childPages) {
                 const pageData = childPages[folderName];
