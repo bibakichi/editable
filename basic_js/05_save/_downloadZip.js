@@ -49,7 +49,7 @@ async function downloadZip(htmlCode) {
         const plugin = plugins[pluginName];
         if (plugin.isDefault) continue;
         const str = _convertPluginToString({ pluginName, plugin });
-        zip.file("plugins/" + pluginName + ".js", str);
+        zip.file(folderName + "plugins/" + pluginName + ".js", str);
     }
     //
     const content = await zip.generateAsync({
