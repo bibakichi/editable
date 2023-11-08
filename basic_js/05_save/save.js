@@ -62,7 +62,7 @@ async function allSave(isDownload) {
         if (externalFileSrc && (typeof externalFileSrc == "string")) {
             let url;
             try {
-                url = new URL(externalFileSrc);
+                url = new URL(externalFileSrc, window.location.href);
             }
             catch (err) {
                 alert(`無効なURLです。${externalFileSrc}`);
