@@ -1,6 +1,14 @@
 //#########################################################################################
+// 編集スイッチがONになったときに呼び出される関数
 async function _editEnable() {
-    //
+    const text = window.prompt("パスワードを入力してください", "");
+    if (text === "futec") {
+        await _editEnable2();
+    }
+}
+
+// 
+async function _editEnable2() {
     document.getElementById('body_right').style.display = 'flex';
     document.getElementById('edit-switch-wrapper').style.opacity = 1;
     document.getElementById('edit-switch').checked = true;
