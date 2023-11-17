@@ -79,6 +79,5 @@ async function _loadSetting(url) {
             // },
             ...(result?.childPages ?? {}),
         },
-        "iconHTML": result?.iconHTML,
     };
 }
