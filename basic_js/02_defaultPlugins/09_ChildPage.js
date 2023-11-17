@@ -76,7 +76,7 @@ plugins["ChildPage"] = {
                 basicJsPath: document.getElementById("basic_js").getAttribute('src'),
                 jsZipPath: document.getElementById("jszip").getAttribute('src'),
                 isFullSize: false,
-                faviconsFolderPath: 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
+                iconHTML: settings[0]?.iconHTML,
                 externalFiles: '',
                 baseColor: String(SelectStyle.getPropertyValue('--base-color') ?? "#8d0000"),
                 baseColorDark: String(SelectStyle.getPropertyValue('--base-color-dark') ?? "#600000"),

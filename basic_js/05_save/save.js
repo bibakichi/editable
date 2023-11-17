@@ -93,7 +93,7 @@ async function allSave(isDownload) {
         basicJsPath: basicJsPath,
         jsZipPath: document.getElementById("jszip").getAttribute('src'),
         isFullSize: settings[0]?.isFullSize,
-        faviconsFolderPath: 'https://mono-file.s3.ap-northeast-1.amazonaws.com/favicons/',
+        iconHTML: settings[0]?.iconHTML,
         externalFiles: externalFilesText,
         baseColor: String(SelectStyle.getPropertyValue('--base-color') ?? "#8d0000"),
         baseColorDark: String(SelectStyle.getPropertyValue('--base-color-dark') ?? "#600000"),

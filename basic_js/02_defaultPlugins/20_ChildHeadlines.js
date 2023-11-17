@@ -85,7 +85,7 @@ plugins["ChildHeadlines"] = {
     "css": async () => `
         .blog_block {
             text-decoration: none;
-            margin: 0 0 6px 0;
+            margin: 0 0 20px 0;
             padding: 12px 20px 8px 20px;
             background: #fafafa;
             box-sizing: border-box;
@@ -98,7 +98,6 @@ plugins["ChildHeadlines"] = {
         .blog_block.neumorphism {
             background: none;
             border: none;
-            margin: 0 0 6px 0;
             box-shadow: 5px 5px 20px #c8c9cc, -5px -5px 20px #ffffff;
         }
 
