@@ -24,11 +24,30 @@ plugins["ChildHeadlines"] = {
                 }
                 listElement.innerHTML = "";
                 //
-                const childPages = {
-                    ...(settings[0]?.childPages ?? {}),
+                const childPagesMap = {
+                    ...settings[0]?.childPages ?? {},
                 };
-                for (const folderName in childPages) {
-                    const pageData = childPages[folderName];
+                const childPagesArray = [];
+                for (const folderName in childPagesMap) {
+                    const pageData = childPagesMap[folderName];
+                    if (!pageData) continue;
+                    childPagesArray.push({
+                        ...pageData,
+                        "folderName": folderName,
+                    });
+                }
+                childPagesArray.sort((pageData1, pageData2) => {
+                    if (!pageData1.date) {
+                        return true;
+                    }
+                    if (!pageData2.date) {
+                        return false;
+                    }
+                    const date1 = new Date(pageData1.date);
+                    const date2 = new Date(pageData2.date);
+                    return date1 > date2;
+                });
+                for (const pageData of childPagesArray) {
                     if (!pageData) continue;
                     //
                     const blockElement = document.createElement("div");
