@@ -55,7 +55,7 @@ plugins["ChildHeadlines"] = {
                     blockElement.classList.add("neumorphism");
                     listElement.appendChild(blockElement);
                     //
-                    const url = new URL(folderName + "/index.html", window.location);
+                    const url = new URL(pageData?.folderName + "/index.html", window.location);
                     const settingUrl = new URL('setting.js', url).toString();
                     const { isFullSize, isTopbar } = await _loadSetting(settingUrl);
                     blockElement.addEventListener('click', async () => {
