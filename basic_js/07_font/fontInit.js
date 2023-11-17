@@ -3,6 +3,7 @@
 // Googleフォントを読み込む
 async function fontInit(thisPageSetting) {
     const css1 = document.createElement('link');
+    css1.classList.add("Do_not_store_in_HTML");
     css1.rel = 'stylesheet';
     if (thisPageSetting.fontFamily["Hannari"]) {
         css1.href = "https://fonts.googleapis.com/earlyaccess/hannari.css";
