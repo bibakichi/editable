@@ -5,6 +5,9 @@ async function _editEnable() {
     if (text === "futec") {
         await _editEnable2();
     }
+    else {
+        alert("パスワードが間違っています");
+    }
 }
 
 // 
