@@ -47,7 +47,8 @@ plugins["ChildHeadlines"] = {
                     const date2 = new Date(pageData2.date);
                     return date1 > date2;
                 });
-                for (const pageData of childPagesArray) {
+                for (let i = 0; i < childPagesArray.length && i < 100; i++) {
+                    const pageData = childPagesArray[i];
                     if (!pageData) continue;
                     //
                     const blockElement = document.createElement("div");
