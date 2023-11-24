@@ -27,12 +27,12 @@ async function initWindows() {
         else {
             // 画面上部のパンくずリストを書き換える
             for (let i = settings.length - 1; i >= 0; i--) {
-                console.log(settings[i].headline);
+                const headline = settings[i].headline.substr(0, 10);
                 if (i == 1) {
-                    breadcrumbs.innerHTML += `<label for="this_page_modal_trigger">${settings[i].headline}</label>`;
+                    breadcrumbs.innerHTML += `<label for="this_page_modal_trigger">${headline}</label>`;
                 }
                 else {
-                    breadcrumbs.innerHTML += `<a href="${urls[i]}">${settings[i].headline}</a>`;
+                    breadcrumbs.innerHTML += `<a href="${urls[i]}">${headline}</a>`;
                 }
                 //
                 if (i > 0) {
