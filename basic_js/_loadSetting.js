@@ -43,7 +43,7 @@ async function _loadSetting(url) {
         "date": result?.date ?? "",
         "isLoadSettingSuccess": result ? true : false,
         "title": result?.title ?? "？？",   // 画面上部に掲載するタイトル
-        "headline": result?.title ?? (result?.title ?? "？？"),   // 親ページに掲載する見出し
+        "headline": result?.headline ?? (result?.title ?? "？？"),   // 親ページに掲載する見出し
         "headlineBlockId": result?.headlineBlockId ?? null,   // 見出しと連動している要素のID
         "isFullSize": result?.isFullSize ? true : false,
         "isTopbar": result?.isTopbar ? true : false,
