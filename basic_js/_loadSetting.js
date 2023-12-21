@@ -45,6 +45,7 @@ async function _loadSetting(url) {
         "title": result?.title ?? "？？",   // 画面上部に掲載するタイトル
         "headline": result?.headline ?? (result?.title ?? "？？"),   // 親ページに掲載する見出し
         "headlineBlockId": result?.headlineBlockId ?? null,   // 見出しと連動している要素のID
+        "thumbnailUrl": result?.thumbnailUrl ?? null,
         "isFullSize": result?.isFullSize ? true : false,
         "isTopbar": result?.isTopbar ? true : false,
         "url": result?.url,

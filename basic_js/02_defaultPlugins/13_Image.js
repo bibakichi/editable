@@ -123,6 +123,13 @@ plugins["Image"] = {
         "saveBlock": async function (blockId, pastSaveData) {
             const imageElement = document.getElementById("image_" + blockId);
             const urlElement = document.getElementById("url_" + blockId);
+            //
+            if (!settings[0]?.thumbnailUrl) {
+                settings[0] = {
+                    ...settings[0],
+                    thumbnailUrl: urlElement.innerText,
+                };
+            }
             return {
                 src: urlElement.innerText,
                 height: imageElement.style.paddingTop,
