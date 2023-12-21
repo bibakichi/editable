@@ -27,7 +27,7 @@ plugins["ChildHeadlines"] = {
                 const childPagesMap = {
                     ...settings[0]?.childPages ?? {},
                 };
-                const childPagesArray = [];
+                let childPagesArray = [];
                 for (const folderName in childPagesMap) {
                     const pageData = childPagesMap[folderName];
                     if (!pageData) continue;
@@ -36,16 +36,21 @@ plugins["ChildHeadlines"] = {
                         "folderName": folderName,
                     });
                 }
-                childPagesArray.sort((pageData1, pageData2) => {
+                childPagesArray = childPagesArray.sort((pageData1, pageData2) => {
                     if (!pageData1.date) {
-                        return true;
+                        return 1;
                     }
                     if (!pageData2.date) {
-                        return false;
+                        return -1;
                     }
                     const date1 = new Date(pageData1.date);
                     const date2 = new Date(pageData2.date);
-                    return date1 > date2;
+                    if (date1 > date2) {
+                        return -1;
+                    }
+                    else {
+                        return 1;
+                    }
                 });
                 for (let i = 0; i < childPagesArray.length && i < 100; i++) {
                     const pageData = childPagesArray[i];
