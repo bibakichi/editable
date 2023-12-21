@@ -149,6 +149,7 @@ async function allSave(isDownload) {
                 //     "overview": "ニュース記事の概要",
                 // },
                 [_getFolderName()]: {
+                    "thumbnailUrl": settings[0]?.thumbnailUrl,
                     "headline": headline,
                     "overview": overview,
                     "date": settings[0]?.date,
