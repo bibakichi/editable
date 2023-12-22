@@ -30,6 +30,13 @@ async function allSave(isDownload) {
     const pastMainContents = document.getElementById('main_contents');
     const newMainContents = document.createElement('main');
     for (const sortableItem of pastMainContents.querySelectorAll(":scope>*")) {
+        if (sortableItem.children > 0) {
+            console.log("a");
+            if (sortableItem.children[0].classList.contains("full_width")) {
+                console.log("b");
+                sortableItem.classList.add("full_width");
+            }
+        }
         if (sortableItem.classList.contains("skip")) {
             newMainContents.appendChild(sortableItem);
             continue;
@@ -39,9 +46,6 @@ async function allSave(isDownload) {
         if (!newSaveData) {
             newMainContents.appendChild(sortableItem);
             continue;
-        }
-        if (sortableItem.innerElement.classList.contains("full_width")) {
-            sortableItem.outerElement.classList.add("full_width");
         }
         const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
         if (newOuterElement) {
