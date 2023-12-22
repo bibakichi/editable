@@ -40,6 +40,9 @@ async function allSave(isDownload) {
             newMainContents.appendChild(sortableItem);
             continue;
         }
+        if (sortableItem.innerElement.classList.contains("full_width")) {
+            sortableItem.outerElement.classList.add("full_width");
+        }
         const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
         if (newOuterElement) {
             try {

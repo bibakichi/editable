@@ -22,6 +22,7 @@ async function _renderLight(outerElementId, saveData) {
             return {};
         }
     }
+    //
     if (saveData?.blockType == "StaticHTML") {
         return lightElement;
     }
