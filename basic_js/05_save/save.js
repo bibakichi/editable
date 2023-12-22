@@ -30,10 +30,12 @@ async function allSave(isDownload) {
     const pastMainContents = document.getElementById('main_contents');
     const newMainContents = document.createElement('main');
     for (const sortableItem of pastMainContents.querySelectorAll(":scope>*")) {
-        if (sortableItem.children.length > 0) {
-            if (sortableItem.children[0].classList.contains("full_width")) {
+        console.log(sortableItem);
+        for (const childElement of sortableItem.children) {
+            if (childElement.classList.contains("full_width")) {
                 sortableItem.classList.add("full_width");
                 console.log("full_width");
+                break;
             }
         }
         if (sortableItem.classList.contains("skip")) {
@@ -57,6 +59,7 @@ async function allSave(isDownload) {
             newMainContents.appendChild(sortableItem);
         }
     }
+    console.log("=============================");
     console.log(newMainContents);
     //
     const externalFiles = [
