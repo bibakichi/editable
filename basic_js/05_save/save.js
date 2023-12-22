@@ -30,6 +30,7 @@ async function allSave(isDownload) {
     const pastMainContents = document.getElementById('main_contents');
     const newMainContents = document.createElement('main');
     for (const sortableItem of pastMainContents.querySelectorAll(":scope>*")) {
+        console.log("c");
         if (sortableItem.children.length > 0) {
             console.log("a");
             if (sortableItem.children[0].classList.contains("full_width")) {
