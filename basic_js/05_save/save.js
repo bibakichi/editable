@@ -51,6 +51,13 @@ async function allSave(isDownload) {
         const newOuterElement = await _renderLight(sortableItem.id, newSaveData);
         if (newOuterElement) {
             try {
+                for (const childElement of sortableItem.children) {
+                    if (childElement.classList.contains("full_width")) {
+                        newOuterElement.classList.add("full_width");
+                        console.log("full_width");
+                        break;
+                    }
+                }
                 newMainContents.appendChild(newOuterElement);
             }
             catch (e) { }
