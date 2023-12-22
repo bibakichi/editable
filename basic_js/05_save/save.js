@@ -30,12 +30,10 @@ async function allSave(isDownload) {
     const pastMainContents = document.getElementById('main_contents');
     const newMainContents = document.createElement('main');
     for (const sortableItem of pastMainContents.querySelectorAll(":scope>*")) {
-        console.log("c");
         if (sortableItem.children.length > 0) {
-            console.log("a");
             if (sortableItem.children[0].classList.contains("full_width")) {
-                console.log("b");
                 sortableItem.classList.add("full_width");
+                console.log("full_width");
             }
         }
         if (sortableItem.classList.contains("skip")) {
@@ -59,6 +57,7 @@ async function allSave(isDownload) {
             newMainContents.appendChild(sortableItem);
         }
     }
+    console.log(newMainContents);
     //
     const externalFiles = [
         ...document.querySelectorAll("head>link:not(.Do_not_store_in_HTML)"),
