@@ -89,9 +89,18 @@ plugins["ChildHeadlines"] = {
                     deleteElement.classList.add("blog_delete_button");
                     deleteElement.style.display = "none";
                     blockElement.appendChild(deleteElement);
-                    deleteElement.addEventListener("click", () => {
+                    deleteElement.addEventListener("click", (event) => {
+                        event.stopPropagation();
+                        event.preventDefault();
+                        const folderName = pageData.folderName;
                         console.log(pageData);
-                        alert("削除します");
+                        const childPages = structuredClone(settings.childPages);
+                        delete childPages[folderName];
+                        console.log(childPages);
+                        settings[0] = {
+                            ...settings[0],
+                            "childPages": childPages,
+                        };
                     });
                 }
             }
