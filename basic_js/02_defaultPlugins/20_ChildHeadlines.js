@@ -93,10 +93,8 @@ plugins["ChildHeadlines"] = {
                         event.stopPropagation();
                         event.preventDefault();
                         const folderName = pageData.folderName;
-                        console.log(pageData);
                         const childPages = structuredClone(settings[0].childPages ?? {});
                         delete childPages[folderName];
-                        console.log(childPages);
                         settings[0] = {
                             ...settings[0],
                             "childPages": childPages,
