@@ -83,6 +83,16 @@ plugins["ChildHeadlines"] = {
                     const pElement = document.createElement("p");
                     blockElement.appendChild(pElement);
                     pElement.innerText = pageData?.overview + "...";
+                    //
+                    const deleteElement = document.createElement("button");
+                    deleteElement.innerText = "削除";
+                    deleteElement.classList.add("blog_delete_button");
+                    deleteElement.style.display = "none";
+                    blockElement.appendChild(deleteElement);
+                    deleteElement.addEventListener("click", () => {
+                        console.log(pageData);
+                        alert("削除します");
+                    });
                 }
             }
             aaa();
@@ -96,6 +106,11 @@ plugins["ChildHeadlines"] = {
             newElement.target = "_blank";
             newElement.href = "./new/index.html?editmode=1";
             listElement.prepend(newElement);
+            //
+            const deleteElements = document.getElementsByClassName("blog_delete_button");
+            for (const deleteElement of deleteElements) {
+                deleteElement.style.display = "block";
+            }
         },
         "renderLight": async function (blockId, saveData) {
             const element = document.createElement("div");
